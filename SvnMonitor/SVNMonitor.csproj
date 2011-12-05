@@ -71,149 +71,448 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actions\Action.cs" />
-    <Compile Include="Actions\BalloonTipAction.cs" />
-    <Compile Include="Actions\TextAppenderAction.cs" />
-    <Compile Include="Actions\EventLogAction.cs" />
-    <Compile Include="Actions\ExternalAction.cs" />
-    <Compile Include="Actions\FileAppenderAction.cs" />
-    <Compile Include="Actions\InfoBalloonTipAction.cs" />
-    <Compile Include="Actions\MailSenderAction.cs" />
-    <Compile Include="Actions\SoundPlayerAction.cs" />
-    <Compile Include="Actions\SoundsByAuthorsAction.cs" />
-    <Compile Include="Actions\SoundByAuthor.cs" />
-    <Compile Include="Actions\SVNUpdateAction.cs" />
-    <Compile Include="Extensions\Enumerable.cs" />
-    <Compile Include="Extensions\Func`1.cs" />
-    <Compile Include="Extensions\Func`2.cs" />
-    <Compile Include="Extensions\Func`3.cs" />
-    <Compile Include="Extensions\Func`4.cs" />
-    <Compile Include="Extensions\Func`5.cs" />
-    <Compile Include="Extensions\Misc.cs" />
-    <Compile Include="Resources\UI\GridEX.cs" />
-    <Compile Include="Settings\ApplicationSettings.cs" />
-    <Compile Include="Settings\DefaultProviders\IDefaultValueProvider.cs" />
-    <Compile Include="Settings\DefaultProviders\DefaultGuidProvider.cs" />
-    <Compile Include="Settings\KeyboardSettingAttribute.cs" />
-    <Compile Include="Settings\Validation\IConfigValidator.cs" />
-    <Compile Include="Settings\Validation\AdministratorConfigValidator.cs" />
-    <Compile Include="Settings\Validation\ConfigValidatorAttribute.cs" />
-    <Compile Include="Settings\Validation\AdministratorConfigValidatorAttribute.cs" />
-    <Compile Include="Settings\Validation\CultureConfigValidator.cs" />
-    <Compile Include="Settings\Validation\CultureConfigValidatorAttribute.cs" />
-    <Compile Include="Settings\Validation\EnumConfigValidator.cs" />
-    <Compile Include="Settings\Validation\EnumConfigValidatorAttribute.cs" />
-    <Compile Include="Settings\Validation\FileNameConfigValidator.cs" />
-    <Compile Include="Settings\Validation\FileNameConfigValidatorAttribute.cs" />
-    <Compile Include="Settings\Validation\GridLayoutConfigValidator.cs" />
-    <Compile Include="Settings\Validation\GridLayoutConfigValidatorAttribute.cs" />
-    <Compile Include="Settings\Validation\KeyboardShortcutConfigValidator.cs" />
-    <Compile Include="Settings\Validation\KeyboardShortcutConfigValidatorAttribute.cs" />
-    <Compile Include="Design\SoundsByAuthorsCollectionEditor.cs" />
-    <Compile Include="Entities\VersionEntity.cs" />
-    <Compile Include="Entities\UserEntity.cs" />
-    <Compile Include="View\Interfaces\ISearchable.cs" />
-    <Compile Include="Entities\Monitor.cs" />
-    <Compile Include="Design\WavFileNameEditor.cs" />
-    <Compile Include="Design\OptionalFileNameEditor.cs" />
-    <Compile Include="Entities\SVNChangeList.cs" />
-    <Compile Include="EventLog.cs" />
-    <Compile Include="EventLogEntry.cs" />
-    <Compile Include="EventLogEntryType.cs" />
-    <Compile Include="Helpers\InheritableBooleanHelper.cs" />
-    <Compile Include="Helpers\KeyboardHook.cs" />
-    <Compile Include="Helpers\KeyPressedEventArgs.cs" />
-    <Compile Include="Helpers\KeyboardHookHelper.cs" />
-    <Compile Include="Helpers\KeyInfo.cs" />
-    <Compile Include="Helpers\ModifierKey.cs" />
-    <Compile Include="Helpers\Key.cs" />
-    <Compile Include="Helpers\RegistryHelper.cs" />
-    <Compile Include="Helpers\SVNPathCommands.cs" />
-    <Compile Include="Helpers\SVNPathsExtension.cs" />
-    <Compile Include="Helpers\AssociatedUserActionAttribute.cs" />
-    <Compile Include="Helpers\UserAction.cs" />
-    <Compile Include="Entities\SVNStatus.cs" />
-    <Compile Include="Entities\SVNStatusEntry.cs" />
-    <Compile Include="Entities\StatusChangedEventArgs.cs" />
-    <Compile Include="Entities\StatusChangedReason.cs" />
-    <Compile Include="Helpers\ClipboardHelper.cs" />
-    <Compile Include="Helpers\EnumHelper.cs" />
-    <Compile Include="Helpers\EnvironmentHelper.cs" />
-    <Compile Include="Helpers\EventArgs`1.cs" />
-    <Compile Include="Helpers\ThreadHelper.cs" />
-    <Compile Include="Helpers\TortoiseSVNHelper.cs" />
-    <Compile Include="Helpers\TrayNotifier.cs" />
-    <Compile Include="Logging\Logger.cs" />
-    <Compile Include="Helpers\SerializationHelper.cs" />
-    <Compile Include="Helpers\SoundPlayerHelper.cs" />
-    <Compile Include="Helpers\UIHelper.cs" />
-    <Compile Include="Helpers\SourceHelper.cs" />
-    <Compile Include="Helpers\SVNPathHelper.cs" />
-    <Compile Include="Helpers\SVNLogEntryHelper.cs" />
-    <Compile Include="Helpers\WebHelper.cs" />
-    <Compile Include="Helpers\WildcardPatternMatcher.cs" />
-    <Compile Include="Helpers\WindowFlasher.cs" />
-    <Compile Include="Presenters\UserEntityPresenter`1.cs" />
-    <Compile Include="Remoting\RemotingClient.cs" />
-    <Compile Include="Remoting\RemotingServer.cs" />
-    <Compile Include="Remoting\RemoteProxy.cs" />
-    <Compile Include="Resources\Icons.cs" />
-    <Compile Include="Resources\ResourceProviderAttribute.cs" />
-    <Compile Include="Resources\Text\Strings.cs" />
-    <Compile Include="SessionInfo.cs" />
-    <Compile Include="ParameterAttribute.cs" />
-    <Compile Include="Settings\ApplicationSettingsManager.cs" />
-    <Compile Include="Settings\ApplicationSettingsValueAttribute.cs" />
-    <Compile Include="Settings\IgnoreWebServiceAttribute.cs" />
-    <Compile Include="Settings\Validation\NumberConfigValidator.cs" />
-    <Compile Include="Settings\Validation\NumberConfigValidatorAttribute.cs" />
-    <Compile Include="Settings\Validation\ValidationOperator.cs" />
-    <Compile Include="Status.cs" />
-    <Compile Include="Support\ISendable.cs" />
-    <Compile Include="Support\BaseSendable.cs" />
-    <Compile Include="Support\BaseFeedback.cs" />
-    <Compile Include="Support\ErrorReportFeedback.cs" />
+    <Compile Include="Actions\Action.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\BalloonTipAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\EventLogAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\ExternalAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\FileAppenderAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\InfoBalloonTipAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\MailSenderAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\SoundByAuthor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\SoundPlayerAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\SoundsByAuthorsAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\SVNUpdateAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\TextAppenderAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Design\OptionalFileNameEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Design\SoundsByAuthorsCollectionEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Design\WavFileNameEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Monitor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Source.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\StatusChangedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\StatusChangedReason.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\SVNAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\SVNActionConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\SVNChangeList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\SVNInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\SVNLog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\SVNLogEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\SVNPath.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\SVNStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\SVNStatusEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\UserEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\VersionEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventLog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventLogEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventLogEntryType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\Enumerable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\Func!1.cs" />
+    <Compile Include="Extensions\Func!2.cs" />
+    <Compile Include="Extensions\Func!3.cs" />
+    <Compile Include="Extensions\Func!4.cs" />
+    <Compile Include="Extensions\Func!5.cs" />
+    <Compile Include="Extensions\Misc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\AssociatedUserActionAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\ClipboardHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\ColumnInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\ConditionSerializationContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\ConditionSerializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\CustomAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\EnumHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\EnvironmentHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\ErrorHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\EventArgs!1.cs" />
+    <Compile Include="Helpers\FileSystemHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\InheritableBooleanHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\Key.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\KeyboardHook.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\KeyboardHookHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\KeyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\KeyPressedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\ModifierKey.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\ProcessHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\RegistryHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\SerializationHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\SoundPlayerHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\SourceHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\SVNLogEntryHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\SVNPathCommands.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\SVNPathHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\SVNPathsExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\ThreadHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\TortoiseSVNHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\TrayNotifier.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\TypeRequirements.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\UIHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\UserAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\UserTypeInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\UserTypesFactory!1.cs" />
+    <Compile Include="Helpers\WebHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\WildcardPatternMatcher.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\WindowFlasher.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Logging\Logger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonitorSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ParameterAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presenters\UserEntityPresenter!1.cs" />
+    <Compile Include="Program.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Remoting\RemoteProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Remoting\RemotingClient.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Remoting\RemotingServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\Icons.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\Images.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\ResourceProviderAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\Text\Strings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\UI\GridEX.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SessionInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\ApplicationSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\ApplicationSettingsManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\ApplicationSettingsValueAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\DefaultProviders\DefaultGuidProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\DefaultProviders\IDefaultValueProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\IgnoreWebServiceAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\KeyboardSettingAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\AdministratorConfigValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\AdministratorConfigValidatorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\ConfigValidatorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\CultureConfigValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\CultureConfigValidatorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\EnumConfigValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\EnumConfigValidatorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\FileNameConfigValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\FileNameConfigValidatorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\GridLayoutConfigValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\GridLayoutConfigValidatorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\IConfigValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\KeyboardShortcutConfigValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\KeyboardShortcutConfigValidatorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\NumberConfigValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\NumberConfigValidatorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings\Validation\ValidationOperator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendErrorReportCompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\sendErrorReportCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendFeedbackCompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\sendFeedbackCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendUpgradeInfoCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendUsageInfoCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\svnmonitor_server.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\testCompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\testCompletedEventHandler.cs" />
+    <Compile Include="Status.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\BaseFeedback.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\BaseSendable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\ErrorReportFeedback.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\ISendable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\Issue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\IssuesCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\KnownIssuesHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\SampleIssuesGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\SendableResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Support\SendCallback.cs" />
-    <Compile Include="Support\SendableResult.cs" />
-    <Compile Include="Support\Issue.cs" />
-    <Compile Include="Support\IssuesCollection.cs" />
-    <Compile Include="Support\SampleIssuesGenerator.cs" />
-    <Compile Include="Support\KnownIssuesHelper.cs" />
-    <Compile Include="Support\UpgradeInfo.cs" />
-    <Compile Include="Support\UsageInformationSender.cs" />
-    <Compile Include="Support\UserFeedback.cs" />
-    <Compile Include="Support\VersionChecker.cs" />
-    <Compile Include="SVN\SharpSVNClient.cs" />
-    <Compile Include="SVN\TortoiseProcess.cs" />
-    <Compile Include="SVN\TortoiseSVNAutoClose.cs" />
+    <Compile Include="Support\UpgradeInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\UsageInformationSender.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\UserFeedback.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Support\VersionChecker.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SVN\SharpSVNClient.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SVN\SVNFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SVN\TortoiseProcess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SVN\TortoiseSVNAutoClose.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Updater.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="View\Controls\ActionSelector.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Helpers\UserTypesFactory`1.cs" />
-    <Compile Include="Helpers\UserTypeInfo.cs" />
-    <Compile Include="Helpers\CustomAttribute.cs" />
-    <Compile Include="Helpers\TypeRequirements.cs" />
-    <Compile Include="Entities\SVNInfo.cs" />
-    <Compile Include="Entities\SVNLog.cs" />
-    <Compile Include="Entities\SVNLogEntry.cs" />
-    <Compile Include="Entities\SVNPath.cs" />
-    <Compile Include="Entities\Source.cs" />
-    <Compile Include="Entities\SVNAction.cs" />
-    <Compile Include="Entities\SVNActionConverter.cs" />
-    <Compile Include="SVN\SVNFactory.cs" />
-    <Compile Include="Helpers\ConditionSerializer.cs" />
-    <Compile Include="Helpers\ConditionSerializationContext.cs" />
-    <Compile Include="Helpers\ColumnInfo.cs" />
-    <Compile Include="Helpers\ErrorHandler.cs" />
-    <Compile Include="Helpers\FileSystemHelper.cs" />
-    <Compile Include="Helpers\ProcessHelper.cs" />
-    <Compile Include="MonitorSettings.cs" />
-    <Compile Include="Resources\Images.cs" />
     <Compile Include="View\Controls\ActionsGrid.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\Controls\AnimationProgressBar.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\EventLogEntrySearchTextBox.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="View\Controls\EventLogGrid.cs">
       <SubType>Component</SubType>
@@ -224,51 +523,49 @@
     <Compile Include="View\Controls\KeyboardEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\KeyboardEditorRow.cs" />
-    <Compile Include="View\Controls\UserEntitiesExplorerBar`1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="View\Controls\MonitorsExplorerBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="View\Controls\UserEntityExplorerBarGroup`1.cs" />
-    <Compile Include="View\Controls\MonitorExplorerBarGroup.cs" />
-    <Compile Include="View\Controls\PathsGrid.cs">
-      <SubType>Component</SubType>
+    <Compile Include="View\Controls\KeyboardEditorRow.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="View\Controls\LogEntriesGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Controls\SearchTextBox`1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Controls\SVNLogEntrySearchTextBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Controls\SVNPathSearchTextBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Controls\EventLogEntrySearchTextBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Controls\SourceSearchTextBox.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="View\Controls\MonitorExplorerBarGroup.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="View\Controls\MonitorSearchTextBox.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Controls\SourcesExplorerBar.cs">
+    <Compile Include="View\Controls\MonitorsExplorerBar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Controls\PathsGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Controls\SourceExplorerBarGroup.cs" />
-    <Compile Include="Updater.cs" />
-    <Compile Include="View\Dialogs\BaseDialog.cs">
-      <SubType>Form</SubType>
+    <Compile Include="View\Controls\SearchTextBox!1.cs" />
+    <Compile Include="View\Controls\SourceExplorerBarGroup.cs">
+      <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\Controls\SourceSearchTextBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Controls\SourcesExplorerBar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Controls\SVNLogEntrySearchTextBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Controls\SVNPathSearchTextBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Controls\UserEntitiesExplorerBar!1.cs" />
+    <Compile Include="View\Controls\UserEntityExplorerBarGroup!1.cs" />
     <Compile Include="View\Dialogs\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Dialogs\ActionPropertiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\BaseDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Dialogs\BaseFeedbackDialog.cs">
@@ -319,24 +616,37 @@
     <Compile Include="View\Dialogs\UsageInformationHelp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Interfaces\ISearchablePanel`1.cs" />
-    <Compile Include="View\Interfaces\ISelectableView`1.cs" />
-    <Compile Include="View\Interfaces\IUserEntityView`1.cs" />
-    <Compile Include="View\Interfaces\ILogEntriesView.cs" />
+    <Compile Include="View\Interfaces\ILogEntriesView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Interfaces\ISearchable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Interfaces\ISearchablePanel!1.cs" />
+    <Compile Include="View\Interfaces\ISelectableView!1.cs" />
+    <Compile Include="View\Interfaces\IUserEntityView!1.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainNotifier.cs" />
-    <Compile Include="View\Panels\ActionsPanel.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="View\MainNotifier.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Panels\GridPanel.cs">
+    <Compile Include="View\Panels\ActionsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Panels\EventLogPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="View\Panels\GridPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\LogEntriesPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="View\Panels\MonitorsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\PathsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Panels\SourcesPanel.cs">
@@ -345,44 +655,30 @@
     <Compile Include="View\Panels\UpdatesGridContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Panels\LogEntriesPanel.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Web\SharpRegion.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Panels\PathsPanel.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Wizards\CodeReviewMailerWizard.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="SharpRegion\svnmonitor_server.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Wizards\CommitsNotificationsWizard.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\testCompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\testCompletedEventArgs.cs" />
-    <Compile Include="SharpRegion\sendUsageInfoCompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\sendUpgradeInfoCompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventArgs.cs" />
-    <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventArgs.cs" />
-    <Compile Include="SharpRegion\sendFeedbackCompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\sendFeedbackCompletedEventArgs.cs" />
-    <Compile Include="SharpRegion\sendErrorReportCompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\sendErrorReportCompletedEventArgs.cs" />
-    <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventArgs.cs" />
-    <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventArgs.cs" />
-    <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventArgs.cs" />
-    <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventArgs.cs" />
-    <Compile Include="Web\SharpRegion.cs" />
-    <Compile Include="Wizards\Wizard.cs" />
-    <Compile Include="Wizards\CodeReviewMailerWizard.cs" />
-    <Compile Include="Wizards\CommitsNotificationsWizard.cs" />
-    <Compile Include="Wizards\CustomWizard.cs" />
-    <Compile Include="Wizards\RepositoryMirrorWizard.cs" />
-    <Compile Include="Wizards\SoundCommitsNotificationsWizard.cs" />
-    <Compile Include="Wizards\WizardCancelledException.cs" />
+    <Compile Include="Wizards\CustomWizard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wizards\RepositoryMirrorWizard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wizards\SoundCommitsNotificationsWizard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wizards\Wizard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizardCancelledException.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
