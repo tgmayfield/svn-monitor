@@ -1,39 +1,38 @@
-﻿using SVNMonitor.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+using SVNMonitor.Entities;
 
 namespace SVNMonitor.View.Interfaces
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Runtime.CompilerServices;
-    using System.Windows.Forms;
+	internal interface IUserEntityView<T> : ISelectableView<T>
+		where T : UserEntity
+	{
+		event EventHandler SelectionChanged;
 
-    internal interface IUserEntityView<T> : ISelectableView<T> where T: UserEntity
-    {
-        event EventHandler SelectionChanged;
+		void Delete();
+		void EnableCommands();
+		void Refetch();
+		DialogResult UserEdit(T entity);
+		DialogResult UserNew(T entity);
 
-        void Delete();
-        void EnableCommands();
-        void Refetch();
-        DialogResult UserEdit(T entity);
-        DialogResult UserNew(T entity);
+		bool CanDelete { get; set; }
 
-        bool CanDelete { get; set; }
+		bool CanEdit { get; set; }
 
-        bool CanEdit { get; set; }
+		bool CanMoveDown { get; set; }
 
-        bool CanMoveDown { get; set; }
+		bool CanMoveUp { get; set; }
 
-        bool CanMoveUp { get; set; }
+		bool CanNew { get; set; }
 
-        bool CanNew { get; set; }
+		int Count { get; }
 
-        int Count { get; }
+		List<T> Entities { get; set; }
 
-        List<T> Entities { get; set; }
+		int SelectedIndex { get; set; }
 
-        int SelectedIndex { get; set; }
-
-        bool ShowingAllItems { get; }
-    }
+		bool ShowingAllItems { get; }
+	}
 }
-

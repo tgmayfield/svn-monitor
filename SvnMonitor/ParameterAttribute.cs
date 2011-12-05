@@ -1,17 +1,15 @@
-﻿namespace SVNMonitor
+﻿using System;
+
+namespace SVNMonitor
 {
-    using System;
-    using System.Runtime.CompilerServices;
+	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
+	public class ParameterAttribute : Attribute
+	{
+		public ParameterAttribute(string argName)
+		{
+			ArgName = argName;
+		}
 
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple=true)]
-    public class ParameterAttribute : Attribute
-    {
-        public ParameterAttribute(string argName)
-        {
-            this.ArgName = argName;
-        }
-
-        public string ArgName { get; private set; }
-    }
+		public string ArgName { get; private set; }
+	}
 }
-

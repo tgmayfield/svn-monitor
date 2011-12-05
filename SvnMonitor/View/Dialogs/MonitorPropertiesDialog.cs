@@ -1,294 +1,293 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+
+using Janus.Windows.GridEX;
+using Janus.Windows.UI.Dock;
+
+using SVNMonitor.Extensions;
+using SVNMonitor.Helpers;
+using SVNMonitor.Logging;
+using SVNMonitor.Resources.Text;
+using SVNMonitor.View.Panels;
 
 namespace SVNMonitor.View.Dialogs
 {
-    using Janus.Windows.Common;
-    using Janus.Windows.FilterEditor;
-    using Janus.Windows.GridEX;
-    using Janus.Windows.UI.Dock;
-    using SVNMonitor;
-    using SVNMonitor.Entities;
-    using SVNMonitor.Extensions;
-    using SVNMonitor.Helpers;
-    using SVNMonitor.Logging;
-    using SVNMonitor.Resources.Text;
-    using SVNMonitor.View;
-    using SVNMonitor.View.Panels;
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Drawing;
-    using System.Windows.Forms;
+	internal class MonitorPropertiesDialog : BaseDialog
+	{
+		private ActionsPanel actionsPanel1;
+		private Button btnCancel;
+		private Button btnOK;
+		private CheckBox checkEnabled;
+		private IContainer components;
+		private Janus.Windows.FilterEditor.FilterEditor filterEditor1;
+		private GroupBox groupDo;
+		private GroupBox groupWhen;
+		private Label lblMonitorName;
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private SVNMonitor.Entities.Monitor monitor;
+		private TextBox txtMonitorName;
 
-    internal class MonitorPropertiesDialog : BaseDialog
-    {
-        private ActionsPanel actionsPanel1;
-        private Button btnCancel;
-        private Button btnOK;
-        private CheckBox checkEnabled;
-        private IContainer components;
-        private Janus.Windows.FilterEditor.FilterEditor filterEditor1;
-        private GroupBox groupDo;
-        private GroupBox groupWhen;
-        private Label lblMonitorName;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private SVNMonitor.Entities.Monitor monitor;
-        private TextBox txtMonitorName;
+		public MonitorPropertiesDialog()
+		{
+			InitializeComponent();
+			UIHelper.ApplyResources(filterEditor1);
+		}
 
-        public MonitorPropertiesDialog()
-        {
-            this.InitializeComponent();
-            UIHelper.ApplyResources(this.filterEditor1);
-        }
+		public MonitorPropertiesDialog(SVNMonitor.Entities.Monitor monitor)
+			: this()
+		{
+			Monitor = monitor;
+			filterEditor1.SourceControl = Updater.Instance.UpdatesGrid;
+		}
 
-        public MonitorPropertiesDialog(SVNMonitor.Entities.Monitor monitor) : this()
-        {
-            this.Monitor = monitor;
-            this.filterEditor1.SourceControl = Updater.Instance.UpdatesGrid;
-        }
+		private void BindData()
+		{
+			txtMonitorName.Text = monitor.Name;
+			checkEnabled.Checked = monitor.Enabled;
+			actionsPanel1.Actions = monitor.Actions;
+			filterEditor1.DataBindings.Add("FilterCondition", monitor, "FilterCondition", true, DataSourceUpdateMode.OnPropertyChanged);
+		}
 
-        private void BindData()
-        {
-            this.txtMonitorName.Text = this.monitor.Name;
-            this.checkEnabled.Checked = this.monitor.Enabled;
-            this.actionsPanel1.Actions = this.monitor.Actions;
-            this.filterEditor1.DataBindings.Add("FilterCondition", this.monitor, "FilterCondition", true, DataSourceUpdateMode.OnPropertyChanged);
-        }
+		private void btnCancel_Click(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			RejectChanges();
+		}
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.RejectChanges();
-        }
+		private void btnOK_Click(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			Save();
+		}
 
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.Save();
-        }
+		private bool CancelEmptyFilter()
+		{
+			if (FilterCondition == null)
+			{
+				DialogResult result = MainForm.FormInstance.ShowMessage(Strings.MonitorWithoutCondition, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+				Logger.Log.InfoFormat("No condition: User clicked {0}", result);
+				if (result == DialogResult.No)
+				{
+					return true;
+				}
+				monitor.FilterCondition = null;
+			}
+			return false;
+		}
 
-        private bool CancelEmptyFilter()
-        {
-            if (this.FilterCondition == null)
-            {
-                DialogResult result = MainForm.FormInstance.ShowMessage(Strings.MonitorWithoutCondition, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                Logger.Log.InfoFormat("No condition: User clicked {0}", result);
-                if (result == DialogResult.No)
-                {
-                    return true;
-                }
-                this.monitor.FilterCondition = null;
-            }
-            return false;
-        }
+		private bool CancelExistingFilter()
+		{
+			if (FilterCondition != null)
+			{
+				string thisFilterConditionString = FilterCondition.ToString();
+				IEnumerable<string> existingConflictingMonitors = MonitorSettings.Instance.GetEnumerableMonitors().Where(m => (((m.FilterCondition != null) && (m != Monitor)) && (m.FilterCondition.ToString() == thisFilterConditionString))).Select<SVNMonitor.Entities.Monitor, string>(m => m.Name);
+				int count = existingConflictingMonitors.Count();
+				if (count > 0)
+				{
+					string message = string.Empty;
+					if (count == 1)
+					{
+						message = Strings.MonitorExistsWithSameCondition_FORMAT.FormatWith(new object[]
+						{
+							existingConflictingMonitors.First()
+						});
+					}
+					else
+					{
+						string monitorNames = string.Join(Environment.NewLine, existingConflictingMonitors.ToArray());
+						message = Strings.MonitorsExistWithSameCondition_FORMAT.FormatWith(new object[]
+						{
+							monitorNames
+						});
+					}
+					DialogResult result = MainForm.FormInstance.ShowMessage(message, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+					Logger.Log.InfoFormat("Condition exists: User clicked {0}", result);
+					if (result == DialogResult.No)
+					{
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 
-        private bool CancelExistingFilter()
-        {
-            if (this.FilterCondition != null)
-            {
-                string thisFilterConditionString = this.FilterCondition.ToString();
-                IEnumerable<string> existingConflictingMonitors = MonitorSettings.Instance.GetEnumerableMonitors().Where<SVNMonitor.Entities.Monitor>(m => (((m.FilterCondition != null) && (m != this.Monitor)) && (m.FilterCondition.ToString() == thisFilterConditionString))).Select<SVNMonitor.Entities.Monitor, string>(m => m.Name);
-                int count = existingConflictingMonitors.Count<string>();
-                if (count > 0)
-                {
-                    string message = string.Empty;
-                    if (count == 1)
-                    {
-                        message = Strings.MonitorExistsWithSameCondition_FORMAT.FormatWith(new object[] { existingConflictingMonitors.First<string>() });
-                    }
-                    else
-                    {
-                        string monitorNames = string.Join(Environment.NewLine, existingConflictingMonitors.ToArray<string>());
-                        message = Strings.MonitorsExistWithSameCondition_FORMAT.FormatWith(new object[] { monitorNames });
-                    }
-                    DialogResult result = MainForm.FormInstance.ShowMessage(message, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                    Logger.Log.InfoFormat("Condition exists: User clicked {0}", result);
-                    if (result == DialogResult.No)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
+		private void CheckChanges()
+		{
+			btnOK.Enabled = IsValid;
+		}
 
-        private void CheckChanges()
-        {
-            this.btnOK.Enabled = this.IsValid;
-        }
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		private void Field_Changed(object sender, EventArgs e)
+		{
+			CheckChanges();
+		}
 
-        private void Field_Changed(object sender, EventArgs e)
-        {
-            this.CheckChanges();
-        }
+		private void InitializeComponent()
+		{
+			components = new Container();
+			ComponentResourceManager resources = new ComponentResourceManager(typeof(MonitorPropertiesDialog));
+			filterEditor1 = new Janus.Windows.FilterEditor.FilterEditor();
+			btnCancel = new Button();
+			btnOK = new Button();
+			txtMonitorName = new TextBox();
+			lblMonitorName = new Label();
+			groupWhen = new GroupBox();
+			groupDo = new GroupBox();
+			actionsPanel1 = new ActionsPanel();
+			checkEnabled = new CheckBox();
+			groupWhen.SuspendLayout();
+			groupDo.SuspendLayout();
+			base.SuspendLayout();
+			filterEditor1.BackColor = SystemColors.Control;
+			resources.ApplyResources(filterEditor1, "filterEditor1");
+			filterEditor1.InnerAreaStyle = PanelInnerAreaStyle.UseFormatStyle;
+			filterEditor1.MinSize = new Size(0, 0);
+			filterEditor1.Name = "filterEditor1";
+			filterEditor1.ScrollMode = ScrollMode.Both;
+			filterEditor1.ScrollStep = 15;
+			filterEditor1.VisualStyle = Janus.Windows.Common.VisualStyle.Standard;
+			resources.ApplyResources(btnCancel, "btnCancel");
+			btnCancel.DialogResult = DialogResult.Cancel;
+			btnCancel.Name = "btnCancel";
+			btnCancel.Click += btnCancel_Click;
+			resources.ApplyResources(btnOK, "btnOK");
+			btnOK.DialogResult = DialogResult.OK;
+			btnOK.Name = "btnOK";
+			btnOK.Click += btnOK_Click;
+			resources.ApplyResources(txtMonitorName, "txtMonitorName");
+			txtMonitorName.Name = "txtMonitorName";
+			resources.ApplyResources(lblMonitorName, "lblMonitorName");
+			lblMonitorName.Name = "lblMonitorName";
+			resources.ApplyResources(groupWhen, "groupWhen");
+			groupWhen.Controls.Add(filterEditor1);
+			groupWhen.Name = "groupWhen";
+			groupWhen.TabStop = false;
+			resources.ApplyResources(groupDo, "groupDo");
+			groupDo.Controls.Add(actionsPanel1);
+			groupDo.Name = "groupDo";
+			groupDo.TabStop = false;
+			actionsPanel1.BackColor = Color.Transparent;
+			resources.ApplyResources(actionsPanel1, "actionsPanel1");
+			actionsPanel1.Name = "actionsPanel1";
+			resources.ApplyResources(checkEnabled, "checkEnabled");
+			checkEnabled.Checked = true;
+			checkEnabled.CheckState = CheckState.Checked;
+			checkEnabled.Name = "checkEnabled";
+			base.AcceptButton = btnOK;
+			resources.ApplyResources(this, "$this");
+			base.AutoScaleMode = AutoScaleMode.Font;
+			base.CancelButton = btnCancel;
+			base.Controls.Add(checkEnabled);
+			base.Controls.Add(groupDo);
+			base.Controls.Add(groupWhen);
+			base.Controls.Add(lblMonitorName);
+			base.Controls.Add(txtMonitorName);
+			base.Controls.Add(btnOK);
+			base.Controls.Add(btnCancel);
+			base.FormBorderStyle = FormBorderStyle.FixedDialog;
+			base.Name = "MonitorPropertiesDialog";
+			base.ShowInTaskbar = false;
+			base.Load += MonitorPropertiesDialog_Load;
+			groupWhen.ResumeLayout(false);
+			groupDo.ResumeLayout(false);
+			base.ResumeLayout(false);
+			base.PerformLayout();
+		}
 
-        private void InitializeComponent()
-        {
-            this.components = new Container();
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(MonitorPropertiesDialog));
-            this.filterEditor1 = new Janus.Windows.FilterEditor.FilterEditor();
-            this.btnCancel = new Button();
-            this.btnOK = new Button();
-            this.txtMonitorName = new TextBox();
-            this.lblMonitorName = new Label();
-            this.groupWhen = new GroupBox();
-            this.groupDo = new GroupBox();
-            this.actionsPanel1 = new ActionsPanel();
-            this.checkEnabled = new CheckBox();
-            this.groupWhen.SuspendLayout();
-            this.groupDo.SuspendLayout();
-            base.SuspendLayout();
-            this.filterEditor1.BackColor = SystemColors.Control;
-            resources.ApplyResources(this.filterEditor1, "filterEditor1");
-            this.filterEditor1.InnerAreaStyle = PanelInnerAreaStyle.UseFormatStyle;
-            this.filterEditor1.MinSize = new Size(0, 0);
-            this.filterEditor1.Name = "filterEditor1";
-            this.filterEditor1.ScrollMode = ScrollMode.Both;
-            this.filterEditor1.ScrollStep = 15;
-            this.filterEditor1.VisualStyle = Janus.Windows.Common.VisualStyle.Standard;
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
-            resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.DialogResult = DialogResult.OK;
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            resources.ApplyResources(this.txtMonitorName, "txtMonitorName");
-            this.txtMonitorName.Name = "txtMonitorName";
-            resources.ApplyResources(this.lblMonitorName, "lblMonitorName");
-            this.lblMonitorName.Name = "lblMonitorName";
-            resources.ApplyResources(this.groupWhen, "groupWhen");
-            this.groupWhen.Controls.Add(this.filterEditor1);
-            this.groupWhen.Name = "groupWhen";
-            this.groupWhen.TabStop = false;
-            resources.ApplyResources(this.groupDo, "groupDo");
-            this.groupDo.Controls.Add(this.actionsPanel1);
-            this.groupDo.Name = "groupDo";
-            this.groupDo.TabStop = false;
-            this.actionsPanel1.BackColor = Color.Transparent;
-            resources.ApplyResources(this.actionsPanel1, "actionsPanel1");
-            this.actionsPanel1.Name = "actionsPanel1";
-            resources.ApplyResources(this.checkEnabled, "checkEnabled");
-            this.checkEnabled.Checked = true;
-            this.checkEnabled.CheckState = CheckState.Checked;
-            this.checkEnabled.Name = "checkEnabled";
-            base.AcceptButton = this.btnOK;
-            resources.ApplyResources(this, "$this");
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.CancelButton = this.btnCancel;
-            base.Controls.Add(this.checkEnabled);
-            base.Controls.Add(this.groupDo);
-            base.Controls.Add(this.groupWhen);
-            base.Controls.Add(this.lblMonitorName);
-            base.Controls.Add(this.txtMonitorName);
-            base.Controls.Add(this.btnOK);
-            base.Controls.Add(this.btnCancel);
-            base.FormBorderStyle = FormBorderStyle.FixedDialog;
-            base.Name = "MonitorPropertiesDialog";
-            base.ShowInTaskbar = false;
-            base.Load += new EventHandler(this.MonitorPropertiesDialog_Load);
-            this.groupWhen.ResumeLayout(false);
-            this.groupDo.ResumeLayout(false);
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
+		private void MonitorPropertiesDialog_Load(object sender, EventArgs e)
+		{
+			txtMonitorName.TextChanged += Field_Changed;
+			actionsPanel1.ActionsChanged += Field_Changed;
+			CheckChanges();
+		}
 
-        private void MonitorPropertiesDialog_Load(object sender, EventArgs e)
-        {
-            this.txtMonitorName.TextChanged += new EventHandler(this.Field_Changed);
-            this.actionsPanel1.ActionsChanged += new EventHandler(this.Field_Changed);
-            this.CheckChanges();
-        }
+		protected override void OnFormClosing(FormClosingEventArgs e)
+		{
+			base.OnFormClosing(e);
+			if (base.DialogResult == DialogResult.OK)
+			{
+				if (CancelEmptyFilter())
+				{
+					e.Cancel = true;
+				}
+				if (CancelExistingFilter())
+				{
+					e.Cancel = true;
+				}
+			}
+		}
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-            if (base.DialogResult == DialogResult.OK)
-            {
-                if (this.CancelEmptyFilter())
-                {
-                    e.Cancel = true;
-                }
-                if (this.CancelExistingFilter())
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
+		private void RejectChanges()
+		{
+			monitor.RejectChanges();
+		}
 
-        private void RejectChanges()
-        {
-            this.monitor.RejectChanges();
-        }
+		private void Save()
+		{
+			monitor.Name = txtMonitorName.Text;
+			monitor.Enabled = checkEnabled.Checked;
+			monitor.FilterCondition = FilterCondition;
+			monitor.Actions = actionsPanel1.Actions;
+		}
 
-        private void Save()
-        {
-            this.monitor.Name = this.txtMonitorName.Text;
-            this.monitor.Enabled = this.checkEnabled.Checked;
-            this.monitor.FilterCondition = this.FilterCondition;
-            this.monitor.Actions = this.actionsPanel1.Actions;
-        }
+		public static DialogResult ShowDialog(SVNMonitor.Entities.Monitor monitor)
+		{
+			MonitorPropertiesDialog dialog = new MonitorPropertiesDialog(monitor);
+			return dialog.ShowDialog();
+		}
 
-        public static DialogResult ShowDialog(SVNMonitor.Entities.Monitor monitor)
-        {
-            MonitorPropertiesDialog dialog = new MonitorPropertiesDialog(monitor);
-            return dialog.ShowDialog();
-        }
+		private GridEXFilterCondition FilterCondition
+		{
+			get
+			{
+				GridEXFilterCondition filterCondition = (GridEXFilterCondition)filterEditor1.FilterCondition;
+				if ((filterCondition != null) && (filterCondition.Column == null))
+				{
+					filterCondition = null;
+				}
+				return filterCondition;
+			}
+		}
 
-        private GridEXFilterCondition FilterCondition
-        {
-            get
-            {
-                GridEXFilterCondition filterCondition = (GridEXFilterCondition) this.filterEditor1.FilterCondition;
-                if ((filterCondition != null) && (filterCondition.Column == null))
-                {
-                    filterCondition = null;
-                }
-                return filterCondition;
-            }
-        }
+		[Browsable(false)]
+		private bool IsValid
+		{
+			get
+			{
+				if (string.IsNullOrEmpty(txtMonitorName.Text))
+				{
+					return false;
+				}
+				return ((actionsPanel1.Actions != null) && (actionsPanel1.Actions.Count != 0));
+			}
+		}
 
-        [Browsable(false)]
-        private bool IsValid
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.txtMonitorName.Text))
-                {
-                    return false;
-                }
-                return ((this.actionsPanel1.Actions != null) && (this.actionsPanel1.Actions.Count != 0));
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public SVNMonitor.Entities.Monitor Monitor
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return this.monitor;
-            }
-            private set
-            {
-                this.monitor = value;
-                if (this.monitor != null)
-                {
-                    this.BindData();
-                }
-            }
-        }
-    }
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public SVNMonitor.Entities.Monitor Monitor
+		{
+			[DebuggerNonUserCode]
+			get { return monitor; }
+			private set
+			{
+				monitor = value;
+				if (monitor != null)
+				{
+					BindData();
+				}
+			}
+		}
+	}
 }
-

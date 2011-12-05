@@ -1,25 +1,24 @@
-﻿using SVNMonitor.Resources.Text;
+﻿using System;
+
+using SVNMonitor.Resources.Text;
 
 namespace SVNMonitor.Resources
 {
-    using System;
-    using System.Runtime.CompilerServices;
+	public class ResourceProviderAttribute : Attribute
+	{
+		public ResourceProviderAttribute(string resourceName)
+			: this(typeof(Strings), resourceName)
+		{
+		}
 
-    public class ResourceProviderAttribute : Attribute
-    {
-        public ResourceProviderAttribute(string resourceName) : this(typeof(Strings), resourceName)
-        {
-        }
+		public ResourceProviderAttribute(Type resourceType, string resourceName)
+		{
+			ResourceType = resourceType;
+			ResourceName = resourceName;
+		}
 
-        public ResourceProviderAttribute(Type resourceType, string resourceName)
-        {
-            this.ResourceType = resourceType;
-            this.ResourceName = resourceName;
-        }
+		public string ResourceName { get; private set; }
 
-        public string ResourceName { get; private set; }
-
-        public Type ResourceType { get; private set; }
-    }
+		public Type ResourceType { get; private set; }
+	}
 }
-

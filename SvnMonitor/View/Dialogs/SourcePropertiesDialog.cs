@@ -1,385 +1,384 @@
-﻿using System.Linq;
+﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+
+using SVNMonitor.Extensions;
+using SVNMonitor.Logging;
+using SVNMonitor.Resources.Text;
 
 namespace SVNMonitor.View.Dialogs
 {
-    using SVNMonitor;
-    using SVNMonitor.Entities;
-    using SVNMonitor.Extensions;
-    using SVNMonitor.Logging;
-    using SVNMonitor.Resources.Text;
-    using System;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Drawing;
-    using System.Windows.Forms;
+	internal class SourcePropertiesDialog : BaseDialog
+	{
+		private Button btnCancel;
+		private Button btnOK;
+		private CheckBox checkAuthenticate;
+		private CheckBox checkEnabled;
+		private CheckBox checkEnableRecommendations;
+		private IContainer components;
+		private GroupBox groupAuthenticate;
+		private GroupBox groupPath;
+		private GroupBox groupSource;
+		private Label lblAuthenticationNote;
+		private Label lblName;
+		private Label lblPassword;
+		private Label lblUrlInfo;
+		private Label lblUserName;
+		private LinkLabel linkPath;
+		private RadioButton radioPath;
+		private RadioButton radioUrl;
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private SVNMonitor.Entities.Source source;
+		private TextBox txtName;
+		private TextBox txtPassword;
+		private TextBox txtPath;
+		private TextBox txtUrl;
+		private TextBox txtUsername;
 
-    internal class SourcePropertiesDialog : BaseDialog
-    {
-        private Button btnCancel;
-        private Button btnOK;
-        private CheckBox checkAuthenticate;
-        private CheckBox checkEnabled;
-        private CheckBox checkEnableRecommendations;
-        private IContainer components;
-        private GroupBox groupAuthenticate;
-        private GroupBox groupPath;
-        private GroupBox groupSource;
-        private Label lblAuthenticationNote;
-        private Label lblName;
-        private Label lblPassword;
-        private Label lblUrlInfo;
-        private Label lblUserName;
-        private LinkLabel linkPath;
-        private RadioButton radioPath;
-        private RadioButton radioUrl;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private SVNMonitor.Entities.Source source;
-        private TextBox txtName;
-        private TextBox txtPassword;
-        private TextBox txtPath;
-        private TextBox txtUrl;
-        private TextBox txtUsername;
+		public SourcePropertiesDialog()
+		{
+			InitializeComponent();
+		}
 
-        public SourcePropertiesDialog()
-        {
-            this.InitializeComponent();
-        }
+		public SourcePropertiesDialog(SVNMonitor.Entities.Source source)
+			: this()
+		{
+			Source = source;
+		}
 
-        public SourcePropertiesDialog(SVNMonitor.Entities.Source source) : this()
-        {
-            this.Source = source;
-        }
+		private void BindData()
+		{
+			txtName.Text = Source.Name;
+			checkEnabled.Checked = Source.Enabled;
+			checkEnableRecommendations.Checked = Source.EnableRecommendations;
+			if (Source.IsURL)
+			{
+				txtUrl.Text = Source.Path;
+				radioUrl.Checked = true;
+			}
+			else
+			{
+				txtPath.Text = Source.Path;
+				radioPath.Checked = true;
+			}
+			checkAuthenticate.Checked = Source.Authenticate;
+			txtUsername.Text = Source.UserName;
+			txtPassword.Text = Source.Password;
+		}
 
-        private void BindData()
-        {
-            this.txtName.Text = this.Source.Name;
-            this.checkEnabled.Checked = this.Source.Enabled;
-            this.checkEnableRecommendations.Checked = this.Source.EnableRecommendations;
-            if (this.Source.IsURL)
-            {
-                this.txtUrl.Text = this.Source.Path;
-                this.radioUrl.Checked = true;
-            }
-            else
-            {
-                this.txtPath.Text = this.Source.Path;
-                this.radioPath.Checked = true;
-            }
-            this.checkAuthenticate.Checked = this.Source.Authenticate;
-            this.txtUsername.Text = this.Source.UserName;
-            this.txtPassword.Text = this.Source.Password;
-        }
+		private void BrowsePath()
+		{
+			FolderBrowserDialog tempLocal0 = new FolderBrowserDialog
+			{
+				SelectedPath = txtPath.Text
+			};
+			FolderBrowserDialog dialog = tempLocal0;
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{
+				txtPath.Text = dialog.SelectedPath;
+			}
+		}
 
-        private void BrowsePath()
-        {
-            FolderBrowserDialog tempLocal0 = new FolderBrowserDialog {
-                SelectedPath = this.txtPath.Text
-            };
-            FolderBrowserDialog dialog = tempLocal0;
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                this.txtPath.Text = dialog.SelectedPath;
-            }
-        }
+		private void btnOK_Click(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			Save();
+		}
 
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.Save();
-        }
+		private void checkAuthenticate_CheckedChanged(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			groupAuthenticate.Enabled = checkAuthenticate.Checked;
+		}
 
-        private void checkAuthenticate_CheckedChanged(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.groupAuthenticate.Enabled = this.checkAuthenticate.Checked;
-        }
+		private void CheckChanges()
+		{
+			btnOK.Enabled = IsValid;
+		}
 
-        private void CheckChanges()
-        {
-            this.btnOK.Enabled = this.IsValid;
-        }
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		private void Field_Changed(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			CheckChanges();
+		}
 
-        private void Field_Changed(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.CheckChanges();
-        }
+		private void InitializeComponent()
+		{
+			ComponentResourceManager resources = new ComponentResourceManager(typeof(SourcePropertiesDialog));
+			groupSource = new GroupBox();
+			groupPath = new GroupBox();
+			linkPath = new LinkLabel();
+			lblUrlInfo = new Label();
+			radioUrl = new RadioButton();
+			txtPath = new TextBox();
+			radioPath = new RadioButton();
+			txtUrl = new TextBox();
+			lblAuthenticationNote = new Label();
+			checkEnableRecommendations = new CheckBox();
+			checkEnabled = new CheckBox();
+			groupAuthenticate = new GroupBox();
+			txtPassword = new TextBox();
+			lblPassword = new Label();
+			txtUsername = new TextBox();
+			lblUserName = new Label();
+			txtName = new TextBox();
+			checkAuthenticate = new CheckBox();
+			lblName = new Label();
+			btnCancel = new Button();
+			btnOK = new Button();
+			groupSource.SuspendLayout();
+			groupPath.SuspendLayout();
+			groupAuthenticate.SuspendLayout();
+			base.SuspendLayout();
+			resources.ApplyResources(groupSource, "groupSource");
+			groupSource.Controls.Add(groupPath);
+			groupSource.Controls.Add(lblAuthenticationNote);
+			groupSource.Controls.Add(checkEnableRecommendations);
+			groupSource.Controls.Add(checkEnabled);
+			groupSource.Controls.Add(groupAuthenticate);
+			groupSource.Controls.Add(txtName);
+			groupSource.Controls.Add(checkAuthenticate);
+			groupSource.Controls.Add(lblName);
+			groupSource.Name = "groupSource";
+			groupSource.TabStop = false;
+			resources.ApplyResources(groupPath, "groupPath");
+			groupPath.Controls.Add(linkPath);
+			groupPath.Controls.Add(lblUrlInfo);
+			groupPath.Controls.Add(radioUrl);
+			groupPath.Controls.Add(txtPath);
+			groupPath.Controls.Add(radioPath);
+			groupPath.Controls.Add(txtUrl);
+			groupPath.Name = "groupPath";
+			groupPath.TabStop = false;
+			resources.ApplyResources(linkPath, "linkPath");
+			linkPath.Name = "linkPath";
+			linkPath.TabStop = true;
+			linkPath.LinkClicked += linkPath_LinkClicked;
+			resources.ApplyResources(lblUrlInfo, "lblUrlInfo");
+			lblUrlInfo.ForeColor = Color.DarkRed;
+			lblUrlInfo.Name = "lblUrlInfo";
+			resources.ApplyResources(radioUrl, "radioUrl");
+			radioUrl.Name = "radioUrl";
+			radioUrl.TabStop = true;
+			radioUrl.UseVisualStyleBackColor = true;
+			radioUrl.CheckedChanged += radioPathUrl_CheckedChanged;
+			resources.ApplyResources(txtPath, "txtPath");
+			txtPath.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+			txtPath.AutoCompleteSource = AutoCompleteSource.FileSystem;
+			txtPath.Name = "txtPath";
+			resources.ApplyResources(radioPath, "radioPath");
+			radioPath.Name = "radioPath";
+			radioPath.TabStop = true;
+			radioPath.UseVisualStyleBackColor = true;
+			radioPath.CheckedChanged += radioPathUrl_CheckedChanged;
+			resources.ApplyResources(txtUrl, "txtUrl");
+			txtUrl.Name = "txtUrl";
+			resources.ApplyResources(lblAuthenticationNote, "lblAuthenticationNote");
+			lblAuthenticationNote.ForeColor = Color.DarkGreen;
+			lblAuthenticationNote.Name = "lblAuthenticationNote";
+			resources.ApplyResources(checkEnableRecommendations, "checkEnableRecommendations");
+			checkEnableRecommendations.Name = "checkEnableRecommendations";
+			resources.ApplyResources(checkEnabled, "checkEnabled");
+			checkEnabled.Name = "checkEnabled";
+			resources.ApplyResources(groupAuthenticate, "groupAuthenticate");
+			groupAuthenticate.Controls.Add(txtPassword);
+			groupAuthenticate.Controls.Add(lblPassword);
+			groupAuthenticate.Controls.Add(txtUsername);
+			groupAuthenticate.Controls.Add(lblUserName);
+			groupAuthenticate.Name = "groupAuthenticate";
+			groupAuthenticate.TabStop = false;
+			resources.ApplyResources(txtPassword, "txtPassword");
+			txtPassword.Name = "txtPassword";
+			resources.ApplyResources(lblPassword, "lblPassword");
+			lblPassword.Name = "lblPassword";
+			resources.ApplyResources(txtUsername, "txtUsername");
+			txtUsername.Name = "txtUsername";
+			resources.ApplyResources(lblUserName, "lblUserName");
+			lblUserName.Name = "lblUserName";
+			resources.ApplyResources(txtName, "txtName");
+			txtName.Name = "txtName";
+			resources.ApplyResources(checkAuthenticate, "checkAuthenticate");
+			checkAuthenticate.Name = "checkAuthenticate";
+			checkAuthenticate.CheckedChanged += checkAuthenticate_CheckedChanged;
+			resources.ApplyResources(lblName, "lblName");
+			lblName.Name = "lblName";
+			resources.ApplyResources(btnCancel, "btnCancel");
+			btnCancel.DialogResult = DialogResult.Cancel;
+			btnCancel.Name = "btnCancel";
+			resources.ApplyResources(btnOK, "btnOK");
+			btnOK.DialogResult = DialogResult.OK;
+			btnOK.Name = "btnOK";
+			btnOK.Click += btnOK_Click;
+			base.AcceptButton = btnOK;
+			resources.ApplyResources(this, "$this");
+			base.AutoScaleMode = AutoScaleMode.Font;
+			base.CancelButton = btnCancel;
+			base.Controls.Add(btnOK);
+			base.Controls.Add(btnCancel);
+			base.Controls.Add(groupSource);
+			base.FormBorderStyle = FormBorderStyle.FixedDialog;
+			base.KeyPreview = true;
+			base.Name = "SourcePropertiesDialog";
+			base.ShowInTaskbar = false;
+			base.Load += SourcePropertiesDialog_Load;
+			groupSource.ResumeLayout(false);
+			groupSource.PerformLayout();
+			groupPath.ResumeLayout(false);
+			groupPath.PerformLayout();
+			groupAuthenticate.ResumeLayout(false);
+			groupAuthenticate.PerformLayout();
+			base.ResumeLayout(false);
+		}
 
-        private void InitializeComponent()
-        {
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(SourcePropertiesDialog));
-            this.groupSource = new GroupBox();
-            this.groupPath = new GroupBox();
-            this.linkPath = new LinkLabel();
-            this.lblUrlInfo = new Label();
-            this.radioUrl = new RadioButton();
-            this.txtPath = new TextBox();
-            this.radioPath = new RadioButton();
-            this.txtUrl = new TextBox();
-            this.lblAuthenticationNote = new Label();
-            this.checkEnableRecommendations = new CheckBox();
-            this.checkEnabled = new CheckBox();
-            this.groupAuthenticate = new GroupBox();
-            this.txtPassword = new TextBox();
-            this.lblPassword = new Label();
-            this.txtUsername = new TextBox();
-            this.lblUserName = new Label();
-            this.txtName = new TextBox();
-            this.checkAuthenticate = new CheckBox();
-            this.lblName = new Label();
-            this.btnCancel = new Button();
-            this.btnOK = new Button();
-            this.groupSource.SuspendLayout();
-            this.groupPath.SuspendLayout();
-            this.groupAuthenticate.SuspendLayout();
-            base.SuspendLayout();
-            resources.ApplyResources(this.groupSource, "groupSource");
-            this.groupSource.Controls.Add(this.groupPath);
-            this.groupSource.Controls.Add(this.lblAuthenticationNote);
-            this.groupSource.Controls.Add(this.checkEnableRecommendations);
-            this.groupSource.Controls.Add(this.checkEnabled);
-            this.groupSource.Controls.Add(this.groupAuthenticate);
-            this.groupSource.Controls.Add(this.txtName);
-            this.groupSource.Controls.Add(this.checkAuthenticate);
-            this.groupSource.Controls.Add(this.lblName);
-            this.groupSource.Name = "groupSource";
-            this.groupSource.TabStop = false;
-            resources.ApplyResources(this.groupPath, "groupPath");
-            this.groupPath.Controls.Add(this.linkPath);
-            this.groupPath.Controls.Add(this.lblUrlInfo);
-            this.groupPath.Controls.Add(this.radioUrl);
-            this.groupPath.Controls.Add(this.txtPath);
-            this.groupPath.Controls.Add(this.radioPath);
-            this.groupPath.Controls.Add(this.txtUrl);
-            this.groupPath.Name = "groupPath";
-            this.groupPath.TabStop = false;
-            resources.ApplyResources(this.linkPath, "linkPath");
-            this.linkPath.Name = "linkPath";
-            this.linkPath.TabStop = true;
-            this.linkPath.LinkClicked += new LinkLabelLinkClickedEventHandler(this.linkPath_LinkClicked);
-            resources.ApplyResources(this.lblUrlInfo, "lblUrlInfo");
-            this.lblUrlInfo.ForeColor = Color.DarkRed;
-            this.lblUrlInfo.Name = "lblUrlInfo";
-            resources.ApplyResources(this.radioUrl, "radioUrl");
-            this.radioUrl.Name = "radioUrl";
-            this.radioUrl.TabStop = true;
-            this.radioUrl.UseVisualStyleBackColor = true;
-            this.radioUrl.CheckedChanged += new EventHandler(this.radioPathUrl_CheckedChanged);
-            resources.ApplyResources(this.txtPath, "txtPath");
-            this.txtPath.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            this.txtPath.AutoCompleteSource = AutoCompleteSource.FileSystem;
-            this.txtPath.Name = "txtPath";
-            resources.ApplyResources(this.radioPath, "radioPath");
-            this.radioPath.Name = "radioPath";
-            this.radioPath.TabStop = true;
-            this.radioPath.UseVisualStyleBackColor = true;
-            this.radioPath.CheckedChanged += new EventHandler(this.radioPathUrl_CheckedChanged);
-            resources.ApplyResources(this.txtUrl, "txtUrl");
-            this.txtUrl.Name = "txtUrl";
-            resources.ApplyResources(this.lblAuthenticationNote, "lblAuthenticationNote");
-            this.lblAuthenticationNote.ForeColor = Color.DarkGreen;
-            this.lblAuthenticationNote.Name = "lblAuthenticationNote";
-            resources.ApplyResources(this.checkEnableRecommendations, "checkEnableRecommendations");
-            this.checkEnableRecommendations.Name = "checkEnableRecommendations";
-            resources.ApplyResources(this.checkEnabled, "checkEnabled");
-            this.checkEnabled.Name = "checkEnabled";
-            resources.ApplyResources(this.groupAuthenticate, "groupAuthenticate");
-            this.groupAuthenticate.Controls.Add(this.txtPassword);
-            this.groupAuthenticate.Controls.Add(this.lblPassword);
-            this.groupAuthenticate.Controls.Add(this.txtUsername);
-            this.groupAuthenticate.Controls.Add(this.lblUserName);
-            this.groupAuthenticate.Name = "groupAuthenticate";
-            this.groupAuthenticate.TabStop = false;
-            resources.ApplyResources(this.txtPassword, "txtPassword");
-            this.txtPassword.Name = "txtPassword";
-            resources.ApplyResources(this.lblPassword, "lblPassword");
-            this.lblPassword.Name = "lblPassword";
-            resources.ApplyResources(this.txtUsername, "txtUsername");
-            this.txtUsername.Name = "txtUsername";
-            resources.ApplyResources(this.lblUserName, "lblUserName");
-            this.lblUserName.Name = "lblUserName";
-            resources.ApplyResources(this.txtName, "txtName");
-            this.txtName.Name = "txtName";
-            resources.ApplyResources(this.checkAuthenticate, "checkAuthenticate");
-            this.checkAuthenticate.Name = "checkAuthenticate";
-            this.checkAuthenticate.CheckedChanged += new EventHandler(this.checkAuthenticate_CheckedChanged);
-            resources.ApplyResources(this.lblName, "lblName");
-            this.lblName.Name = "lblName";
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Name = "btnCancel";
-            resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.DialogResult = DialogResult.OK;
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            base.AcceptButton = this.btnOK;
-            resources.ApplyResources(this, "$this");
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.CancelButton = this.btnCancel;
-            base.Controls.Add(this.btnOK);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.groupSource);
-            base.FormBorderStyle = FormBorderStyle.FixedDialog;
-            base.KeyPreview = true;
-            base.Name = "SourcePropertiesDialog";
-            base.ShowInTaskbar = false;
-            base.Load += new EventHandler(this.SourcePropertiesDialog_Load);
-            this.groupSource.ResumeLayout(false);
-            this.groupSource.PerformLayout();
-            this.groupPath.ResumeLayout(false);
-            this.groupPath.PerformLayout();
-            this.groupAuthenticate.ResumeLayout(false);
-            this.groupAuthenticate.PerformLayout();
-            base.ResumeLayout(false);
-        }
+		private void linkPath_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			Logger.LogUserAction();
+			BrowsePath();
+		}
 
-        private void linkPath_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.BrowsePath();
-        }
+		protected override void OnFormClosing(FormClosingEventArgs e)
+		{
+			base.OnFormClosing(e);
+			if (!Source.Saved)
+			{
+				SVNMonitor.Entities.Source existing = MonitorSettings.Instance.GetEnumerableSources().FirstOrDefault(s => s.Path.Equals(Source.Path, StringComparison.InvariantCultureIgnoreCase));
+				if ((existing != null) && (MessageBox.Show(Strings.WarningExistingSourceWithSamePath_FORMAT.FormatWith(new object[]
+				{
+					existing.Name
+				}), Strings.SVNMonitorCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No))
+				{
+					e.Cancel = true;
+				}
+			}
+		}
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-            if (!this.Source.Saved)
-            {
-                SVNMonitor.Entities.Source existing = MonitorSettings.Instance.GetEnumerableSources().FirstOrDefault<SVNMonitor.Entities.Source>(s => s.Path.Equals(this.Source.Path, StringComparison.InvariantCultureIgnoreCase));
-                if ((existing != null) && (MessageBox.Show(Strings.WarningExistingSourceWithSamePath_FORMAT.FormatWith(new object[] { existing.Name }), Strings.SVNMonitorCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No))
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
+		private void radioPathUrl_CheckedChanged(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			SetPathOrUrlEnabled();
+		}
 
-        private void radioPathUrl_CheckedChanged(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SetPathOrUrlEnabled();
-        }
+		private void RegisterChangedEvents()
+		{
+			txtName.TextChanged += Field_Changed;
+			txtPassword.TextChanged += Field_Changed;
+			txtPath.TextChanged += Field_Changed;
+			txtUsername.TextChanged += Field_Changed;
+			checkAuthenticate.CheckedChanged += Field_Changed;
+			checkEnabled.CheckedChanged += Field_Changed;
+			radioUrl.CheckedChanged += Field_Changed;
+			radioPath.CheckedChanged += Field_Changed;
+			txtUrl.TextChanged += Field_Changed;
+		}
 
-        private void RegisterChangedEvents()
-        {
-            this.txtName.TextChanged += new EventHandler(this.Field_Changed);
-            this.txtPassword.TextChanged += new EventHandler(this.Field_Changed);
-            this.txtPath.TextChanged += new EventHandler(this.Field_Changed);
-            this.txtUsername.TextChanged += new EventHandler(this.Field_Changed);
-            this.checkAuthenticate.CheckedChanged += new EventHandler(this.Field_Changed);
-            this.checkEnabled.CheckedChanged += new EventHandler(this.Field_Changed);
-            this.radioUrl.CheckedChanged += new EventHandler(this.Field_Changed);
-            this.radioPath.CheckedChanged += new EventHandler(this.Field_Changed);
-            this.txtUrl.TextChanged += new EventHandler(this.Field_Changed);
-        }
+		private void Save()
+		{
+			Source.Name = txtName.Text;
+			Source.Enabled = checkEnabled.Checked;
+			Source.EnableRecommendations = checkEnableRecommendations.Checked;
+			Source.Path = radioPath.Checked ? txtPath.Text : txtUrl.Text;
+			Source.Authenticate = checkAuthenticate.Checked;
+			Source.UserName = txtUsername.Text;
+			Source.Password = txtPassword.Text;
+		}
 
-        private void Save()
-        {
-            this.Source.Name = this.txtName.Text;
-            this.Source.Enabled = this.checkEnabled.Checked;
-            this.Source.EnableRecommendations = this.checkEnableRecommendations.Checked;
-            this.Source.Path = this.radioPath.Checked ? this.txtPath.Text : this.txtUrl.Text;
-            this.Source.Authenticate = this.checkAuthenticate.Checked;
-            this.Source.UserName = this.txtUsername.Text;
-            this.Source.Password = this.txtPassword.Text;
-        }
+		private void SetPathOrUrlEnabled()
+		{
+			if (radioPath.Checked)
+			{
+				txtPath.Enabled = true;
+				txtUrl.Enabled = false;
+				linkPath.Visible = true;
+				txtPath.Focus();
+			}
+			else
+			{
+				txtPath.Enabled = false;
+				txtUrl.Enabled = true;
+				linkPath.Visible = false;
+				txtUrl.Focus();
+			}
+		}
 
-        private void SetPathOrUrlEnabled()
-        {
-            if (this.radioPath.Checked)
-            {
-                this.txtPath.Enabled = true;
-                this.txtUrl.Enabled = false;
-                this.linkPath.Visible = true;
-                this.txtPath.Focus();
-            }
-            else
-            {
-                this.txtPath.Enabled = false;
-                this.txtUrl.Enabled = true;
-                this.linkPath.Visible = false;
-                this.txtUrl.Focus();
-            }
-        }
+		public static DialogResult ShowDialog(SVNMonitor.Entities.Source source)
+		{
+			SourcePropertiesDialog dialog = new SourcePropertiesDialog(source);
+			return dialog.ShowDialog();
+		}
 
-        public static DialogResult ShowDialog(SVNMonitor.Entities.Source source)
-        {
-            SourcePropertiesDialog dialog = new SourcePropertiesDialog(source);
-            return dialog.ShowDialog();
-        }
+		private void SourcePropertiesDialog_Load(object sender, EventArgs e)
+		{
+			RegisterChangedEvents();
+			CheckChanges();
+		}
 
-        private void SourcePropertiesDialog_Load(object sender, EventArgs e)
-        {
-            this.RegisterChangedEvents();
-            this.CheckChanges();
-        }
+		[Browsable(false)]
+		private bool IsValid
+		{
+			get
+			{
+				if (!string.IsNullOrEmpty(txtName.Text))
+				{
+					if (radioPath.Checked)
+					{
+						if (string.IsNullOrEmpty(txtPath.Text))
+						{
+							return false;
+						}
+						goto Label_0058;
+					}
+					if (radioUrl.Checked)
+					{
+						if (string.IsNullOrEmpty(txtUrl.Text))
+						{
+							return false;
+						}
+						goto Label_0058;
+					}
+				}
+				return false;
+				Label_0058:
+				if (checkAuthenticate.Checked)
+				{
+					if (string.IsNullOrEmpty(txtUsername.Text))
+					{
+						return false;
+					}
+					if (string.IsNullOrEmpty(txtPassword.Text))
+					{
+						return false;
+					}
+				}
+				return true;
+			}
+		}
 
-        [Browsable(false)]
-        private bool IsValid
-        {
-            get
-            {
-                if (!string.IsNullOrEmpty(this.txtName.Text))
-                {
-                    if (this.radioPath.Checked)
-                    {
-                        if (string.IsNullOrEmpty(this.txtPath.Text))
-                        {
-                            return false;
-                        }
-                        goto Label_0058;
-                    }
-                    if (this.radioUrl.Checked)
-                    {
-                        if (string.IsNullOrEmpty(this.txtUrl.Text))
-                        {
-                            return false;
-                        }
-                        goto Label_0058;
-                    }
-                }
-                return false;
-            Label_0058:
-                if (this.checkAuthenticate.Checked)
-                {
-                    if (string.IsNullOrEmpty(this.txtUsername.Text))
-                    {
-                        return false;
-                    }
-                    if (string.IsNullOrEmpty(this.txtPassword.Text))
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public SVNMonitor.Entities.Source Source
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return this.source;
-            }
-            private set
-            {
-                this.source = value;
-                if (this.Source != null)
-                {
-                    this.Source.SetRejectionPoint();
-                    this.BindData();
-                }
-            }
-        }
-    }
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public SVNMonitor.Entities.Source Source
+		{
+			[DebuggerNonUserCode]
+			get { return source; }
+			private set
+			{
+				source = value;
+				if (Source != null)
+				{
+					Source.SetRejectionPoint();
+					BindData();
+				}
+			}
+		}
+	}
 }
-

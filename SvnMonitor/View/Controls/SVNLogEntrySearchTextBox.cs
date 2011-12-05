@@ -1,9 +1,10 @@
-﻿using SVNMonitor.Entities;
+﻿using System;
+
+using SVNMonitor.Entities;
 
 namespace SVNMonitor.View.Controls
 {
-    public class SVNLogEntrySearchTextBox : SearchTextBox<SVNLogEntry>
-    {
-    }
+	public class SVNLogEntrySearchTextBox : SearchTextBox<SVNLogEntry>
+	{
+	}
 }
-

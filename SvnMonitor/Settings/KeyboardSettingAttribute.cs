@@ -1,10 +1,9 @@
-﻿namespace SVNMonitor.Settings
+﻿using System;
+
+namespace SVNMonitor.Settings
 {
-    using System;
-
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple=false)]
-    public class KeyboardSettingAttribute : Attribute
-    {
-    }
+	[AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+	public class KeyboardSettingAttribute : Attribute
+	{
+	}
 }
-

@@ -1,27 +1,26 @@
-﻿namespace SVNMonitor.Settings
+﻿using System;
+
+using SVNMonitor.Settings.DefaultProviders;
+
+namespace SVNMonitor.Settings
 {
-    using SVNMonitor.Settings.DefaultProviders;
-    using System;
-    using System.Runtime.CompilerServices;
+	[AttributeUsage(AttributeTargets.Property)]
+	internal class ApplicationSettingsValueAttribute : Attribute
+	{
+		public ApplicationSettingsValueAttribute(object defaultValue)
+		{
+			DefaultValue = defaultValue;
+		}
 
-    [AttributeUsage(AttributeTargets.Property)]
-    internal class ApplicationSettingsValueAttribute : Attribute
-    {
-        public ApplicationSettingsValueAttribute(object defaultValue)
-        {
-            this.DefaultValue = defaultValue;
-        }
+		public ApplicationSettingsValueAttribute(Type defaultValueProvider)
+		{
+			DefaultValue = ((IDefaultValueProvider)Activator.CreateInstance(defaultValueProvider)).GetDefaultValue();
+		}
 
-        public ApplicationSettingsValueAttribute(Type defaultValueProvider)
-        {
-            this.DefaultValue = ((IDefaultValueProvider) Activator.CreateInstance(defaultValueProvider)).GetDefaultValue();
-        }
+		public object DefaultValue { get; private set; }
 
-        public object DefaultValue { get; private set; }
+		public string Description { get; set; }
 
-        public string Description { get; set; }
-
-        public bool IsCDATA { get; set; }
-    }
+		public bool IsCDATA { get; set; }
+	}
 }
-

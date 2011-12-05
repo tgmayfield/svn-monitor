@@ -1,13 +1,12 @@
-﻿namespace SVNMonitor.Support
+﻿using System;
+
+namespace SVNMonitor.Support
 {
-    using System;
+	public interface ISendable
+	{
+		void Abort();
+		void Send(SendCallback callback);
 
-    public interface ISendable
-    {
-        void Abort();
-        void Send(SendCallback callback);
-
-        bool Aborted { get; }
-    }
+		bool Aborted { get; }
+	}
 }
-

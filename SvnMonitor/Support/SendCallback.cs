@@ -1,8 +1,6 @@
-﻿namespace SVNMonitor.Support
+﻿using System;
+
+namespace SVNMonitor.Support
 {
-    using System;
-    using System.Runtime.CompilerServices;
-
-    public delegate void SendCallback(SendableResult result);
+	public delegate void SendCallback(SendableResult result);
 }
-

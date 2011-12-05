@@ -1,164 +1,161 @@
-﻿namespace SVNMonitor.View.Dialogs
+﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows.Forms;
+
+using Janus.Windows.EditControls;
+
+using SVNMonitor.Logging;
+using SVNMonitor.View.Controls;
+
+namespace SVNMonitor.View.Dialogs
 {
-    using Janus.Windows.EditControls;
-    using SVNMonitor.Actions;
-    using SVNMonitor.Logging;
-    using SVNMonitor.View.Controls;
-    using System;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Windows.Forms;
+	internal class ActionPropertiesDialog : BaseDialog
+	{
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private SVNMonitor.Actions.Action action;
+		private ActionSelector actionSelector1;
+		private Button btnCancel;
+		private Button btnOK;
+		private IContainer components;
+		private Label lblActionProperties;
+		private Label lblActionType;
+		private Label lblSelectActionTypeTitle;
+		private PropertyGrid propertyGrid1;
+		private bool suppressActionSelectorChange;
 
-    internal class ActionPropertiesDialog : BaseDialog
-    {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private SVNMonitor.Actions.Action action;
-        private ActionSelector actionSelector1;
-        private Button btnCancel;
-        private Button btnOK;
-        private IContainer components;
-        private Label lblActionProperties;
-        private Label lblActionType;
-        private Label lblSelectActionTypeTitle;
-        private PropertyGrid propertyGrid1;
-        private bool suppressActionSelectorChange;
+		public ActionPropertiesDialog()
+		{
+			InitializeComponent();
+		}
 
-        public ActionPropertiesDialog()
-        {
-            this.InitializeComponent();
-        }
+		private void actionSelector1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			CreateNewAction();
+		}
 
-        private void actionSelector1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.CreateNewAction();
-        }
+		private void btnCancel_Click(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			Cancel();
+		}
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.Cancel();
-        }
+		private void Cancel()
+		{
+			if (action != null)
+			{
+				action.RejectChanges();
+			}
+		}
 
-        private void Cancel()
-        {
-            if (this.action != null)
-            {
-                this.action.RejectChanges();
-            }
-        }
+		private void CheckChanges()
+		{
+			if (action == null)
+			{
+				btnOK.Enabled = false;
+			}
+			else
+			{
+				btnOK.Enabled = action.IsValid;
+			}
+		}
 
-        private void CheckChanges()
-        {
-            if (this.action == null)
-            {
-                this.btnOK.Enabled = false;
-            }
-            else
-            {
-                this.btnOK.Enabled = this.action.IsValid;
-            }
-        }
+		private void CreateNewAction()
+		{
+			if (!suppressActionSelectorChange)
+			{
+				System.Type actionType = actionSelector1.SelectedActionType;
+				action = (SVNMonitor.Actions.Action)Activator.CreateInstance(actionType);
+				propertyGrid1.SelectedObject = action;
+			}
+		}
 
-        private void CreateNewAction()
-        {
-            if (!this.suppressActionSelectorChange)
-            {
-                System.Type actionType = this.actionSelector1.SelectedActionType;
-                this.action = (SVNMonitor.Actions.Action) Activator.CreateInstance(actionType);
-                this.propertyGrid1.SelectedObject = this.action;
-            }
-        }
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		private void InitializeComponent()
+		{
+			ComponentResourceManager resources = new ComponentResourceManager(typeof(ActionPropertiesDialog));
+			lblActionType = new Label();
+			propertyGrid1 = new PropertyGrid();
+			btnOK = new Button();
+			btnCancel = new Button();
+			actionSelector1 = new ActionSelector();
+			lblSelectActionTypeTitle = new Label();
+			lblActionProperties = new Label();
+			actionSelector1.BeginInit();
+			base.SuspendLayout();
+			resources.ApplyResources(lblActionType, "lblActionType");
+			lblActionType.Name = "lblActionType";
+			resources.ApplyResources(propertyGrid1, "propertyGrid1");
+			propertyGrid1.Name = "propertyGrid1";
+			propertyGrid1.SelectedObjectsChanged += propertyGrid1_SelectedObjectsChanged;
+			propertyGrid1.PropertyValueChanged += propertyGrid1_PropertyValueChanged;
+			resources.ApplyResources(btnOK, "btnOK");
+			btnOK.DialogResult = DialogResult.OK;
+			btnOK.Name = "btnOK";
+			resources.ApplyResources(btnCancel, "btnCancel");
+			btnCancel.DialogResult = DialogResult.Cancel;
+			btnCancel.Name = "btnCancel";
+			btnCancel.Click += btnCancel_Click;
+			actionSelector1.ComboStyle = ComboStyle.DropDownList;
+			resources.ApplyResources(actionSelector1, "actionSelector1");
+			actionSelector1.MaxDropDownItems = 20;
+			actionSelector1.Name = "actionSelector1";
+			actionSelector1.SelectedIndexChanged += actionSelector1_SelectedIndexChanged;
+			resources.ApplyResources(lblSelectActionTypeTitle, "lblSelectActionTypeTitle");
+			lblSelectActionTypeTitle.Name = "lblSelectActionTypeTitle";
+			resources.ApplyResources(lblActionProperties, "lblActionProperties");
+			lblActionProperties.Name = "lblActionProperties";
+			base.AcceptButton = btnOK;
+			resources.ApplyResources(this, "$this");
+			base.AutoScaleMode = AutoScaleMode.Font;
+			base.CancelButton = btnCancel;
+			base.Controls.Add(lblActionProperties);
+			base.Controls.Add(lblSelectActionTypeTitle);
+			base.Controls.Add(actionSelector1);
+			base.Controls.Add(propertyGrid1);
+			base.Controls.Add(lblActionType);
+			base.Controls.Add(btnOK);
+			base.Controls.Add(btnCancel);
+			base.FormBorderStyle = FormBorderStyle.FixedDialog;
+			base.Name = "ActionPropertiesDialog";
+			base.ShowInTaskbar = false;
+			actionSelector1.EndInit();
+			base.ResumeLayout(false);
+			base.PerformLayout();
+		}
 
-        private void InitializeComponent()
-        {
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(ActionPropertiesDialog));
-            this.lblActionType = new Label();
-            this.propertyGrid1 = new PropertyGrid();
-            this.btnOK = new Button();
-            this.btnCancel = new Button();
-            this.actionSelector1 = new ActionSelector();
-            this.lblSelectActionTypeTitle = new Label();
-            this.lblActionProperties = new Label();
-            this.actionSelector1.BeginInit();
-            base.SuspendLayout();
-            resources.ApplyResources(this.lblActionType, "lblActionType");
-            this.lblActionType.Name = "lblActionType";
-            resources.ApplyResources(this.propertyGrid1, "propertyGrid1");
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.SelectedObjectsChanged += new EventHandler(this.propertyGrid1_SelectedObjectsChanged);
-            this.propertyGrid1.PropertyValueChanged += new PropertyValueChangedEventHandler(this.propertyGrid1_PropertyValueChanged);
-            resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.DialogResult = DialogResult.OK;
-            this.btnOK.Name = "btnOK";
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
-            this.actionSelector1.ComboStyle = ComboStyle.DropDownList;
-            resources.ApplyResources(this.actionSelector1, "actionSelector1");
-            this.actionSelector1.MaxDropDownItems = 20;
-            this.actionSelector1.Name = "actionSelector1";
-            this.actionSelector1.SelectedIndexChanged += new EventHandler(this.actionSelector1_SelectedIndexChanged);
-            resources.ApplyResources(this.lblSelectActionTypeTitle, "lblSelectActionTypeTitle");
-            this.lblSelectActionTypeTitle.Name = "lblSelectActionTypeTitle";
-            resources.ApplyResources(this.lblActionProperties, "lblActionProperties");
-            this.lblActionProperties.Name = "lblActionProperties";
-            base.AcceptButton = this.btnOK;
-            resources.ApplyResources(this, "$this");
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.CancelButton = this.btnCancel;
-            base.Controls.Add(this.lblActionProperties);
-            base.Controls.Add(this.lblSelectActionTypeTitle);
-            base.Controls.Add(this.actionSelector1);
-            base.Controls.Add(this.propertyGrid1);
-            base.Controls.Add(this.lblActionType);
-            base.Controls.Add(this.btnOK);
-            base.Controls.Add(this.btnCancel);
-            base.FormBorderStyle = FormBorderStyle.FixedDialog;
-            base.Name = "ActionPropertiesDialog";
-            base.ShowInTaskbar = false;
-            this.actionSelector1.EndInit();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
+		private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+		{
+			CheckChanges();
+		}
 
-        private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
-        {
-            this.CheckChanges();
-        }
+		private void propertyGrid1_SelectedObjectsChanged(object sender, EventArgs e)
+		{
+			CheckChanges();
+		}
 
-        private void propertyGrid1_SelectedObjectsChanged(object sender, EventArgs e)
-        {
-            this.CheckChanges();
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public SVNMonitor.Actions.Action Action
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return this.action;
-            }
-            set
-            {
-                this.suppressActionSelectorChange = true;
-                this.action = value;
-                this.propertyGrid1.SelectedObject = this.action;
-                this.action.SetRejectionPoint();
-                this.actionSelector1.SelectedActionType = this.action.GetType();
-                this.suppressActionSelectorChange = false;
-            }
-        }
-    }
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public SVNMonitor.Actions.Action Action
+		{
+			[DebuggerNonUserCode]
+			get { return action; }
+			set
+			{
+				suppressActionSelectorChange = true;
+				action = value;
+				propertyGrid1.SelectedObject = action;
+				action.SetRejectionPoint();
+				actionSelector1.SelectedActionType = action.GetType();
+				suppressActionSelectorChange = false;
+			}
+		}
+	}
 }
-

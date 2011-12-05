@@ -1,13 +1,12 @@
-﻿namespace SVNMonitor.Helpers
+﻿using System;
+
+namespace SVNMonitor.Helpers
 {
-    using System;
-
-    [Flags]
-    internal enum TypeRequirements
-    {
-        None,
-        Serializable,
-        NonCustom
-    }
+	[Flags]
+	internal enum TypeRequirements
+	{
+		None,
+		Serializable,
+		NonCustom
+	}
 }
-

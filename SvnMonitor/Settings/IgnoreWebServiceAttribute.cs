@@ -1,10 +1,9 @@
-﻿namespace SVNMonitor.Settings
+﻿using System;
+
+namespace SVNMonitor.Settings
 {
-    using System;
-
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple=false)]
-    internal class IgnoreWebServiceAttribute : Attribute
-    {
-    }
+	[AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+	internal class IgnoreWebServiceAttribute : Attribute
+	{
+	}
 }
-

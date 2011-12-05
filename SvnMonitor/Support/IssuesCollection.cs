@@ -1,29 +1,27 @@
-﻿namespace SVNMonitor.Support
+﻿using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+
+namespace SVNMonitor.Support
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Runtime.CompilerServices;
-    using System.Xml.Serialization;
+	[Serializable, XmlRoot("KnownIssues")]
+	public class IssuesCollection
+	{
+		public IssuesCollection()
+		{
+			List = new List<Issue>();
+		}
 
-    [Serializable, XmlRoot("KnownIssues")]
-    public class IssuesCollection
-    {
-        public IssuesCollection()
-        {
-            this.List = new List<Issue>();
-        }
+		public void Add(Issue issue)
+		{
+			List.Add(issue);
+		}
 
-        public void Add(Issue issue)
-        {
-            this.List.Add(issue);
-        }
+		public override string ToString()
+		{
+			return ("Count: " + List.Count);
+		}
 
-        public override string ToString()
-        {
-            return ("Count: " + this.List.Count);
-        }
-
-        public List<Issue> List { get; set; }
-    }
+		public List<Issue> List { get; set; }
+	}
 }
-

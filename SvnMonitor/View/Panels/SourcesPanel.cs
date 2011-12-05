@@ -1,2788 +1,2510 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+using Janus.Windows.ExplorerBar;
+using Janus.Windows.UI;
+using Janus.Windows.UI.CommandBars;
+
+using SVNMonitor.Entities;
+using SVNMonitor.Extensions;
+using SVNMonitor.Helpers;
+using SVNMonitor.Logging;
+using SVNMonitor.Presenters;
+using SVNMonitor.Resources.Text;
+using SVNMonitor.SVN;
+using SVNMonitor.Settings;
+using SVNMonitor.View.Controls;
+using SVNMonitor.View.Dialogs;
+using SVNMonitor.View.Interfaces;
+using SVNMonitor.Wizards;
 
 namespace SVNMonitor.View.Panels
 {
-    using Janus.Windows.ExplorerBar;
-    using Janus.Windows.UI;
-    using Janus.Windows.UI.CommandBars;
-    using SVNMonitor;
-    using SVNMonitor.Entities;
-    using SVNMonitor.Extensions;
-    using SVNMonitor.Helpers;
-    using SVNMonitor.Logging;
-    using SVNMonitor.Presenters;
-    using SVNMonitor.Resources.Text;
-    using SVNMonitor.Settings;
-    using SVNMonitor.SVN;
-    using SVNMonitor.View;
-    using SVNMonitor.View.Controls;
-    using SVNMonitor.View.Dialogs;
-    using SVNMonitor.View.Interfaces;
-    using SVNMonitor.Wizards;
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Drawing;
-    using System.Runtime.CompilerServices;
-    using System.Text;
-    using System.Windows.Forms;
-
-    internal class SourcesPanel : UserControl, IUserEntityView<Source>, ISelectableView<Source>, ISupportInitialize, ISearchablePanel<Source>
-    {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<Source> allSources;
-        private UIRebar BottomRebar1;
-        private UICommand cmdApplyPatch;
-        private UICommand cmdApplyPatch1;
-        private UICommand cmdApplyPatch2;
-        private UICommand cmdBranchTag;
-        private UICommand cmdBranchTag1;
-        private UICommand cmdCheckout;
-        private UICommand cmdCheckout1;
-        private UICommand cmdCleanUp;
-        private UICommand cmdCleanUp1;
-        private UICommand cmdClearAllErrors;
-        private UICommand cmdClearAllErrors1;
-        private UICommand cmdClearError;
-        private UICommand cmdClearError1;
-        private UICommand cmdCopySourceConflictedItems;
-        private UICommand cmdCopySourceConflictedItems1;
-        private UICommand cmdCopySourceError;
-        private UICommand cmdCopySourceError1;
-        private UICommand cmdCopySourceModifiedItems;
-        private UICommand cmdCopySourceModifiedItems1;
-        private UICommand cmdCopySourceName;
-        private UICommand cmdCopySourceName1;
-        private UICommand cmdCopySourcePath;
-        private UICommand cmdCopySourcePath1;
-        private UICommand cmdCopySourceUnversionedItems;
-        private UICommand cmdCopySourceUnversionedItems1;
-        private UICommand cmdCopySourceURL;
-        private UICommand cmdCopySourceUrl1;
-        private UICommand cmdCreatePatch;
-        private UICommand cmdCreatePatch1;
-        private UICommand cmdCreatePatch2;
-        private UICommand cmdDelete;
-        private UICommand cmdDeleteUnversioned;
-        private UICommand cmdDeleteUnversioned1;
-        private UICommand cmdEdit;
-        private UICommand cmdEnabled;
-        private UICommand cmdEnabled1;
-        private UICommand cmdExplore;
-        private UICommand cmdExplore1;
-        private UICommand cmdExport;
-        private UICommand cmdExport1;
-        private UICommand cmdLock;
-        private UICommand cmdLock2;
-        private UICommand cmdMerge;
-        private UICommand cmdMerge1;
-        private UICommand cmdMoveDown;
-        private UICommand cmdMoveUp;
-        private UICommand cmdNew;
-        private UICommand cmdProperties;
-        private UICommand cmdProperties1;
-        private UICommand cmdProperties2;
-        private UICommand cmdRefresh;
-        private UICommand cmdRefresh1;
-        private UICommand cmdReintegrate;
-        private UICommand cmdReintegrate1;
-        private UICommand cmdRelocate;
-        private UICommand cmdRelocate1;
-        private UICommand cmdRepoBrowser;
-        private UICommand cmdRepoBrowser1;
-        private UICommand cmdResolve;
-        private UICommand cmdResolve1;
-        private UICommand cmdRevisionGraph;
-        private UICommand cmdRevisionGraph1;
-        private UICommand cmdShowLog;
-        private UICommand cmdShowLog1;
-        private UICommand cmdShowLog2;
-        private UICommand cmdSVNCommit;
-        private UICommand cmdSVNCommit1;
-        private UICommand cmdSVNCommit2;
-        private UICommand cmdSVNModifications;
-        private UICommand cmdSVNModifications1;
-        private UICommand cmdSVNModifications2;
-        private UICommand cmdSVNRevert;
-        private UICommand cmdSVNRevert1;
-        private UICommand cmdSVNRevert2;
-        private UICommand cmdSVNUpdate;
-        private UICommand cmdSVNUpdate1;
-        private UICommand cmdSVNUpdate2;
-        private UICommand cmdSwitch;
-        private UICommand cmdSwitch1;
-        private UICommand cmdTSVNHelp;
-        private UICommand cmdTSVNHelp1;
-        private UICommand cmdTSVNHelp2;
-        private UICommand cmdTSVNSettings;
-        private UICommand cmdTSVNSettings1;
-        private UICommand cmdTSVNSettings2;
-        private UICommand cmdUnlock;
-        private UICommand cmdUnlock2;
-        private UICommand cmdUpdate;
-        private UICommand cmdUpdateAll;
-        private IContainer components;
-        private UICommand filterAll;
-        private UICommand filterAll1;
-        private UICommand filterEnabled;
-        private UICommand filterEnabled1;
-        private UICommand filterModified;
-        private UICommand filterModified1;
-        private UICommand filterModified3;
-        private UICommand filterNotUpToDate;
-        private UICommand filterNotUpToDate2;
-        private UICommand filterNotUpToDate3;
-        private Dictionary<UICommand, Predicate<Source>> filterPredicates;
-        private ImageList imageList1;
-        private UIRebar LeftRebar1;
-        private LinkLabel linkShowAllSources;
-        private bool loadingFilterSettings;
-        private UICommand menuAdditionalTortoiseCommands;
-        private UICommand menuAdditionalTortoiseCommands1;
-        private UICommand menuClipboard;
-        private UICommand menuClipboard1;
-        private UICommand menuEvenMore;
-        private UICommand menuShow;
-        private UICommand menuShow2;
-        private UICommand menuWizards;
-        private UICommand menuWizards1;
-        private UICommand menuWizards2;
-        private Panel panel1;
-        private readonly UserEntityPresenter<Source> presenter;
-        private UIRebar RightRebar1;
-        private EventHandler selectionChanged;
-        private UICommand Separator10;
-        private UICommand Separator11;
-        private UICommand Separator12;
-        private UICommand Separator13;
-        private UICommand Separator14;
-        private UICommand Separator15;
-        private UICommand Separator4;
-        private UICommand Separator5;
-        private UICommand Separator6;
-        private UICommand Separator7;
-        private UICommand Separator8;
-        private UICommand Separator9;
-        private bool showingAllItems;
-        private SVNMonitor.View.Controls.SourcesExplorerBar sourcesExplorerBar1;
-        private UIRebar TopRebar1;
-        private UICommandBar uiCommandBar1;
-        private UICommandManager uiCommandManager1;
-        private Janus.Windows.UI.CommandBars.UIContextMenu uiContextMenu1;
-
-        public event EventHandler SelectionChanged
-        {
-            add
-            {
-                this.selectionChanged = (EventHandler) Delegate.Combine(this.selectionChanged, value);
-                this.SourcesExplorerBar.SelectionChanged += value;
-            }
-            remove
-            {
-                this.selectionChanged = (EventHandler) Delegate.Remove(this.selectionChanged, value);
-                this.SourcesExplorerBar.SelectionChanged -= value;
-            }
-        }
-
-        public SourcesPanel()
-        {
-            this.InitializeComponent();
-            if (!base.DesignMode && !ProcessHelper.IsInVisualStudio())
-            {
-                UIHelper.ApplyResources(this.uiCommandManager1);
-                this.presenter = new UserEntityPresenter<Source>(this);
-                this.InitializeClipboardDelegates();
-                this.CreateFiltersMap();
-                this.LoadFilterSettings();
-            }
-        }
-
-        public void BeginInit()
-        {
-        }
-
-        internal void Browse()
-        {
-            FileSystemHelper.Browse(this.SelectedItem.Path);
-        }
-
-        private void ClearAllErrors()
-        {
-            Source.ClearAllErrors();
-        }
-
-        private void ClearError()
-        {
-            this.SelectedItem.ClearError();
-        }
-
-        private void ClearFilter()
-        {
-            this.filterAll.Checked = InheritableBoolean.True;
-            foreach (UICommand cmd in this.filterPredicates.Keys)
-            {
-                cmd.Checked = InheritableBoolean.False;
-            }
-            this.RefreshAndSetFilter(true);
-        }
-
-        public void ClearSearch()
-        {
-            this.SourcesExplorerBar.SetVisibleEntities();
-            this.ClearFilter();
-            this.ShowingAllItems = true;
-            this.OnSelectionChanged();
-        }
-
-        private void cmdApplyPatch_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNApplyPatch();
-        }
-
-        private void cmdBranchTag_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNBranchTag();
-        }
-
-        private void cmdCheckout_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNCheckout();
-        }
-
-        private void cmdCleanUp_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNCleanUp();
-        }
-
-        private void cmdClearAllErrors_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.ClearAllErrors();
-        }
-
-        private void cmdClearError_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.ClearError();
-        }
-
-        private void cmdCreatePatch_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNCreatePatch();
-        }
-
-        private void cmdDelete_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.presenter.Delete();
-        }
-
-        private void cmdDeleteUnversioned_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNDeleteUnversioned();
-        }
-
-        private void cmdEdit_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.Edit();
-        }
-
-        private void cmdEnabled_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.EnableSource();
-        }
-
-        private void cmdExplore_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.Browse();
-        }
-
-        private void cmdExport_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNExport();
-        }
-
-        private void cmdLock_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNGetLock();
-        }
-
-        private void cmdMerge_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNMerge();
-        }
-
-        private void cmdMoveDown_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.presenter.MoveDown();
-        }
-
-        private void cmdMoveUp_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.presenter.MoveUp();
-        }
-
-        private void cmdNew_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.CreateNew();
-        }
-
-        private void cmdProperties_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNProperties();
-        }
-
-        private void cmdRefresh_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.RefreshLog();
-        }
-
-        private void cmdReintegrate_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNReintegrate();
-        }
-
-        private void cmdRelocate_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNRelocate();
-        }
-
-        private void cmdRepoBrowser_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNRepoBrowser();
-        }
-
-        private void cmdResolve_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNResolve();
-        }
-
-        private void cmdRevisionGraph_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNRevisionGraph();
-        }
-
-        private void cmdShowLog_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNShowLog();
-        }
-
-        private void cmdSVNCommit_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNCommit();
-        }
-
-        private void cmdSVNModifications_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNCheckModifications();
-        }
-
-        private void cmdSVNRevert_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNRevert();
-        }
-
-        private void cmdSVNUpdate_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNUpdate();
-        }
-
-        private void cmdSwitch_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNSwitch();
-        }
-
-        private void cmdTSVNHelp_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            TortoiseProcess.Help();
-        }
-
-        private void cmdTSVNSettings_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            TortoiseProcess.Settings();
-        }
-
-        private void cmdUnlock_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNReleaseLock();
-        }
-
-        private void cmdUpdate_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.UpdateSource();
-        }
-
-        private void cmdUpdateAll_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.UpdateAllSources();
-        }
-
-        private void CreateFiltersMap()
-        {
-            this.filterPredicates = new Dictionary<UICommand, Predicate<Source>>();
-            this.filterPredicates.Add(this.filterEnabled, source => source.Enabled);
-            this.filterPredicates.Add(this.filterModified, source => source.HasLocalChanges);
-            this.filterPredicates.Add(this.filterNotUpToDate, source => !source.IsUpToDate);
-        }
-
-        public virtual void CreateNew()
-        {
-            this.presenter.New();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void Edit()
-        {
-            this.presenter.Edit();
-        }
-
-        public void EnableCommands()
-        {
-            if (!base.DesignMode && !ProcessHelper.IsInVisualStudio())
-            {
-                if (base.InvokeRequired)
-                {
-                    base.BeginInvoke(new MethodInvoker(this.EnableCommands));
-                }
-                else
-                {
-                    Source source = this.SelectedItem;
-                    this.CanCheckForUpdates = SourceHelper.CanCheckForUpdates(source);
-                    this.CanRunWizard = SourceHelper.CanRunWizard(source);
-                    this.CanSVNCheckForModifications = SourceHelper.CanSVNCheckForModifications(source);
-                    this.CanRefreshLog = SourceHelper.CanRefreshLog(source);
-                    this.CanSVNUpdate = SourceHelper.CanSVNUpdate(source);
-                    this.CanEnable = SourceHelper.CanEnable(source);
-                    this.CanSVNCommit = SourceHelper.CanSVNCommit(source);
-                    this.CanSVNRevert = SourceHelper.CanSVNRevert(source);
-                    this.CanExplore = SourceHelper.CanExplore(source);
-                    this.CanClearError = SourceHelper.CanClearError(source);
-                    this.CanClearAllErrors = SourceHelper.CanClearAllErrors();
-                    this.CanShowLog = SourceHelper.CanShowSVNLog(source);
-                    this.CanCopyToClipboard = SourceHelper.CanCopyToClipboard(source);
-                    this.CanCopyName = SourceHelper.CanCopyName(source);
-                    this.CanCopyURL = SourceHelper.CanCopyURL(source);
-                    this.CanCopyPath = SourceHelper.CanCopyPath(source);
-                    this.CanCopyError = SourceHelper.CanCopyError(source);
-                    this.CanCopyModifiedItems = SourceHelper.CanCopyModifiedItems(source);
-                    this.CanCopyUnversionedItems = SourceHelper.CanCopyUnversionedItems(source);
-                    this.CanCopyConflictedItems = SourceHelper.CanCopyConflictedItems(source);
-                    this.CanAdditionalTortoiseCommands = SourceHelper.CanAdditionalTortoiseCommands(source);
-                    this.CanCleanUp = SourceHelper.CanCleanUp(source);
-                    this.CanExport = SourceHelper.CanExport(source);
-                    this.CanProperties = SourceHelper.CanProperties(source);
-                    this.CanRelocate = SourceHelper.CanRelocate(source);
-                    this.CanRepoBrowser = SourceHelper.CanRepoBrowser(source);
-                    this.CanRevisionGraph = SourceHelper.CanRevisionGraph(source);
-                    this.CanSwitch = SourceHelper.CanSwitch(source);
-                    this.CanCheckout = SourceHelper.CanCheckout(source);
-                    this.CanApplyPatch = SourceHelper.CanApplyPatch(source);
-                    this.CanBranchTag = SourceHelper.CanBranchTag(source);
-                    this.CanCreatePatch = SourceHelper.CanCreatePatch(source);
-                    this.CanDeleteUnversioned = SourceHelper.CanDeleteUnversioned(source);
-                    this.CanGetLock = SourceHelper.CanGetLock(source);
-                    this.CanMerge = SourceHelper.CanMerge(source);
-                    this.CanReintegrate = SourceHelper.CanReintegrate(source);
-                    this.CanResolve = SourceHelper.CanResolve(source);
-                    this.CanTSVNHelp = SourceHelper.CanTSVNHelp(source);
-                    this.CanTSVNSettings = SourceHelper.CanTSVNSettings(source);
-                    this.CanReleaseLock = SourceHelper.CanReleaseLock(source);
-                    this.CanCheckAllForUpdates = this.SourcesExplorerBar.Groups.Count > 0;
-                    this.cmdEnabled.Checked = ((source != null) && source.Enabled).ToInheritableBoolean();
-                }
-            }
-        }
-
-        private void EnableSource()
-        {
-            this.SelectedItem.Enabled = this.cmdEnabled.Checked == InheritableBoolean.True;
-        }
-
-        public void EndInit()
-        {
-            if (!base.DesignMode)
-            {
-                UIHelper.GetBaseName getBaseName = item => ((Source) item).Name;
-                UIHelper.InitializeWizardsMenu<Source>(this, this.uiContextMenu1, this.menuWizards, getBaseName, "LogEntries", "Source");
-            }
-        }
-
-        internal void Explore()
-        {
-            Source source = this.SelectedItem;
-            this.Explore(source);
-        }
-
-        private void Explore(Source source)
-        {
-            FileSystemHelper.Explore(source.Path);
-        }
-
-        private void filter_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.filterAll.Checked = InheritableBoolean.False;
-            this.RefreshAndSetFilter(true);
-        }
-
-        private void filterAll_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.ClearFilter();
-        }
-
-        private void FocusError()
-        {
-            Source source = this.SelectedItem;
-            MainForm.FormInstance.FocusEventLog(source.ErrorEventID);
-        }
-
-        public IEnumerable<Source> GetAllItems()
-        {
-            return this.Entities;
-        }
-
-        private string GetConflictedItemsToClipboard()
-        {
-            SVNLog log = this.SelectedItem.GetLog(false);
-            if (log == null)
-            {
-                return string.Empty;
-            }
-            return string.Join(Environment.NewLine, log.PossibleConflictedFilePaths.ToArray());
-        }
-
-        private string[] GetDraggedFolderNames(IDataObject data)
-        {
-            if (data != null)
-            {
-                string[] folderNames = (string[]) data.GetData(DataFormats.FileDrop);
-                if ((folderNames != null) && (folderNames.Length != 0))
-                {
-                    return folderNames;
-                }
-            }
-            return new string[0];
-        }
-
-        private string GetErrorToClipboard()
-        {
-            Source source = this.SelectedItem;
-            if (!source.HasError)
-            {
-                return string.Empty;
-            }
-            return source.ErrorText;
-        }
-
-        private Predicate<Source> GetFilterPredicate()
-        {
-            return delegate (Source source) {
-                if (this.filterPredicates.Keys.All<UICommand>(cmd => !cmd.Checked.ToBool()))
-                {
-                    return true;
-                }
-                bool aggregatedFilter = false;
-                foreach (UICommand cmd in this.filterPredicates.Keys)
-                {
-                    if (cmd.Checked.ToBool())
-                    {
-                        aggregatedFilter |= this.filterPredicates[cmd](source);
-                    }
-                }
-                return aggregatedFilter;
-            };
-        }
-
-        private string GetModifiedItemsToClipboard()
-        {
-            Source source = this.SelectedItem;
-            if (source.LocalStatus == null)
-            {
-                return string.Empty;
-            }
-            StringBuilder sb = new StringBuilder();
-            foreach (SVNStatusEntry entry in source.LocalStatus.ModifiedEntries)
-            {
-                sb.AppendLine(entry.Path);
-            }
-            return sb.ToString();
-        }
-
-        private string GetSourceNameToClipboard()
-        {
-            return this.SelectedItem.Name;
-        }
-
-        private string GetSourcePathToClipboard()
-        {
-            return this.SelectedItem.Path;
-        }
-
-        private string GetSourceUrlToClipboard()
-        {
-            Source source = this.SelectedItem;
-            if (source.IsURL)
-            {
-                return source.Path;
-            }
-            SVNInfo info = source.GetInfo(false);
-            if (info == null)
-            {
-                return string.Empty;
-            }
-            return info.URL;
-        }
-
-        private string GetUnversionedItemsToClipboard()
-        {
-            Source source = this.SelectedItem;
-            if (source.LocalStatus == null)
-            {
-                return string.Empty;
-            }
-            StringBuilder sb = new StringBuilder();
-            foreach (SVNStatusEntry entry in source.LocalStatus.UnversionedEntries)
-            {
-                sb.AppendLine(entry.Path);
-            }
-            return sb.ToString();
-        }
-
-        private void InitializeClipboardDelegates()
-        {
-            UIHelper.AddCopyCommand(this.cmdCopySourceName, new UIHelper.GetStringDelegate(this.GetSourceNameToClipboard));
-            UIHelper.AddCopyCommand(this.cmdCopySourceURL, new UIHelper.GetStringDelegate(this.GetSourceUrlToClipboard));
-            UIHelper.AddCopyCommand(this.cmdCopySourcePath, new UIHelper.GetStringDelegate(this.GetSourcePathToClipboard));
-            UIHelper.AddCopyCommand(this.cmdCopySourceConflictedItems, new UIHelper.GetStringDelegate(this.GetConflictedItemsToClipboard));
-            UIHelper.AddCopyCommand(this.cmdCopySourceError, new UIHelper.GetStringDelegate(this.GetErrorToClipboard));
-            UIHelper.AddCopyCommand(this.cmdCopySourceModifiedItems, new UIHelper.GetStringDelegate(this.GetModifiedItemsToClipboard));
-            UIHelper.AddCopyCommand(this.cmdCopySourceUnversionedItems, new UIHelper.GetStringDelegate(this.GetUnversionedItemsToClipboard));
-        }
-
-        private void InitializeComponent()
-        {
-            this.components = new Container();
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(SourcesPanel));
-            this.cmdNew = new UICommand("cmdNew");
-            this.cmdEdit = new UICommand("cmdEdit");
-            this.cmdDelete = new UICommand("cmdDelete");
-            this.cmdUpdate = new UICommand("cmdUpdate");
-            this.cmdUpdateAll = new UICommand("cmdUpdateAll");
-            this.cmdMoveUp = new UICommand("cmdMoveUp");
-            this.cmdMoveDown = new UICommand("cmdMoveDown");
-            this.imageList1 = new ImageList(this.components);
-            this.uiCommandManager1 = new UICommandManager(this.components);
-            this.BottomRebar1 = new UIRebar();
-            this.uiCommandBar1 = new UICommandBar();
-            this.cmdSVNModifications1 = new UICommand("cmdSVNModifications");
-            this.cmdShowLog1 = new UICommand("cmdShowLog");
-            this.cmdSVNUpdate2 = new UICommand("cmdSVNUpdate");
-            this.cmdSVNCommit2 = new UICommand("cmdSVNCommit");
-            this.cmdSVNRevert1 = new UICommand("cmdSVNRevert");
-            this.Separator7 = new UICommand("Separator");
-            this.Separator10 = new UICommand("Separator");
-            this.Separator6 = new UICommand("Separator");
-            this.menuWizards2 = new UICommand("menuWizards");
-            this.menuWizards = new UICommand("menuWizards");
-            this.cmdSVNUpdate = new UICommand("cmdSVNUpdate");
-            this.cmdSVNCommit = new UICommand("cmdSVNCommit");
-            this.cmdSVNRevert = new UICommand("cmdSVNRevert");
-            this.cmdSVNModifications = new UICommand("cmdSVNModifications");
-            this.cmdRefresh = new UICommand("cmdRefresh");
-            this.cmdEnabled = new UICommand("cmdEnabled");
-            this.cmdExplore = new UICommand("cmdExplore");
-            this.cmdClearError = new UICommand("cmdClearError");
-            this.cmdShowLog = new UICommand("cmdShowLog");
-            this.menuClipboard = new UICommand("menuClipboard");
-            this.cmdCopySourceName1 = new UICommand("cmdCopySourceName");
-            this.cmdCopySourcePath1 = new UICommand("cmdCopySourcePath");
-            this.cmdCopySourceUrl1 = new UICommand("cmdCopySourceURL");
-            this.cmdCopySourceError1 = new UICommand("cmdCopySourceError");
-            this.cmdCopySourceModifiedItems1 = new UICommand("cmdCopySourceModifiedItems");
-            this.cmdCopySourceConflictedItems1 = new UICommand("cmdCopySourceConflictedItems");
-            this.cmdCopySourceUnversionedItems1 = new UICommand("cmdCopySourceUnversionedItems");
-            this.cmdCopySourceName = new UICommand("cmdCopySourceName");
-            this.cmdCopySourcePath = new UICommand("cmdCopySourcePath");
-            this.cmdCopySourceURL = new UICommand("cmdCopySourceURL");
-            this.cmdCopySourceError = new UICommand("cmdCopySourceError");
-            this.cmdCopySourceModifiedItems = new UICommand("cmdCopySourceModifiedItems");
-            this.cmdCopySourceUnversionedItems = new UICommand("cmdCopySourceUnversionedItems");
-            this.cmdCopySourceConflictedItems = new UICommand("cmdCopySourceConflictedItems");
-            this.menuAdditionalTortoiseCommands = new UICommand("menuAdditionalTortoiseCommands");
-            this.cmdCheckout1 = new UICommand("cmdCheckout");
-            this.cmdRepoBrowser1 = new UICommand("cmdRepoBrowser");
-            this.cmdRevisionGraph1 = new UICommand("cmdRevisionGraph");
-            this.cmdResolve1 = new UICommand("cmdResolve");
-            this.cmdCleanUp1 = new UICommand("cmdCleanUp");
-            this.cmdDeleteUnversioned1 = new UICommand("cmdDeleteUnversioned");
-            this.cmdLock2 = new UICommand("cmdLock");
-            this.cmdUnlock2 = new UICommand("cmdUnlock");
-            this.Separator13 = new UICommand("Separator");
-            this.cmdBranchTag1 = new UICommand("cmdBranchTag");
-            this.cmdSwitch1 = new UICommand("cmdSwitch");
-            this.cmdMerge1 = new UICommand("cmdMerge");
-            this.cmdReintegrate1 = new UICommand("cmdReintegrate");
-            this.cmdExport1 = new UICommand("cmdExport");
-            this.cmdRelocate1 = new UICommand("cmdRelocate");
-            this.Separator4 = new UICommand("Separator");
-            this.cmdCreatePatch2 = new UICommand("cmdCreatePatch");
-            this.cmdApplyPatch2 = new UICommand("cmdApplyPatch");
-            this.Separator11 = new UICommand("Separator");
-            this.cmdProperties2 = new UICommand("cmdProperties");
-            this.Separator14 = new UICommand("Separator");
-            this.cmdTSVNSettings2 = new UICommand("cmdTSVNSettings");
-            this.cmdTSVNHelp2 = new UICommand("cmdTSVNHelp");
-            this.cmdRepoBrowser = new UICommand("cmdRepoBrowser");
-            this.cmdRevisionGraph = new UICommand("cmdRevisionGraph");
-            this.cmdCleanUp = new UICommand("cmdCleanUp");
-            this.cmdExport = new UICommand("cmdExport");
-            this.cmdSwitch = new UICommand("cmdSwitch");
-            this.cmdRelocate = new UICommand("cmdRelocate");
-            this.cmdProperties = new UICommand("cmdProperties");
-            this.cmdCheckout = new UICommand("cmdCheckout");
-            this.cmdResolve = new UICommand("cmdResolve");
-            this.cmdMerge = new UICommand("cmdMerge");
-            this.cmdReintegrate = new UICommand("cmdReintegrate");
-            this.cmdBranchTag = new UICommand("cmdBranchTag");
-            this.cmdCreatePatch = new UICommand("cmdCreatePatch");
-            this.cmdApplyPatch = new UICommand("cmdApplyPatch");
-            this.cmdLock = new UICommand("cmdLock");
-            this.cmdUnlock = new UICommand("cmdUnlock");
-            this.cmdDeleteUnversioned = new UICommand("cmdDeleteUnversioned");
-            this.cmdTSVNSettings = new UICommand("cmdTSVNSettings");
-            this.cmdTSVNHelp = new UICommand("cmdTSVNHelp");
-            this.menuEvenMore = new UICommand("menuEvenMore");
-            this.cmdCreatePatch1 = new UICommand("cmdCreatePatch");
-            this.cmdApplyPatch1 = new UICommand("cmdApplyPatch");
-            this.cmdProperties1 = new UICommand("cmdProperties");
-            this.Separator12 = new UICommand("Separator");
-            this.cmdTSVNSettings1 = new UICommand("cmdTSVNSettings");
-            this.cmdTSVNHelp1 = new UICommand("cmdTSVNHelp");
-            this.filterModified = new UICommand("filterModified");
-            this.filterNotUpToDate = new UICommand("filterNotUpToDate");
-            this.filterAll = new UICommand("filterAll");
-            this.menuShow = new UICommand("menuShow");
-            this.filterAll1 = new UICommand("filterAll");
-            this.Separator15 = new UICommand("Separator");
-            this.filterModified3 = new UICommand("filterModified");
-            this.filterNotUpToDate3 = new UICommand("filterNotUpToDate");
-            this.filterEnabled1 = new UICommand("filterEnabled");
-            this.cmdClearAllErrors = new UICommand("cmdClearAllErrors");
-            this.filterEnabled = new UICommand("filterEnabled");
-            this.uiContextMenu1 = new Janus.Windows.UI.CommandBars.UIContextMenu();
-            this.cmdEnabled1 = new UICommand("cmdEnabled");
-            this.cmdClearError1 = new UICommand("cmdClearError");
-            this.cmdClearAllErrors1 = new UICommand("cmdClearAllErrors");
-            this.cmdExplore1 = new UICommand("cmdExplore");
-            this.menuClipboard1 = new UICommand("menuClipboard");
-            this.cmdSVNModifications2 = new UICommand("cmdSVNModifications");
-            this.cmdShowLog2 = new UICommand("cmdShowLog");
-            this.cmdSVNUpdate1 = new UICommand("cmdSVNUpdate");
-            this.cmdSVNCommit1 = new UICommand("cmdSVNCommit");
-            this.cmdSVNRevert2 = new UICommand("cmdSVNRevert");
-            this.menuAdditionalTortoiseCommands1 = new UICommand("menuAdditionalTortoiseCommands");
-            this.Separator8 = new UICommand("Separator");
-            this.Separator9 = new UICommand("Separator");
-            this.cmdRefresh1 = new UICommand("cmdRefresh");
-            this.menuShow2 = new UICommand("menuShow");
-            this.Separator5 = new UICommand("Separator");
-            this.menuWizards1 = new UICommand("menuWizards");
-            this.LeftRebar1 = new UIRebar();
-            this.RightRebar1 = new UIRebar();
-            this.TopRebar1 = new UIRebar();
-            this.sourcesExplorerBar1 = new SVNMonitor.View.Controls.SourcesExplorerBar();
-            this.panel1 = new Panel();
-            this.linkShowAllSources = new LinkLabel();
-            this.filterModified1 = new UICommand("filterModified");
-            this.filterNotUpToDate2 = new UICommand("filterNotUpToDate");
-            UICommand cmdUpdate1 = new UICommand("cmdUpdate");
-            UICommand cmdUpdateAll1 = new UICommand("cmdUpdateAll");
-            UICommand Separator2 = new UICommand("Separator");
-            UICommand cmdNew2 = new UICommand("cmdNew");
-            UICommand cmdEdit2 = new UICommand("cmdEdit");
-            UICommand cmdDelete2 = new UICommand("cmdDelete");
-            UICommand Separator1 = new UICommand("Separator");
-            UICommand cmdMoveUp2 = new UICommand("cmdMoveUp");
-            UICommand cmdMoveDown2 = new UICommand("cmdMoveDown");
-            UICommand cmdNew1 = new UICommand("cmdNew");
-            UICommand cmdEdit1 = new UICommand("cmdEdit");
-            UICommand cmdDelete1 = new UICommand("cmdDelete");
-            UICommand cmdMoveUp1 = new UICommand("cmdMoveUp");
-            UICommand cmdMoveDown1 = new UICommand("cmdMoveDown");
-            UICommand cmdUpdate2 = new UICommand("cmdUpdate");
-            UICommand cmdUpdateAll2 = new UICommand("cmdUpdateAll");
-            UICommand Separator3 = new UICommand("Separator");
-            ((ISupportInitialize) this.uiCommandManager1).BeginInit();
-            ((ISupportInitialize) this.BottomRebar1).BeginInit();
-            ((ISupportInitialize) this.uiCommandBar1).BeginInit();
-            ((ISupportInitialize) this.uiContextMenu1).BeginInit();
-            ((ISupportInitialize) this.LeftRebar1).BeginInit();
-            ((ISupportInitialize) this.RightRebar1).BeginInit();
-            ((ISupportInitialize) this.TopRebar1).BeginInit();
-            this.TopRebar1.SuspendLayout();
-            ((ISupportInitialize) this.sourcesExplorerBar1).BeginInit();
-            this.panel1.SuspendLayout();
-            base.SuspendLayout();
-            cmdUpdate1.Key = "cmdUpdate";
-            cmdUpdate1.Name = "cmdUpdate1";
-            cmdUpdate1.Text = "Chec&k for updates";
-            cmdUpdateAll1.Key = "cmdUpdateAll";
-            cmdUpdateAll1.Name = "cmdUpdateAll1";
-            cmdUpdateAll1.Text = "Check &all for updates";
-            Separator2.CommandType = CommandType.Separator;
-            Separator2.Key = "Separator";
-            Separator2.Name = "Separator2";
-            cmdNew2.Key = "cmdNew";
-            cmdNew2.Name = "cmdNew2";
-            cmdNew2.Text = "&New Source";
-            cmdEdit2.Key = "cmdEdit";
-            cmdEdit2.Name = "cmdEdit2";
-            cmdEdit2.Text = "&Properties";
-            cmdDelete2.Key = "cmdDelete";
-            cmdDelete2.Name = "cmdDelete2";
-            cmdDelete2.Text = "&Delete";
-            Separator1.CommandType = CommandType.Separator;
-            Separator1.Key = "Separator";
-            Separator1.Name = "Separator1";
-            cmdMoveUp2.Key = "cmdMoveUp";
-            cmdMoveUp2.Name = "cmdMoveUp2";
-            cmdMoveUp2.Text = "Mo&ve Up";
-            cmdMoveDown2.Key = "cmdMoveDown";
-            cmdMoveDown2.Name = "cmdMoveDown2";
-            cmdMoveDown2.Text = "Move Do&wn";
-            cmdNew1.CommandStyle = CommandStyle.Image;
-            cmdNew1.Key = "cmdNew";
-            cmdNew1.Name = "cmdNew1";
-            cmdEdit1.CommandStyle = CommandStyle.Image;
-            cmdEdit1.Key = "cmdEdit";
-            cmdEdit1.Name = "cmdEdit1";
-            cmdDelete1.CommandStyle = CommandStyle.Image;
-            cmdDelete1.Key = "cmdDelete";
-            cmdDelete1.Name = "cmdDelete1";
-            cmdMoveUp1.CommandStyle = CommandStyle.Image;
-            cmdMoveUp1.Key = "cmdMoveUp";
-            cmdMoveUp1.Name = "cmdMoveUp1";
-            cmdMoveDown1.CommandStyle = CommandStyle.Image;
-            cmdMoveDown1.Key = "cmdMoveDown";
-            cmdMoveDown1.Name = "cmdMoveDown1";
-            cmdUpdate2.CommandStyle = CommandStyle.Image;
-            cmdUpdate2.Key = "cmdUpdate";
-            cmdUpdate2.Name = "cmdUpdate2";
-            cmdUpdateAll2.CommandStyle = CommandStyle.Image;
-            cmdUpdateAll2.Key = "cmdUpdateAll";
-            cmdUpdateAll2.Name = "cmdUpdateAll2";
-            Separator3.CommandType = CommandType.Separator;
-            Separator3.Key = "Separator";
-            Separator3.Name = "Separator3";
-            this.cmdNew.Image = (Image) resources.GetObject("cmdNew.Image");
-            this.cmdNew.Key = "cmdNew";
-            this.cmdNew.Name = "cmdNew";
-            this.cmdNew.Text = "New Source";
-            this.cmdNew.ToolTipText = "New source";
-            this.cmdNew.Click += new CommandEventHandler(this.cmdNew_Click);
-            this.cmdEdit.Image = (Image) resources.GetObject("cmdEdit.Image");
-            this.cmdEdit.Key = "cmdEdit";
-            this.cmdEdit.Name = "cmdEdit";
-            this.cmdEdit.Text = "Properties";
-            this.cmdEdit.ToolTipText = "Properties";
-            this.cmdEdit.Click += new CommandEventHandler(this.cmdEdit_Click);
-            this.cmdDelete.Image = (Image) resources.GetObject("cmdDelete.Image");
-            this.cmdDelete.Key = "cmdDelete";
-            this.cmdDelete.Name = "cmdDelete";
-            this.cmdDelete.Text = "Delete";
-            this.cmdDelete.ToolTipText = "Delete source";
-            this.cmdDelete.Click += new CommandEventHandler(this.cmdDelete_Click);
-            this.cmdUpdate.Image = (Image) resources.GetObject("cmdUpdate.Image");
-            this.cmdUpdate.Key = "cmdUpdate";
-            this.cmdUpdate.Name = "cmdUpdate";
-            this.cmdUpdate.Text = "Check for updates";
-            this.cmdUpdate.ToolTipText = "Check for updates";
-            this.cmdUpdate.Click += new CommandEventHandler(this.cmdUpdate_Click);
-            this.cmdUpdateAll.Image = (Image) resources.GetObject("cmdUpdateAll.Image");
-            this.cmdUpdateAll.Key = "cmdUpdateAll";
-            this.cmdUpdateAll.Name = "cmdUpdateAll";
-            this.cmdUpdateAll.Text = "Check all for updates";
-            this.cmdUpdateAll.ToolTipText = "Check all for updates";
-            this.cmdUpdateAll.Click += new CommandEventHandler(this.cmdUpdateAll_Click);
-            this.cmdMoveUp.Image = (Image) resources.GetObject("cmdMoveUp.Image");
-            this.cmdMoveUp.Key = "cmdMoveUp";
-            this.cmdMoveUp.Name = "cmdMoveUp";
-            this.cmdMoveUp.Text = "Move Up";
-            this.cmdMoveUp.ToolTipText = "Move source up";
-            this.cmdMoveUp.Click += new CommandEventHandler(this.cmdMoveUp_Click);
-            this.cmdMoveDown.Image = (Image) resources.GetObject("cmdMoveDown.Image");
-            this.cmdMoveDown.Key = "cmdMoveDown";
-            this.cmdMoveDown.Name = "cmdMoveDown";
-            this.cmdMoveDown.Text = "Move Down";
-            this.cmdMoveDown.ToolTipText = "Move source down";
-            this.cmdMoveDown.Click += new CommandEventHandler(this.cmdMoveDown_Click);
-            this.imageList1.ImageStream = (ImageListStreamer) resources.GetObject("imageList1.ImageStream");
-            this.imageList1.TransparentColor = Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "wc.png");
-            this.imageList1.Images.SetKeyName(1, "wc.updating.png");
-            this.imageList1.Images.SetKeyName(2, "repo.error.png");
-            this.imageList1.Images.SetKeyName(3, "repo.png");
-            this.imageList1.Images.SetKeyName(4, "repo.updating.png");
-            this.imageList1.Images.SetKeyName(5, "wc.downdate.modified.png");
-            this.imageList1.Images.SetKeyName(6, "wc.downdate.png");
-            this.imageList1.Images.SetKeyName(7, "wc.error.png");
-            this.imageList1.Images.SetKeyName(8, "wc.modified.png");
-            this.uiCommandManager1.AllowClose = InheritableBoolean.False;
-            this.uiCommandManager1.AllowCustomize = InheritableBoolean.False;
-            this.uiCommandManager1.BottomRebar = this.BottomRebar1;
-            this.uiCommandManager1.CommandBars.AddRange(new UICommandBar[] { this.uiCommandBar1 });
-            this.uiCommandManager1.Commands.AddRange(new UICommand[] { 
-                this.cmdNew, this.cmdEdit, this.cmdDelete, this.cmdUpdate, this.cmdUpdateAll, this.cmdMoveUp, this.cmdMoveDown, this.menuWizards, this.cmdSVNUpdate, this.cmdSVNCommit, this.cmdSVNRevert, this.cmdSVNModifications, this.cmdRefresh, this.cmdEnabled, this.cmdExplore, this.cmdClearError, 
-                this.cmdShowLog, this.menuClipboard, this.cmdCopySourceName, this.cmdCopySourcePath, this.cmdCopySourceURL, this.cmdCopySourceError, this.cmdCopySourceModifiedItems, this.cmdCopySourceUnversionedItems, this.cmdCopySourceConflictedItems, this.menuAdditionalTortoiseCommands, this.cmdRepoBrowser, this.cmdRevisionGraph, this.cmdCleanUp, this.cmdExport, this.cmdSwitch, this.cmdRelocate, 
-                this.cmdProperties, this.cmdCheckout, this.cmdResolve, this.cmdMerge, this.cmdReintegrate, this.cmdBranchTag, this.cmdCreatePatch, this.cmdApplyPatch, this.cmdLock, this.cmdUnlock, this.cmdDeleteUnversioned, this.cmdTSVNSettings, this.cmdTSVNHelp, this.menuEvenMore, this.filterModified, this.filterNotUpToDate, 
-                this.filterAll, this.menuShow, this.cmdClearAllErrors, this.filterEnabled
-             });
-            this.uiCommandManager1.ContainerControl = this;
-            this.uiCommandManager1.ContextMenus.AddRange(new Janus.Windows.UI.CommandBars.UIContextMenu[] { this.uiContextMenu1 });
-            this.uiCommandManager1.Id = new Guid("6dcff238-beed-4562-b52d-d0ba855fecb0");
-            this.uiCommandManager1.LeftRebar = this.LeftRebar1;
-            this.uiCommandManager1.LockCommandBars = true;
-            this.uiCommandManager1.RightRebar = this.RightRebar1;
-            this.uiCommandManager1.ShowAddRemoveButton = InheritableBoolean.False;
-            this.uiCommandManager1.ShowQuickCustomizeMenu = false;
-            this.uiCommandManager1.TopRebar = this.TopRebar1;
-            this.uiCommandManager1.VisualStyle = Janus.Windows.UI.VisualStyle.Standard;
-            this.BottomRebar1.CommandManager = this.uiCommandManager1;
-            this.BottomRebar1.Dock = DockStyle.Bottom;
-            this.BottomRebar1.Location = new Point(0, 0x152);
-            this.BottomRebar1.Name = "BottomRebar1";
-            this.BottomRebar1.Size = new Size(0x1f9, 0);
-            this.uiCommandBar1.AllowClose = InheritableBoolean.False;
-            this.uiCommandBar1.AllowCustomize = InheritableBoolean.False;
-            this.uiCommandBar1.Animation = DropDownAnimation.System;
-            this.uiCommandBar1.CommandManager = this.uiCommandManager1;
-            this.uiCommandBar1.Commands.AddRange(new UICommand[] { 
-                cmdNew1, cmdEdit1, cmdDelete1, Separator3, this.cmdSVNModifications1, this.cmdShowLog1, this.cmdSVNUpdate2, this.cmdSVNCommit2, this.cmdSVNRevert1, this.Separator7, cmdUpdate2, cmdUpdateAll2, this.Separator10, cmdMoveUp1, cmdMoveDown1, this.Separator6, 
-                this.menuWizards2
-             });
-            this.uiCommandBar1.FullRow = true;
-            this.uiCommandBar1.Key = "CommandBar1";
-            this.uiCommandBar1.Location = new Point(0, 0);
-            this.uiCommandBar1.Name = "uiCommandBar1";
-            this.uiCommandBar1.RowIndex = 0;
-            this.uiCommandBar1.ShowAddRemoveButton = InheritableBoolean.False;
-            this.uiCommandBar1.Size = new Size(0x1d4, 0x1c);
-            this.uiCommandBar1.Text = "Source";
-            this.cmdSVNModifications1.CommandStyle = CommandStyle.Image;
-            this.cmdSVNModifications1.Key = "cmdSVNModifications";
-            this.cmdSVNModifications1.Name = "cmdSVNModifications1";
-            this.cmdShowLog1.CommandStyle = CommandStyle.Image;
-            this.cmdShowLog1.Key = "cmdShowLog";
-            this.cmdShowLog1.Name = "cmdShowLog1";
-            this.cmdSVNUpdate2.CommandStyle = CommandStyle.Image;
-            this.cmdSVNUpdate2.Key = "cmdSVNUpdate";
-            this.cmdSVNUpdate2.Name = "cmdSVNUpdate2";
-            this.cmdSVNCommit2.CommandStyle = CommandStyle.Image;
-            this.cmdSVNCommit2.Key = "cmdSVNCommit";
-            this.cmdSVNCommit2.Name = "cmdSVNCommit2";
-            this.cmdSVNRevert1.CommandStyle = CommandStyle.Image;
-            this.cmdSVNRevert1.Key = "cmdSVNRevert";
-            this.cmdSVNRevert1.Name = "cmdSVNRevert1";
-            this.Separator7.CommandType = CommandType.Separator;
-            this.Separator7.Key = "Separator";
-            this.Separator7.Name = "Separator7";
-            this.Separator10.CommandType = CommandType.Separator;
-            this.Separator10.Key = "Separator";
-            this.Separator10.Name = "Separator10";
-            this.Separator6.CommandType = CommandType.Separator;
-            this.Separator6.Key = "Separator";
-            this.Separator6.Name = "Separator6";
-            this.menuWizards2.CommandStyle = CommandStyle.Image;
-            this.menuWizards2.Key = "menuWizards";
-            this.menuWizards2.Name = "menuWizards2";
-            this.menuWizards2.Click += new CommandEventHandler(this.menuWizards2_Click);
-            this.menuWizards.CommandType = CommandType.ControlPopup;
-            this.menuWizards.Image = (Image) resources.GetObject("menuWizards.Image");
-            this.menuWizards.Key = "menuWizards";
-            this.menuWizards.Name = "menuWizards";
-            this.menuWizards.Text = "Monitor this source";
-            this.menuWizards.ToolTipText = "Monitor this source";
-            this.cmdSVNUpdate.Image = (Image) resources.GetObject("cmdSVNUpdate.Image");
-            this.cmdSVNUpdate.Key = "cmdSVNUpdate";
-            this.cmdSVNUpdate.Name = "cmdSVNUpdate";
-            this.cmdSVNUpdate.Text = "Update";
-            this.cmdSVNUpdate.ToolTipText = "Update";
-            this.cmdSVNUpdate.Visible = InheritableBoolean.False;
-            this.cmdSVNUpdate.Click += new CommandEventHandler(this.cmdSVNUpdate_Click);
-            this.cmdSVNCommit.Image = (Image) resources.GetObject("cmdSVNCommit.Image");
-            this.cmdSVNCommit.Key = "cmdSVNCommit";
-            this.cmdSVNCommit.Name = "cmdSVNCommit";
-            this.cmdSVNCommit.Text = "Commit";
-            this.cmdSVNCommit.ToolTipText = "Commit";
-            this.cmdSVNCommit.Visible = InheritableBoolean.False;
-            this.cmdSVNCommit.Click += new CommandEventHandler(this.cmdSVNCommit_Click);
-            this.cmdSVNRevert.Image = (Image) resources.GetObject("cmdSVNRevert.Image");
-            this.cmdSVNRevert.Key = "cmdSVNRevert";
-            this.cmdSVNRevert.Name = "cmdSVNRevert";
-            this.cmdSVNRevert.Text = "Revert";
-            this.cmdSVNRevert.ToolTipText = "Revert";
-            this.cmdSVNRevert.Click += new CommandEventHandler(this.cmdSVNRevert_Click);
-            this.cmdSVNModifications.Image = (Image) resources.GetObject("cmdSVNModifications.Image");
-            this.cmdSVNModifications.Key = "cmdSVNModifications";
-            this.cmdSVNModifications.Name = "cmdSVNModifications";
-            this.cmdSVNModifications.Text = "Check for modifications";
-            this.cmdSVNModifications.ToolTipText = "Check for modifications";
-            this.cmdSVNModifications.Click += new CommandEventHandler(this.cmdSVNModifications_Click);
-            this.cmdRefresh.Image = (Image) resources.GetObject("cmdRefresh.Image");
-            this.cmdRefresh.Key = "cmdRefresh";
-            this.cmdRefresh.Name = "cmdRefresh";
-            this.cmdRefresh.Text = "Refresh log (might take a few minutes...)";
-            this.cmdRefresh.ToolTipText = "Refresh log (might take a few minutes...)";
-            this.cmdRefresh.Click += new CommandEventHandler(this.cmdRefresh_Click);
-            this.cmdEnabled.CommandType = CommandType.ToggleButton;
-            this.cmdEnabled.Key = "cmdEnabled";
-            this.cmdEnabled.Name = "cmdEnabled";
-            this.cmdEnabled.Text = "Enabled";
-            this.cmdEnabled.ToolTipText = "Enabled";
-            this.cmdEnabled.Click += new CommandEventHandler(this.cmdEnabled_Click);
-            this.cmdExplore.Image = (Image) resources.GetObject("cmdExplore.Image");
-            this.cmdExplore.Key = "cmdExplore";
-            this.cmdExplore.Name = "cmdExplore";
-            this.cmdExplore.Text = "Explore";
-            this.cmdExplore.ToolTipText = "Explore";
-            this.cmdExplore.Click += new CommandEventHandler(this.cmdExplore_Click);
-            this.cmdClearError.Image = (Image) resources.GetObject("cmdClearError.Image");
-            this.cmdClearError.Key = "cmdClearError";
-            this.cmdClearError.Name = "cmdClearError";
-            this.cmdClearError.Text = "Clear error";
-            this.cmdClearError.ToolTipText = "Clear Error";
-            this.cmdClearError.Click += new CommandEventHandler(this.cmdClearError_Click);
-            this.cmdShowLog.Image = (Image) resources.GetObject("cmdShowLog.Image");
-            this.cmdShowLog.Key = "cmdShowLog";
-            this.cmdShowLog.Name = "cmdShowLog";
-            this.cmdShowLog.Text = "Show log";
-            this.cmdShowLog.ToolTipText = "Show log";
-            this.cmdShowLog.Click += new CommandEventHandler(this.cmdShowLog_Click);
-            this.menuClipboard.Commands.AddRange(new UICommand[] { this.cmdCopySourceName1, this.cmdCopySourcePath1, this.cmdCopySourceUrl1, this.cmdCopySourceError1, this.cmdCopySourceModifiedItems1, this.cmdCopySourceConflictedItems1, this.cmdCopySourceUnversionedItems1 });
-            this.menuClipboard.Image = (Image) resources.GetObject("menuClipboard.Image");
-            this.menuClipboard.Key = "menuClipboard";
-            this.menuClipboard.Name = "menuClipboard";
-            this.menuClipboard.Text = "Copy to clipboard";
-            this.menuClipboard.Popup += new CommandEventHandler(this.menuClipboard_Popup);
-            this.cmdCopySourceName1.Key = "cmdCopySourceName";
-            this.cmdCopySourceName1.Name = "cmdCopySourceName1";
-            this.cmdCopySourcePath1.Key = "cmdCopySourcePath";
-            this.cmdCopySourcePath1.Name = "cmdCopySourcePath1";
-            this.cmdCopySourceUrl1.Key = "cmdCopySourceURL";
-            this.cmdCopySourceUrl1.Name = "cmdCopySourceUrl1";
-            this.cmdCopySourceError1.Key = "cmdCopySourceError";
-            this.cmdCopySourceError1.Name = "cmdCopySourceError1";
-            this.cmdCopySourceModifiedItems1.Key = "cmdCopySourceModifiedItems";
-            this.cmdCopySourceModifiedItems1.Name = "cmdCopySourceModifiedItems1";
-            this.cmdCopySourceConflictedItems1.Key = "cmdCopySourceConflictedItems";
-            this.cmdCopySourceConflictedItems1.Name = "cmdCopySourceConflictedItems1";
-            this.cmdCopySourceUnversionedItems1.Key = "cmdCopySourceUnversionedItems";
-            this.cmdCopySourceUnversionedItems1.Name = "cmdCopySourceUnversionedItems1";
-            this.cmdCopySourceName.Image = (Image) resources.GetObject("cmdCopySourceName.Image");
-            this.cmdCopySourceName.Key = "cmdCopySourceName";
-            this.cmdCopySourceName.Name = "cmdCopySourceName";
-            this.cmdCopySourceName.Text = "&Name";
-            this.cmdCopySourcePath.Image = (Image) resources.GetObject("cmdCopySourcePath.Image");
-            this.cmdCopySourcePath.Key = "cmdCopySourcePath";
-            this.cmdCopySourcePath.Name = "cmdCopySourcePath";
-            this.cmdCopySourcePath.Text = "&Path";
-            this.cmdCopySourceURL.Image = (Image) resources.GetObject("cmdCopySourceURL.Image");
-            this.cmdCopySourceURL.Key = "cmdCopySourceURL";
-            this.cmdCopySourceURL.Name = "cmdCopySourceURL";
-            this.cmdCopySourceURL.Text = "&URL";
-            this.cmdCopySourceError.Image = (Image) resources.GetObject("cmdCopySourceError.Image");
-            this.cmdCopySourceError.Key = "cmdCopySourceError";
-            this.cmdCopySourceError.Name = "cmdCopySourceError";
-            this.cmdCopySourceError.Text = "&Error";
-            this.cmdCopySourceModifiedItems.Image = (Image) resources.GetObject("cmdCopySourceModifiedItems.Image");
-            this.cmdCopySourceModifiedItems.Key = "cmdCopySourceModifiedItems";
-            this.cmdCopySourceModifiedItems.Name = "cmdCopySourceModifiedItems";
-            this.cmdCopySourceModifiedItems.Text = "&Modified items list";
-            this.cmdCopySourceUnversionedItems.Image = (Image) resources.GetObject("cmdCopySourceUnversionedItems.Image");
-            this.cmdCopySourceUnversionedItems.Key = "cmdCopySourceUnversionedItems";
-            this.cmdCopySourceUnversionedItems.Name = "cmdCopySourceUnversionedItems";
-            this.cmdCopySourceUnversionedItems.Text = "Un&versioned items list";
-            this.cmdCopySourceConflictedItems.Image = (Image) resources.GetObject("cmdCopySourceConflictedItems.Image");
-            this.cmdCopySourceConflictedItems.Key = "cmdCopySourceConflictedItems";
-            this.cmdCopySourceConflictedItems.Name = "cmdCopySourceConflictedItems";
-            this.cmdCopySourceConflictedItems.Text = "Possible &conflicted items list";
-            this.menuAdditionalTortoiseCommands.Commands.AddRange(new UICommand[] { 
-                this.cmdCheckout1, this.cmdRepoBrowser1, this.cmdRevisionGraph1, this.cmdResolve1, this.cmdCleanUp1, this.cmdDeleteUnversioned1, this.cmdLock2, this.cmdUnlock2, this.Separator13, this.cmdBranchTag1, this.cmdSwitch1, this.cmdMerge1, this.cmdReintegrate1, this.cmdExport1, this.cmdRelocate1, this.Separator4, 
-                this.cmdCreatePatch2, this.cmdApplyPatch2, this.Separator11, this.cmdProperties2, this.Separator14, this.cmdTSVNSettings2, this.cmdTSVNHelp2
-             });
-            this.menuAdditionalTortoiseCommands.Image = (Image) resources.GetObject("menuAdditionalTortoiseCommands.Image");
-            this.menuAdditionalTortoiseCommands.Key = "menuAdditionalTortoiseCommands";
-            this.menuAdditionalTortoiseCommands.Name = "menuAdditionalTortoiseCommands";
-            this.menuAdditionalTortoiseCommands.Text = "More";
-            this.cmdCheckout1.Key = "cmdCheckout";
-            this.cmdCheckout1.Name = "cmdCheckout1";
-            this.cmdRepoBrowser1.Key = "cmdRepoBrowser";
-            this.cmdRepoBrowser1.Name = "cmdRepoBrowser1";
-            this.cmdRevisionGraph1.Key = "cmdRevisionGraph";
-            this.cmdRevisionGraph1.Name = "cmdRevisionGraph1";
-            this.cmdResolve1.Key = "cmdResolve";
-            this.cmdResolve1.Name = "cmdResolve1";
-            this.cmdCleanUp1.Key = "cmdCleanUp";
-            this.cmdCleanUp1.Name = "cmdCleanUp1";
-            this.cmdDeleteUnversioned1.Key = "cmdDeleteUnversioned";
-            this.cmdDeleteUnversioned1.Name = "cmdDeleteUnversioned1";
-            this.cmdLock2.Key = "cmdLock";
-            this.cmdLock2.Name = "cmdLock2";
-            this.cmdUnlock2.Key = "cmdUnlock";
-            this.cmdUnlock2.Name = "cmdUnlock2";
-            this.Separator13.CommandType = CommandType.Separator;
-            this.Separator13.Key = "Separator";
-            this.Separator13.Name = "Separator13";
-            this.cmdBranchTag1.Key = "cmdBranchTag";
-            this.cmdBranchTag1.Name = "cmdBranchTag1";
-            this.cmdSwitch1.Key = "cmdSwitch";
-            this.cmdSwitch1.Name = "cmdSwitch1";
-            this.cmdMerge1.Key = "cmdMerge";
-            this.cmdMerge1.Name = "cmdMerge1";
-            this.cmdReintegrate1.Key = "cmdReintegrate";
-            this.cmdReintegrate1.Name = "cmdReintegrate1";
-            this.cmdExport1.Key = "cmdExport";
-            this.cmdExport1.Name = "cmdExport1";
-            this.cmdRelocate1.Key = "cmdRelocate";
-            this.cmdRelocate1.Name = "cmdRelocate1";
-            this.Separator4.CommandType = CommandType.Separator;
-            this.Separator4.Key = "Separator";
-            this.Separator4.Name = "Separator4";
-            this.cmdCreatePatch2.Key = "cmdCreatePatch";
-            this.cmdCreatePatch2.Name = "cmdCreatePatch2";
-            this.cmdApplyPatch2.Key = "cmdApplyPatch";
-            this.cmdApplyPatch2.Name = "cmdApplyPatch2";
-            this.Separator11.CommandType = CommandType.Separator;
-            this.Separator11.Key = "Separator";
-            this.Separator11.Name = "Separator11";
-            this.cmdProperties2.Key = "cmdProperties";
-            this.cmdProperties2.Name = "cmdProperties2";
-            this.Separator14.CommandType = CommandType.Separator;
-            this.Separator14.Key = "Separator";
-            this.Separator14.Name = "Separator14";
-            this.cmdTSVNSettings2.Key = "cmdTSVNSettings";
-            this.cmdTSVNSettings2.Name = "cmdTSVNSettings2";
-            this.cmdTSVNHelp2.Key = "cmdTSVNHelp";
-            this.cmdTSVNHelp2.Name = "cmdTSVNHelp2";
-            this.cmdRepoBrowser.Image = (Image) resources.GetObject("cmdRepoBrowser.Image");
-            this.cmdRepoBrowser.Key = "cmdRepoBrowser";
-            this.cmdRepoBrowser.Name = "cmdRepoBrowser";
-            this.cmdRepoBrowser.Text = "Repo &browser";
-            this.cmdRepoBrowser.Click += new CommandEventHandler(this.cmdRepoBrowser_Click);
-            this.cmdRevisionGraph.Image = (Image) resources.GetObject("cmdRevisionGraph.Image");
-            this.cmdRevisionGraph.Key = "cmdRevisionGraph";
-            this.cmdRevisionGraph.Name = "cmdRevisionGraph";
-            this.cmdRevisionGraph.Text = "Revision &graph";
-            this.cmdRevisionGraph.Click += new CommandEventHandler(this.cmdRevisionGraph_Click);
-            this.cmdCleanUp.Image = (Image) resources.GetObject("cmdCleanUp.Image");
-            this.cmdCleanUp.Key = "cmdCleanUp";
-            this.cmdCleanUp.Name = "cmdCleanUp";
-            this.cmdCleanUp.Text = "&Clean up";
-            this.cmdCleanUp.Click += new CommandEventHandler(this.cmdCleanUp_Click);
-            this.cmdExport.Image = (Image) resources.GetObject("cmdExport.Image");
-            this.cmdExport.Key = "cmdExport";
-            this.cmdExport.Name = "cmdExport";
-            this.cmdExport.Text = "&Export";
-            this.cmdExport.Click += new CommandEventHandler(this.cmdExport_Click);
-            this.cmdSwitch.Image = (Image) resources.GetObject("cmdSwitch.Image");
-            this.cmdSwitch.Key = "cmdSwitch";
-            this.cmdSwitch.Name = "cmdSwitch";
-            this.cmdSwitch.Text = "&Switch";
-            this.cmdSwitch.Click += new CommandEventHandler(this.cmdSwitch_Click);
-            this.cmdRelocate.Image = (Image) resources.GetObject("cmdRelocate.Image");
-            this.cmdRelocate.Key = "cmdRelocate";
-            this.cmdRelocate.Name = "cmdRelocate";
-            this.cmdRelocate.Text = "&Relocate";
-            this.cmdRelocate.Click += new CommandEventHandler(this.cmdRelocate_Click);
-            this.cmdProperties.Image = (Image) resources.GetObject("cmdProperties.Image");
-            this.cmdProperties.Key = "cmdProperties";
-            this.cmdProperties.Name = "cmdProperties";
-            this.cmdProperties.Text = "SVN-&Properties";
-            this.cmdProperties.Click += new CommandEventHandler(this.cmdProperties_Click);
-            this.cmdCheckout.Image = (Image) resources.GetObject("cmdCheckout.Image");
-            this.cmdCheckout.Key = "cmdCheckout";
-            this.cmdCheckout.Name = "cmdCheckout";
-            this.cmdCheckout.Text = "Chec&kout";
-            this.cmdCheckout.Click += new CommandEventHandler(this.cmdCheckout_Click);
-            this.cmdResolve.Key = "cmdResolve";
-            this.cmdResolve.Name = "cmdResolve";
-            this.cmdResolve.Text = "Resolve";
-            this.cmdResolve.Click += new CommandEventHandler(this.cmdResolve_Click);
-            this.cmdMerge.Key = "cmdMerge";
-            this.cmdMerge.Name = "cmdMerge";
-            this.cmdMerge.Text = "Merge";
-            this.cmdMerge.Click += new CommandEventHandler(this.cmdMerge_Click);
-            this.cmdReintegrate.Key = "cmdReintegrate";
-            this.cmdReintegrate.Name = "cmdReintegrate";
-            this.cmdReintegrate.Text = "Reintegrate";
-            this.cmdReintegrate.Click += new CommandEventHandler(this.cmdReintegrate_Click);
-            this.cmdBranchTag.Key = "cmdBranchTag";
-            this.cmdBranchTag.Name = "cmdBranchTag";
-            this.cmdBranchTag.Text = "Branch/Tag";
-            this.cmdBranchTag.Click += new CommandEventHandler(this.cmdBranchTag_Click);
-            this.cmdCreatePatch.Key = "cmdCreatePatch";
-            this.cmdCreatePatch.Name = "cmdCreatePatch";
-            this.cmdCreatePatch.Text = "Create Patch";
-            this.cmdCreatePatch.Click += new CommandEventHandler(this.cmdCreatePatch_Click);
-            this.cmdApplyPatch.Key = "cmdApplyPatch";
-            this.cmdApplyPatch.Name = "cmdApplyPatch";
-            this.cmdApplyPatch.Text = "Apply Patch";
-            this.cmdApplyPatch.Click += new CommandEventHandler(this.cmdApplyPatch_Click);
-            this.cmdLock.Key = "cmdLock";
-            this.cmdLock.Name = "cmdLock";
-            this.cmdLock.Text = "Get Lock";
-            this.cmdLock.Click += new CommandEventHandler(this.cmdLock_Click);
-            this.cmdUnlock.Key = "cmdUnlock";
-            this.cmdUnlock.Name = "cmdUnlock";
-            this.cmdUnlock.Text = "Release Lock";
-            this.cmdUnlock.Click += new CommandEventHandler(this.cmdUnlock_Click);
-            this.cmdDeleteUnversioned.Key = "cmdDeleteUnversioned";
-            this.cmdDeleteUnversioned.Name = "cmdDeleteUnversioned";
-            this.cmdDeleteUnversioned.Text = "Delete Unversioned Items";
-            this.cmdDeleteUnversioned.Click += new CommandEventHandler(this.cmdDeleteUnversioned_Click);
-            this.cmdTSVNSettings.Key = "cmdTSVNSettings";
-            this.cmdTSVNSettings.Name = "cmdTSVNSettings";
-            this.cmdTSVNSettings.Text = "TortoiseSVN Settings";
-            this.cmdTSVNSettings.Click += new CommandEventHandler(this.cmdTSVNSettings_Click);
-            this.cmdTSVNHelp.Key = "cmdTSVNHelp";
-            this.cmdTSVNHelp.Name = "cmdTSVNHelp";
-            this.cmdTSVNHelp.Text = "TortoiseSVN Help";
-            this.cmdTSVNHelp.Click += new CommandEventHandler(this.cmdTSVNHelp_Click);
-            this.menuEvenMore.Commands.AddRange(new UICommand[] { this.cmdCreatePatch1, this.cmdApplyPatch1, this.cmdProperties1, this.Separator12, this.cmdTSVNSettings1, this.cmdTSVNHelp1 });
-            this.menuEvenMore.Key = "menuEvenMore";
-            this.menuEvenMore.Name = "menuEvenMore";
-            this.menuEvenMore.Text = "Even More";
-            this.cmdCreatePatch1.Key = "cmdCreatePatch";
-            this.cmdCreatePatch1.Name = "cmdCreatePatch1";
-            this.cmdApplyPatch1.Key = "cmdApplyPatch";
-            this.cmdApplyPatch1.Name = "cmdApplyPatch1";
-            this.cmdProperties1.Key = "cmdProperties";
-            this.cmdProperties1.Name = "cmdProperties1";
-            this.Separator12.CommandType = CommandType.Separator;
-            this.Separator12.Key = "Separator";
-            this.Separator12.Name = "Separator12";
-            this.cmdTSVNSettings1.Key = "cmdTSVNSettings";
-            this.cmdTSVNSettings1.Name = "cmdTSVNSettings1";
-            this.cmdTSVNHelp1.Key = "cmdTSVNHelp";
-            this.cmdTSVNHelp1.Name = "cmdTSVNHelp1";
-            this.filterModified.CommandType = CommandType.ToggleButton;
-            this.filterModified.Key = "filterModified";
-            this.filterModified.Name = "filterModified";
-            this.filterModified.Text = "&Modified";
-            this.filterModified.Click += new CommandEventHandler(this.filter_Click);
-            this.filterNotUpToDate.CommandType = CommandType.ToggleButton;
-            this.filterNotUpToDate.Key = "filterNotUpToDate";
-            this.filterNotUpToDate.Name = "filterNotUpToDate";
-            this.filterNotUpToDate.Text = "&Has Updates";
-            this.filterNotUpToDate.Click += new CommandEventHandler(this.filter_Click);
-            this.filterAll.Checked = InheritableBoolean.True;
-            this.filterAll.CommandType = CommandType.ToggleButton;
-            this.filterAll.Key = "filterAll";
-            this.filterAll.Name = "filterAll";
-            this.filterAll.Text = "&All";
-            this.filterAll.Click += new CommandEventHandler(this.filterAll_Click);
-            this.menuShow.Commands.AddRange(new UICommand[] { this.filterAll1, this.Separator15, this.filterModified3, this.filterNotUpToDate3, this.filterEnabled1 });
-            this.menuShow.IsEditableControl = InheritableBoolean.False;
-            this.menuShow.Key = "menuShow";
-            this.menuShow.Name = "menuShow";
-            this.menuShow.Text = "&Show";
-            this.filterAll1.Key = "filterAll";
-            this.filterAll1.Name = "filterAll1";
-            this.Separator15.CommandType = CommandType.Separator;
-            this.Separator15.Key = "Separator";
-            this.Separator15.Name = "Separator15";
-            this.filterModified3.Key = "filterModified";
-            this.filterModified3.Name = "filterModified3";
-            this.filterNotUpToDate3.Key = "filterNotUpToDate";
-            this.filterNotUpToDate3.Name = "filterNotUpToDate3";
-            this.filterEnabled1.Key = "filterEnabled";
-            this.filterEnabled1.Name = "filterEnabled1";
-            this.cmdClearAllErrors.Key = "cmdClearAllErrors";
-            this.cmdClearAllErrors.Name = "cmdClearAllErrors";
-            this.cmdClearAllErrors.Text = "Clear All Errors";
-            this.cmdClearAllErrors.Click += new CommandEventHandler(this.cmdClearAllErrors_Click);
-            this.filterEnabled.CommandType = CommandType.ToggleButton;
-            this.filterEnabled.Key = "filterEnabled";
-            this.filterEnabled.Name = "filterEnabled";
-            this.filterEnabled.Text = "&Enabled";
-            this.filterEnabled.Click += new CommandEventHandler(this.filter_Click);
-            this.uiContextMenu1.CommandManager = this.uiCommandManager1;
-            this.uiContextMenu1.Commands.AddRange(new UICommand[] { 
-                this.cmdEnabled1, this.cmdClearError1, this.cmdClearAllErrors1, this.cmdExplore1, cmdNew2, cmdEdit2, cmdDelete2, this.menuClipboard1, Separator2, this.cmdSVNModifications2, this.cmdShowLog2, this.cmdSVNUpdate1, this.cmdSVNCommit1, this.cmdSVNRevert2, this.menuAdditionalTortoiseCommands1, this.Separator8, 
-                cmdUpdate1, cmdUpdateAll1, this.Separator9, this.cmdRefresh1, Separator1, cmdMoveUp2, cmdMoveDown2, this.menuShow2, this.Separator5, this.menuWizards1
-             });
-            this.uiContextMenu1.Key = "ContextMenu1";
-            this.cmdEnabled1.Key = "cmdEnabled";
-            this.cmdEnabled1.Name = "cmdEnabled1";
-            this.cmdEnabled1.Text = "&Enabled";
-            this.cmdClearError1.Key = "cmdClearError";
-            this.cmdClearError1.Name = "cmdClearError1";
-            this.cmdClearError1.Text = "Clear &error";
-            this.cmdClearAllErrors1.Key = "cmdClearAllErrors";
-            this.cmdClearAllErrors1.Name = "cmdClearAllErrors1";
-            this.cmdExplore1.Key = "cmdExplore";
-            this.cmdExplore1.Name = "cmdExplore1";
-            this.cmdExplore1.Text = "E&xplore";
-            this.menuClipboard1.Key = "menuClipboard";
-            this.menuClipboard1.Name = "menuClipboard1";
-            this.menuClipboard1.Text = "Copy &to clipboard";
-            this.cmdSVNModifications2.Key = "cmdSVNModifications";
-            this.cmdSVNModifications2.Name = "cmdSVNModifications2";
-            this.cmdSVNModifications2.Text = "Check modi&fications";
-            this.cmdShowLog2.Key = "cmdShowLog";
-            this.cmdShowLog2.Name = "cmdShowLog2";
-            this.cmdShowLog2.Text = "&Show log";
-            this.cmdSVNUpdate1.Key = "cmdSVNUpdate";
-            this.cmdSVNUpdate1.Name = "cmdSVNUpdate1";
-            this.cmdSVNUpdate1.Text = "&Update";
-            this.cmdSVNCommit1.Key = "cmdSVNCommit";
-            this.cmdSVNCommit1.Name = "cmdSVNCommit1";
-            this.cmdSVNCommit1.Text = "&Commit";
-            this.cmdSVNRevert2.Key = "cmdSVNRevert";
-            this.cmdSVNRevert2.Name = "cmdSVNRevert2";
-            this.cmdSVNRevert2.Text = "Re&vert";
-            this.menuAdditionalTortoiseCommands1.Key = "menuAdditionalTortoiseCommands";
-            this.menuAdditionalTortoiseCommands1.Name = "menuAdditionalTortoiseCommands1";
-            this.menuAdditionalTortoiseCommands1.Text = "M&ore";
-            this.Separator8.CommandType = CommandType.Separator;
-            this.Separator8.Key = "Separator";
-            this.Separator8.Name = "Separator8";
-            this.Separator9.CommandType = CommandType.Separator;
-            this.Separator9.Key = "Separator";
-            this.Separator9.Name = "Separator9";
-            this.cmdRefresh1.Key = "cmdRefresh";
-            this.cmdRefresh1.Name = "cmdRefresh1";
-            this.cmdRefresh1.Text = "&Refresh log (might take a few minutes...)";
-            this.menuShow2.Key = "menuShow";
-            this.menuShow2.Name = "menuShow2";
-            this.Separator5.CommandType = CommandType.Separator;
-            this.Separator5.Key = "Separator";
-            this.Separator5.Name = "Separator5";
-            this.menuWizards1.Key = "menuWizards";
-            this.menuWizards1.Name = "menuWizards1";
-            this.menuWizards1.Text = "&Monitor this source";
-            this.LeftRebar1.CommandManager = this.uiCommandManager1;
-            this.LeftRebar1.Dock = DockStyle.Left;
-            this.LeftRebar1.Location = new Point(0, 0x1c);
-            this.LeftRebar1.Name = "LeftRebar1";
-            this.LeftRebar1.Size = new Size(0, 310);
-            this.RightRebar1.CommandManager = this.uiCommandManager1;
-            this.RightRebar1.Dock = DockStyle.Right;
-            this.RightRebar1.Location = new Point(0x1f9, 0x1c);
-            this.RightRebar1.Name = "RightRebar1";
-            this.RightRebar1.Size = new Size(0, 310);
-            this.TopRebar1.CommandBars.AddRange(new UICommandBar[] { this.uiCommandBar1 });
-            this.TopRebar1.CommandManager = this.uiCommandManager1;
-            this.TopRebar1.Controls.Add(this.uiCommandBar1);
-            this.TopRebar1.Dock = DockStyle.Top;
-            this.TopRebar1.Location = new Point(0, 0);
-            this.TopRebar1.Name = "TopRebar1";
-            this.TopRebar1.Size = new Size(0x1d4, 0x1c);
-            this.sourcesExplorerBar1.BackgroundFormatStyle.BackColor = Color.White;
-            this.sourcesExplorerBar1.BackgroundFormatStyle.BackColorGradient = Color.Transparent;
-            this.sourcesExplorerBar1.BorderStyle = Janus.Windows.ExplorerBar.BorderStyle.None;
-            this.uiCommandManager1.SetContextMenu(this.sourcesExplorerBar1, this.uiContextMenu1);
-            this.sourcesExplorerBar1.Dock = DockStyle.Fill;
-            this.sourcesExplorerBar1.GroupSeparation = 14;
-            this.sourcesExplorerBar1.GroupsStateStyles.FormatStyle.BackColor = Color.Gainsboro;
-            this.sourcesExplorerBar1.GroupsStateStyles.FormatStyle.BackColorGradient = Color.Silver;
-            this.sourcesExplorerBar1.GroupsStateStyles.FormatStyle.BackgroundGradientMode = Janus.Windows.ExplorerBar.BackgroundGradientMode.Vertical;
-            this.sourcesExplorerBar1.GroupsStateStyles.FormatStyle.ForeColor = Color.Black;
-            this.sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.BackColor = Color.Silver;
-            this.sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.BackColorGradient = Color.Gainsboro;
-            this.sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.BackgroundGradientMode = Janus.Windows.ExplorerBar.BackgroundGradientMode.Vertical;
-            this.sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.BackgroundThemeStyle = BackgroundThemeStyle.GroupHeader;
-            this.sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.ForeColor = Color.Black;
-            this.sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.ForegroundThemeStyle = ForegroundThemeStyle.GroupHeader;
-            this.sourcesExplorerBar1.GroupsStateStyles.SelectedFormatStyle.BackColor = SystemColors.Control;
-            this.sourcesExplorerBar1.Location = new Point(0, 0x17);
-            this.sourcesExplorerBar1.Name = "sourcesExplorerBar1";
-            this.sourcesExplorerBar1.Size = new Size(0x1d4, 0x15a);
-            this.sourcesExplorerBar1.SpecialGroupsStateStyles.FormatStyle.BackColor = Color.LightSkyBlue;
-            this.sourcesExplorerBar1.SpecialGroupsStateStyles.FormatStyle.BackColorGradient = Color.SteelBlue;
-            this.sourcesExplorerBar1.SpecialGroupsStateStyles.FormatStyle.BackgroundGradientMode = Janus.Windows.ExplorerBar.BackgroundGradientMode.Vertical;
-            this.sourcesExplorerBar1.SpecialGroupsStateStyles.FormatStyle.ForeColor = Color.White;
-            this.sourcesExplorerBar1.SpecialGroupsStateStyles.HotFormatStyle.BackColor = Color.SteelBlue;
-            this.sourcesExplorerBar1.SpecialGroupsStateStyles.HotFormatStyle.BackColorGradient = Color.LightSkyBlue;
-            this.sourcesExplorerBar1.SpecialGroupsStateStyles.HotFormatStyle.BackgroundGradientMode = Janus.Windows.ExplorerBar.BackgroundGradientMode.Vertical;
-            this.sourcesExplorerBar1.TabIndex = 1;
-            this.sourcesExplorerBar1.ThemedAreas = ThemedArea.None;
-            this.sourcesExplorerBar1.TopMargin = 14;
-            this.sourcesExplorerBar1.KeyDown += new KeyEventHandler(this.sources1_KeyDown);
-            this.sourcesExplorerBar1.SelectionChanged += new EventHandler(this.sources1_SelectionChanged);
-            this.sourcesExplorerBar1.MouseDoubleClick += new MouseEventHandler(this.sourcesExplorerBar1_MouseDoubleClick);
-            this.sourcesExplorerBar1.MouseDown += new MouseEventHandler(this.sourcesExplorerBar1_MouseDown);
-            this.panel1.BackColor = Color.DimGray;
-            this.panel1.Controls.Add(this.sourcesExplorerBar1);
-            this.panel1.Controls.Add(this.linkShowAllSources);
-            this.panel1.Dock = DockStyle.Fill;
-            this.panel1.Location = new Point(0, 0x1c);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new Padding(0, 1, 0, 0);
-            this.panel1.Size = new Size(0x1d4, 0x171);
-            this.panel1.TabIndex = 2;
-            this.linkShowAllSources.ActiveLinkColor = Color.FromArgb(0xff, 0xff, 0xc0);
-            this.linkShowAllSources.BackColor = Color.Moccasin;
-            this.linkShowAllSources.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.linkShowAllSources.Dock = DockStyle.Top;
-            this.linkShowAllSources.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular, GraphicsUnit.Point, 0xb1);
-            this.linkShowAllSources.LinkBehavior = LinkBehavior.NeverUnderline;
-            this.linkShowAllSources.LinkColor = Color.Black;
-            this.linkShowAllSources.Location = new Point(0, 1);
-            this.linkShowAllSources.Name = "linkShowAllSources";
-            this.linkShowAllSources.Size = new Size(0x1d4, 0x16);
-            this.linkShowAllSources.TabIndex = 2;
-            this.linkShowAllSources.TabStop = true;
-            this.linkShowAllSources.Text = "Some sources are hidden. Click here to show all.";
-            this.linkShowAllSources.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkShowAllSources.Visible = false;
-            this.linkShowAllSources.LinkClicked += new LinkLabelLinkClickedEventHandler(this.linkShowAllSources_LinkClicked);
-            this.filterModified1.Key = "filterModified";
-            this.filterModified1.Name = "filterModified1";
-            this.filterNotUpToDate2.Key = "filterNotUpToDate";
-            this.filterNotUpToDate2.Name = "filterNotUpToDate2";
-            this.AllowDrop = true;
-            base.AutoScaleDimensions = new SizeF(6f, 13f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.TopRebar1);
-            base.Name = "SourcesPanel";
-            base.Size = new Size(0x1d4, 0x18d);
-            base.DragDrop += new DragEventHandler(this.SourcesPanel_DragDrop);
-            base.DragEnter += new DragEventHandler(this.SourcesPanel_DragEnter);
-            ((ISupportInitialize) this.uiCommandManager1).EndInit();
-            ((ISupportInitialize) this.BottomRebar1).EndInit();
-            ((ISupportInitialize) this.uiCommandBar1).EndInit();
-            ((ISupportInitialize) this.uiContextMenu1).EndInit();
-            ((ISupportInitialize) this.LeftRebar1).EndInit();
-            ((ISupportInitialize) this.RightRebar1).EndInit();
-            ((ISupportInitialize) this.TopRebar1).EndInit();
-            this.TopRebar1.ResumeLayout(false);
-            ((ISupportInitialize) this.sourcesExplorerBar1).EndInit();
-            this.panel1.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
-        private void linkShowAllSources_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.ShowAllSources();
-        }
-
-        private void LoadFilterSettings()
-        {
-            this.loadingFilterSettings = true;
-            this.filterEnabled.Checked = ApplicationSettingsManager.Settings.SourcesFilter_Enabled.ToInheritableBoolean();
-            this.filterModified.Checked = ApplicationSettingsManager.Settings.SourcesFilter_Modified.ToInheritableBoolean();
-            this.filterNotUpToDate.Checked = ApplicationSettingsManager.Settings.SourcesFilter_NotUpToDate.ToInheritableBoolean();
-            this.filterAll.Checked = ((!this.filterEnabled.Checked.ToBool() && !this.filterModified.Checked.ToBool()) && !this.filterNotUpToDate.Checked.ToBool()).ToInheritableBoolean();
-            this.loadingFilterSettings = false;
-        }
-
-        private void menuClipboard_Popup(object sender, CommandEventArgs e)
-        {
-            UIHelper.RefreshCopyCommands(e.Command.Commands);
-        }
-
-        private void menuWizards2_Click(object sender, CommandEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.RunCustomWizard();
-        }
-
-        protected virtual void OnSelectionChanged()
-        {
-            if (this.selectionChanged != null)
-            {
-                this.selectionChanged(this, EventArgs.Empty);
-            }
-            this.presenter.EnableCommands();
-        }
-
-        private bool QuickCreateNewSource(string folderName, bool interactive)
-        {
-            Source source = Source.FromURL(folderName);
-            if (interactive)
-            {
-                bool cancel;
-                this.presenter.New(source, out cancel);
-                if (cancel)
-                {
-                    return false;
-                }
-            }
-            MonitorSettings.Instance.AddEntity(source);
-            return true;
-        }
-
-        public void Refetch()
-        {
-            this.SourcesExplorerBar.RefreshEntities();
-        }
-
-        private void RefreshAndSetFilter(bool saveFilterSettings)
-        {
-            if (base.InvokeRequired)
-            {
-                base.Invoke(new Action<bool>(this.RefreshAndSetFilter), new object[] { saveFilterSettings });
-            }
-            else
-            {
-                if (saveFilterSettings)
-                {
-                    this.SaveFilterSettings();
-                }
-                this.SearchTextBox.Search(this.GetFilterPredicate());
-            }
-        }
-
-        private void RefreshLog()
-        {
-            Source source = this.SelectedItem;
-            Updater.Instance.RefreshSource(source);
-        }
-
-        private void RegisterExplorerBarEvents()
-        {
-            this.UnregisterExplorerBarEvents();
-            this.SourcesExplorerBar.ChangesClick += new EventHandler(this.SourcesExplorerBar_ItemChangesClick);
-            this.SourcesExplorerBar.ConflictsClick += new EventHandler(this.SourcesExplorerBar_ItemConflictsClick);
-            this.SourcesExplorerBar.ErrorClick += new EventHandler(this.SourcesExplorerBar_ItemErrorClick);
-            this.SourcesExplorerBar.PathClick += new EventHandler(this.SourcesExplorerBar_ItemPathClick);
-            this.SourcesExplorerBar.SyncdClick += new EventHandler(this.SourcesExplorerBar_ItemSyncdClick);
-            this.SourcesExplorerBar.UnversionedClick += new EventHandler(this.SourcesExplorerBar_ItemUnversionedClick);
-            this.SourcesExplorerBar.UpdatesClick += new EventHandler(this.SourcesExplorerBar_ItemUpdatesClick);
-        }
-
-        private void RunCustomWizard()
-        {
-            Source source = this.SelectedItem;
-            new CustomWizard().Run(source.Name, "LogEntries", "Source");
-        }
-
-        private void SaveFilterSettings()
-        {
-            if (!this.loadingFilterSettings)
-            {
-                ApplicationSettingsManager.Settings.SourcesFilter_Enabled = this.filterEnabled.Checked.ToBool();
-                ApplicationSettingsManager.Settings.SourcesFilter_Modified = this.filterModified.Checked.ToBool();
-                ApplicationSettingsManager.Settings.SourcesFilter_NotUpToDate = this.filterNotUpToDate.Checked.ToBool();
-                ApplicationSettingsManager.SaveSettings();
-            }
-        }
-
-        public void SelectSource(Source source)
-        {
-            this.SourcesExplorerBar.SelectEntity(source);
-        }
-
-        public void SetSearchResults(IEnumerable<Source> results)
-        {
-            this.SourcesExplorerBar.SetVisibleEntities(results);
-            int count = results.Count<Source>();
-            this.ShowingAllItems = count == this.Entities.Count;
-            this.OnSelectionChanged();
-        }
-
-        private void ShowAllSources()
-        {
-            this.SearchTextBox.ClearNoFocus();
-            this.filterAll.Checked = InheritableBoolean.True;
-            this.ClearFilter();
-        }
-
-        private void Source_StatusChanged(object sender, StatusChangedEventArgs e)
-        {
-            this.SourcesExplorerBar.RefreshEntity((Source) e.Entity);
-            this.presenter.EnableCommands();
-            this.RefreshAndSetFilter(false);
-        }
-
-        private void SourceDragDrop(DragEventArgs e)
-        {
-            if (e.Data != null)
-            {
-                string[] folderNames = this.GetDraggedFolderNames(e.Data);
-                if ((folderNames != null) && (folderNames.Length != 0))
-                {
-                    int count = 0;
-                    for (int i = 0; i < folderNames.Length; i++)
-                    {
-                        string folderName = folderNames[i];
-                        if (FileSystemHelper.DirectoryExists(folderName))
-                        {
-                            bool interactive = (e.KeyState & 8) != 8;
-                            if (this.QuickCreateNewSource(folderName, interactive))
-                            {
-                                count++;
-                            }
-                        }
-                    }
-                    if (count > 0)
-                    {
-                        string message = Strings.SourcesCreated_FORMAT.FormatWith(new object[] { count, (count == 1) ? Strings.SourcesCreated_Source : Strings.SourcesCreated_Sources });
-                        SVNMonitor.EventLog.LogInfo(message, folderNames);
-                        MainForm.FormInstance.ShowMessage(message, Strings.SVNMonitorCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    }
-                }
-            }
-        }
-
-        private void SourceDragEnter(DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.None;
-            if (e.Data != null)
-            {
-                string[] folderNames = this.GetDraggedFolderNames(e.Data);
-                if ((folderNames != null) && (folderNames.Length != 0))
-                {
-                    e.Effect = DragDropEffects.None;
-                    foreach (string folderName in folderNames)
-                    {
-                        if (FileSystemHelper.DirectoryExists(folderName))
-                        {
-                            e.Effect = DragDropEffects.Copy;
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-
-        private void sources1_KeyDown(object sender, KeyEventArgs e)
-        {
-            this.presenter.HandleKey(e);
-        }
-
-        private void sources1_SelectionChanged(object sender, EventArgs e)
-        {
-            this.presenter.EnableCommands();
-        }
-
-        private void SourcesExplorerBar_ItemChangesClick(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNCommit();
-        }
-
-        private void SourcesExplorerBar_ItemConflictsClick(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNDiff();
-        }
-
-        private void SourcesExplorerBar_ItemErrorClick(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.FocusError();
-        }
-
-        private void SourcesExplorerBar_ItemPathClick(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.Browse();
-        }
-
-        private void SourcesExplorerBar_ItemSyncdClick(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNCheckModifications();
-        }
-
-        private void SourcesExplorerBar_ItemUnversionedClick(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNAdd();
-        }
-
-        private void SourcesExplorerBar_ItemUpdatesClick(object sender, EventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SVNUpdate();
-        }
-
-        private void sourcesExplorerBar1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            bool cancel;
-            Logger.LogUserAction();
-            bool isGroup = this.SourcesExplorerBar.IsGroupAtLocation(e.Location, out cancel);
-            if (!cancel)
-            {
-                if (isGroup)
-                {
-                    this.Edit();
-                }
-                else
-                {
-                    this.presenter.New();
-                }
-            }
-        }
-
-        private void sourcesExplorerBar1_MouseDown(object sender, MouseEventArgs e)
-        {
-            this.SourcesExplorerBar.SelectEntity(e.Location);
-        }
-
-        private void SourcesPanel_DragDrop(object sender, DragEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SourceDragDrop(e);
-        }
-
-        private void SourcesPanel_DragEnter(object sender, DragEventArgs e)
-        {
-            Logger.LogUserAction();
-            this.SourceDragEnter(e);
-        }
-
-        private void SVNAdd()
-        {
-            Source source = this.SelectedItem;
-            this.SVNAdd(source);
-        }
-
-        private void SVNAdd(Source source)
-        {
-            source.SVNAdd();
-        }
-
-        private void SVNApplyPatch()
-        {
-            this.SelectedItem.ApplyPatch();
-        }
-
-        private void SVNBranchTag()
-        {
-            this.SelectedItem.BranchTag();
-        }
-
-        internal void SVNCheckModifications()
-        {
-            Source source = this.SelectedItem;
-            this.SVNCheckModifications(source);
-        }
-
-        private void SVNCheckModifications(Source source)
-        {
-            source.CheckModifications();
-        }
-
-        private void SVNCheckout()
-        {
-            this.SelectedItem.Checkout();
-        }
-
-        private void SVNCleanUp()
-        {
-            this.SelectedItem.CleanUp();
-        }
-
-        internal void SVNCommit()
-        {
-            Source source = this.SelectedItem;
-            this.SVNCommit(source);
-        }
-
-        private void SVNCommit(Source source)
-        {
-            source.SVNCommit();
-        }
-
-        private void SVNCreatePatch()
-        {
-            this.SelectedItem.CreatePatch();
-        }
-
-        private void SVNDeleteUnversioned()
-        {
-            this.SelectedItem.DeleteUnversioned();
-        }
-
-        private void SVNDiff()
-        {
-            this.SelectedItem.SVNDiff();
-        }
-
-        private void SVNExport()
-        {
-            this.SelectedItem.Export();
-        }
-
-        private void SVNGetLock()
-        {
-            this.SelectedItem.GetLock();
-        }
-
-        private void SVNMerge()
-        {
-            this.SelectedItem.Merge();
-        }
-
-        object ISelectableView<Source>.Invoke(Delegate delegate1)
-        {
-            return base.Invoke(delegate1);
-        }
-
-        void IUserEntityView<Source>.Delete()
-        {
-            this.SourcesExplorerBar.Delete();
-            this.OnSelectionChanged();
-        }
-
-        DialogResult IUserEntityView<Source>.UserEdit(Source entity)
-        {
-            Source source = entity;
-            Logger.Log.InfoFormat("Editing source (source={0})", source);
-            DialogResult result = SourcePropertiesDialog.ShowDialog(source);
-            if ((result == DialogResult.OK) && (source != null))
-            {
-                Logger.Log.InfoFormat("User pressed OK (source={0})", source);
-                Updater.Instance.QueueUpdate(source, false);
-            }
-            return result;
-        }
-
-        DialogResult IUserEntityView<Source>.UserNew(Source entity)
-        {
-            Source source = entity;
-            Logger.Log.InfoFormat("Creating source (GUID={0})", source.Guid);
-            DialogResult result = SourcePropertiesDialog.ShowDialog(source);
-            if ((result == DialogResult.OK) && (source != null))
-            {
-                Logger.Log.InfoFormat("User pressed OK (source={0})", source);
-                SVNMonitor.EventLog.Log(SVNMonitor.EventLogEntryType.Source, string.Format("Source '{0}' created", entity.Name), entity);
-                if (source.Enabled)
-                {
-                    Logger.Log.InfoFormat("Source is enabled. Updating.", new object[0]);
-                    SVNMonitor.EventLog.Log(SVNMonitor.EventLogEntryType.Source, "Getting source information...", entity);
-                    Updater.Instance.QueueUpdate(source, false);
-                }
-            }
-            return result;
-        }
-
-        private void SVNProperties()
-        {
-            this.SelectedItem.Properties();
-        }
-
-        private void SVNReintegrate()
-        {
-            this.SelectedItem.Reintegrate();
-        }
-
-        private void SVNReleaseLock()
-        {
-            this.SelectedItem.ReleaseLock();
-        }
-
-        private void SVNRelocate()
-        {
-            this.SelectedItem.Relocate();
-        }
-
-        private void SVNRepoBrowser()
-        {
-            this.SelectedItem.RepoBrowser();
-        }
-
-        private void SVNResolve()
-        {
-            this.SelectedItem.Resolve();
-        }
-
-        internal void SVNRevert()
-        {
-            this.SelectedItem.SVNRevert();
-        }
-
-        private void SVNRevisionGraph()
-        {
-            this.SelectedItem.RevisionGraph();
-        }
-
-        private void SVNShowLog()
-        {
-            this.SelectedItem.SVNShowLog();
-        }
-
-        private void SVNSwitch()
-        {
-            this.SelectedItem.Switch();
-        }
-
-        internal void SVNUpdate()
-        {
-            Source source = this.SelectedItem;
-            this.SVNUpdate(source);
-        }
-
-        private void SVNUpdate(Source source)
-        {
-            DialogResult result = UpdateHeadPromptDialog.Prompt();
-            Logger.Log.InfoFormat("Update Source: User clicked {0}", result);
-            if (result == DialogResult.Yes)
-            {
-                source.SVNUpdate();
-            }
-        }
-
-        private void SVNUpdateAll(bool ignoreUpToDate)
-        {
-            Source.SVNUpdateAll(ignoreUpToDate);
-        }
-
-        private void UnregisterExplorerBarEvents()
-        {
-            this.SourcesExplorerBar.ChangesClick -= new EventHandler(this.SourcesExplorerBar_ItemChangesClick);
-            this.SourcesExplorerBar.ConflictsClick -= new EventHandler(this.SourcesExplorerBar_ItemConflictsClick);
-            this.SourcesExplorerBar.ErrorClick -= new EventHandler(this.SourcesExplorerBar_ItemErrorClick);
-            this.SourcesExplorerBar.PathClick -= new EventHandler(this.SourcesExplorerBar_ItemPathClick);
-            this.SourcesExplorerBar.SyncdClick -= new EventHandler(this.SourcesExplorerBar_ItemSyncdClick);
-            this.SourcesExplorerBar.UnversionedClick -= new EventHandler(this.SourcesExplorerBar_ItemUnversionedClick);
-            this.SourcesExplorerBar.UpdatesClick -= new EventHandler(this.SourcesExplorerBar_ItemUpdatesClick);
-        }
-
-        internal void UpdateAllSources()
-        {
-            Updater.Instance.QueueUpdates();
-        }
-
-        internal void UpdateSource()
-        {
-            Source source = this.SelectedItem;
-            Updater.Instance.QueueUpdate(source, true);
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanAdditionalTortoiseCommands
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.menuAdditionalTortoiseCommands);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.menuAdditionalTortoiseCommands, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanApplyPatch
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdApplyPatch);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdApplyPatch, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanBranchTag
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdBranchTag);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdBranchTag, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanCheckAllForUpdates
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdUpdateAll);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdUpdateAll, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanCheckForUpdates
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdUpdate);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdUpdate, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanCheckout
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdCheckout);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdCheckout, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanCleanUp
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdCleanUp);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdCleanUp, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanClearAllErrors
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandVisible(this.cmdClearAllErrors);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandVisible(this.cmdClearAllErrors, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanClearError
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandVisible(this.cmdClearError);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandVisible(this.cmdClearError, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanCopyConflictedItems
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdCopySourceConflictedItems);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdCopySourceConflictedItems, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanCopyError
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdCopySourceError);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdCopySourceError, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanCopyModifiedItems
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdCopySourceModifiedItems);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdCopySourceModifiedItems, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanCopyName
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdCopySourceName);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdCopySourceName, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanCopyPath
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandVisible(this.cmdCopySourcePath);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandVisible(this.cmdCopySourcePath, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanCopyToClipboard
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.menuClipboard);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.menuClipboard, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanCopyUnversionedItems
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdCopySourceUnversionedItems);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdCopySourceUnversionedItems, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanCopyURL
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdCopySourceURL);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdCopySourceURL, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanCreatePatch
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdCreatePatch);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdCreatePatch, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanDelete
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdDelete);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdDelete, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanDeleteUnversioned
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdDeleteUnversioned);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdDeleteUnversioned, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanEdit
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdEdit);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdEdit, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanEnable
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandVisible(this.cmdEnabled);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandVisible(this.cmdEnabled, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanExplore
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandVisible(this.cmdExplore);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandVisible(this.cmdExplore, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanExport
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdExport);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdExport, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanGetLock
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandVisible(this.cmdLock);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandVisible(this.cmdLock, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanMerge
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdMerge);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdMerge, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanMoveDown
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdMoveDown);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdMoveDown, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanMoveUp
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdMoveUp);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdMoveUp, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanNew
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdNew);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdNew, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanProperties
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdProperties);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdProperties, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanRefreshLog
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdRefresh);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdRefresh, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanReintegrate
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdReintegrate);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdReintegrate, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanReleaseLock
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandVisible(this.cmdUnlock);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandVisible(this.cmdUnlock, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanRelocate
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdRelocate);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdRelocate, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanRepoBrowser
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdRepoBrowser);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdRepoBrowser, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanResolve
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdResolve);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdResolve, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanRevisionGraph
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdRevisionGraph);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdRevisionGraph, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanRunWizard
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.menuWizards);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.menuWizards, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanShowLog
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdShowLog);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdShowLog, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanSVNCheckForModifications
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdSVNModifications);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdSVNModifications, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanSVNCommit
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandVisible(this.cmdSVNCommit);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandVisible(this.cmdSVNCommit, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanSVNRevert
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandVisible(this.cmdSVNRevert);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandVisible(this.cmdSVNRevert, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanSVNUpdate
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandVisible(this.cmdSVNUpdate);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandVisible(this.cmdSVNUpdate, value);
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CanSwitch
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdSwitch);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdSwitch, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanTSVNHelp
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdTSVNHelp);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdTSVNHelp, value);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public bool CanTSVNSettings
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return UIHelper.IsCommandEnabled(this.cmdTSVNSettings);
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                UIHelper.SetCommandEnabled(this.cmdTSVNSettings, value);
-            }
-        }
-
-        public int Count
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return this.SourcesExplorerBar.Count;
-            }
-        }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public List<Source> Entities
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return this.allSources;
-            }
-            set
-            {
-                if (this.allSources != null)
-                {
-                    this.allSources.ForEach(delegate (Source source) {
-                        source.StatusChanged -= new EventHandler<StatusChangedEventArgs>(this.Source_StatusChanged);
-                    });
-                }
-                this.allSources = value;
-                if (this.allSources != null)
-                {
-                    this.allSources.ForEach(delegate (Source source) {
-                        source.StatusChanged += new EventHandler<StatusChangedEventArgs>(this.Source_StatusChanged);
-                    });
-                }
-                this.SourcesExplorerBar.Entities = this.allSources;
-                this.RegisterExplorerBarEvents();
-                this.RefreshAndSetFilter(false);
-            }
-        }
-
-        [Browsable(false)]
-        public SearchTextBox<Source> SearchTextBox { get; set; }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int SelectedIndex
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return this.SourcesExplorerBar.SelectedIndex;
-            }
-            [DebuggerNonUserCode]
-            set
-            {
-                this.SourcesExplorerBar.SelectedIndex = value;
-            }
-        }
-
-        [Browsable(false)]
-        public Source SelectedItem
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return this.SourcesExplorerBar.SelectedEntity;
-            }
-        }
-
-        public bool ShowingAllItems
-        {
-            get
-            {
-                return this.showingAllItems;
-            }
-            set
-            {
-                this.showingAllItems = value;
-                this.linkShowAllSources.Visible = !this.showingAllItems;
-            }
-        }
-
-        private SVNMonitor.View.Controls.SourcesExplorerBar SourcesExplorerBar
-        {
-            [DebuggerNonUserCode]
-            get
-            {
-                return this.sourcesExplorerBar1;
-            }
-        }
-
-        public Janus.Windows.UI.CommandBars.UIContextMenu UIContextMenu
-        {
-            get
-            {
-                return this.uiContextMenu1;
-            }
-        }
-    }
+	internal class SourcesPanel : UserControl, IUserEntityView<Source>, ISelectableView<Source>, ISupportInitialize, ISearchablePanel<Source>
+	{
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private List<Source> allSources;
+		private UIRebar BottomRebar1;
+		private UICommand cmdApplyPatch;
+		private UICommand cmdApplyPatch1;
+		private UICommand cmdApplyPatch2;
+		private UICommand cmdBranchTag;
+		private UICommand cmdBranchTag1;
+		private UICommand cmdCheckout;
+		private UICommand cmdCheckout1;
+		private UICommand cmdCleanUp;
+		private UICommand cmdCleanUp1;
+		private UICommand cmdClearAllErrors;
+		private UICommand cmdClearAllErrors1;
+		private UICommand cmdClearError;
+		private UICommand cmdClearError1;
+		private UICommand cmdCopySourceConflictedItems;
+		private UICommand cmdCopySourceConflictedItems1;
+		private UICommand cmdCopySourceError;
+		private UICommand cmdCopySourceError1;
+		private UICommand cmdCopySourceModifiedItems;
+		private UICommand cmdCopySourceModifiedItems1;
+		private UICommand cmdCopySourceName;
+		private UICommand cmdCopySourceName1;
+		private UICommand cmdCopySourcePath;
+		private UICommand cmdCopySourcePath1;
+		private UICommand cmdCopySourceUnversionedItems;
+		private UICommand cmdCopySourceUnversionedItems1;
+		private UICommand cmdCopySourceURL;
+		private UICommand cmdCopySourceUrl1;
+		private UICommand cmdCreatePatch;
+		private UICommand cmdCreatePatch1;
+		private UICommand cmdCreatePatch2;
+		private UICommand cmdDelete;
+		private UICommand cmdDeleteUnversioned;
+		private UICommand cmdDeleteUnversioned1;
+		private UICommand cmdEdit;
+		private UICommand cmdEnabled;
+		private UICommand cmdEnabled1;
+		private UICommand cmdExplore;
+		private UICommand cmdExplore1;
+		private UICommand cmdExport;
+		private UICommand cmdExport1;
+		private UICommand cmdLock;
+		private UICommand cmdLock2;
+		private UICommand cmdMerge;
+		private UICommand cmdMerge1;
+		private UICommand cmdMoveDown;
+		private UICommand cmdMoveUp;
+		private UICommand cmdNew;
+		private UICommand cmdProperties;
+		private UICommand cmdProperties1;
+		private UICommand cmdProperties2;
+		private UICommand cmdRefresh;
+		private UICommand cmdRefresh1;
+		private UICommand cmdReintegrate;
+		private UICommand cmdReintegrate1;
+		private UICommand cmdRelocate;
+		private UICommand cmdRelocate1;
+		private UICommand cmdRepoBrowser;
+		private UICommand cmdRepoBrowser1;
+		private UICommand cmdResolve;
+		private UICommand cmdResolve1;
+		private UICommand cmdRevisionGraph;
+		private UICommand cmdRevisionGraph1;
+		private UICommand cmdShowLog;
+		private UICommand cmdShowLog1;
+		private UICommand cmdShowLog2;
+		private UICommand cmdSVNCommit;
+		private UICommand cmdSVNCommit1;
+		private UICommand cmdSVNCommit2;
+		private UICommand cmdSVNModifications;
+		private UICommand cmdSVNModifications1;
+		private UICommand cmdSVNModifications2;
+		private UICommand cmdSVNRevert;
+		private UICommand cmdSVNRevert1;
+		private UICommand cmdSVNRevert2;
+		private UICommand cmdSVNUpdate;
+		private UICommand cmdSVNUpdate1;
+		private UICommand cmdSVNUpdate2;
+		private UICommand cmdSwitch;
+		private UICommand cmdSwitch1;
+		private UICommand cmdTSVNHelp;
+		private UICommand cmdTSVNHelp1;
+		private UICommand cmdTSVNHelp2;
+		private UICommand cmdTSVNSettings;
+		private UICommand cmdTSVNSettings1;
+		private UICommand cmdTSVNSettings2;
+		private UICommand cmdUnlock;
+		private UICommand cmdUnlock2;
+		private UICommand cmdUpdate;
+		private UICommand cmdUpdateAll;
+		private IContainer components;
+		private UICommand filterAll;
+		private UICommand filterAll1;
+		private UICommand filterEnabled;
+		private UICommand filterEnabled1;
+		private UICommand filterModified;
+		private UICommand filterModified1;
+		private UICommand filterModified3;
+		private UICommand filterNotUpToDate;
+		private UICommand filterNotUpToDate2;
+		private UICommand filterNotUpToDate3;
+		private Dictionary<UICommand, Predicate<Source>> filterPredicates;
+		private ImageList imageList1;
+		private UIRebar LeftRebar1;
+		private LinkLabel linkShowAllSources;
+		private bool loadingFilterSettings;
+		private UICommand menuAdditionalTortoiseCommands;
+		private UICommand menuAdditionalTortoiseCommands1;
+		private UICommand menuClipboard;
+		private UICommand menuClipboard1;
+		private UICommand menuEvenMore;
+		private UICommand menuShow;
+		private UICommand menuShow2;
+		private UICommand menuWizards;
+		private UICommand menuWizards1;
+		private UICommand menuWizards2;
+		private Panel panel1;
+		private readonly UserEntityPresenter<Source> presenter;
+		private UIRebar RightRebar1;
+		private EventHandler selectionChanged;
+		private UICommand Separator10;
+		private UICommand Separator11;
+		private UICommand Separator12;
+		private UICommand Separator13;
+		private UICommand Separator14;
+		private UICommand Separator15;
+		private UICommand Separator4;
+		private UICommand Separator5;
+		private UICommand Separator6;
+		private UICommand Separator7;
+		private UICommand Separator8;
+		private UICommand Separator9;
+		private bool showingAllItems;
+		private SVNMonitor.View.Controls.SourcesExplorerBar sourcesExplorerBar1;
+		private UIRebar TopRebar1;
+		private UICommandBar uiCommandBar1;
+		private UICommandManager uiCommandManager1;
+		private Janus.Windows.UI.CommandBars.UIContextMenu uiContextMenu1;
+
+		public event EventHandler SelectionChanged
+		{
+			add
+			{
+				selectionChanged = (EventHandler)Delegate.Combine(selectionChanged, value);
+				SourcesExplorerBar.SelectionChanged += value;
+			}
+			remove
+			{
+				selectionChanged = (EventHandler)Delegate.Remove(selectionChanged, value);
+				SourcesExplorerBar.SelectionChanged -= value;
+			}
+		}
+
+		public SourcesPanel()
+		{
+			InitializeComponent();
+			if (!base.DesignMode && !ProcessHelper.IsInVisualStudio())
+			{
+				UIHelper.ApplyResources(uiCommandManager1);
+				presenter = new UserEntityPresenter<Source>(this);
+				InitializeClipboardDelegates();
+				CreateFiltersMap();
+				LoadFilterSettings();
+			}
+		}
+
+		public void BeginInit()
+		{
+		}
+
+		internal void Browse()
+		{
+			FileSystemHelper.Browse(SelectedItem.Path);
+		}
+
+		private void ClearAllErrors()
+		{
+			Source.ClearAllErrors();
+		}
+
+		private void ClearError()
+		{
+			SelectedItem.ClearError();
+		}
+
+		private void ClearFilter()
+		{
+			filterAll.Checked = InheritableBoolean.True;
+			foreach (UICommand cmd in filterPredicates.Keys)
+			{
+				cmd.Checked = InheritableBoolean.False;
+			}
+			RefreshAndSetFilter(true);
+		}
+
+		public void ClearSearch()
+		{
+			SourcesExplorerBar.SetVisibleEntities();
+			ClearFilter();
+			ShowingAllItems = true;
+			OnSelectionChanged();
+		}
+
+		private void cmdApplyPatch_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNApplyPatch();
+		}
+
+		private void cmdBranchTag_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNBranchTag();
+		}
+
+		private void cmdCheckout_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNCheckout();
+		}
+
+		private void cmdCleanUp_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNCleanUp();
+		}
+
+		private void cmdClearAllErrors_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			ClearAllErrors();
+		}
+
+		private void cmdClearError_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			ClearError();
+		}
+
+		private void cmdCreatePatch_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNCreatePatch();
+		}
+
+		private void cmdDelete_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			presenter.Delete();
+		}
+
+		private void cmdDeleteUnversioned_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNDeleteUnversioned();
+		}
+
+		private void cmdEdit_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			Edit();
+		}
+
+		private void cmdEnabled_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			EnableSource();
+		}
+
+		private void cmdExplore_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			Browse();
+		}
+
+		private void cmdExport_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNExport();
+		}
+
+		private void cmdLock_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNGetLock();
+		}
+
+		private void cmdMerge_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNMerge();
+		}
+
+		private void cmdMoveDown_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			presenter.MoveDown();
+		}
+
+		private void cmdMoveUp_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			presenter.MoveUp();
+		}
+
+		private void cmdNew_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			CreateNew();
+		}
+
+		private void cmdProperties_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNProperties();
+		}
+
+		private void cmdRefresh_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			RefreshLog();
+		}
+
+		private void cmdReintegrate_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNReintegrate();
+		}
+
+		private void cmdRelocate_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNRelocate();
+		}
+
+		private void cmdRepoBrowser_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNRepoBrowser();
+		}
+
+		private void cmdResolve_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNResolve();
+		}
+
+		private void cmdRevisionGraph_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNRevisionGraph();
+		}
+
+		private void cmdShowLog_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNShowLog();
+		}
+
+		private void cmdSVNCommit_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNCommit();
+		}
+
+		private void cmdSVNModifications_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNCheckModifications();
+		}
+
+		private void cmdSVNRevert_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNRevert();
+		}
+
+		private void cmdSVNUpdate_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNUpdate();
+		}
+
+		private void cmdSwitch_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNSwitch();
+		}
+
+		private void cmdTSVNHelp_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			TortoiseProcess.Help();
+		}
+
+		private void cmdTSVNSettings_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			TortoiseProcess.Settings();
+		}
+
+		private void cmdUnlock_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNReleaseLock();
+		}
+
+		private void cmdUpdate_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			UpdateSource();
+		}
+
+		private void cmdUpdateAll_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			UpdateAllSources();
+		}
+
+		private void CreateFiltersMap()
+		{
+			filterPredicates = new Dictionary<UICommand, Predicate<Source>>();
+			filterPredicates.Add(filterEnabled, source => source.Enabled);
+			filterPredicates.Add(filterModified, source => source.HasLocalChanges);
+			filterPredicates.Add(filterNotUpToDate, source => !source.IsUpToDate);
+		}
+
+		public virtual void CreateNew()
+		{
+			presenter.New();
+		}
+
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		private void Edit()
+		{
+			presenter.Edit();
+		}
+
+		public void EnableCommands()
+		{
+			if (!base.DesignMode && !ProcessHelper.IsInVisualStudio())
+			{
+				if (base.InvokeRequired)
+				{
+					base.BeginInvoke(new MethodInvoker(EnableCommands));
+				}
+				else
+				{
+					Source source = SelectedItem;
+					CanCheckForUpdates = SourceHelper.CanCheckForUpdates(source);
+					CanRunWizard = SourceHelper.CanRunWizard(source);
+					CanSVNCheckForModifications = SourceHelper.CanSVNCheckForModifications(source);
+					CanRefreshLog = SourceHelper.CanRefreshLog(source);
+					CanSVNUpdate = SourceHelper.CanSVNUpdate(source);
+					CanEnable = SourceHelper.CanEnable(source);
+					CanSVNCommit = SourceHelper.CanSVNCommit(source);
+					CanSVNRevert = SourceHelper.CanSVNRevert(source);
+					CanExplore = SourceHelper.CanExplore(source);
+					CanClearError = SourceHelper.CanClearError(source);
+					CanClearAllErrors = SourceHelper.CanClearAllErrors();
+					CanShowLog = SourceHelper.CanShowSVNLog(source);
+					CanCopyToClipboard = SourceHelper.CanCopyToClipboard(source);
+					CanCopyName = SourceHelper.CanCopyName(source);
+					CanCopyURL = SourceHelper.CanCopyURL(source);
+					CanCopyPath = SourceHelper.CanCopyPath(source);
+					CanCopyError = SourceHelper.CanCopyError(source);
+					CanCopyModifiedItems = SourceHelper.CanCopyModifiedItems(source);
+					CanCopyUnversionedItems = SourceHelper.CanCopyUnversionedItems(source);
+					CanCopyConflictedItems = SourceHelper.CanCopyConflictedItems(source);
+					CanAdditionalTortoiseCommands = SourceHelper.CanAdditionalTortoiseCommands(source);
+					CanCleanUp = SourceHelper.CanCleanUp(source);
+					CanExport = SourceHelper.CanExport(source);
+					CanProperties = SourceHelper.CanProperties(source);
+					CanRelocate = SourceHelper.CanRelocate(source);
+					CanRepoBrowser = SourceHelper.CanRepoBrowser(source);
+					CanRevisionGraph = SourceHelper.CanRevisionGraph(source);
+					CanSwitch = SourceHelper.CanSwitch(source);
+					CanCheckout = SourceHelper.CanCheckout(source);
+					CanApplyPatch = SourceHelper.CanApplyPatch(source);
+					CanBranchTag = SourceHelper.CanBranchTag(source);
+					CanCreatePatch = SourceHelper.CanCreatePatch(source);
+					CanDeleteUnversioned = SourceHelper.CanDeleteUnversioned(source);
+					CanGetLock = SourceHelper.CanGetLock(source);
+					CanMerge = SourceHelper.CanMerge(source);
+					CanReintegrate = SourceHelper.CanReintegrate(source);
+					CanResolve = SourceHelper.CanResolve(source);
+					CanTSVNHelp = SourceHelper.CanTSVNHelp(source);
+					CanTSVNSettings = SourceHelper.CanTSVNSettings(source);
+					CanReleaseLock = SourceHelper.CanReleaseLock(source);
+					CanCheckAllForUpdates = SourcesExplorerBar.Groups.Count > 0;
+					cmdEnabled.Checked = ((source != null) && source.Enabled).ToInheritableBoolean();
+				}
+			}
+		}
+
+		private void EnableSource()
+		{
+			SelectedItem.Enabled = cmdEnabled.Checked == InheritableBoolean.True;
+		}
+
+		public void EndInit()
+		{
+			if (!base.DesignMode)
+			{
+				UIHelper.GetBaseName getBaseName = item => ((Source)item).Name;
+				UIHelper.InitializeWizardsMenu(this, uiContextMenu1, menuWizards, getBaseName, "LogEntries", "Source");
+			}
+		}
+
+		internal void Explore()
+		{
+			Source source = SelectedItem;
+			Explore(source);
+		}
+
+		private void Explore(Source source)
+		{
+			FileSystemHelper.Explore(source.Path);
+		}
+
+		private void filter_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			filterAll.Checked = InheritableBoolean.False;
+			RefreshAndSetFilter(true);
+		}
+
+		private void filterAll_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			ClearFilter();
+		}
+
+		private void FocusError()
+		{
+			Source source = SelectedItem;
+			MainForm.FormInstance.FocusEventLog(source.ErrorEventID);
+		}
+
+		public IEnumerable<Source> GetAllItems()
+		{
+			return Entities;
+		}
+
+		private string GetConflictedItemsToClipboard()
+		{
+			SVNLog log = SelectedItem.GetLog(false);
+			if (log == null)
+			{
+				return string.Empty;
+			}
+			return string.Join(Environment.NewLine, log.PossibleConflictedFilePaths.ToArray());
+		}
+
+		private string[] GetDraggedFolderNames(IDataObject data)
+		{
+			if (data != null)
+			{
+				string[] folderNames = (string[])data.GetData(DataFormats.FileDrop);
+				if ((folderNames != null) && (folderNames.Length != 0))
+				{
+					return folderNames;
+				}
+			}
+			return new string[0];
+		}
+
+		private string GetErrorToClipboard()
+		{
+			Source source = SelectedItem;
+			if (!source.HasError)
+			{
+				return string.Empty;
+			}
+			return source.ErrorText;
+		}
+
+		private Predicate<Source> GetFilterPredicate()
+		{
+			return delegate(Source source)
+			{
+				if (filterPredicates.Keys.All(cmd => !cmd.Checked.ToBool()))
+				{
+					return true;
+				}
+				bool aggregatedFilter = false;
+				foreach (UICommand cmd in filterPredicates.Keys)
+				{
+					if (cmd.Checked.ToBool())
+					{
+						aggregatedFilter |= filterPredicates[cmd](source);
+					}
+				}
+				return aggregatedFilter;
+			};
+		}
+
+		private string GetModifiedItemsToClipboard()
+		{
+			Source source = SelectedItem;
+			if (source.LocalStatus == null)
+			{
+				return string.Empty;
+			}
+			StringBuilder sb = new StringBuilder();
+			foreach (SVNStatusEntry entry in source.LocalStatus.ModifiedEntries)
+			{
+				sb.AppendLine(entry.Path);
+			}
+			return sb.ToString();
+		}
+
+		private string GetSourceNameToClipboard()
+		{
+			return SelectedItem.Name;
+		}
+
+		private string GetSourcePathToClipboard()
+		{
+			return SelectedItem.Path;
+		}
+
+		private string GetSourceUrlToClipboard()
+		{
+			Source source = SelectedItem;
+			if (source.IsURL)
+			{
+				return source.Path;
+			}
+			SVNInfo info = source.GetInfo(false);
+			if (info == null)
+			{
+				return string.Empty;
+			}
+			return info.URL;
+		}
+
+		private string GetUnversionedItemsToClipboard()
+		{
+			Source source = SelectedItem;
+			if (source.LocalStatus == null)
+			{
+				return string.Empty;
+			}
+			StringBuilder sb = new StringBuilder();
+			foreach (SVNStatusEntry entry in source.LocalStatus.UnversionedEntries)
+			{
+				sb.AppendLine(entry.Path);
+			}
+			return sb.ToString();
+		}
+
+		private void InitializeClipboardDelegates()
+		{
+			UIHelper.AddCopyCommand(cmdCopySourceName, GetSourceNameToClipboard);
+			UIHelper.AddCopyCommand(cmdCopySourceURL, GetSourceUrlToClipboard);
+			UIHelper.AddCopyCommand(cmdCopySourcePath, GetSourcePathToClipboard);
+			UIHelper.AddCopyCommand(cmdCopySourceConflictedItems, GetConflictedItemsToClipboard);
+			UIHelper.AddCopyCommand(cmdCopySourceError, GetErrorToClipboard);
+			UIHelper.AddCopyCommand(cmdCopySourceModifiedItems, GetModifiedItemsToClipboard);
+			UIHelper.AddCopyCommand(cmdCopySourceUnversionedItems, GetUnversionedItemsToClipboard);
+		}
+
+		private void InitializeComponent()
+		{
+			components = new Container();
+			ComponentResourceManager resources = new ComponentResourceManager(typeof(SourcesPanel));
+			cmdNew = new UICommand("cmdNew");
+			cmdEdit = new UICommand("cmdEdit");
+			cmdDelete = new UICommand("cmdDelete");
+			cmdUpdate = new UICommand("cmdUpdate");
+			cmdUpdateAll = new UICommand("cmdUpdateAll");
+			cmdMoveUp = new UICommand("cmdMoveUp");
+			cmdMoveDown = new UICommand("cmdMoveDown");
+			imageList1 = new ImageList(components);
+			uiCommandManager1 = new UICommandManager(components);
+			BottomRebar1 = new UIRebar();
+			uiCommandBar1 = new UICommandBar();
+			cmdSVNModifications1 = new UICommand("cmdSVNModifications");
+			cmdShowLog1 = new UICommand("cmdShowLog");
+			cmdSVNUpdate2 = new UICommand("cmdSVNUpdate");
+			cmdSVNCommit2 = new UICommand("cmdSVNCommit");
+			cmdSVNRevert1 = new UICommand("cmdSVNRevert");
+			Separator7 = new UICommand("Separator");
+			Separator10 = new UICommand("Separator");
+			Separator6 = new UICommand("Separator");
+			menuWizards2 = new UICommand("menuWizards");
+			menuWizards = new UICommand("menuWizards");
+			cmdSVNUpdate = new UICommand("cmdSVNUpdate");
+			cmdSVNCommit = new UICommand("cmdSVNCommit");
+			cmdSVNRevert = new UICommand("cmdSVNRevert");
+			cmdSVNModifications = new UICommand("cmdSVNModifications");
+			cmdRefresh = new UICommand("cmdRefresh");
+			cmdEnabled = new UICommand("cmdEnabled");
+			cmdExplore = new UICommand("cmdExplore");
+			cmdClearError = new UICommand("cmdClearError");
+			cmdShowLog = new UICommand("cmdShowLog");
+			menuClipboard = new UICommand("menuClipboard");
+			cmdCopySourceName1 = new UICommand("cmdCopySourceName");
+			cmdCopySourcePath1 = new UICommand("cmdCopySourcePath");
+			cmdCopySourceUrl1 = new UICommand("cmdCopySourceURL");
+			cmdCopySourceError1 = new UICommand("cmdCopySourceError");
+			cmdCopySourceModifiedItems1 = new UICommand("cmdCopySourceModifiedItems");
+			cmdCopySourceConflictedItems1 = new UICommand("cmdCopySourceConflictedItems");
+			cmdCopySourceUnversionedItems1 = new UICommand("cmdCopySourceUnversionedItems");
+			cmdCopySourceName = new UICommand("cmdCopySourceName");
+			cmdCopySourcePath = new UICommand("cmdCopySourcePath");
+			cmdCopySourceURL = new UICommand("cmdCopySourceURL");
+			cmdCopySourceError = new UICommand("cmdCopySourceError");
+			cmdCopySourceModifiedItems = new UICommand("cmdCopySourceModifiedItems");
+			cmdCopySourceUnversionedItems = new UICommand("cmdCopySourceUnversionedItems");
+			cmdCopySourceConflictedItems = new UICommand("cmdCopySourceConflictedItems");
+			menuAdditionalTortoiseCommands = new UICommand("menuAdditionalTortoiseCommands");
+			cmdCheckout1 = new UICommand("cmdCheckout");
+			cmdRepoBrowser1 = new UICommand("cmdRepoBrowser");
+			cmdRevisionGraph1 = new UICommand("cmdRevisionGraph");
+			cmdResolve1 = new UICommand("cmdResolve");
+			cmdCleanUp1 = new UICommand("cmdCleanUp");
+			cmdDeleteUnversioned1 = new UICommand("cmdDeleteUnversioned");
+			cmdLock2 = new UICommand("cmdLock");
+			cmdUnlock2 = new UICommand("cmdUnlock");
+			Separator13 = new UICommand("Separator");
+			cmdBranchTag1 = new UICommand("cmdBranchTag");
+			cmdSwitch1 = new UICommand("cmdSwitch");
+			cmdMerge1 = new UICommand("cmdMerge");
+			cmdReintegrate1 = new UICommand("cmdReintegrate");
+			cmdExport1 = new UICommand("cmdExport");
+			cmdRelocate1 = new UICommand("cmdRelocate");
+			Separator4 = new UICommand("Separator");
+			cmdCreatePatch2 = new UICommand("cmdCreatePatch");
+			cmdApplyPatch2 = new UICommand("cmdApplyPatch");
+			Separator11 = new UICommand("Separator");
+			cmdProperties2 = new UICommand("cmdProperties");
+			Separator14 = new UICommand("Separator");
+			cmdTSVNSettings2 = new UICommand("cmdTSVNSettings");
+			cmdTSVNHelp2 = new UICommand("cmdTSVNHelp");
+			cmdRepoBrowser = new UICommand("cmdRepoBrowser");
+			cmdRevisionGraph = new UICommand("cmdRevisionGraph");
+			cmdCleanUp = new UICommand("cmdCleanUp");
+			cmdExport = new UICommand("cmdExport");
+			cmdSwitch = new UICommand("cmdSwitch");
+			cmdRelocate = new UICommand("cmdRelocate");
+			cmdProperties = new UICommand("cmdProperties");
+			cmdCheckout = new UICommand("cmdCheckout");
+			cmdResolve = new UICommand("cmdResolve");
+			cmdMerge = new UICommand("cmdMerge");
+			cmdReintegrate = new UICommand("cmdReintegrate");
+			cmdBranchTag = new UICommand("cmdBranchTag");
+			cmdCreatePatch = new UICommand("cmdCreatePatch");
+			cmdApplyPatch = new UICommand("cmdApplyPatch");
+			cmdLock = new UICommand("cmdLock");
+			cmdUnlock = new UICommand("cmdUnlock");
+			cmdDeleteUnversioned = new UICommand("cmdDeleteUnversioned");
+			cmdTSVNSettings = new UICommand("cmdTSVNSettings");
+			cmdTSVNHelp = new UICommand("cmdTSVNHelp");
+			menuEvenMore = new UICommand("menuEvenMore");
+			cmdCreatePatch1 = new UICommand("cmdCreatePatch");
+			cmdApplyPatch1 = new UICommand("cmdApplyPatch");
+			cmdProperties1 = new UICommand("cmdProperties");
+			Separator12 = new UICommand("Separator");
+			cmdTSVNSettings1 = new UICommand("cmdTSVNSettings");
+			cmdTSVNHelp1 = new UICommand("cmdTSVNHelp");
+			filterModified = new UICommand("filterModified");
+			filterNotUpToDate = new UICommand("filterNotUpToDate");
+			filterAll = new UICommand("filterAll");
+			menuShow = new UICommand("menuShow");
+			filterAll1 = new UICommand("filterAll");
+			Separator15 = new UICommand("Separator");
+			filterModified3 = new UICommand("filterModified");
+			filterNotUpToDate3 = new UICommand("filterNotUpToDate");
+			filterEnabled1 = new UICommand("filterEnabled");
+			cmdClearAllErrors = new UICommand("cmdClearAllErrors");
+			filterEnabled = new UICommand("filterEnabled");
+			uiContextMenu1 = new Janus.Windows.UI.CommandBars.UIContextMenu();
+			cmdEnabled1 = new UICommand("cmdEnabled");
+			cmdClearError1 = new UICommand("cmdClearError");
+			cmdClearAllErrors1 = new UICommand("cmdClearAllErrors");
+			cmdExplore1 = new UICommand("cmdExplore");
+			menuClipboard1 = new UICommand("menuClipboard");
+			cmdSVNModifications2 = new UICommand("cmdSVNModifications");
+			cmdShowLog2 = new UICommand("cmdShowLog");
+			cmdSVNUpdate1 = new UICommand("cmdSVNUpdate");
+			cmdSVNCommit1 = new UICommand("cmdSVNCommit");
+			cmdSVNRevert2 = new UICommand("cmdSVNRevert");
+			menuAdditionalTortoiseCommands1 = new UICommand("menuAdditionalTortoiseCommands");
+			Separator8 = new UICommand("Separator");
+			Separator9 = new UICommand("Separator");
+			cmdRefresh1 = new UICommand("cmdRefresh");
+			menuShow2 = new UICommand("menuShow");
+			Separator5 = new UICommand("Separator");
+			menuWizards1 = new UICommand("menuWizards");
+			LeftRebar1 = new UIRebar();
+			RightRebar1 = new UIRebar();
+			TopRebar1 = new UIRebar();
+			sourcesExplorerBar1 = new SVNMonitor.View.Controls.SourcesExplorerBar();
+			panel1 = new Panel();
+			linkShowAllSources = new LinkLabel();
+			filterModified1 = new UICommand("filterModified");
+			filterNotUpToDate2 = new UICommand("filterNotUpToDate");
+			UICommand cmdUpdate1 = new UICommand("cmdUpdate");
+			UICommand cmdUpdateAll1 = new UICommand("cmdUpdateAll");
+			UICommand Separator2 = new UICommand("Separator");
+			UICommand cmdNew2 = new UICommand("cmdNew");
+			UICommand cmdEdit2 = new UICommand("cmdEdit");
+			UICommand cmdDelete2 = new UICommand("cmdDelete");
+			UICommand Separator1 = new UICommand("Separator");
+			UICommand cmdMoveUp2 = new UICommand("cmdMoveUp");
+			UICommand cmdMoveDown2 = new UICommand("cmdMoveDown");
+			UICommand cmdNew1 = new UICommand("cmdNew");
+			UICommand cmdEdit1 = new UICommand("cmdEdit");
+			UICommand cmdDelete1 = new UICommand("cmdDelete");
+			UICommand cmdMoveUp1 = new UICommand("cmdMoveUp");
+			UICommand cmdMoveDown1 = new UICommand("cmdMoveDown");
+			UICommand cmdUpdate2 = new UICommand("cmdUpdate");
+			UICommand cmdUpdateAll2 = new UICommand("cmdUpdateAll");
+			UICommand Separator3 = new UICommand("Separator");
+			((ISupportInitialize)uiCommandManager1).BeginInit();
+			((ISupportInitialize)BottomRebar1).BeginInit();
+			((ISupportInitialize)uiCommandBar1).BeginInit();
+			((ISupportInitialize)uiContextMenu1).BeginInit();
+			((ISupportInitialize)LeftRebar1).BeginInit();
+			((ISupportInitialize)RightRebar1).BeginInit();
+			((ISupportInitialize)TopRebar1).BeginInit();
+			TopRebar1.SuspendLayout();
+			((ISupportInitialize)sourcesExplorerBar1).BeginInit();
+			panel1.SuspendLayout();
+			base.SuspendLayout();
+			cmdUpdate1.Key = "cmdUpdate";
+			cmdUpdate1.Name = "cmdUpdate1";
+			cmdUpdate1.Text = "Chec&k for updates";
+			cmdUpdateAll1.Key = "cmdUpdateAll";
+			cmdUpdateAll1.Name = "cmdUpdateAll1";
+			cmdUpdateAll1.Text = "Check &all for updates";
+			Separator2.CommandType = CommandType.Separator;
+			Separator2.Key = "Separator";
+			Separator2.Name = "Separator2";
+			cmdNew2.Key = "cmdNew";
+			cmdNew2.Name = "cmdNew2";
+			cmdNew2.Text = "&New Source";
+			cmdEdit2.Key = "cmdEdit";
+			cmdEdit2.Name = "cmdEdit2";
+			cmdEdit2.Text = "&Properties";
+			cmdDelete2.Key = "cmdDelete";
+			cmdDelete2.Name = "cmdDelete2";
+			cmdDelete2.Text = "&Delete";
+			Separator1.CommandType = CommandType.Separator;
+			Separator1.Key = "Separator";
+			Separator1.Name = "Separator1";
+			cmdMoveUp2.Key = "cmdMoveUp";
+			cmdMoveUp2.Name = "cmdMoveUp2";
+			cmdMoveUp2.Text = "Mo&ve Up";
+			cmdMoveDown2.Key = "cmdMoveDown";
+			cmdMoveDown2.Name = "cmdMoveDown2";
+			cmdMoveDown2.Text = "Move Do&wn";
+			cmdNew1.CommandStyle = CommandStyle.Image;
+			cmdNew1.Key = "cmdNew";
+			cmdNew1.Name = "cmdNew1";
+			cmdEdit1.CommandStyle = CommandStyle.Image;
+			cmdEdit1.Key = "cmdEdit";
+			cmdEdit1.Name = "cmdEdit1";
+			cmdDelete1.CommandStyle = CommandStyle.Image;
+			cmdDelete1.Key = "cmdDelete";
+			cmdDelete1.Name = "cmdDelete1";
+			cmdMoveUp1.CommandStyle = CommandStyle.Image;
+			cmdMoveUp1.Key = "cmdMoveUp";
+			cmdMoveUp1.Name = "cmdMoveUp1";
+			cmdMoveDown1.CommandStyle = CommandStyle.Image;
+			cmdMoveDown1.Key = "cmdMoveDown";
+			cmdMoveDown1.Name = "cmdMoveDown1";
+			cmdUpdate2.CommandStyle = CommandStyle.Image;
+			cmdUpdate2.Key = "cmdUpdate";
+			cmdUpdate2.Name = "cmdUpdate2";
+			cmdUpdateAll2.CommandStyle = CommandStyle.Image;
+			cmdUpdateAll2.Key = "cmdUpdateAll";
+			cmdUpdateAll2.Name = "cmdUpdateAll2";
+			Separator3.CommandType = CommandType.Separator;
+			Separator3.Key = "Separator";
+			Separator3.Name = "Separator3";
+			cmdNew.Image = (Image)resources.GetObject("cmdNew.Image");
+			cmdNew.Key = "cmdNew";
+			cmdNew.Name = "cmdNew";
+			cmdNew.Text = "New Source";
+			cmdNew.ToolTipText = "New source";
+			cmdNew.Click += cmdNew_Click;
+			cmdEdit.Image = (Image)resources.GetObject("cmdEdit.Image");
+			cmdEdit.Key = "cmdEdit";
+			cmdEdit.Name = "cmdEdit";
+			cmdEdit.Text = "Properties";
+			cmdEdit.ToolTipText = "Properties";
+			cmdEdit.Click += cmdEdit_Click;
+			cmdDelete.Image = (Image)resources.GetObject("cmdDelete.Image");
+			cmdDelete.Key = "cmdDelete";
+			cmdDelete.Name = "cmdDelete";
+			cmdDelete.Text = "Delete";
+			cmdDelete.ToolTipText = "Delete source";
+			cmdDelete.Click += cmdDelete_Click;
+			cmdUpdate.Image = (Image)resources.GetObject("cmdUpdate.Image");
+			cmdUpdate.Key = "cmdUpdate";
+			cmdUpdate.Name = "cmdUpdate";
+			cmdUpdate.Text = "Check for updates";
+			cmdUpdate.ToolTipText = "Check for updates";
+			cmdUpdate.Click += cmdUpdate_Click;
+			cmdUpdateAll.Image = (Image)resources.GetObject("cmdUpdateAll.Image");
+			cmdUpdateAll.Key = "cmdUpdateAll";
+			cmdUpdateAll.Name = "cmdUpdateAll";
+			cmdUpdateAll.Text = "Check all for updates";
+			cmdUpdateAll.ToolTipText = "Check all for updates";
+			cmdUpdateAll.Click += cmdUpdateAll_Click;
+			cmdMoveUp.Image = (Image)resources.GetObject("cmdMoveUp.Image");
+			cmdMoveUp.Key = "cmdMoveUp";
+			cmdMoveUp.Name = "cmdMoveUp";
+			cmdMoveUp.Text = "Move Up";
+			cmdMoveUp.ToolTipText = "Move source up";
+			cmdMoveUp.Click += cmdMoveUp_Click;
+			cmdMoveDown.Image = (Image)resources.GetObject("cmdMoveDown.Image");
+			cmdMoveDown.Key = "cmdMoveDown";
+			cmdMoveDown.Name = "cmdMoveDown";
+			cmdMoveDown.Text = "Move Down";
+			cmdMoveDown.ToolTipText = "Move source down";
+			cmdMoveDown.Click += cmdMoveDown_Click;
+			imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+			imageList1.TransparentColor = Color.Transparent;
+			imageList1.Images.SetKeyName(0, "wc.png");
+			imageList1.Images.SetKeyName(1, "wc.updating.png");
+			imageList1.Images.SetKeyName(2, "repo.error.png");
+			imageList1.Images.SetKeyName(3, "repo.png");
+			imageList1.Images.SetKeyName(4, "repo.updating.png");
+			imageList1.Images.SetKeyName(5, "wc.downdate.modified.png");
+			imageList1.Images.SetKeyName(6, "wc.downdate.png");
+			imageList1.Images.SetKeyName(7, "wc.error.png");
+			imageList1.Images.SetKeyName(8, "wc.modified.png");
+			uiCommandManager1.AllowClose = InheritableBoolean.False;
+			uiCommandManager1.AllowCustomize = InheritableBoolean.False;
+			uiCommandManager1.BottomRebar = BottomRebar1;
+			uiCommandManager1.CommandBars.AddRange(new[]
+			{
+				uiCommandBar1
+			});
+			uiCommandManager1.Commands.AddRange(new[]
+			{
+				cmdNew, cmdEdit, cmdDelete, cmdUpdate, cmdUpdateAll, cmdMoveUp, cmdMoveDown, menuWizards, cmdSVNUpdate, cmdSVNCommit, cmdSVNRevert, cmdSVNModifications, cmdRefresh, cmdEnabled, cmdExplore, cmdClearError,
+				cmdShowLog, menuClipboard, cmdCopySourceName, cmdCopySourcePath, cmdCopySourceURL, cmdCopySourceError, cmdCopySourceModifiedItems, cmdCopySourceUnversionedItems, cmdCopySourceConflictedItems, menuAdditionalTortoiseCommands, cmdRepoBrowser, cmdRevisionGraph, cmdCleanUp, cmdExport, cmdSwitch, cmdRelocate,
+				cmdProperties, cmdCheckout, cmdResolve, cmdMerge, cmdReintegrate, cmdBranchTag, cmdCreatePatch, cmdApplyPatch, cmdLock, cmdUnlock, cmdDeleteUnversioned, cmdTSVNSettings, cmdTSVNHelp, menuEvenMore, filterModified, filterNotUpToDate,
+				filterAll, menuShow, cmdClearAllErrors, filterEnabled
+			});
+			uiCommandManager1.ContainerControl = this;
+			uiCommandManager1.ContextMenus.AddRange(new[]
+			{
+				uiContextMenu1
+			});
+			uiCommandManager1.Id = new Guid("6dcff238-beed-4562-b52d-d0ba855fecb0");
+			uiCommandManager1.LeftRebar = LeftRebar1;
+			uiCommandManager1.LockCommandBars = true;
+			uiCommandManager1.RightRebar = RightRebar1;
+			uiCommandManager1.ShowAddRemoveButton = InheritableBoolean.False;
+			uiCommandManager1.ShowQuickCustomizeMenu = false;
+			uiCommandManager1.TopRebar = TopRebar1;
+			uiCommandManager1.VisualStyle = Janus.Windows.UI.VisualStyle.Standard;
+			BottomRebar1.CommandManager = uiCommandManager1;
+			BottomRebar1.Dock = DockStyle.Bottom;
+			BottomRebar1.Location = new Point(0, 0x152);
+			BottomRebar1.Name = "BottomRebar1";
+			BottomRebar1.Size = new Size(0x1f9, 0);
+			uiCommandBar1.AllowClose = InheritableBoolean.False;
+			uiCommandBar1.AllowCustomize = InheritableBoolean.False;
+			uiCommandBar1.Animation = DropDownAnimation.System;
+			uiCommandBar1.CommandManager = uiCommandManager1;
+			uiCommandBar1.Commands.AddRange(new[]
+			{
+				cmdNew1, cmdEdit1, cmdDelete1, Separator3, cmdSVNModifications1, cmdShowLog1, cmdSVNUpdate2, cmdSVNCommit2, cmdSVNRevert1, Separator7, cmdUpdate2, cmdUpdateAll2, Separator10, cmdMoveUp1, cmdMoveDown1, Separator6,
+				menuWizards2
+			});
+			uiCommandBar1.FullRow = true;
+			uiCommandBar1.Key = "CommandBar1";
+			uiCommandBar1.Location = new Point(0, 0);
+			uiCommandBar1.Name = "uiCommandBar1";
+			uiCommandBar1.RowIndex = 0;
+			uiCommandBar1.ShowAddRemoveButton = InheritableBoolean.False;
+			uiCommandBar1.Size = new Size(0x1d4, 0x1c);
+			uiCommandBar1.Text = "Source";
+			cmdSVNModifications1.CommandStyle = CommandStyle.Image;
+			cmdSVNModifications1.Key = "cmdSVNModifications";
+			cmdSVNModifications1.Name = "cmdSVNModifications1";
+			cmdShowLog1.CommandStyle = CommandStyle.Image;
+			cmdShowLog1.Key = "cmdShowLog";
+			cmdShowLog1.Name = "cmdShowLog1";
+			cmdSVNUpdate2.CommandStyle = CommandStyle.Image;
+			cmdSVNUpdate2.Key = "cmdSVNUpdate";
+			cmdSVNUpdate2.Name = "cmdSVNUpdate2";
+			cmdSVNCommit2.CommandStyle = CommandStyle.Image;
+			cmdSVNCommit2.Key = "cmdSVNCommit";
+			cmdSVNCommit2.Name = "cmdSVNCommit2";
+			cmdSVNRevert1.CommandStyle = CommandStyle.Image;
+			cmdSVNRevert1.Key = "cmdSVNRevert";
+			cmdSVNRevert1.Name = "cmdSVNRevert1";
+			Separator7.CommandType = CommandType.Separator;
+			Separator7.Key = "Separator";
+			Separator7.Name = "Separator7";
+			Separator10.CommandType = CommandType.Separator;
+			Separator10.Key = "Separator";
+			Separator10.Name = "Separator10";
+			Separator6.CommandType = CommandType.Separator;
+			Separator6.Key = "Separator";
+			Separator6.Name = "Separator6";
+			menuWizards2.CommandStyle = CommandStyle.Image;
+			menuWizards2.Key = "menuWizards";
+			menuWizards2.Name = "menuWizards2";
+			menuWizards2.Click += menuWizards2_Click;
+			menuWizards.CommandType = CommandType.ControlPopup;
+			menuWizards.Image = (Image)resources.GetObject("menuWizards.Image");
+			menuWizards.Key = "menuWizards";
+			menuWizards.Name = "menuWizards";
+			menuWizards.Text = "Monitor this source";
+			menuWizards.ToolTipText = "Monitor this source";
+			cmdSVNUpdate.Image = (Image)resources.GetObject("cmdSVNUpdate.Image");
+			cmdSVNUpdate.Key = "cmdSVNUpdate";
+			cmdSVNUpdate.Name = "cmdSVNUpdate";
+			cmdSVNUpdate.Text = "Update";
+			cmdSVNUpdate.ToolTipText = "Update";
+			cmdSVNUpdate.Visible = InheritableBoolean.False;
+			cmdSVNUpdate.Click += cmdSVNUpdate_Click;
+			cmdSVNCommit.Image = (Image)resources.GetObject("cmdSVNCommit.Image");
+			cmdSVNCommit.Key = "cmdSVNCommit";
+			cmdSVNCommit.Name = "cmdSVNCommit";
+			cmdSVNCommit.Text = "Commit";
+			cmdSVNCommit.ToolTipText = "Commit";
+			cmdSVNCommit.Visible = InheritableBoolean.False;
+			cmdSVNCommit.Click += cmdSVNCommit_Click;
+			cmdSVNRevert.Image = (Image)resources.GetObject("cmdSVNRevert.Image");
+			cmdSVNRevert.Key = "cmdSVNRevert";
+			cmdSVNRevert.Name = "cmdSVNRevert";
+			cmdSVNRevert.Text = "Revert";
+			cmdSVNRevert.ToolTipText = "Revert";
+			cmdSVNRevert.Click += cmdSVNRevert_Click;
+			cmdSVNModifications.Image = (Image)resources.GetObject("cmdSVNModifications.Image");
+			cmdSVNModifications.Key = "cmdSVNModifications";
+			cmdSVNModifications.Name = "cmdSVNModifications";
+			cmdSVNModifications.Text = "Check for modifications";
+			cmdSVNModifications.ToolTipText = "Check for modifications";
+			cmdSVNModifications.Click += cmdSVNModifications_Click;
+			cmdRefresh.Image = (Image)resources.GetObject("cmdRefresh.Image");
+			cmdRefresh.Key = "cmdRefresh";
+			cmdRefresh.Name = "cmdRefresh";
+			cmdRefresh.Text = "Refresh log (might take a few minutes...)";
+			cmdRefresh.ToolTipText = "Refresh log (might take a few minutes...)";
+			cmdRefresh.Click += cmdRefresh_Click;
+			cmdEnabled.CommandType = CommandType.ToggleButton;
+			cmdEnabled.Key = "cmdEnabled";
+			cmdEnabled.Name = "cmdEnabled";
+			cmdEnabled.Text = "Enabled";
+			cmdEnabled.ToolTipText = "Enabled";
+			cmdEnabled.Click += cmdEnabled_Click;
+			cmdExplore.Image = (Image)resources.GetObject("cmdExplore.Image");
+			cmdExplore.Key = "cmdExplore";
+			cmdExplore.Name = "cmdExplore";
+			cmdExplore.Text = "Explore";
+			cmdExplore.ToolTipText = "Explore";
+			cmdExplore.Click += cmdExplore_Click;
+			cmdClearError.Image = (Image)resources.GetObject("cmdClearError.Image");
+			cmdClearError.Key = "cmdClearError";
+			cmdClearError.Name = "cmdClearError";
+			cmdClearError.Text = "Clear error";
+			cmdClearError.ToolTipText = "Clear Error";
+			cmdClearError.Click += cmdClearError_Click;
+			cmdShowLog.Image = (Image)resources.GetObject("cmdShowLog.Image");
+			cmdShowLog.Key = "cmdShowLog";
+			cmdShowLog.Name = "cmdShowLog";
+			cmdShowLog.Text = "Show log";
+			cmdShowLog.ToolTipText = "Show log";
+			cmdShowLog.Click += cmdShowLog_Click;
+			menuClipboard.Commands.AddRange(new[]
+			{
+				cmdCopySourceName1, cmdCopySourcePath1, cmdCopySourceUrl1, cmdCopySourceError1, cmdCopySourceModifiedItems1, cmdCopySourceConflictedItems1, cmdCopySourceUnversionedItems1
+			});
+			menuClipboard.Image = (Image)resources.GetObject("menuClipboard.Image");
+			menuClipboard.Key = "menuClipboard";
+			menuClipboard.Name = "menuClipboard";
+			menuClipboard.Text = "Copy to clipboard";
+			menuClipboard.Popup += menuClipboard_Popup;
+			cmdCopySourceName1.Key = "cmdCopySourceName";
+			cmdCopySourceName1.Name = "cmdCopySourceName1";
+			cmdCopySourcePath1.Key = "cmdCopySourcePath";
+			cmdCopySourcePath1.Name = "cmdCopySourcePath1";
+			cmdCopySourceUrl1.Key = "cmdCopySourceURL";
+			cmdCopySourceUrl1.Name = "cmdCopySourceUrl1";
+			cmdCopySourceError1.Key = "cmdCopySourceError";
+			cmdCopySourceError1.Name = "cmdCopySourceError1";
+			cmdCopySourceModifiedItems1.Key = "cmdCopySourceModifiedItems";
+			cmdCopySourceModifiedItems1.Name = "cmdCopySourceModifiedItems1";
+			cmdCopySourceConflictedItems1.Key = "cmdCopySourceConflictedItems";
+			cmdCopySourceConflictedItems1.Name = "cmdCopySourceConflictedItems1";
+			cmdCopySourceUnversionedItems1.Key = "cmdCopySourceUnversionedItems";
+			cmdCopySourceUnversionedItems1.Name = "cmdCopySourceUnversionedItems1";
+			cmdCopySourceName.Image = (Image)resources.GetObject("cmdCopySourceName.Image");
+			cmdCopySourceName.Key = "cmdCopySourceName";
+			cmdCopySourceName.Name = "cmdCopySourceName";
+			cmdCopySourceName.Text = "&Name";
+			cmdCopySourcePath.Image = (Image)resources.GetObject("cmdCopySourcePath.Image");
+			cmdCopySourcePath.Key = "cmdCopySourcePath";
+			cmdCopySourcePath.Name = "cmdCopySourcePath";
+			cmdCopySourcePath.Text = "&Path";
+			cmdCopySourceURL.Image = (Image)resources.GetObject("cmdCopySourceURL.Image");
+			cmdCopySourceURL.Key = "cmdCopySourceURL";
+			cmdCopySourceURL.Name = "cmdCopySourceURL";
+			cmdCopySourceURL.Text = "&URL";
+			cmdCopySourceError.Image = (Image)resources.GetObject("cmdCopySourceError.Image");
+			cmdCopySourceError.Key = "cmdCopySourceError";
+			cmdCopySourceError.Name = "cmdCopySourceError";
+			cmdCopySourceError.Text = "&Error";
+			cmdCopySourceModifiedItems.Image = (Image)resources.GetObject("cmdCopySourceModifiedItems.Image");
+			cmdCopySourceModifiedItems.Key = "cmdCopySourceModifiedItems";
+			cmdCopySourceModifiedItems.Name = "cmdCopySourceModifiedItems";
+			cmdCopySourceModifiedItems.Text = "&Modified items list";
+			cmdCopySourceUnversionedItems.Image = (Image)resources.GetObject("cmdCopySourceUnversionedItems.Image");
+			cmdCopySourceUnversionedItems.Key = "cmdCopySourceUnversionedItems";
+			cmdCopySourceUnversionedItems.Name = "cmdCopySourceUnversionedItems";
+			cmdCopySourceUnversionedItems.Text = "Un&versioned items list";
+			cmdCopySourceConflictedItems.Image = (Image)resources.GetObject("cmdCopySourceConflictedItems.Image");
+			cmdCopySourceConflictedItems.Key = "cmdCopySourceConflictedItems";
+			cmdCopySourceConflictedItems.Name = "cmdCopySourceConflictedItems";
+			cmdCopySourceConflictedItems.Text = "Possible &conflicted items list";
+			menuAdditionalTortoiseCommands.Commands.AddRange(new[]
+			{
+				cmdCheckout1, cmdRepoBrowser1, cmdRevisionGraph1, cmdResolve1, cmdCleanUp1, cmdDeleteUnversioned1, cmdLock2, cmdUnlock2, Separator13, cmdBranchTag1, cmdSwitch1, cmdMerge1, cmdReintegrate1, cmdExport1, cmdRelocate1, Separator4,
+				cmdCreatePatch2, cmdApplyPatch2, Separator11, cmdProperties2, Separator14, cmdTSVNSettings2, cmdTSVNHelp2
+			});
+			menuAdditionalTortoiseCommands.Image = (Image)resources.GetObject("menuAdditionalTortoiseCommands.Image");
+			menuAdditionalTortoiseCommands.Key = "menuAdditionalTortoiseCommands";
+			menuAdditionalTortoiseCommands.Name = "menuAdditionalTortoiseCommands";
+			menuAdditionalTortoiseCommands.Text = "More";
+			cmdCheckout1.Key = "cmdCheckout";
+			cmdCheckout1.Name = "cmdCheckout1";
+			cmdRepoBrowser1.Key = "cmdRepoBrowser";
+			cmdRepoBrowser1.Name = "cmdRepoBrowser1";
+			cmdRevisionGraph1.Key = "cmdRevisionGraph";
+			cmdRevisionGraph1.Name = "cmdRevisionGraph1";
+			cmdResolve1.Key = "cmdResolve";
+			cmdResolve1.Name = "cmdResolve1";
+			cmdCleanUp1.Key = "cmdCleanUp";
+			cmdCleanUp1.Name = "cmdCleanUp1";
+			cmdDeleteUnversioned1.Key = "cmdDeleteUnversioned";
+			cmdDeleteUnversioned1.Name = "cmdDeleteUnversioned1";
+			cmdLock2.Key = "cmdLock";
+			cmdLock2.Name = "cmdLock2";
+			cmdUnlock2.Key = "cmdUnlock";
+			cmdUnlock2.Name = "cmdUnlock2";
+			Separator13.CommandType = CommandType.Separator;
+			Separator13.Key = "Separator";
+			Separator13.Name = "Separator13";
+			cmdBranchTag1.Key = "cmdBranchTag";
+			cmdBranchTag1.Name = "cmdBranchTag1";
+			cmdSwitch1.Key = "cmdSwitch";
+			cmdSwitch1.Name = "cmdSwitch1";
+			cmdMerge1.Key = "cmdMerge";
+			cmdMerge1.Name = "cmdMerge1";
+			cmdReintegrate1.Key = "cmdReintegrate";
+			cmdReintegrate1.Name = "cmdReintegrate1";
+			cmdExport1.Key = "cmdExport";
+			cmdExport1.Name = "cmdExport1";
+			cmdRelocate1.Key = "cmdRelocate";
+			cmdRelocate1.Name = "cmdRelocate1";
+			Separator4.CommandType = CommandType.Separator;
+			Separator4.Key = "Separator";
+			Separator4.Name = "Separator4";
+			cmdCreatePatch2.Key = "cmdCreatePatch";
+			cmdCreatePatch2.Name = "cmdCreatePatch2";
+			cmdApplyPatch2.Key = "cmdApplyPatch";
+			cmdApplyPatch2.Name = "cmdApplyPatch2";
+			Separator11.CommandType = CommandType.Separator;
+			Separator11.Key = "Separator";
+			Separator11.Name = "Separator11";
+			cmdProperties2.Key = "cmdProperties";
+			cmdProperties2.Name = "cmdProperties2";
+			Separator14.CommandType = CommandType.Separator;
+			Separator14.Key = "Separator";
+			Separator14.Name = "Separator14";
+			cmdTSVNSettings2.Key = "cmdTSVNSettings";
+			cmdTSVNSettings2.Name = "cmdTSVNSettings2";
+			cmdTSVNHelp2.Key = "cmdTSVNHelp";
+			cmdTSVNHelp2.Name = "cmdTSVNHelp2";
+			cmdRepoBrowser.Image = (Image)resources.GetObject("cmdRepoBrowser.Image");
+			cmdRepoBrowser.Key = "cmdRepoBrowser";
+			cmdRepoBrowser.Name = "cmdRepoBrowser";
+			cmdRepoBrowser.Text = "Repo &browser";
+			cmdRepoBrowser.Click += cmdRepoBrowser_Click;
+			cmdRevisionGraph.Image = (Image)resources.GetObject("cmdRevisionGraph.Image");
+			cmdRevisionGraph.Key = "cmdRevisionGraph";
+			cmdRevisionGraph.Name = "cmdRevisionGraph";
+			cmdRevisionGraph.Text = "Revision &graph";
+			cmdRevisionGraph.Click += cmdRevisionGraph_Click;
+			cmdCleanUp.Image = (Image)resources.GetObject("cmdCleanUp.Image");
+			cmdCleanUp.Key = "cmdCleanUp";
+			cmdCleanUp.Name = "cmdCleanUp";
+			cmdCleanUp.Text = "&Clean up";
+			cmdCleanUp.Click += cmdCleanUp_Click;
+			cmdExport.Image = (Image)resources.GetObject("cmdExport.Image");
+			cmdExport.Key = "cmdExport";
+			cmdExport.Name = "cmdExport";
+			cmdExport.Text = "&Export";
+			cmdExport.Click += cmdExport_Click;
+			cmdSwitch.Image = (Image)resources.GetObject("cmdSwitch.Image");
+			cmdSwitch.Key = "cmdSwitch";
+			cmdSwitch.Name = "cmdSwitch";
+			cmdSwitch.Text = "&Switch";
+			cmdSwitch.Click += cmdSwitch_Click;
+			cmdRelocate.Image = (Image)resources.GetObject("cmdRelocate.Image");
+			cmdRelocate.Key = "cmdRelocate";
+			cmdRelocate.Name = "cmdRelocate";
+			cmdRelocate.Text = "&Relocate";
+			cmdRelocate.Click += cmdRelocate_Click;
+			cmdProperties.Image = (Image)resources.GetObject("cmdProperties.Image");
+			cmdProperties.Key = "cmdProperties";
+			cmdProperties.Name = "cmdProperties";
+			cmdProperties.Text = "SVN-&Properties";
+			cmdProperties.Click += cmdProperties_Click;
+			cmdCheckout.Image = (Image)resources.GetObject("cmdCheckout.Image");
+			cmdCheckout.Key = "cmdCheckout";
+			cmdCheckout.Name = "cmdCheckout";
+			cmdCheckout.Text = "Chec&kout";
+			cmdCheckout.Click += cmdCheckout_Click;
+			cmdResolve.Key = "cmdResolve";
+			cmdResolve.Name = "cmdResolve";
+			cmdResolve.Text = "Resolve";
+			cmdResolve.Click += cmdResolve_Click;
+			cmdMerge.Key = "cmdMerge";
+			cmdMerge.Name = "cmdMerge";
+			cmdMerge.Text = "Merge";
+			cmdMerge.Click += cmdMerge_Click;
+			cmdReintegrate.Key = "cmdReintegrate";
+			cmdReintegrate.Name = "cmdReintegrate";
+			cmdReintegrate.Text = "Reintegrate";
+			cmdReintegrate.Click += cmdReintegrate_Click;
+			cmdBranchTag.Key = "cmdBranchTag";
+			cmdBranchTag.Name = "cmdBranchTag";
+			cmdBranchTag.Text = "Branch/Tag";
+			cmdBranchTag.Click += cmdBranchTag_Click;
+			cmdCreatePatch.Key = "cmdCreatePatch";
+			cmdCreatePatch.Name = "cmdCreatePatch";
+			cmdCreatePatch.Text = "Create Patch";
+			cmdCreatePatch.Click += cmdCreatePatch_Click;
+			cmdApplyPatch.Key = "cmdApplyPatch";
+			cmdApplyPatch.Name = "cmdApplyPatch";
+			cmdApplyPatch.Text = "Apply Patch";
+			cmdApplyPatch.Click += cmdApplyPatch_Click;
+			cmdLock.Key = "cmdLock";
+			cmdLock.Name = "cmdLock";
+			cmdLock.Text = "Get Lock";
+			cmdLock.Click += cmdLock_Click;
+			cmdUnlock.Key = "cmdUnlock";
+			cmdUnlock.Name = "cmdUnlock";
+			cmdUnlock.Text = "Release Lock";
+			cmdUnlock.Click += cmdUnlock_Click;
+			cmdDeleteUnversioned.Key = "cmdDeleteUnversioned";
+			cmdDeleteUnversioned.Name = "cmdDeleteUnversioned";
+			cmdDeleteUnversioned.Text = "Delete Unversioned Items";
+			cmdDeleteUnversioned.Click += cmdDeleteUnversioned_Click;
+			cmdTSVNSettings.Key = "cmdTSVNSettings";
+			cmdTSVNSettings.Name = "cmdTSVNSettings";
+			cmdTSVNSettings.Text = "TortoiseSVN Settings";
+			cmdTSVNSettings.Click += cmdTSVNSettings_Click;
+			cmdTSVNHelp.Key = "cmdTSVNHelp";
+			cmdTSVNHelp.Name = "cmdTSVNHelp";
+			cmdTSVNHelp.Text = "TortoiseSVN Help";
+			cmdTSVNHelp.Click += cmdTSVNHelp_Click;
+			menuEvenMore.Commands.AddRange(new[]
+			{
+				cmdCreatePatch1, cmdApplyPatch1, cmdProperties1, Separator12, cmdTSVNSettings1, cmdTSVNHelp1
+			});
+			menuEvenMore.Key = "menuEvenMore";
+			menuEvenMore.Name = "menuEvenMore";
+			menuEvenMore.Text = "Even More";
+			cmdCreatePatch1.Key = "cmdCreatePatch";
+			cmdCreatePatch1.Name = "cmdCreatePatch1";
+			cmdApplyPatch1.Key = "cmdApplyPatch";
+			cmdApplyPatch1.Name = "cmdApplyPatch1";
+			cmdProperties1.Key = "cmdProperties";
+			cmdProperties1.Name = "cmdProperties1";
+			Separator12.CommandType = CommandType.Separator;
+			Separator12.Key = "Separator";
+			Separator12.Name = "Separator12";
+			cmdTSVNSettings1.Key = "cmdTSVNSettings";
+			cmdTSVNSettings1.Name = "cmdTSVNSettings1";
+			cmdTSVNHelp1.Key = "cmdTSVNHelp";
+			cmdTSVNHelp1.Name = "cmdTSVNHelp1";
+			filterModified.CommandType = CommandType.ToggleButton;
+			filterModified.Key = "filterModified";
+			filterModified.Name = "filterModified";
+			filterModified.Text = "&Modified";
+			filterModified.Click += filter_Click;
+			filterNotUpToDate.CommandType = CommandType.ToggleButton;
+			filterNotUpToDate.Key = "filterNotUpToDate";
+			filterNotUpToDate.Name = "filterNotUpToDate";
+			filterNotUpToDate.Text = "&Has Updates";
+			filterNotUpToDate.Click += filter_Click;
+			filterAll.Checked = InheritableBoolean.True;
+			filterAll.CommandType = CommandType.ToggleButton;
+			filterAll.Key = "filterAll";
+			filterAll.Name = "filterAll";
+			filterAll.Text = "&All";
+			filterAll.Click += filterAll_Click;
+			menuShow.Commands.AddRange(new[]
+			{
+				filterAll1, Separator15, filterModified3, filterNotUpToDate3, filterEnabled1
+			});
+			menuShow.IsEditableControl = InheritableBoolean.False;
+			menuShow.Key = "menuShow";
+			menuShow.Name = "menuShow";
+			menuShow.Text = "&Show";
+			filterAll1.Key = "filterAll";
+			filterAll1.Name = "filterAll1";
+			Separator15.CommandType = CommandType.Separator;
+			Separator15.Key = "Separator";
+			Separator15.Name = "Separator15";
+			filterModified3.Key = "filterModified";
+			filterModified3.Name = "filterModified3";
+			filterNotUpToDate3.Key = "filterNotUpToDate";
+			filterNotUpToDate3.Name = "filterNotUpToDate3";
+			filterEnabled1.Key = "filterEnabled";
+			filterEnabled1.Name = "filterEnabled1";
+			cmdClearAllErrors.Key = "cmdClearAllErrors";
+			cmdClearAllErrors.Name = "cmdClearAllErrors";
+			cmdClearAllErrors.Text = "Clear All Errors";
+			cmdClearAllErrors.Click += cmdClearAllErrors_Click;
+			filterEnabled.CommandType = CommandType.ToggleButton;
+			filterEnabled.Key = "filterEnabled";
+			filterEnabled.Name = "filterEnabled";
+			filterEnabled.Text = "&Enabled";
+			filterEnabled.Click += filter_Click;
+			uiContextMenu1.CommandManager = uiCommandManager1;
+			uiContextMenu1.Commands.AddRange(new[]
+			{
+				cmdEnabled1, cmdClearError1, cmdClearAllErrors1, cmdExplore1, cmdNew2, cmdEdit2, cmdDelete2, menuClipboard1, Separator2, cmdSVNModifications2, cmdShowLog2, cmdSVNUpdate1, cmdSVNCommit1, cmdSVNRevert2, menuAdditionalTortoiseCommands1, Separator8,
+				cmdUpdate1, cmdUpdateAll1, Separator9, cmdRefresh1, Separator1, cmdMoveUp2, cmdMoveDown2, menuShow2, Separator5, menuWizards1
+			});
+			uiContextMenu1.Key = "ContextMenu1";
+			cmdEnabled1.Key = "cmdEnabled";
+			cmdEnabled1.Name = "cmdEnabled1";
+			cmdEnabled1.Text = "&Enabled";
+			cmdClearError1.Key = "cmdClearError";
+			cmdClearError1.Name = "cmdClearError1";
+			cmdClearError1.Text = "Clear &error";
+			cmdClearAllErrors1.Key = "cmdClearAllErrors";
+			cmdClearAllErrors1.Name = "cmdClearAllErrors1";
+			cmdExplore1.Key = "cmdExplore";
+			cmdExplore1.Name = "cmdExplore1";
+			cmdExplore1.Text = "E&xplore";
+			menuClipboard1.Key = "menuClipboard";
+			menuClipboard1.Name = "menuClipboard1";
+			menuClipboard1.Text = "Copy &to clipboard";
+			cmdSVNModifications2.Key = "cmdSVNModifications";
+			cmdSVNModifications2.Name = "cmdSVNModifications2";
+			cmdSVNModifications2.Text = "Check modi&fications";
+			cmdShowLog2.Key = "cmdShowLog";
+			cmdShowLog2.Name = "cmdShowLog2";
+			cmdShowLog2.Text = "&Show log";
+			cmdSVNUpdate1.Key = "cmdSVNUpdate";
+			cmdSVNUpdate1.Name = "cmdSVNUpdate1";
+			cmdSVNUpdate1.Text = "&Update";
+			cmdSVNCommit1.Key = "cmdSVNCommit";
+			cmdSVNCommit1.Name = "cmdSVNCommit1";
+			cmdSVNCommit1.Text = "&Commit";
+			cmdSVNRevert2.Key = "cmdSVNRevert";
+			cmdSVNRevert2.Name = "cmdSVNRevert2";
+			cmdSVNRevert2.Text = "Re&vert";
+			menuAdditionalTortoiseCommands1.Key = "menuAdditionalTortoiseCommands";
+			menuAdditionalTortoiseCommands1.Name = "menuAdditionalTortoiseCommands1";
+			menuAdditionalTortoiseCommands1.Text = "M&ore";
+			Separator8.CommandType = CommandType.Separator;
+			Separator8.Key = "Separator";
+			Separator8.Name = "Separator8";
+			Separator9.CommandType = CommandType.Separator;
+			Separator9.Key = "Separator";
+			Separator9.Name = "Separator9";
+			cmdRefresh1.Key = "cmdRefresh";
+			cmdRefresh1.Name = "cmdRefresh1";
+			cmdRefresh1.Text = "&Refresh log (might take a few minutes...)";
+			menuShow2.Key = "menuShow";
+			menuShow2.Name = "menuShow2";
+			Separator5.CommandType = CommandType.Separator;
+			Separator5.Key = "Separator";
+			Separator5.Name = "Separator5";
+			menuWizards1.Key = "menuWizards";
+			menuWizards1.Name = "menuWizards1";
+			menuWizards1.Text = "&Monitor this source";
+			LeftRebar1.CommandManager = uiCommandManager1;
+			LeftRebar1.Dock = DockStyle.Left;
+			LeftRebar1.Location = new Point(0, 0x1c);
+			LeftRebar1.Name = "LeftRebar1";
+			LeftRebar1.Size = new Size(0, 310);
+			RightRebar1.CommandManager = uiCommandManager1;
+			RightRebar1.Dock = DockStyle.Right;
+			RightRebar1.Location = new Point(0x1f9, 0x1c);
+			RightRebar1.Name = "RightRebar1";
+			RightRebar1.Size = new Size(0, 310);
+			TopRebar1.CommandBars.AddRange(new[]
+			{
+				uiCommandBar1
+			});
+			TopRebar1.CommandManager = uiCommandManager1;
+			TopRebar1.Controls.Add(uiCommandBar1);
+			TopRebar1.Dock = DockStyle.Top;
+			TopRebar1.Location = new Point(0, 0);
+			TopRebar1.Name = "TopRebar1";
+			TopRebar1.Size = new Size(0x1d4, 0x1c);
+			sourcesExplorerBar1.BackgroundFormatStyle.BackColor = Color.White;
+			sourcesExplorerBar1.BackgroundFormatStyle.BackColorGradient = Color.Transparent;
+			sourcesExplorerBar1.BorderStyle = Janus.Windows.ExplorerBar.BorderStyle.None;
+			uiCommandManager1.SetContextMenu(sourcesExplorerBar1, uiContextMenu1);
+			sourcesExplorerBar1.Dock = DockStyle.Fill;
+			sourcesExplorerBar1.GroupSeparation = 14;
+			sourcesExplorerBar1.GroupsStateStyles.FormatStyle.BackColor = Color.Gainsboro;
+			sourcesExplorerBar1.GroupsStateStyles.FormatStyle.BackColorGradient = Color.Silver;
+			sourcesExplorerBar1.GroupsStateStyles.FormatStyle.BackgroundGradientMode = Janus.Windows.ExplorerBar.BackgroundGradientMode.Vertical;
+			sourcesExplorerBar1.GroupsStateStyles.FormatStyle.ForeColor = Color.Black;
+			sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.BackColor = Color.Silver;
+			sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.BackColorGradient = Color.Gainsboro;
+			sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.BackgroundGradientMode = Janus.Windows.ExplorerBar.BackgroundGradientMode.Vertical;
+			sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.BackgroundThemeStyle = BackgroundThemeStyle.GroupHeader;
+			sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.ForeColor = Color.Black;
+			sourcesExplorerBar1.GroupsStateStyles.HotFormatStyle.ForegroundThemeStyle = ForegroundThemeStyle.GroupHeader;
+			sourcesExplorerBar1.GroupsStateStyles.SelectedFormatStyle.BackColor = SystemColors.Control;
+			sourcesExplorerBar1.Location = new Point(0, 0x17);
+			sourcesExplorerBar1.Name = "sourcesExplorerBar1";
+			sourcesExplorerBar1.Size = new Size(0x1d4, 0x15a);
+			sourcesExplorerBar1.SpecialGroupsStateStyles.FormatStyle.BackColor = Color.LightSkyBlue;
+			sourcesExplorerBar1.SpecialGroupsStateStyles.FormatStyle.BackColorGradient = Color.SteelBlue;
+			sourcesExplorerBar1.SpecialGroupsStateStyles.FormatStyle.BackgroundGradientMode = Janus.Windows.ExplorerBar.BackgroundGradientMode.Vertical;
+			sourcesExplorerBar1.SpecialGroupsStateStyles.FormatStyle.ForeColor = Color.White;
+			sourcesExplorerBar1.SpecialGroupsStateStyles.HotFormatStyle.BackColor = Color.SteelBlue;
+			sourcesExplorerBar1.SpecialGroupsStateStyles.HotFormatStyle.BackColorGradient = Color.LightSkyBlue;
+			sourcesExplorerBar1.SpecialGroupsStateStyles.HotFormatStyle.BackgroundGradientMode = Janus.Windows.ExplorerBar.BackgroundGradientMode.Vertical;
+			sourcesExplorerBar1.TabIndex = 1;
+			sourcesExplorerBar1.ThemedAreas = ThemedArea.None;
+			sourcesExplorerBar1.TopMargin = 14;
+			sourcesExplorerBar1.KeyDown += sources1_KeyDown;
+			sourcesExplorerBar1.SelectionChanged += sources1_SelectionChanged;
+			sourcesExplorerBar1.MouseDoubleClick += sourcesExplorerBar1_MouseDoubleClick;
+			sourcesExplorerBar1.MouseDown += sourcesExplorerBar1_MouseDown;
+			panel1.BackColor = Color.DimGray;
+			panel1.Controls.Add(sourcesExplorerBar1);
+			panel1.Controls.Add(linkShowAllSources);
+			panel1.Dock = DockStyle.Fill;
+			panel1.Location = new Point(0, 0x1c);
+			panel1.Name = "panel1";
+			panel1.Padding = new Padding(0, 1, 0, 0);
+			panel1.Size = new Size(0x1d4, 0x171);
+			panel1.TabIndex = 2;
+			linkShowAllSources.ActiveLinkColor = Color.FromArgb(0xff, 0xff, 0xc0);
+			linkShowAllSources.BackColor = Color.Moccasin;
+			linkShowAllSources.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			linkShowAllSources.Dock = DockStyle.Top;
+			linkShowAllSources.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular, GraphicsUnit.Point, 0xb1);
+			linkShowAllSources.LinkBehavior = LinkBehavior.NeverUnderline;
+			linkShowAllSources.LinkColor = Color.Black;
+			linkShowAllSources.Location = new Point(0, 1);
+			linkShowAllSources.Name = "linkShowAllSources";
+			linkShowAllSources.Size = new Size(0x1d4, 0x16);
+			linkShowAllSources.TabIndex = 2;
+			linkShowAllSources.TabStop = true;
+			linkShowAllSources.Text = "Some sources are hidden. Click here to show all.";
+			linkShowAllSources.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			linkShowAllSources.Visible = false;
+			linkShowAllSources.LinkClicked += linkShowAllSources_LinkClicked;
+			filterModified1.Key = "filterModified";
+			filterModified1.Name = "filterModified1";
+			filterNotUpToDate2.Key = "filterNotUpToDate";
+			filterNotUpToDate2.Name = "filterNotUpToDate2";
+			AllowDrop = true;
+			base.AutoScaleDimensions = new SizeF(6f, 13f);
+			base.AutoScaleMode = AutoScaleMode.Font;
+			base.Controls.Add(panel1);
+			base.Controls.Add(TopRebar1);
+			base.Name = "SourcesPanel";
+			base.Size = new Size(0x1d4, 0x18d);
+			base.DragDrop += SourcesPanel_DragDrop;
+			base.DragEnter += SourcesPanel_DragEnter;
+			((ISupportInitialize)uiCommandManager1).EndInit();
+			((ISupportInitialize)BottomRebar1).EndInit();
+			((ISupportInitialize)uiCommandBar1).EndInit();
+			((ISupportInitialize)uiContextMenu1).EndInit();
+			((ISupportInitialize)LeftRebar1).EndInit();
+			((ISupportInitialize)RightRebar1).EndInit();
+			((ISupportInitialize)TopRebar1).EndInit();
+			TopRebar1.ResumeLayout(false);
+			((ISupportInitialize)sourcesExplorerBar1).EndInit();
+			panel1.ResumeLayout(false);
+			base.ResumeLayout(false);
+		}
+
+		private void linkShowAllSources_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			Logger.LogUserAction();
+			ShowAllSources();
+		}
+
+		private void LoadFilterSettings()
+		{
+			loadingFilterSettings = true;
+			filterEnabled.Checked = ApplicationSettingsManager.Settings.SourcesFilter_Enabled.ToInheritableBoolean();
+			filterModified.Checked = ApplicationSettingsManager.Settings.SourcesFilter_Modified.ToInheritableBoolean();
+			filterNotUpToDate.Checked = ApplicationSettingsManager.Settings.SourcesFilter_NotUpToDate.ToInheritableBoolean();
+			filterAll.Checked = ((!filterEnabled.Checked.ToBool() && !filterModified.Checked.ToBool()) && !filterNotUpToDate.Checked.ToBool()).ToInheritableBoolean();
+			loadingFilterSettings = false;
+		}
+
+		private void menuClipboard_Popup(object sender, CommandEventArgs e)
+		{
+			UIHelper.RefreshCopyCommands(e.Command.Commands);
+		}
+
+		private void menuWizards2_Click(object sender, CommandEventArgs e)
+		{
+			Logger.LogUserAction();
+			RunCustomWizard();
+		}
+
+		protected virtual void OnSelectionChanged()
+		{
+			if (selectionChanged != null)
+			{
+				selectionChanged(this, EventArgs.Empty);
+			}
+			presenter.EnableCommands();
+		}
+
+		private bool QuickCreateNewSource(string folderName, bool interactive)
+		{
+			Source source = Source.FromURL(folderName);
+			if (interactive)
+			{
+				bool cancel;
+				presenter.New(source, out cancel);
+				if (cancel)
+				{
+					return false;
+				}
+			}
+			MonitorSettings.Instance.AddEntity(source);
+			return true;
+		}
+
+		public void Refetch()
+		{
+			SourcesExplorerBar.RefreshEntities();
+		}
+
+		private void RefreshAndSetFilter(bool saveFilterSettings)
+		{
+			if (base.InvokeRequired)
+			{
+				base.Invoke(new Action<bool>(RefreshAndSetFilter), new object[]
+				{
+					saveFilterSettings
+				});
+			}
+			else
+			{
+				if (saveFilterSettings)
+				{
+					SaveFilterSettings();
+				}
+				SearchTextBox.Search(GetFilterPredicate());
+			}
+		}
+
+		private void RefreshLog()
+		{
+			Source source = SelectedItem;
+			Updater.Instance.RefreshSource(source);
+		}
+
+		private void RegisterExplorerBarEvents()
+		{
+			UnregisterExplorerBarEvents();
+			SourcesExplorerBar.ChangesClick += SourcesExplorerBar_ItemChangesClick;
+			SourcesExplorerBar.ConflictsClick += SourcesExplorerBar_ItemConflictsClick;
+			SourcesExplorerBar.ErrorClick += SourcesExplorerBar_ItemErrorClick;
+			SourcesExplorerBar.PathClick += SourcesExplorerBar_ItemPathClick;
+			SourcesExplorerBar.SyncdClick += SourcesExplorerBar_ItemSyncdClick;
+			SourcesExplorerBar.UnversionedClick += SourcesExplorerBar_ItemUnversionedClick;
+			SourcesExplorerBar.UpdatesClick += SourcesExplorerBar_ItemUpdatesClick;
+		}
+
+		private void RunCustomWizard()
+		{
+			Source source = SelectedItem;
+			new CustomWizard().Run(source.Name, "LogEntries", "Source");
+		}
+
+		private void SaveFilterSettings()
+		{
+			if (!loadingFilterSettings)
+			{
+				ApplicationSettingsManager.Settings.SourcesFilter_Enabled = filterEnabled.Checked.ToBool();
+				ApplicationSettingsManager.Settings.SourcesFilter_Modified = filterModified.Checked.ToBool();
+				ApplicationSettingsManager.Settings.SourcesFilter_NotUpToDate = filterNotUpToDate.Checked.ToBool();
+				ApplicationSettingsManager.SaveSettings();
+			}
+		}
+
+		public void SelectSource(Source source)
+		{
+			SourcesExplorerBar.SelectEntity(source);
+		}
+
+		public void SetSearchResults(IEnumerable<Source> results)
+		{
+			SourcesExplorerBar.SetVisibleEntities(results);
+			int count = results.Count();
+			ShowingAllItems = count == Entities.Count;
+			OnSelectionChanged();
+		}
+
+		private void ShowAllSources()
+		{
+			SearchTextBox.ClearNoFocus();
+			filterAll.Checked = InheritableBoolean.True;
+			ClearFilter();
+		}
+
+		private void Source_StatusChanged(object sender, StatusChangedEventArgs e)
+		{
+			SourcesExplorerBar.RefreshEntity((Source)e.Entity);
+			presenter.EnableCommands();
+			RefreshAndSetFilter(false);
+		}
+
+		private void SourceDragDrop(DragEventArgs e)
+		{
+			if (e.Data != null)
+			{
+				string[] folderNames = GetDraggedFolderNames(e.Data);
+				if ((folderNames != null) && (folderNames.Length != 0))
+				{
+					int count = 0;
+					for (int i = 0; i < folderNames.Length; i++)
+					{
+						string folderName = folderNames[i];
+						if (FileSystemHelper.DirectoryExists(folderName))
+						{
+							bool interactive = (e.KeyState & 8) != 8;
+							if (QuickCreateNewSource(folderName, interactive))
+							{
+								count++;
+							}
+						}
+					}
+					if (count > 0)
+					{
+						string message = Strings.SourcesCreated_FORMAT.FormatWith(new object[]
+						{
+							count, (count == 1) ? Strings.SourcesCreated_Source : Strings.SourcesCreated_Sources
+						});
+						SVNMonitor.EventLog.LogInfo(message, folderNames);
+						MainForm.FormInstance.ShowMessage(message, Strings.SVNMonitorCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+					}
+				}
+			}
+		}
+
+		private void SourceDragEnter(DragEventArgs e)
+		{
+			e.Effect = DragDropEffects.None;
+			if (e.Data != null)
+			{
+				string[] folderNames = GetDraggedFolderNames(e.Data);
+				if ((folderNames != null) && (folderNames.Length != 0))
+				{
+					e.Effect = DragDropEffects.None;
+					foreach (string folderName in folderNames)
+					{
+						if (FileSystemHelper.DirectoryExists(folderName))
+						{
+							e.Effect = DragDropEffects.Copy;
+							return;
+						}
+					}
+				}
+			}
+		}
+
+		private void sources1_KeyDown(object sender, KeyEventArgs e)
+		{
+			presenter.HandleKey(e);
+		}
+
+		private void sources1_SelectionChanged(object sender, EventArgs e)
+		{
+			presenter.EnableCommands();
+		}
+
+		private void SourcesExplorerBar_ItemChangesClick(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNCommit();
+		}
+
+		private void SourcesExplorerBar_ItemConflictsClick(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNDiff();
+		}
+
+		private void SourcesExplorerBar_ItemErrorClick(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			FocusError();
+		}
+
+		private void SourcesExplorerBar_ItemPathClick(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			Browse();
+		}
+
+		private void SourcesExplorerBar_ItemSyncdClick(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNCheckModifications();
+		}
+
+		private void SourcesExplorerBar_ItemUnversionedClick(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNAdd();
+		}
+
+		private void SourcesExplorerBar_ItemUpdatesClick(object sender, EventArgs e)
+		{
+			Logger.LogUserAction();
+			SVNUpdate();
+		}
+
+		private void sourcesExplorerBar1_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			bool cancel;
+			Logger.LogUserAction();
+			bool isGroup = SourcesExplorerBar.IsGroupAtLocation(e.Location, out cancel);
+			if (!cancel)
+			{
+				if (isGroup)
+				{
+					Edit();
+				}
+				else
+				{
+					presenter.New();
+				}
+			}
+		}
+
+		private void sourcesExplorerBar1_MouseDown(object sender, MouseEventArgs e)
+		{
+			SourcesExplorerBar.SelectEntity(e.Location);
+		}
+
+		private void SourcesPanel_DragDrop(object sender, DragEventArgs e)
+		{
+			Logger.LogUserAction();
+			SourceDragDrop(e);
+		}
+
+		private void SourcesPanel_DragEnter(object sender, DragEventArgs e)
+		{
+			Logger.LogUserAction();
+			SourceDragEnter(e);
+		}
+
+		private void SVNAdd()
+		{
+			Source source = SelectedItem;
+			SVNAdd(source);
+		}
+
+		private void SVNAdd(Source source)
+		{
+			source.SVNAdd();
+		}
+
+		private void SVNApplyPatch()
+		{
+			SelectedItem.ApplyPatch();
+		}
+
+		private void SVNBranchTag()
+		{
+			SelectedItem.BranchTag();
+		}
+
+		internal void SVNCheckModifications()
+		{
+			Source source = SelectedItem;
+			SVNCheckModifications(source);
+		}
+
+		private void SVNCheckModifications(Source source)
+		{
+			source.CheckModifications();
+		}
+
+		private void SVNCheckout()
+		{
+			SelectedItem.Checkout();
+		}
+
+		private void SVNCleanUp()
+		{
+			SelectedItem.CleanUp();
+		}
+
+		internal void SVNCommit()
+		{
+			Source source = SelectedItem;
+			SVNCommit(source);
+		}
+
+		private void SVNCommit(Source source)
+		{
+			source.SVNCommit();
+		}
+
+		private void SVNCreatePatch()
+		{
+			SelectedItem.CreatePatch();
+		}
+
+		private void SVNDeleteUnversioned()
+		{
+			SelectedItem.DeleteUnversioned();
+		}
+
+		private void SVNDiff()
+		{
+			SelectedItem.SVNDiff();
+		}
+
+		private void SVNExport()
+		{
+			SelectedItem.Export();
+		}
+
+		private void SVNGetLock()
+		{
+			SelectedItem.GetLock();
+		}
+
+		private void SVNMerge()
+		{
+			SelectedItem.Merge();
+		}
+
+		object ISelectableView<Source>.Invoke(Delegate delegate1)
+		{
+			return base.Invoke(delegate1);
+		}
+
+		void IUserEntityView<Source>.Delete()
+		{
+			SourcesExplorerBar.Delete();
+			OnSelectionChanged();
+		}
+
+		DialogResult IUserEntityView<Source>.UserEdit(Source entity)
+		{
+			Source source = entity;
+			Logger.Log.InfoFormat("Editing source (source={0})", source);
+			DialogResult result = SourcePropertiesDialog.ShowDialog(source);
+			if ((result == DialogResult.OK) && (source != null))
+			{
+				Logger.Log.InfoFormat("User pressed OK (source={0})", source);
+				Updater.Instance.QueueUpdate(source, false);
+			}
+			return result;
+		}
+
+		DialogResult IUserEntityView<Source>.UserNew(Source entity)
+		{
+			Source source = entity;
+			Logger.Log.InfoFormat("Creating source (GUID={0})", source.Guid);
+			DialogResult result = SourcePropertiesDialog.ShowDialog(source);
+			if ((result == DialogResult.OK) && (source != null))
+			{
+				Logger.Log.InfoFormat("User pressed OK (source={0})", source);
+				SVNMonitor.EventLog.Log(SVNMonitor.EventLogEntryType.Source, string.Format("Source '{0}' created", entity.Name), entity);
+				if (source.Enabled)
+				{
+					Logger.Log.InfoFormat("Source is enabled. Updating.", new object[0]);
+					SVNMonitor.EventLog.Log(SVNMonitor.EventLogEntryType.Source, "Getting source information...", entity);
+					Updater.Instance.QueueUpdate(source, false);
+				}
+			}
+			return result;
+		}
+
+		private void SVNProperties()
+		{
+			SelectedItem.Properties();
+		}
+
+		private void SVNReintegrate()
+		{
+			SelectedItem.Reintegrate();
+		}
+
+		private void SVNReleaseLock()
+		{
+			SelectedItem.ReleaseLock();
+		}
+
+		private void SVNRelocate()
+		{
+			SelectedItem.Relocate();
+		}
+
+		private void SVNRepoBrowser()
+		{
+			SelectedItem.RepoBrowser();
+		}
+
+		private void SVNResolve()
+		{
+			SelectedItem.Resolve();
+		}
+
+		internal void SVNRevert()
+		{
+			SelectedItem.SVNRevert();
+		}
+
+		private void SVNRevisionGraph()
+		{
+			SelectedItem.RevisionGraph();
+		}
+
+		private void SVNShowLog()
+		{
+			SelectedItem.SVNShowLog();
+		}
+
+		private void SVNSwitch()
+		{
+			SelectedItem.Switch();
+		}
+
+		internal void SVNUpdate()
+		{
+			Source source = SelectedItem;
+			SVNUpdate(source);
+		}
+
+		private void SVNUpdate(Source source)
+		{
+			DialogResult result = UpdateHeadPromptDialog.Prompt();
+			Logger.Log.InfoFormat("Update Source: User clicked {0}", result);
+			if (result == DialogResult.Yes)
+			{
+				source.SVNUpdate();
+			}
+		}
+
+		private void SVNUpdateAll(bool ignoreUpToDate)
+		{
+			Source.SVNUpdateAll(ignoreUpToDate);
+		}
+
+		private void UnregisterExplorerBarEvents()
+		{
+			SourcesExplorerBar.ChangesClick -= SourcesExplorerBar_ItemChangesClick;
+			SourcesExplorerBar.ConflictsClick -= SourcesExplorerBar_ItemConflictsClick;
+			SourcesExplorerBar.ErrorClick -= SourcesExplorerBar_ItemErrorClick;
+			SourcesExplorerBar.PathClick -= SourcesExplorerBar_ItemPathClick;
+			SourcesExplorerBar.SyncdClick -= SourcesExplorerBar_ItemSyncdClick;
+			SourcesExplorerBar.UnversionedClick -= SourcesExplorerBar_ItemUnversionedClick;
+			SourcesExplorerBar.UpdatesClick -= SourcesExplorerBar_ItemUpdatesClick;
+		}
+
+		internal void UpdateAllSources()
+		{
+			Updater.Instance.QueueUpdates();
+		}
+
+		internal void UpdateSource()
+		{
+			Source source = SelectedItem;
+			Updater.Instance.QueueUpdate(source, true);
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanAdditionalTortoiseCommands
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(menuAdditionalTortoiseCommands); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(menuAdditionalTortoiseCommands, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanApplyPatch
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdApplyPatch); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdApplyPatch, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanBranchTag
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdBranchTag); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdBranchTag, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanCheckAllForUpdates
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdUpdateAll); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdUpdateAll, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanCheckForUpdates
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdUpdate); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdUpdate, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanCheckout
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdCheckout); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdCheckout, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanCleanUp
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdCleanUp); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdCleanUp, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanClearAllErrors
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandVisible(cmdClearAllErrors); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandVisible(cmdClearAllErrors, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanClearError
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandVisible(cmdClearError); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandVisible(cmdClearError, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanCopyConflictedItems
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdCopySourceConflictedItems); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdCopySourceConflictedItems, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanCopyError
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdCopySourceError); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdCopySourceError, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanCopyModifiedItems
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdCopySourceModifiedItems); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdCopySourceModifiedItems, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanCopyName
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdCopySourceName); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdCopySourceName, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanCopyPath
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandVisible(cmdCopySourcePath); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandVisible(cmdCopySourcePath, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanCopyToClipboard
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(menuClipboard); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(menuClipboard, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanCopyUnversionedItems
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdCopySourceUnversionedItems); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdCopySourceUnversionedItems, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanCopyURL
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdCopySourceURL); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdCopySourceURL, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanCreatePatch
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdCreatePatch); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdCreatePatch, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanDelete
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdDelete); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdDelete, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanDeleteUnversioned
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdDeleteUnversioned); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdDeleteUnversioned, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanEdit
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdEdit); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdEdit, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanEnable
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandVisible(cmdEnabled); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandVisible(cmdEnabled, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanExplore
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandVisible(cmdExplore); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandVisible(cmdExplore, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanExport
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdExport); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdExport, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanGetLock
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandVisible(cmdLock); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandVisible(cmdLock, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanMerge
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdMerge); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdMerge, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanMoveDown
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdMoveDown); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdMoveDown, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanMoveUp
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdMoveUp); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdMoveUp, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanNew
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdNew); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdNew, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanProperties
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdProperties); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdProperties, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanRefreshLog
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdRefresh); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdRefresh, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanReintegrate
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdReintegrate); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdReintegrate, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanReleaseLock
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandVisible(cmdUnlock); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandVisible(cmdUnlock, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanRelocate
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdRelocate); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdRelocate, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanRepoBrowser
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdRepoBrowser); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdRepoBrowser, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanResolve
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdResolve); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdResolve, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanRevisionGraph
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdRevisionGraph); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdRevisionGraph, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanRunWizard
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(menuWizards); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(menuWizards, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanShowLog
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdShowLog); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdShowLog, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanSVNCheckForModifications
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdSVNModifications); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdSVNModifications, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanSVNCommit
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandVisible(cmdSVNCommit); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandVisible(cmdSVNCommit, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanSVNRevert
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandVisible(cmdSVNRevert); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandVisible(cmdSVNRevert, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanSVNUpdate
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandVisible(cmdSVNUpdate); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandVisible(cmdSVNUpdate, value); }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public bool CanSwitch
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdSwitch); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdSwitch, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanTSVNHelp
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdTSVNHelp); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdTSVNHelp, value); }
+		}
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool CanTSVNSettings
+		{
+			[DebuggerNonUserCode]
+			get { return UIHelper.IsCommandEnabled(cmdTSVNSettings); }
+			[DebuggerNonUserCode]
+			set { UIHelper.SetCommandEnabled(cmdTSVNSettings, value); }
+		}
+
+		public int Count
+		{
+			[DebuggerNonUserCode]
+			get { return SourcesExplorerBar.Count; }
+		}
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public List<Source> Entities
+		{
+			[DebuggerNonUserCode]
+			get { return allSources; }
+			set
+			{
+				if (allSources != null)
+				{
+					allSources.ForEach(delegate(Source source) { source.StatusChanged -= Source_StatusChanged; });
+				}
+				allSources = value;
+				if (allSources != null)
+				{
+					allSources.ForEach(delegate(Source source) { source.StatusChanged += Source_StatusChanged; });
+				}
+				SourcesExplorerBar.Entities = allSources;
+				RegisterExplorerBarEvents();
+				RefreshAndSetFilter(false);
+			}
+		}
+
+		[Browsable(false)]
+		public SearchTextBox<Source> SearchTextBox { get; set; }
+
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public int SelectedIndex
+		{
+			[DebuggerNonUserCode]
+			get { return SourcesExplorerBar.SelectedIndex; }
+			[DebuggerNonUserCode]
+			set { SourcesExplorerBar.SelectedIndex = value; }
+		}
+
+		[Browsable(false)]
+		public Source SelectedItem
+		{
+			[DebuggerNonUserCode]
+			get { return SourcesExplorerBar.SelectedEntity; }
+		}
+
+		public bool ShowingAllItems
+		{
+			get { return showingAllItems; }
+			set
+			{
+				showingAllItems = value;
+				linkShowAllSources.Visible = !showingAllItems;
+			}
+		}
+
+		private SVNMonitor.View.Controls.SourcesExplorerBar SourcesExplorerBar
+		{
+			[DebuggerNonUserCode]
+			get { return sourcesExplorerBar1; }
+		}
+
+		public Janus.Windows.UI.CommandBars.UIContextMenu UIContextMenu
+		{
+			get { return uiContextMenu1; }
+		}
+	}
 }
-

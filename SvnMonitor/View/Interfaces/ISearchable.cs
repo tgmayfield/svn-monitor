@@ -1,10 +1,10 @@
-﻿namespace SVNMonitor.View.Interfaces
+﻿using System;
+using System.Collections.Generic;
+
+namespace SVNMonitor.View.Interfaces
 {
-    using System.Collections.Generic;
-
-    public interface ISearchable
-    {
-        IEnumerable<string> GetSearchKeywords();
-    }
+	public interface ISearchable
+	{
+		IEnumerable<string> GetSearchKeywords();
+	}
 }
-
