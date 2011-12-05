@@ -72,315 +72,315 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="_Module_.cs" />
-    <Compile Include="SVNMonitor.Actions\Action.cs" />
-    <Compile Include="SVNMonitor.Actions\BalloonTipAction.cs" />
-    <Compile Include="SVNMonitor.Actions\TextAppenderAction.cs" />
-    <Compile Include="SVNMonitor.Actions\EventLogAction.cs" />
-    <Compile Include="SVNMonitor.Actions\ExternalAction.cs" />
-    <Compile Include="SVNMonitor.Actions\FileAppenderAction.cs" />
-    <Compile Include="SVNMonitor.Actions\InfoBalloonTipAction.cs" />
-    <Compile Include="SVNMonitor.Actions\MailSenderAction.cs" />
-    <Compile Include="SVNMonitor.Actions\SoundPlayerAction.cs" />
-    <Compile Include="SVNMonitor.Actions\SoundsByAuthorsAction.cs" />
-    <Compile Include="SVNMonitor.Actions\SoundByAuthor.cs" />
-    <Compile Include="SVNMonitor.Actions\SVNUpdateAction.cs" />
-    <Compile Include="SVNMonitor.Extensions\Enumerable.cs" />
-    <Compile Include="SVNMonitor.Extensions\Func`1.cs" />
-    <Compile Include="SVNMonitor.Extensions\Func`2.cs" />
-    <Compile Include="SVNMonitor.Extensions\Func`3.cs" />
-    <Compile Include="SVNMonitor.Extensions\Func`4.cs" />
-    <Compile Include="SVNMonitor.Extensions\Func`5.cs" />
+    <Compile Include="Actions\Action.cs" />
+    <Compile Include="Actions\BalloonTipAction.cs" />
+    <Compile Include="Actions\TextAppenderAction.cs" />
+    <Compile Include="Actions\EventLogAction.cs" />
+    <Compile Include="Actions\ExternalAction.cs" />
+    <Compile Include="Actions\FileAppenderAction.cs" />
+    <Compile Include="Actions\InfoBalloonTipAction.cs" />
+    <Compile Include="Actions\MailSenderAction.cs" />
+    <Compile Include="Actions\SoundPlayerAction.cs" />
+    <Compile Include="Actions\SoundsByAuthorsAction.cs" />
+    <Compile Include="Actions\SoundByAuthor.cs" />
+    <Compile Include="Actions\SVNUpdateAction.cs" />
+    <Compile Include="Extensions\Enumerable.cs" />
+    <Compile Include="Extensions\Func`1.cs" />
+    <Compile Include="Extensions\Func`2.cs" />
+    <Compile Include="Extensions\Func`3.cs" />
+    <Compile Include="Extensions\Func`4.cs" />
+    <Compile Include="Extensions\Func`5.cs" />
     <Compile Include="System.Runtime.CompilerServices\ExtensionAttribute.cs" />
-    <Compile Include="SVNMonitor.Extensions\Misc.cs" />
-    <Compile Include="SVNMonitor.Resources.UI\GridEX.cs" />
-    <Compile Include="SVNMonitor.Settings\ApplicationSettings.cs" />
-    <Compile Include="SVNMonitor.Settings.DefaultProviders\IDefaultValueProvider.cs" />
-    <Compile Include="SVNMonitor.Settings.DefaultProviders\DefaultGuidProvider.cs" />
-    <Compile Include="SVNMonitor.Settings\KeyboardSettingAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\IConfigValidator.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\AdministratorConfigValidator.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\ConfigValidatorAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\AdministratorConfigValidatorAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\CultureConfigValidator.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\CultureConfigValidatorAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\EnumConfigValidator.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\EnumConfigValidatorAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\FileNameConfigValidator.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\FileNameConfigValidatorAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\GridLayoutConfigValidator.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\GridLayoutConfigValidatorAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\KeyboardShortcutConfigValidator.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\KeyboardShortcutConfigValidatorAttribute.cs" />
-    <Compile Include="SVNMonitor.Design\SoundsByAuthorsCollectionEditor.cs" />
-    <Compile Include="SVNMonitor.Entities\VersionEntity.cs" />
-    <Compile Include="SVNMonitor.Entities\UserEntity.cs" />
-    <Compile Include="SVNMonitor.View.Interfaces\ISearchable.cs" />
-    <Compile Include="SVNMonitor.Entities\Monitor.cs" />
-    <Compile Include="SVNMonitor.Design\WavFileNameEditor.cs" />
-    <Compile Include="SVNMonitor.Design\OptionalFileNameEditor.cs" />
-    <Compile Include="SVNMonitor.Entities\SVNChangeList.cs" />
-    <Compile Include="SVNMonitor\EventLog.cs" />
-    <Compile Include="SVNMonitor\EventLogEntry.cs" />
-    <Compile Include="SVNMonitor\EventLogEntryType.cs" />
-    <Compile Include="SVNMonitor.Helpers\InheritableBooleanHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\KeyboardHook.cs" />
-    <Compile Include="SVNMonitor.Helpers\KeyPressedEventArgs.cs" />
-    <Compile Include="SVNMonitor.Helpers\KeyboardHookHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\KeyInfo.cs" />
-    <Compile Include="SVNMonitor.Helpers\ModifierKey.cs" />
-    <Compile Include="SVNMonitor.Helpers\Key.cs" />
-    <Compile Include="SVNMonitor.Helpers\RegistryHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\SVNPathCommands.cs" />
-    <Compile Include="SVNMonitor.Helpers\SVNPathsExtension.cs" />
-    <Compile Include="SVNMonitor.Helpers\AssociatedUserActionAttribute.cs" />
-    <Compile Include="SVNMonitor.Helpers\UserAction.cs" />
-    <Compile Include="SVNMonitor.Entities\SVNStatus.cs" />
-    <Compile Include="SVNMonitor.Entities\SVNStatusEntry.cs" />
-    <Compile Include="SVNMonitor.Entities\StatusChangedEventArgs.cs" />
-    <Compile Include="SVNMonitor.Entities\StatusChangedReason.cs" />
-    <Compile Include="SVNMonitor.Helpers\ClipboardHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\EnumHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\EnvironmentHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\EventArgs`1.cs" />
-    <Compile Include="SVNMonitor.Helpers\ThreadHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\TortoiseSVNHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\TrayNotifier.cs" />
-    <Compile Include="SVNMonitor.Logging\Logger.cs" />
-    <Compile Include="SVNMonitor.Helpers\SerializationHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\SoundPlayerHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\UIHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\SourceHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\SVNPathHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\SVNLogEntryHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\WebHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\WildcardPatternMatcher.cs" />
-    <Compile Include="SVNMonitor.Helpers\WindowFlasher.cs" />
-    <Compile Include="SVNMonitor.Presenters\UserEntityPresenter`1.cs" />
-    <Compile Include="SVNMonitor.Remoting\RemotingClient.cs" />
-    <Compile Include="SVNMonitor.Remoting\RemotingServer.cs" />
-    <Compile Include="SVNMonitor.Remoting\RemoteProxy.cs" />
-    <Compile Include="SVNMonitor.Resources\Icons.cs" />
-    <Compile Include="SVNMonitor.Resources\ResourceProviderAttribute.cs" />
-    <Compile Include="SVNMonitor.Resources.Text\Strings.cs" />
-    <Compile Include="SVNMonitor\SessionInfo.cs" />
-    <Compile Include="SVNMonitor\ParameterAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings\ApplicationSettingsManager.cs" />
-    <Compile Include="SVNMonitor.Settings\ApplicationSettingsValueAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings\IgnoreWebServiceAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\NumberConfigValidator.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\NumberConfigValidatorAttribute.cs" />
-    <Compile Include="SVNMonitor.Settings.Validation\ValidationOperator.cs" />
-    <Compile Include="SVNMonitor\Status.cs" />
-    <Compile Include="SVNMonitor.Support\ISendable.cs" />
-    <Compile Include="SVNMonitor.Support\BaseSendable.cs" />
-    <Compile Include="SVNMonitor.Support\BaseFeedback.cs" />
-    <Compile Include="SVNMonitor.Support\ErrorReportFeedback.cs" />
-    <Compile Include="SVNMonitor.Support\SendCallback.cs" />
-    <Compile Include="SVNMonitor.Support\SendableResult.cs" />
-    <Compile Include="SVNMonitor.Support\Issue.cs" />
-    <Compile Include="SVNMonitor.Support\IssuesCollection.cs" />
-    <Compile Include="SVNMonitor.Support\SampleIssuesGenerator.cs" />
-    <Compile Include="SVNMonitor.Support\KnownIssuesHelper.cs" />
-    <Compile Include="SVNMonitor.Support\UpgradeInfo.cs" />
-    <Compile Include="SVNMonitor.Support\UsageInformationSender.cs" />
-    <Compile Include="SVNMonitor.Support\UserFeedback.cs" />
-    <Compile Include="SVNMonitor.Support\VersionChecker.cs" />
-    <Compile Include="SVNMonitor.SVN\SharpSVNClient.cs" />
-    <Compile Include="SVNMonitor.SVN\TortoiseProcess.cs" />
-    <Compile Include="SVNMonitor.SVN\TortoiseSVNAutoClose.cs" />
-    <Compile Include="SVNMonitor.View.Controls\ActionSelector.cs">
+    <Compile Include="Extensions\Misc.cs" />
+    <Compile Include="Resources\UI\GridEX.cs" />
+    <Compile Include="Settings\ApplicationSettings.cs" />
+    <Compile Include="Settings\DefaultProviders\IDefaultValueProvider.cs" />
+    <Compile Include="Settings\DefaultProviders\DefaultGuidProvider.cs" />
+    <Compile Include="Settings\KeyboardSettingAttribute.cs" />
+    <Compile Include="Settings\Validation\IConfigValidator.cs" />
+    <Compile Include="Settings\Validation\AdministratorConfigValidator.cs" />
+    <Compile Include="Settings\Validation\ConfigValidatorAttribute.cs" />
+    <Compile Include="Settings\Validation\AdministratorConfigValidatorAttribute.cs" />
+    <Compile Include="Settings\Validation\CultureConfigValidator.cs" />
+    <Compile Include="Settings\Validation\CultureConfigValidatorAttribute.cs" />
+    <Compile Include="Settings\Validation\EnumConfigValidator.cs" />
+    <Compile Include="Settings\Validation\EnumConfigValidatorAttribute.cs" />
+    <Compile Include="Settings\Validation\FileNameConfigValidator.cs" />
+    <Compile Include="Settings\Validation\FileNameConfigValidatorAttribute.cs" />
+    <Compile Include="Settings\Validation\GridLayoutConfigValidator.cs" />
+    <Compile Include="Settings\Validation\GridLayoutConfigValidatorAttribute.cs" />
+    <Compile Include="Settings\Validation\KeyboardShortcutConfigValidator.cs" />
+    <Compile Include="Settings\Validation\KeyboardShortcutConfigValidatorAttribute.cs" />
+    <Compile Include="Design\SoundsByAuthorsCollectionEditor.cs" />
+    <Compile Include="Entities\VersionEntity.cs" />
+    <Compile Include="Entities\UserEntity.cs" />
+    <Compile Include="View\Interfaces\ISearchable.cs" />
+    <Compile Include="Entities\Monitor.cs" />
+    <Compile Include="Design\WavFileNameEditor.cs" />
+    <Compile Include="Design\OptionalFileNameEditor.cs" />
+    <Compile Include="Entities\SVNChangeList.cs" />
+    <Compile Include="EventLog.cs" />
+    <Compile Include="EventLogEntry.cs" />
+    <Compile Include="EventLogEntryType.cs" />
+    <Compile Include="Helpers\InheritableBooleanHelper.cs" />
+    <Compile Include="Helpers\KeyboardHook.cs" />
+    <Compile Include="Helpers\KeyPressedEventArgs.cs" />
+    <Compile Include="Helpers\KeyboardHookHelper.cs" />
+    <Compile Include="Helpers\KeyInfo.cs" />
+    <Compile Include="Helpers\ModifierKey.cs" />
+    <Compile Include="Helpers\Key.cs" />
+    <Compile Include="Helpers\RegistryHelper.cs" />
+    <Compile Include="Helpers\SVNPathCommands.cs" />
+    <Compile Include="Helpers\SVNPathsExtension.cs" />
+    <Compile Include="Helpers\AssociatedUserActionAttribute.cs" />
+    <Compile Include="Helpers\UserAction.cs" />
+    <Compile Include="Entities\SVNStatus.cs" />
+    <Compile Include="Entities\SVNStatusEntry.cs" />
+    <Compile Include="Entities\StatusChangedEventArgs.cs" />
+    <Compile Include="Entities\StatusChangedReason.cs" />
+    <Compile Include="Helpers\ClipboardHelper.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
+    <Compile Include="Helpers\EnvironmentHelper.cs" />
+    <Compile Include="Helpers\EventArgs`1.cs" />
+    <Compile Include="Helpers\ThreadHelper.cs" />
+    <Compile Include="Helpers\TortoiseSVNHelper.cs" />
+    <Compile Include="Helpers\TrayNotifier.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Helpers\SerializationHelper.cs" />
+    <Compile Include="Helpers\SoundPlayerHelper.cs" />
+    <Compile Include="Helpers\UIHelper.cs" />
+    <Compile Include="Helpers\SourceHelper.cs" />
+    <Compile Include="Helpers\SVNPathHelper.cs" />
+    <Compile Include="Helpers\SVNLogEntryHelper.cs" />
+    <Compile Include="Helpers\WebHelper.cs" />
+    <Compile Include="Helpers\WildcardPatternMatcher.cs" />
+    <Compile Include="Helpers\WindowFlasher.cs" />
+    <Compile Include="Presenters\UserEntityPresenter`1.cs" />
+    <Compile Include="Remoting\RemotingClient.cs" />
+    <Compile Include="Remoting\RemotingServer.cs" />
+    <Compile Include="Remoting\RemoteProxy.cs" />
+    <Compile Include="Resources\Icons.cs" />
+    <Compile Include="Resources\ResourceProviderAttribute.cs" />
+    <Compile Include="Resources\Text\Strings.cs" />
+    <Compile Include="SessionInfo.cs" />
+    <Compile Include="ParameterAttribute.cs" />
+    <Compile Include="Settings\ApplicationSettingsManager.cs" />
+    <Compile Include="Settings\ApplicationSettingsValueAttribute.cs" />
+    <Compile Include="Settings\IgnoreWebServiceAttribute.cs" />
+    <Compile Include="Settings\Validation\NumberConfigValidator.cs" />
+    <Compile Include="Settings\Validation\NumberConfigValidatorAttribute.cs" />
+    <Compile Include="Settings\Validation\ValidationOperator.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="Support\ISendable.cs" />
+    <Compile Include="Support\BaseSendable.cs" />
+    <Compile Include="Support\BaseFeedback.cs" />
+    <Compile Include="Support\ErrorReportFeedback.cs" />
+    <Compile Include="Support\SendCallback.cs" />
+    <Compile Include="Support\SendableResult.cs" />
+    <Compile Include="Support\Issue.cs" />
+    <Compile Include="Support\IssuesCollection.cs" />
+    <Compile Include="Support\SampleIssuesGenerator.cs" />
+    <Compile Include="Support\KnownIssuesHelper.cs" />
+    <Compile Include="Support\UpgradeInfo.cs" />
+    <Compile Include="Support\UsageInformationSender.cs" />
+    <Compile Include="Support\UserFeedback.cs" />
+    <Compile Include="Support\VersionChecker.cs" />
+    <Compile Include="SVN\SharpSVNClient.cs" />
+    <Compile Include="SVN\TortoiseProcess.cs" />
+    <Compile Include="SVN\TortoiseSVNAutoClose.cs" />
+    <Compile Include="View\Controls\ActionSelector.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.Helpers\UserTypesFactory`1.cs" />
-    <Compile Include="SVNMonitor.Helpers\UserTypeInfo.cs" />
-    <Compile Include="SVNMonitor.Helpers\CustomAttribute.cs" />
-    <Compile Include="SVNMonitor.Helpers\TypeRequirements.cs" />
-    <Compile Include="SVNMonitor.Entities\SVNInfo.cs" />
-    <Compile Include="SVNMonitor.Entities\SVNLog.cs" />
-    <Compile Include="SVNMonitor.Entities\SVNLogEntry.cs" />
-    <Compile Include="SVNMonitor.Entities\SVNPath.cs" />
-    <Compile Include="SVNMonitor.Entities\Source.cs" />
-    <Compile Include="SVNMonitor.Entities\SVNAction.cs" />
-    <Compile Include="SVNMonitor.Entities\SVNActionConverter.cs" />
-    <Compile Include="SVNMonitor.SVN\SVNFactory.cs" />
-    <Compile Include="SVNMonitor.Helpers\ConditionSerializer.cs" />
-    <Compile Include="SVNMonitor.Helpers\ConditionSerializationContext.cs" />
-    <Compile Include="SVNMonitor.Helpers\ColumnInfo.cs" />
-    <Compile Include="SVNMonitor.Helpers\ErrorHandler.cs" />
-    <Compile Include="SVNMonitor.Helpers\FileSystemHelper.cs" />
-    <Compile Include="SVNMonitor.Helpers\ProcessHelper.cs" />
-    <Compile Include="SVNMonitor\MonitorSettings.cs" />
-    <Compile Include="SVNMonitor.Resources\Images.cs" />
-    <Compile Include="SVNMonitor.View.Controls\ActionsGrid.cs">
+    <Compile Include="Helpers\UserTypesFactory`1.cs" />
+    <Compile Include="Helpers\UserTypeInfo.cs" />
+    <Compile Include="Helpers\CustomAttribute.cs" />
+    <Compile Include="Helpers\TypeRequirements.cs" />
+    <Compile Include="Entities\SVNInfo.cs" />
+    <Compile Include="Entities\SVNLog.cs" />
+    <Compile Include="Entities\SVNLogEntry.cs" />
+    <Compile Include="Entities\SVNPath.cs" />
+    <Compile Include="Entities\Source.cs" />
+    <Compile Include="Entities\SVNAction.cs" />
+    <Compile Include="Entities\SVNActionConverter.cs" />
+    <Compile Include="SVN\SVNFactory.cs" />
+    <Compile Include="Helpers\ConditionSerializer.cs" />
+    <Compile Include="Helpers\ConditionSerializationContext.cs" />
+    <Compile Include="Helpers\ColumnInfo.cs" />
+    <Compile Include="Helpers\ErrorHandler.cs" />
+    <Compile Include="Helpers\FileSystemHelper.cs" />
+    <Compile Include="Helpers\ProcessHelper.cs" />
+    <Compile Include="MonitorSettings.cs" />
+    <Compile Include="Resources\Images.cs" />
+    <Compile Include="View\Controls\ActionsGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\AnimationProgressBar.cs">
+    <Compile Include="View\Controls\AnimationProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\EventLogGrid.cs">
+    <Compile Include="View\Controls\EventLogGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\HtmlViewer.cs" />
-    <Compile Include="SVNMonitor.View.Controls\KeyboardEditor.cs">
+    <Compile Include="View\Controls\HtmlViewer.cs" />
+    <Compile Include="View\Controls\KeyboardEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\KeyboardEditorRow.cs" />
-    <Compile Include="SVNMonitor.View.Controls\UserEntitiesExplorerBar`1.cs">
+    <Compile Include="View\Controls\KeyboardEditorRow.cs" />
+    <Compile Include="View\Controls\UserEntitiesExplorerBar`1.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\MonitorsExplorerBar.cs">
+    <Compile Include="View\Controls\MonitorsExplorerBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\UserEntityExplorerBarGroup`1.cs" />
-    <Compile Include="SVNMonitor.View.Controls\MonitorExplorerBarGroup.cs" />
-    <Compile Include="SVNMonitor.View.Controls\PathsGrid.cs">
+    <Compile Include="View\Controls\UserEntityExplorerBarGroup`1.cs" />
+    <Compile Include="View\Controls\MonitorExplorerBarGroup.cs" />
+    <Compile Include="View\Controls\PathsGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\LogEntriesGrid.cs">
+    <Compile Include="View\Controls\LogEntriesGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\SearchTextBox`1.cs">
+    <Compile Include="View\Controls\SearchTextBox`1.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\SVNLogEntrySearchTextBox.cs">
+    <Compile Include="View\Controls\SVNLogEntrySearchTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\SVNPathSearchTextBox.cs">
+    <Compile Include="View\Controls\SVNPathSearchTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\EventLogEntrySearchTextBox.cs">
+    <Compile Include="View\Controls\EventLogEntrySearchTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\SourceSearchTextBox.cs">
+    <Compile Include="View\Controls\SourceSearchTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\MonitorSearchTextBox.cs">
+    <Compile Include="View\Controls\MonitorSearchTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\SourcesExplorerBar.cs">
+    <Compile Include="View\Controls\SourcesExplorerBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Controls\SourceExplorerBarGroup.cs" />
-    <Compile Include="SVNMonitor\Updater.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\BaseDialog.cs">
+    <Compile Include="View\Controls\SourceExplorerBarGroup.cs" />
+    <Compile Include="Updater.cs" />
+    <Compile Include="View\Dialogs\BaseDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\AboutDialog.cs">
+    <Compile Include="View\Dialogs\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\ActionPropertiesDialog.cs">
+    <Compile Include="View\Dialogs\ActionPropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\BaseFeedbackDialog.cs">
+    <Compile Include="View\Dialogs\BaseFeedbackDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\BasePromptDialog.cs">
+    <Compile Include="View\Dialogs\BasePromptDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\ErrorReportDetailsDialog.cs">
+    <Compile Include="View\Dialogs\ErrorReportDetailsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\ErrorReportDialog.cs">
+    <Compile Include="View\Dialogs\ErrorReportDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\FeedbackConfirmationDialog.cs">
+    <Compile Include="View\Dialogs\FeedbackConfirmationDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\FeedbackDialog.cs">
+    <Compile Include="View\Dialogs\FeedbackDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\LogEntryDetailsDialog.cs">
+    <Compile Include="View\Dialogs\LogEntryDetailsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\MonitorPropertiesDialog.cs">
+    <Compile Include="View\Dialogs\MonitorPropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\NewVersionDialog.cs">
+    <Compile Include="View\Dialogs\NewVersionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\RecommendWizard.cs">
+    <Compile Include="View\Dialogs\RecommendWizard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\RollbackPromptDialog.cs">
+    <Compile Include="View\Dialogs\RollbackPromptDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\SendProgressDialog.cs">
+    <Compile Include="View\Dialogs\SendProgressDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\SettingsDialog.cs">
+    <Compile Include="View\Dialogs\SettingsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\SourcePropertiesDialog.cs">
+    <Compile Include="View\Dialogs\SourcePropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\UpdateHeadPromptDialog.cs">
+    <Compile Include="View\Dialogs\UpdateHeadPromptDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Dialogs\UsageInformationHelp.cs">
+    <Compile Include="View\Dialogs\UsageInformationHelp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Interfaces\ISearchablePanel`1.cs" />
-    <Compile Include="SVNMonitor.View.Interfaces\ISelectableView`1.cs" />
-    <Compile Include="SVNMonitor.View.Interfaces\IUserEntityView`1.cs" />
-    <Compile Include="SVNMonitor.View.Interfaces\ILogEntriesView.cs" />
-    <Compile Include="SVNMonitor.View\MainForm.cs" />
-    <Compile Include="SVNMonitor.View\MainNotifier.cs" />
-    <Compile Include="SVNMonitor.View.Panels\ActionsPanel.cs">
+    <Compile Include="View\Interfaces\ISearchablePanel`1.cs" />
+    <Compile Include="View\Interfaces\ISelectableView`1.cs" />
+    <Compile Include="View\Interfaces\IUserEntityView`1.cs" />
+    <Compile Include="View\Interfaces\ILogEntriesView.cs" />
+    <Compile Include="View\MainForm.cs" />
+    <Compile Include="View\MainNotifier.cs" />
+    <Compile Include="View\Panels\ActionsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Panels\GridPanel.cs">
+    <Compile Include="View\Panels\GridPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Panels\EventLogPanel.cs">
+    <Compile Include="View\Panels\EventLogPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Panels\MonitorsPanel.cs">
+    <Compile Include="View\Panels\MonitorsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Panels\SourcesPanel.cs">
+    <Compile Include="View\Panels\SourcesPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Panels\UpdatesGridContainer.cs">
+    <Compile Include="View\Panels\UpdatesGridContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Panels\LogEntriesPanel.cs">
+    <Compile Include="View\Panels\LogEntriesPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.View.Panels\PathsPanel.cs">
+    <Compile Include="View\Panels\PathsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SVNMonitor\Program.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\svnmonitor_server.cs">
+    <Compile Include="Program.cs" />
+    <Compile Include="SharpRegion\svnmonitor_server.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SVNMonitor.SharpRegion\testCompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\testCompletedEventArgs.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendUsageInfoCompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendUpgradeInfoCompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendFeedback_ver1CompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendFeedback_ver1CompletedEventArgs.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendFeedback_ver2CompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendFeedback_ver2CompletedEventArgs.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendFeedbackCompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendFeedbackCompletedEventArgs.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendErrorReportCompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendErrorReportCompletedEventArgs.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendErrorReport_ver1CompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendErrorReport_ver1CompletedEventArgs.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendErrorReport_ver2CompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\sendErrorReport_ver2CompletedEventArgs.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\getKnownIssues_ver1CompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\getKnownIssues_ver1CompletedEventArgs.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\getKnownIssues_ver2CompletedEventHandler.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\getKnownIssues_ver2CompletedEventArgs.cs" />
-    <Compile Include="SVNMonitor.Web\SharpRegion.cs" />
-    <Compile Include="SVNMonitor.Wizards\Wizard.cs" />
-    <Compile Include="SVNMonitor.Wizards\CodeReviewMailerWizard.cs" />
-    <Compile Include="SVNMonitor.Wizards\CommitsNotificationsWizard.cs" />
-    <Compile Include="SVNMonitor.Wizards\CustomWizard.cs" />
-    <Compile Include="SVNMonitor.Wizards\RepositoryMirrorWizard.cs" />
-    <Compile Include="SVNMonitor.Wizards\SoundCommitsNotificationsWizard.cs" />
-    <Compile Include="SVNMonitor.Wizards\WizardCancelledException.cs" />
+    <Compile Include="SharpRegion\testCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\testCompletedEventArgs.cs" />
+    <Compile Include="SharpRegion\sendUsageInfoCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendUpgradeInfoCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventArgs.cs" />
+    <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventArgs.cs" />
+    <Compile Include="SharpRegion\sendFeedbackCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendFeedbackCompletedEventArgs.cs" />
+    <Compile Include="SharpRegion\sendErrorReportCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendErrorReportCompletedEventArgs.cs" />
+    <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventArgs.cs" />
+    <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventArgs.cs" />
+    <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventArgs.cs" />
+    <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventArgs.cs" />
+    <Compile Include="Web\SharpRegion.cs" />
+    <Compile Include="Wizards\Wizard.cs" />
+    <Compile Include="Wizards\CodeReviewMailerWizard.cs" />
+    <Compile Include="Wizards\CommitsNotificationsWizard.cs" />
+    <Compile Include="Wizards\CustomWizard.cs" />
+    <Compile Include="Wizards\RepositoryMirrorWizard.cs" />
+    <Compile Include="Wizards\SoundCommitsNotificationsWizard.cs" />
+    <Compile Include="Wizards\WizardCancelledException.cs" />
     <Compile Include="__f__AnonymousType0`2.cs" />
   </ItemGroup>
   <ItemGroup>
