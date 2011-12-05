@@ -303,9 +303,6 @@ Please see the log file for details.</value>
   <data name="NoUnversionedItems" xml:space="preserve">
     <value>no unversioned items</value>
   </data>
-  <data name="ErrorSendingFeedback_FORMAT" xml:space="preserve">
-    <value>Error sending the Feedback: {0}.</value>
-  </data>
   <data name="KeyboardShortcutShowMainWindow_Text" xml:space="preserve">
     <value>Show/Hide SVN-Monitor</value>
   </data>
@@ -365,9 +362,6 @@ Please reinstall the application.</value>
   <data name="SourcesExplorerBar_NoUpdatesNoChangesClickToCheckModifications" xml:space="preserve">
     <value>click to check modifications</value>
   </data>
-  <data name="FeedbackErrorTitle" xml:space="preserve">
-    <value>Error Sending Feedback</value>
-  </data>
   <data name="SourcesExplorerBar_RevisionLocal" xml:space="preserve">
     <value>Local revision:</value>
   </data>
@@ -416,9 +410,6 @@ The existing monitors are:
   </data>
   <data name="MonitorDeleted_FORMAT" xml:space="preserve">
     <value>Monitor '{0}' deleted.</value>
-  </data>
-  <data name="FailedToExtractTheDownloadedVersion" xml:space="preserve">
-    <value>Failed to extract the downloaded version of SVN-Monitor</value>
   </data>
   <data name="ErrorUpdateFailed" xml:space="preserve">
     <value>Update failed</value>
@@ -483,12 +474,6 @@ Default settings loaded instead.</value>
   </data>
   <data name="KeyboardShortcutCheckSources_Text" xml:space="preserve">
     <value>Check sources for updates</value>
-  </data>
-  <data name="FeedbackErrorText" xml:space="preserve">
-    <value>Your feedback was not sent. The server may be down or unreachabe.
-The Event-Log may contain additional information about the error.
-
-Please try again later.</value>
   </data>
   <data name="ClickToEditMonitor" xml:space="preserve">
     <value>click to edit</value>
@@ -612,9 +597,6 @@ Double click here to create a new monitor.</value>
   </data>
   <data name="SelectASourceToShowLog" xml:space="preserve">
     <value>Select a source from the sources list to show it's log.</value>
-  </data>
-  <data name="ErrorSendingErrorReport_FORMAT" xml:space="preserve">
-    <value>Error sending the Error-Report: {0}.</value>
   </data>
   <data name="AskCloseWizardWithoutCommitting" xml:space="preserve">
     <value>Are you sure you want to close this wizard without committing?</value>

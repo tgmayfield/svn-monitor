@@ -351,7 +351,7 @@ namespace SVNMonitor.View.Panels
 			{
 				return string.Empty;
 			}
-			return string.Join(Environment.NewLine, entry.Paths.Select(p => p.DisplayName).ToArray<string>());
+			return string.Join(Environment.NewLine, entry.Paths.Select(p => p.DisplayName).ToArray());
 		}
 
 		private string GetSelectedMessageToClipboard()
@@ -371,7 +371,7 @@ namespace SVNMonitor.View.Panels
 			{
 				return string.Empty;
 			}
-			return string.Join(Environment.NewLine, entry.Paths.Select(p => p.Name).ToArray<string>());
+			return string.Join(Environment.NewLine, entry.Paths.Select(p => p.Name).ToArray());
 		}
 
 		private string GetSelectedRevisionToClipboard()

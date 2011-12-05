@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-
-using SVNMonitor.Support;
 
 namespace SVNMonitor
 {
@@ -50,8 +47,8 @@ namespace SVNMonitor
 		internal static string GetUsageInformation()
 		{
 			StringBuilder sb = new StringBuilder();
-			sb.AppendFormat("SessionInfo_UserAppData={0}{1}", UserAppData, UsageInformationSender.Separator);
-			sb.AppendFormat("SessionInfo_CommandLineArguments={0}{1}", CommandLineArguments, UsageInformationSender.Separator);
+			sb.AppendFormat("SessionInfo_UserAppData={0}{1}", UserAppData, Environment.NewLine);
+			sb.AppendFormat("SessionInfo_CommandLineArguments={0}{1}", CommandLineArguments, Environment.NewLine);
 			return sb.ToString();
 		}
 
@@ -72,13 +69,6 @@ namespace SVNMonitor
 					}
 				}
 			}
-		}
-
-		[Conditional("DEBUG")]
-		internal static void SetUpgradeTest(string version, string upgradeFile)
-		{
-			TestNewVersion = version;
-			TestNewVersionFile = upgradeFile;
 		}
 
 		public static string CommandLineArguments
@@ -105,18 +95,6 @@ namespace SVNMonitor
 
 		[Parameter("test")]
 		public static bool Test { get; private set; }
-
-		[Parameter("testnewversion")]
-		public static string TestNewVersion { get; private set; }
-
-		[Parameter("testnewversionfile")]
-		public static string TestNewVersionFile { get; private set; }
-
-		[Parameter("testupgrader")]
-		public static bool TestUpgrader { get; private set; }
-
-		[Parameter("upgradedfrom"), Parameter("uf")]
-		public static string UpgradedFrom { get; private set; }
 
 		[Parameter("data"), Parameter("d"), Parameter("userdata")]
 		public static string UserAppData { get; private set; }

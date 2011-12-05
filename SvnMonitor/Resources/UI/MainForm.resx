@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cmdBigSendFeedback" xml:space="preserve">
-    <value>Send Feedback</value>
-  </data>
-  <data name="cmdCheckNewVersion" xml:space="preserve">
-    <value>&amp;Check For New Version</value>
-  </data>
   <data name="cmdBigOptions" xml:space="preserve">
     <value>Options</value>
   </data>
@@ -221,9 +215,6 @@
   </data>
   <data name="menuTools" xml:space="preserve">
     <value>&amp;Tools</value>
-  </data>
-  <data name="cmdFeedback" xml:space="preserve">
-    <value>&amp;Send Feedback</value>
   </data>
   <data name="cmdNewSource" xml:space="preserve">
     <value>&amp;Source...</value>

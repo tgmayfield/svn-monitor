@@ -19,7 +19,7 @@ namespace SVNMonitor.Helpers
 		{
 			Paths = paths;
 			Path = paths.First();
-			FilePath = string.Join("*", paths.Select(p => p.FilePath).ToArray<string>());
+			FilePath = string.Join("*", paths.Select(p => p.FilePath).ToArray());
 		}
 
 		[AssociatedUserAction(UserAction.Blame)]

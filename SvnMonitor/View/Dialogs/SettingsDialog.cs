@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 
 using Janus.Windows.UI.Tab;
@@ -87,7 +86,6 @@ namespace SVNMonitor.View.Dialogs
 		private LinkLabel linkAutoCheckTortoiseSVN;
 		private LinkLabel linkTextEditorBrowse;
 		private LinkLabel linkTortoiseEXEBrowse;
-		private LinkLabel linkUsageInformationHelp;
 		private NumericUpDown numPageSize;
 		private NumericUpDown numPreviewLines;
 		private NumericUpDown numSecondsPerSource;
@@ -236,7 +234,7 @@ namespace SVNMonitor.View.Dialogs
 
 		private IEnumerable<KeyboardEditorRow> CreateKeyboardDataSource()
 		{
-			return typeof(ApplicationSettings).GetProperties().Where(p => Attribute.IsDefined(p, typeof(KeyboardSettingAttribute))).Select<PropertyInfo, KeyboardEditorRow>(p => new KeyboardEditorRow
+			return typeof(ApplicationSettings).GetProperties().Where(p => Attribute.IsDefined(p, typeof(KeyboardSettingAttribute))).Select(p => new KeyboardEditorRow
 			{
 				AssociatedSetting = p.Name,
 				Description = Strings.ResourceManager.GetString(p.Name + "_Description"),
@@ -330,7 +328,6 @@ namespace SVNMonitor.View.Dialogs
 			uiTabPageVersionCheck = new UITabPage();
 			groupVersionChecks = new GroupBox();
 			lblEnableVersionUpgrade = new Label();
-			linkUsageInformationHelp = new LinkLabel();
 			checkSendUsageInformation = new CheckBox();
 			label7 = new Label();
 			checkEnableVersionUpgrade = new CheckBox();
@@ -782,7 +779,6 @@ namespace SVNMonitor.View.Dialogs
 			resources.ApplyResources(groupVersionChecks, "groupVersionChecks");
 			groupVersionChecks.BackColor = System.Drawing.Color.Transparent;
 			groupVersionChecks.Controls.Add(lblEnableVersionUpgrade);
-			groupVersionChecks.Controls.Add(linkUsageInformationHelp);
 			groupVersionChecks.Controls.Add(checkSendUsageInformation);
 			groupVersionChecks.Controls.Add(label7);
 			groupVersionChecks.Controls.Add(checkEnableVersionUpgrade);
@@ -793,10 +789,6 @@ namespace SVNMonitor.View.Dialogs
 			resources.ApplyResources(lblEnableVersionUpgrade, "lblEnableVersionUpgrade");
 			lblEnableVersionUpgrade.ForeColor = System.Drawing.Color.Blue;
 			lblEnableVersionUpgrade.Name = "lblEnableVersionUpgrade";
-			resources.ApplyResources(linkUsageInformationHelp, "linkUsageInformationHelp");
-			linkUsageInformationHelp.Name = "linkUsageInformationHelp";
-			linkUsageInformationHelp.TabStop = true;
-			linkUsageInformationHelp.LinkClicked += linkUsageInformationHelp_LinkClicked;
 			resources.ApplyResources(checkSendUsageInformation, "checkSendUsageInformation");
 			checkSendUsageInformation.BackColor = System.Drawing.Color.Transparent;
 			checkSendUsageInformation.Checked = true;
@@ -945,12 +937,6 @@ namespace SVNMonitor.View.Dialogs
 		{
 			Logger.LogUserAction();
 			BrowseTortoiseSvnExe();
-		}
-
-		private void linkUsageInformationHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			Logger.LogUserAction();
-			ShowSendUsageInformationHelp();
 		}
 
 		protected override void OnFormClosed(FormClosedEventArgs e)
@@ -1147,11 +1133,6 @@ namespace SVNMonitor.View.Dialogs
 			{
 				instance.Activate();
 			}
-		}
-
-		private void ShowSendUsageInformationHelp()
-		{
-			UsageInformationHelp.ShowUsageInformationHelp();
 		}
 
 		private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)

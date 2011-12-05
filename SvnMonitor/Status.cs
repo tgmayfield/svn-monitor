@@ -116,7 +116,7 @@ namespace SVNMonitor
 
 		internal static IEnumerable<string> UpdatingSources
 		{
-			get { return EnabledSources.Where(s => s.Updating).Select<Source, string>(s => s.Name); }
+			get { return EnabledSources.Where(s => s.Updating).Select(s => s.Name); }
 		}
 
 		internal static string UpdatingSourcesString

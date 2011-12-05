@@ -4,7 +4,6 @@ using System.Reflection;
 
 using SVNMonitor.Helpers;
 using SVNMonitor.Logging;
-using SVNMonitor.Settings;
 
 namespace SVNMonitor.Support
 {
@@ -51,28 +50,9 @@ namespace SVNMonitor.Support
 			return -1;
 		}
 
-		private static int GetWebKnownIssue(Exception ex)
-		{
-			string xml = Web.SharpRegion.TryGetKnownIssues(ApplicationSettingsManager.Settings.InstanceID, ex);
-			return GetKnownIssueFromXml(ex, xml);
-		}
-
 		public static bool IsKnownIssue(Exception ex)
 		{
-			return IsKnownIssue(ex, false);
-		}
-
-		public static bool IsKnownIssue(Exception ex, bool checkOnLine)
-		{
-			if (GetEmbeddedKnownIssue(ex) != -1)
-			{
-				return true;
-			}
-			if (!checkOnLine)
-			{
-				return false;
-			}
-			return (GetWebKnownIssue(ex) != -1);
+			return GetEmbeddedKnownIssue(ex) != -1;
 		}
 	}
 }

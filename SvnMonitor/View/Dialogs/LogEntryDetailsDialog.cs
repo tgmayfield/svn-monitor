@@ -446,7 +446,7 @@ namespace SVNMonitor.View.Dialogs
 			var predicate = GetPredicate(entry);
 			if (OpenDialogs.Any(predicate))
 			{
-				dialog = OpenDialogs.Where(predicate).First<LogEntryDetailsDialog>();
+				dialog = OpenDialogs.Where(predicate).First();
 			}
 			else
 			{

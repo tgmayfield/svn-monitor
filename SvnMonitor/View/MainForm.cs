@@ -22,7 +22,6 @@ using SVNMonitor.Resources;
 using SVNMonitor.Resources.Text;
 using SVNMonitor.SVN;
 using SVNMonitor.Settings;
-using SVNMonitor.Support;
 using SVNMonitor.View.Controls;
 using SVNMonitor.View.Dialogs;
 using SVNMonitor.View.Panels;
@@ -50,8 +49,6 @@ namespace SVNMonitor.View
 		private UICommand cmdBigOptions1;
 		private UICommand cmdBigRevert;
 		private UICommand cmdBigRevert1;
-		private UICommand cmdBigSendFeedback;
-		private UICommand cmdBigSendFeedback1;
 		private UICommand cmdBigSourceCommit;
 		private UICommand cmdBigSourceCommit1;
 		private UICommand cmdBigUpdate;
@@ -62,16 +59,11 @@ namespace SVNMonitor.View
 		private UICommand cmdBigUpdateAllAvailable1;
 		private UICommand cmdCheckAllSources;
 		private UICommand cmdCheckAllSources1;
-		private UICommand cmdCheckNewVersion;
-		private UICommand cmdCheckNewVersion1;
 		private UICommand cmdClose;
 		private UICommand cmdClose1;
 		private UICommand cmdClose2;
 		private UICommand cmdEnableUpdates;
 		private UICommand cmdEnableUpdates1;
-		private UICommand cmdFeedback;
-		private UICommand cmdFeedback1;
-		private UICommand cmdFeedback2;
 		private UICommand cmdGenerateError;
 		private UICommand cmdGenerateError1;
 		private UICommand cmdGenerateInvokeError;
@@ -82,8 +74,6 @@ namespace SVNMonitor.View
 		private UICommand cmdNewMonitor1;
 		private UICommand cmdNewSource;
 		private UICommand cmdNewSource1;
-		private UICommand cmdNewVersionAvailable;
-		private UICommand cmdNewVersionAvailable1;
 		private UICommand cmdOpen;
 		private UICommand cmdOpen1;
 		private UICommand cmdOptions;
@@ -216,11 +206,6 @@ namespace SVNMonitor.View
 			}
 		}
 
-		private void BrowseDownloadPage()
-		{
-			Web.SharpRegion.BrowseDownloadPage();
-		}
-
 		private void CheckAllSources()
 		{
 			SourcesPanel.UpdateAllSources();
@@ -292,12 +277,6 @@ namespace SVNMonitor.View
 			SourceRevert();
 		}
 
-		private void cmdBigSendFeedback_Click(object sender, CommandEventArgs e)
-		{
-			Logger.LogUserAction();
-			SendFeedback();
-		}
-
 		private void cmdBigSourceCommit_Click(object sender, CommandEventArgs e)
 		{
 			Logger.LogUserAction();
@@ -328,12 +307,6 @@ namespace SVNMonitor.View
 			UpdateAllSources();
 		}
 
-		private void cmdCheckNewVersion_Click(object sender, CommandEventArgs e)
-		{
-			Logger.LogUserAction();
-			VersionChecker.Instance.CheckVersionAsync();
-		}
-
 		private void cmdClose_Click(object sender, CommandEventArgs e)
 		{
 			Logger.LogUserAction();
@@ -344,12 +317,6 @@ namespace SVNMonitor.View
 		{
 			Logger.LogUserAction();
 			ToggleEnableUpdates();
-		}
-
-		private void cmdFeedback_Click(object sender, CommandEventArgs e)
-		{
-			Logger.LogUserAction();
-			SendFeedback();
 		}
 
 		private void cmdGenerateError_Click(object sender, CommandEventArgs e)
@@ -370,20 +337,6 @@ namespace SVNMonitor.View
 		{
 			Logger.LogUserAction();
 			NewSource();
-		}
-
-		private void cmdNewVersionAvailable_Click(object sender, CommandEventArgs e)
-		{
-			Logger.LogUserAction();
-			VersionChecker.VersionEventArgs args = (VersionChecker.VersionEventArgs)cmdNewVersionAvailable.Tag;
-			if (args.UpgradeAvailable)
-			{
-				ShowNewVersionDialog(args);
-			}
-			else
-			{
-				BrowseDownloadPage();
-			}
 		}
 
 		private void cmdOpen_Click(object sender, CommandEventArgs e)
@@ -574,12 +527,6 @@ namespace SVNMonitor.View
 			menuDebug.Visible = Janus.Windows.UI.InheritableBoolean.True;
 		}
 
-		[Conditional("DEBUG")]
-		private void DEBUG_ShowNewVersionDialog()
-		{
-			NewVersionDialog.ShowNewVersionDialog(FileSystemHelper.CurrentVersion, new Version("9.9.9.9"), "Some message");
-		}
-
 		private void DeleteObsoleteFiles()
 		{
 			string[] files = new[]
@@ -593,31 +540,6 @@ namespace SVNMonitor.View
 					Logger.Log.Debug("Obsolete file deleted: " + file);
 				}
 			}
-		}
-
-		private void DeleteUpgradeDirectory(object state)
-		{
-			try
-			{
-				Logger.Log.InfoFormat("Deleting upgrade info.", new object[0]);
-				UpgradeInfo.DeleteSavedUpgradeInfo();
-				Logger.Log.InfoFormat("Waiting 5 seconds before deleting temp upgrade files...", new object[0]);
-				SVNMonitor.Helpers.ThreadHelper.Sleep(0x1388);
-				Logger.Log.InfoFormat("Deleting upgrade temp directory: {0}", SessionInfo.UpgradedFrom);
-				FileSystemHelper.DeleteDirectory(SessionInfo.UpgradedFrom);
-				string upgradedFromOriginalZip = SessionInfo.UpgradedFrom.Substring(0, SessionInfo.UpgradedFrom.Length - 1);
-				Logger.Log.InfoFormat("Deleting upgrade temp zip: {0}", upgradedFromOriginalZip);
-				FileSystemHelper.DeleteFile(upgradedFromOriginalZip);
-			}
-			catch (Exception ex)
-			{
-				Logger.Log.Error(string.Format("Error trying to delete the upgrade directory and/or files: {0}", SessionInfo.UpgradedFrom), ex);
-			}
-		}
-
-		private void DeleteUpgradeDirectoryAsync()
-		{
-			SVNMonitor.Helpers.ThreadHelper.Queue(DeleteUpgradeDirectory, "DELUPGRADE");
 		}
 
 		protected override void Dispose(bool disposing)
@@ -648,7 +570,6 @@ namespace SVNMonitor.View
 				CanBigCheckSources = sourcesExists;
 				CanBigExplore = SourcesPanel.CanExplore;
 				CanBigOptions = true;
-				CanBigSendFeedback = true;
 				CanBigUpdate = SourcesPanel.CanSVNUpdate;
 				CanBigCommit = SourcesPanel.CanSVNCommit;
 				CanBigRevert = SourcesPanel.CanSVNRevert;
@@ -783,7 +704,6 @@ namespace SVNMonitor.View
 			menuTools1 = new UICommand("menuTools");
 			menuHelp1 = new UICommand("menuHelp");
 			menuDebug1 = new UICommand("menuDebug");
-			cmdNewVersionAvailable1 = new UICommand("cmdNewVersionAvailable");
 			uiCommandBar2 = new UICommandBar();
 			cmdBigCheckSource1 = new UICommand("cmdBigCheckSource");
 			cmdBigCheckSources1 = new UICommand("cmdBigCheckSources");
@@ -798,7 +718,6 @@ namespace SVNMonitor.View
 			cmdBigUpdateAll1 = new UICommand("cmdBigUpdateAll");
 			Separator7 = new UICommand("Separator");
 			cmdBigOptions1 = new UICommand("cmdBigOptions");
-			cmdBigSendFeedback1 = new UICommand("cmdBigSendFeedback");
 			menuFile = new UICommand("menuFile");
 			cmdNew1 = new UICommand("cmdNew");
 			cmdClose2 = new UICommand("cmdClose");
@@ -822,22 +741,17 @@ namespace SVNMonitor.View
 			menuSVNRevert = new UICommand("menuSVNRevert");
 			menuCheckModifications = new UICommand("menuCheckModifications");
 			menuHelp = new UICommand("menuHelp");
-			cmdCheckNewVersion1 = new UICommand("cmdCheckNewVersion");
 			Separator5 = new UICommand("Separator");
 			cmdTSVNHelp1 = new UICommand("cmdTSVNHelp");
-			cmdFeedback1 = new UICommand("cmdFeedback");
 			cmdAbout1 = new UICommand("cmdAbout");
 			cmdAbout = new UICommand("cmdAbout");
-			cmdCheckNewVersion = new UICommand("cmdCheckNewVersion");
 			cmdNew = new UICommand("cmdNew");
 			cmdNewSource1 = new UICommand("cmdNewSource");
 			cmdNewMonitor1 = new UICommand("cmdNewMonitor");
 			cmdNewSource = new UICommand("cmdNewSource");
 			cmdNewMonitor = new UICommand("cmdNewMonitor");
-			cmdNewVersionAvailable = new UICommand("cmdNewVersionAvailable");
 			cmdTSVNSettings = new UICommand("cmdTSVNSettings");
 			cmdTSVNHelp = new UICommand("cmdTSVNHelp");
-			cmdFeedback = new UICommand("cmdFeedback");
 			menuDebug = new UICommand("menuDebug");
 			menuDialogs1 = new UICommand("menuDialogs");
 			Separator9 = new UICommand("Separator");
@@ -861,7 +775,6 @@ namespace SVNMonitor.View
 			cmdBigUpdateAll = new UICommand("cmdBigUpdateAll");
 			cmdBigUpdateAllAvailable = new UICommand("cmdBigUpdateAllAvailable");
 			cmdBigOptions = new UICommand("cmdBigOptions");
-			cmdBigSendFeedback = new UICommand("cmdBigSendFeedback");
 			cmdBigSourceCommit = new UICommand("cmdBigSourceCommit");
 			cmdBigRevert = new UICommand("cmdBigRevert");
 			cmdTestDialogNewVersion = new UICommand("cmdTestDialogNewVersion");
@@ -882,7 +795,6 @@ namespace SVNMonitor.View
 			cmdOptions2 = new UICommand("cmdOptions");
 			cmdOpen1 = new UICommand("cmdOpen");
 			Separator2 = new UICommand("Separator");
-			cmdFeedback2 = new UICommand("cmdFeedback");
 			cmdClose1 = new UICommand("cmdClose");
 			LeftRebar1 = new UIRebar();
 			RightRebar1 = new UIRebar();
@@ -1156,8 +1068,8 @@ namespace SVNMonitor.View
 			uiCommandManager1.Commands.AddRange(new[]
 			{
 				menuFile, menuSource, menuMonitor, menuLog, menuItem, menuTools, menuEventLog, cmdOptions, cmdEnableUpdates, cmdOpen, cmdClose, cmdCheckAllSources, cmdSVNUpdateAll, cmdSVNUpdateAllAvailable, menuSVNUpdate, menuSVNCommit,
-				menuSVNRevert, menuCheckModifications, menuHelp, cmdAbout, cmdCheckNewVersion, cmdNew, cmdNewSource, cmdNewMonitor, cmdNewVersionAvailable, cmdTSVNSettings, cmdTSVNHelp, cmdFeedback, menuDebug, cmdGenerateError, cmdGenerateInvokeError, cmdTestNewVersion,
-				txtTestNewVersion, txtTestNewVersionFile, menuTestNewVersion, cmdBigCheckSources, cmdBigCheckSource, cmdBigCheckModifications, cmdBigExplore, cmdBigUpdate, cmdBigUpdateAll, cmdBigUpdateAllAvailable, cmdBigOptions, cmdBigSendFeedback, cmdBigSourceCommit, cmdBigRevert, cmdTestDialogNewVersion, menuDialogs,
+				menuSVNRevert, menuCheckModifications, menuHelp, cmdAbout, cmdNew, cmdNewSource, cmdNewMonitor, cmdTSVNSettings, cmdTSVNHelp, menuDebug, cmdGenerateError, cmdGenerateInvokeError, cmdTestNewVersion,
+				txtTestNewVersion, txtTestNewVersionFile, menuTestNewVersion, cmdBigCheckSources, cmdBigCheckSource, cmdBigCheckModifications, cmdBigExplore, cmdBigUpdate, cmdBigUpdateAll, cmdBigUpdateAllAvailable, cmdBigOptions, cmdBigSourceCommit, cmdBigRevert, cmdTestDialogNewVersion, menuDialogs,
 				menuTestGridLayouts, cmdTestSetLogEntriesGridLayout
 			});
 			uiCommandManager1.ContainerControl = this;
@@ -1183,7 +1095,7 @@ namespace SVNMonitor.View
 			uiCommandBar1.CommandManager = uiCommandManager1;
 			uiCommandBar1.Commands.AddRange(new[]
 			{
-				menuFile1, menuSource1, menuMonitor1, menuLog1, menuItem1, menuEventLog1, menuTools1, menuHelp1, menuDebug1, cmdNewVersionAvailable1
+				menuFile1, menuSource1, menuMonitor1, menuLog1, menuItem1, menuEventLog1, menuTools1, menuHelp1, menuDebug1
 			});
 			resources.ApplyResources(uiCommandBar1, "uiCommandBar1");
 			uiCommandBar1.LockCommandBar = Janus.Windows.UI.InheritableBoolean.True;
@@ -1208,13 +1120,11 @@ namespace SVNMonitor.View
 			menuHelp1.Name = "menuHelp1";
 			resources.ApplyResources(menuDebug1, "menuDebug1");
 			menuDebug1.Name = "menuDebug1";
-			resources.ApplyResources(cmdNewVersionAvailable1, "cmdNewVersionAvailable1");
-			cmdNewVersionAvailable1.Name = "cmdNewVersionAvailable1";
 			uiCommandBar2.AllowCustomize = Janus.Windows.UI.InheritableBoolean.True;
 			uiCommandBar2.CommandManager = uiCommandManager1;
 			uiCommandBar2.Commands.AddRange(new[]
 			{
-				cmdBigCheckSource1, cmdBigCheckSources1, cmdBigCheckModifications1, cmdBigExplore1, Separator6, cmdBigUpdate1, cmdBigSourceCommit1, cmdBigRevert1, Separator8, cmdBigUpdateAllAvailable1, cmdBigUpdateAll1, Separator7, cmdBigOptions1, cmdBigSendFeedback1
+				cmdBigCheckSource1, cmdBigCheckSources1, cmdBigCheckModifications1, cmdBigExplore1, Separator6, cmdBigUpdate1, cmdBigSourceCommit1, cmdBigRevert1, Separator8, cmdBigUpdateAllAvailable1, cmdBigUpdateAll1, Separator7, cmdBigOptions1
 			});
 			uiCommandBar2.FullRow = true;
 			resources.ApplyResources(uiCommandBar2, "uiCommandBar2");
@@ -1250,8 +1160,6 @@ namespace SVNMonitor.View
 			Separator7.Name = "Separator7";
 			resources.ApplyResources(cmdBigOptions1, "cmdBigOptions1");
 			cmdBigOptions1.Name = "cmdBigOptions1";
-			resources.ApplyResources(cmdBigSendFeedback1, "cmdBigSendFeedback1");
-			cmdBigSendFeedback1.Name = "cmdBigSendFeedback1";
 			menuFile.Commands.AddRange(new[]
 			{
 				cmdNew1, cmdClose2
@@ -1314,27 +1222,20 @@ namespace SVNMonitor.View
 			menuCheckModifications.Name = "menuCheckModifications";
 			menuHelp.Commands.AddRange(new[]
 			{
-				cmdCheckNewVersion1, Separator5, cmdTSVNHelp1, cmdFeedback1, cmdAbout1
+				cmdTSVNHelp1, cmdAbout1
 			});
 			resources.ApplyResources(menuHelp, "menuHelp");
 			menuHelp.Name = "menuHelp";
-			resources.ApplyResources(cmdCheckNewVersion1, "cmdCheckNewVersion1");
-			cmdCheckNewVersion1.Name = "cmdCheckNewVersion1";
 			Separator5.CommandType = CommandType.Separator;
 			resources.ApplyResources(Separator5, "Separator5");
 			Separator5.Name = "Separator5";
 			resources.ApplyResources(cmdTSVNHelp1, "cmdTSVNHelp1");
 			cmdTSVNHelp1.Name = "cmdTSVNHelp1";
-			resources.ApplyResources(cmdFeedback1, "cmdFeedback1");
-			cmdFeedback1.Name = "cmdFeedback1";
 			resources.ApplyResources(cmdAbout1, "cmdAbout1");
 			cmdAbout1.Name = "cmdAbout1";
 			resources.ApplyResources(cmdAbout, "cmdAbout");
 			cmdAbout.Name = "cmdAbout";
 			cmdAbout.Click += cmdAbout_Click;
-			resources.ApplyResources(cmdCheckNewVersion, "cmdCheckNewVersion");
-			cmdCheckNewVersion.Name = "cmdCheckNewVersion";
-			cmdCheckNewVersion.Click += cmdCheckNewVersion_Click;
 			cmdNew.Commands.AddRange(new[]
 			{
 				cmdNewSource1, cmdNewMonitor1
@@ -1351,20 +1252,12 @@ namespace SVNMonitor.View
 			resources.ApplyResources(cmdNewMonitor, "cmdNewMonitor");
 			cmdNewMonitor.Name = "cmdNewMonitor";
 			cmdNewMonitor.Click += cmdNewMonitor_Click;
-			cmdNewVersionAvailable.CommandStyle = CommandStyle.TextImage;
-			resources.ApplyResources(cmdNewVersionAvailable, "cmdNewVersionAvailable");
-			cmdNewVersionAvailable.Name = "cmdNewVersionAvailable";
-			cmdNewVersionAvailable.Visible = Janus.Windows.UI.InheritableBoolean.False;
-			cmdNewVersionAvailable.Click += cmdNewVersionAvailable_Click;
 			resources.ApplyResources(cmdTSVNSettings, "cmdTSVNSettings");
 			cmdTSVNSettings.Name = "cmdTSVNSettings";
 			cmdTSVNSettings.Click += cmdTSVNSettings_Click;
 			resources.ApplyResources(cmdTSVNHelp, "cmdTSVNHelp");
 			cmdTSVNHelp.Name = "cmdTSVNHelp";
 			cmdTSVNHelp.Click += cmdTSVNHelp_Click;
-			resources.ApplyResources(cmdFeedback, "cmdFeedback");
-			cmdFeedback.Name = "cmdFeedback";
-			cmdFeedback.Click += cmdFeedback_Click;
 			resources.ApplyResources(menuDebug, "menuDebug");
 			menuDebug.Commands.AddRange(new[]
 			{
@@ -1448,10 +1341,6 @@ namespace SVNMonitor.View
 			cmdBigOptions.Name = "cmdBigOptions";
 			cmdBigOptions.TextImageRelation = Janus.Windows.UI.CommandBars.TextImageRelation.ImageAboveText;
 			cmdBigOptions.Click += cmdBigOptions_Click;
-			resources.ApplyResources(cmdBigSendFeedback, "cmdBigSendFeedback");
-			cmdBigSendFeedback.Name = "cmdBigSendFeedback";
-			cmdBigSendFeedback.TextImageRelation = Janus.Windows.UI.CommandBars.TextImageRelation.ImageAboveText;
-			cmdBigSendFeedback.Click += cmdBigSendFeedback_Click;
 			resources.ApplyResources(cmdBigSourceCommit, "cmdBigSourceCommit");
 			cmdBigSourceCommit.Name = "cmdBigSourceCommit";
 			cmdBigSourceCommit.TextImageRelation = Janus.Windows.UI.CommandBars.TextImageRelation.ImageAboveText;
@@ -1474,7 +1363,7 @@ namespace SVNMonitor.View
 			uiContextMenu1.CommandManager = uiCommandManager1;
 			uiContextMenu1.Commands.AddRange(new[]
 			{
-				cmdEnableUpdates1, Separator1, menuCheckModifications1, menuSVNUpdate1, cmdSVNUpdateAllUnread1, cmdSVNUpdateAll1, menuSVNCommit1, menuSVNRevert1, Separator4, cmdCheckAllSources1, Separator3, cmdOptions2, cmdOpen1, Separator2, cmdFeedback2, cmdClose1
+				cmdEnableUpdates1, Separator1, menuCheckModifications1, menuSVNUpdate1, cmdSVNUpdateAllUnread1, cmdSVNUpdateAll1, menuSVNCommit1, menuSVNRevert1, Separator4, cmdCheckAllSources1, Separator3, cmdOptions2, cmdOpen1, Separator2, cmdClose1
 			});
 			resources.ApplyResources(uiContextMenu1, "uiContextMenu1");
 			uiContextMenu1.Popup += uiContextMenu1_Popup;
@@ -1511,8 +1400,6 @@ namespace SVNMonitor.View
 			Separator2.CommandType = CommandType.Separator;
 			resources.ApplyResources(Separator2, "Separator2");
 			Separator2.Name = "Separator2";
-			resources.ApplyResources(cmdFeedback2, "cmdFeedback2");
-			cmdFeedback2.Name = "cmdFeedback2";
 			resources.ApplyResources(cmdClose1, "cmdClose1");
 			cmdClose1.Name = "cmdClose1";
 			LeftRebar1.CommandManager = uiCommandManager1;
@@ -1599,11 +1486,6 @@ namespace SVNMonitor.View
 		private void InstallKeyHooks()
 		{
 			KeyboardHookHelper.Install();
-		}
-
-		private void Instance_UpgradeAvailable(object sender, VersionChecker.VersionEventArgs e)
-		{
-			ShowNewVersionMessage(e);
 		}
 
 		private void LoadUISettings()
@@ -1783,7 +1665,6 @@ namespace SVNMonitor.View
 				ConditionSerializer.Grid = UpdatesGrid;
 				SetPanelsEntities();
 				RegisterMonitorSettingsEvents();
-				VersionChecker.Start();
 				Updater.Start();
 				InstallKeyHooks();
 				base.SizeChanged += MainForm_SizeChanged;
@@ -1850,18 +1731,6 @@ namespace SVNMonitor.View
 			}
 		}
 
-		private void PostUpgrade()
-		{
-			string message = Strings.VersionUpgradedNotification_FORMAT.FormatWith(new object[]
-			{
-				FileSystemHelper.CurrentVersion
-			});
-			SVNMonitor.EventLog.LogSystem(message);
-			Notifier.ShowBalloonTip(0xea60, Strings.SVNMonitorCaption, message, ToolTipIcon.Info);
-			DeleteUpgradeDirectoryAsync();
-			Web.SharpRegion.TrySendUpgradeInfo(ApplicationSettingsManager.Settings.InstanceID);
-		}
-
 		private void ReadSettings()
 		{
 			cmdEnableUpdates.Checked = ApplicationSettingsManager.Settings.EnableUpdates.ToInheritableBoolean();
@@ -1876,9 +1745,6 @@ namespace SVNMonitor.View
 		private void RegisterEvents()
 		{
 			Status.StatusChanged += Status_StatusChanged;
-			VersionChecker.Instance.NewVersionAvailable += versionChecker_NewVersionAvailable;
-			VersionChecker.Instance.NoNewVersionAvailable += versionChecker_NoNewVersionAvailable;
-			VersionChecker.Instance.UpgradeAvailable += Instance_UpgradeAvailable;
 			ApplicationSettingsManager.SavedSettings += (s, ea) => InstallKeyHooks();
 		}
 
@@ -1887,21 +1753,6 @@ namespace SVNMonitor.View
 			MonitorSettings settings = MonitorSettings.Instance;
 			settings.SourcesChanged += (s, ea) => SetPanelsEntities();
 			settings.MonitorsChanged += (s, ea) => SetPanelsEntities();
-		}
-
-		public void ReportError(ErrorReportFeedback report)
-		{
-			if (base.InvokeRequired)
-			{
-				base.BeginInvoke(new Action<ErrorReportFeedback>(ReportError), new object[]
-				{
-					report
-				});
-			}
-			else
-			{
-				ErrorReportDialog.Report(report);
-			}
 		}
 
 		public void RestoreForm()
@@ -1945,11 +1796,6 @@ namespace SVNMonitor.View
 		public void SelectSource(Source source)
 		{
 			formInstance.SourcesPanel.SelectSource(source);
-		}
-
-		private void SendFeedback()
-		{
-			FeedbackDialog.ShowFeedbackDialog();
 		}
 
 		private void SetAnimation()
@@ -2073,70 +1919,6 @@ namespace SVNMonitor.View
 			return MessageBox.Show(this, text, caption, messageBoxButtons, messageBoxIcon);
 		}
 
-		private void ShowNewVersionBalloon(VersionChecker.VersionEventArgs e)
-		{
-			if (base.InvokeRequired)
-			{
-				base.BeginInvoke(new Action<VersionChecker.VersionEventArgs>(ShowNewVersionBalloon), new object[]
-				{
-					e
-				});
-			}
-			else
-			{
-				EventHandler handler = (s, ea) => ShowNewVersionDialog(e);
-				Notifier.ShowBalloonTip(0xea60, Strings.SVNMonitorCaption, Strings.ANewVersionIsAvailable, ToolTipIcon.Info, handler);
-			}
-		}
-
-		private void ShowNewVersionCommand(VersionChecker.VersionEventArgs e)
-		{
-			cmdNewVersionAvailable.Visible = Janus.Windows.UI.InheritableBoolean.True;
-			cmdNewVersionAvailable.Tag = e;
-		}
-
-		private void ShowNewVersionDialog(VersionChecker.VersionEventArgs e)
-		{
-			Version currentVersion = e.CurrentVersion;
-			Version latestVersion = e.LatestVersion;
-			string message = e.Message;
-			NewVersionDialog.ShowNewVersionDialog(currentVersion, latestVersion, message, e.VersionFolder);
-		}
-
-		private void ShowNewVersionMessage(VersionChecker.VersionEventArgs e)
-		{
-			if (base.InvokeRequired)
-			{
-				base.BeginInvoke(new Action<VersionChecker.VersionEventArgs>(ShowNewVersionMessage), new object[]
-				{
-					e
-				});
-			}
-			else
-			{
-				SVNMonitor.EventLog.Log(SVNMonitor.EventLogEntryType.System, Strings.ANewVersionIsAvailableWithVersion_FORMAT.FormatWith(new object[]
-				{
-					e.LatestVersion
-				}), VersionChecker.Instance);
-				ShowNewVersionCommand(e);
-				if (base.Visible)
-				{
-					ShowNewVersionDialog(e);
-				}
-				else
-				{
-					ShowNewVersionBalloon(e);
-				}
-			}
-		}
-
-		private void ShowNoNewVersionMessage()
-		{
-			string message = "No newer version is available right now";
-			SVNMonitor.EventLog.LogInfo(message, this);
-			ShowMessage("No newer version is available right now", "SVN-Monitor", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-		}
-
 		internal void ShowOrHideForm()
 		{
 			if (base.Visible)
@@ -2195,11 +1977,7 @@ namespace SVNMonitor.View
 		{
 			try
 			{
-				if (!string.IsNullOrEmpty(SessionInfo.UpgradedFrom))
-				{
-					PostUpgrade();
-				}
-				else if (ShowFirstRunNotification)
+				if (ShowFirstRunNotification)
 				{
 					Notifier.ShowBalloonTip(0xea60, Strings.SVNMonitorCaption, Strings.HereItIs, ToolTipIcon.Info);
 				}
@@ -2285,16 +2063,6 @@ namespace SVNMonitor.View
 			{
 				Updater.Instance.QueueUpdate(source, true);
 			}
-		}
-
-		private void versionChecker_NewVersionAvailable(object sender, VersionChecker.VersionEventArgs e)
-		{
-			ShowNewVersionMessage(e);
-		}
-
-		private void versionChecker_NoNewVersionAvailable(object sender, EventArgs e)
-		{
-			ShowNoNewVersionMessage();
 		}
 
 		private static void WaitForUpdaterToFinish()
@@ -2391,15 +2159,6 @@ namespace SVNMonitor.View
 			get { return (cmdBigRevert.Enabled == Janus.Windows.UI.InheritableBoolean.True); }
 			[DebuggerNonUserCode]
 			set { cmdBigRevert.Enabled = value.ToInheritableBoolean(); }
-		}
-
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-		private bool CanBigSendFeedback
-		{
-			[DebuggerNonUserCode]
-			get { return (cmdBigSendFeedback.Enabled == Janus.Windows.UI.InheritableBoolean.True); }
-			[DebuggerNonUserCode]
-			set { cmdBigSendFeedback.Enabled = value.ToInheritableBoolean(); }
 		}
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]

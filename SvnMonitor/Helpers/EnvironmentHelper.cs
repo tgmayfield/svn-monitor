@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 
 using SVNMonitor.Logging;
-using SVNMonitor.Support;
 
 namespace SVNMonitor.Helpers
 {
@@ -29,7 +28,7 @@ namespace SVNMonitor.Helpers
 
 		internal static string GetEnvironmentVariables()
 		{
-			return GetEnvironmentVariables("Environment_Var_{0}={1}{2}", UsageInformationSender.Separator);
+			return GetEnvironmentVariables("Environment_Var_{0}={1}{2}", Environment.NewLine);
 		}
 
 		internal static string GetEnvironmentVariables(string formatter, string delimiter)
@@ -62,15 +61,15 @@ namespace SVNMonitor.Helpers
 		{
 			StringBuilder sb = new StringBuilder();
 			sb.Append(GetEnvironmentVariables());
-			sb.AppendFormat("Environment_CommandLine={0}{1}", Environment.CommandLine, UsageInformationSender.Separator);
-			sb.AppendFormat("Environment_CurrentDirectory={0}{1}", Environment.CurrentDirectory, UsageInformationSender.Separator);
-			sb.AppendFormat("Environment_OSVersion={0}{1}", Environment.OSVersion, UsageInformationSender.Separator);
-			sb.AppendFormat("Environment_ProcessorCount={0}{1}", Environment.ProcessorCount, UsageInformationSender.Separator);
-			sb.AppendFormat("Environment_SystemDirectory={0}{1}", Environment.SystemDirectory, UsageInformationSender.Separator);
-			sb.AppendFormat("Environment_Version={0}{1}", Environment.Version, UsageInformationSender.Separator);
-			sb.AppendFormat("Environment_UserInteractive={0}{1}", Environment.UserInteractive, UsageInformationSender.Separator);
-			sb.AppendFormat("Environment_WorkingSet={0}{1}", Environment.WorkingSet, UsageInformationSender.Separator);
-			sb.AppendFormat("System_DotNetFramework={0}{1}", GetFrameworkVersions(), UsageInformationSender.Separator);
+			sb.AppendFormat("Environment_CommandLine={0}{1}", Environment.CommandLine, Environment.NewLine);
+			sb.AppendFormat("Environment_CurrentDirectory={0}{1}", Environment.CurrentDirectory, Environment.NewLine);
+			sb.AppendFormat("Environment_OSVersion={0}{1}", Environment.OSVersion, Environment.NewLine);
+			sb.AppendFormat("Environment_ProcessorCount={0}{1}", Environment.ProcessorCount, Environment.NewLine);
+			sb.AppendFormat("Environment_SystemDirectory={0}{1}", Environment.SystemDirectory, Environment.NewLine);
+			sb.AppendFormat("Environment_Version={0}{1}", Environment.Version, Environment.NewLine);
+			sb.AppendFormat("Environment_UserInteractive={0}{1}", Environment.UserInteractive, Environment.NewLine);
+			sb.AppendFormat("Environment_WorkingSet={0}{1}", Environment.WorkingSet, Environment.NewLine);
+			sb.AppendFormat("System_DotNetFramework={0}{1}", GetFrameworkVersions(), Environment.NewLine);
 			return sb.ToString();
 		}
 	}

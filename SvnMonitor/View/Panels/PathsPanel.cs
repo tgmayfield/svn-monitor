@@ -390,7 +390,7 @@ namespace SVNMonitor.View.Panels
 			{
 				return string.Empty;
 			}
-			return string.Join(Environment.NewLine, paths.Select(p => p.FilePath).ToArray<string>());
+			return string.Join(Environment.NewLine, paths.Select(p => p.FilePath).ToArray());
 		}
 
 		private string GetNameToClipboard()
@@ -423,7 +423,7 @@ namespace SVNMonitor.View.Panels
 			{
 				return string.Empty;
 			}
-			return string.Join(Environment.NewLine, paths.Select(p => p.Name).ToArray<string>());
+			return string.Join(Environment.NewLine, paths.Select(p => p.Name).ToArray());
 		}
 
 		private string GetURLToClipboard()
@@ -433,7 +433,7 @@ namespace SVNMonitor.View.Panels
 			{
 				return string.Empty;
 			}
-			return string.Join(Environment.NewLine, paths.Select(p => p.Uri).ToArray<string>());
+			return string.Join(Environment.NewLine, paths.Select(p => p.Uri).ToArray());
 		}
 
 		private void InitializeClipboardDelegates()

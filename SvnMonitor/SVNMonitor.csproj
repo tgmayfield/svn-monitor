@@ -405,114 +405,12 @@
     <Compile Include="Settings\Validation\ValidationOperator.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendErrorReportCompletedEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendErrorReportCompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendFeedbackCompletedEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendFeedbackCompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendUpgradeInfoCompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\sendUsageInfoCompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\svnmonitor_server.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\testCompletedEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SharpRegion\testCompletedEventHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Status.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Support\BaseFeedback.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\BaseSendable.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\ErrorReportFeedback.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\ISendable.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\Issue.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\IssuesCollection.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\KnownIssuesHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\SampleIssuesGenerator.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\SendableResult.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\SendCallback.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\UpgradeInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\UsageInformationSender.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\UserFeedback.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Support\VersionChecker.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Support\Issue.cs" />
+    <Compile Include="Support\IssuesCollection.cs" />
+    <Compile Include="Support\KnownIssuesHelper.cs" />
     <Compile Include="SVN\SharpSVNClient.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -600,22 +498,7 @@
     <Compile Include="View\Dialogs\BaseDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Dialogs\BaseFeedbackDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="View\Dialogs\BasePromptDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Dialogs\ErrorReportDetailsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Dialogs\ErrorReportDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Dialogs\FeedbackConfirmationDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Dialogs\FeedbackDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Dialogs\LogEntryDetailsDialog.cs">
@@ -624,16 +507,10 @@
     <Compile Include="View\Dialogs\MonitorPropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Dialogs\NewVersionDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="View\Dialogs\RecommendWizard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Dialogs\RollbackPromptDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Dialogs\SendProgressDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Dialogs\SettingsDialog.cs">
@@ -643,9 +520,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Dialogs\UpdateHeadPromptDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Dialogs\UsageInformationHelp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Interfaces\ILogEntriesView.cs">
@@ -692,9 +566,6 @@
     </Compile>
     <Compile Include="View\Panels\UpdatesGridContainer.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Web\SharpRegion.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Wizards\CodeReviewMailerWizard.cs">
       <SubType>Code</SubType>
@@ -746,12 +617,13 @@
       <DependentUpon>GridEX.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\UI\LogEntriesPanel.resx" />
-    <EmbeddedResource Include="Resources\UI\MainForm.resx" />
+    <EmbeddedResource Include="Resources\UI\MainForm.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\UI\MonitorsPanel.resx" />
     <EmbeddedResource Include="Resources\UI\PathsPanel.resx" />
     <EmbeddedResource Include="Resources\UI\SourcesPanel.resx" />
     <EmbeddedResource Include="Resources\UI\UpdatesGridContainer.resx" />
-    <EmbeddedResource Include="Support\KnownIssues.xml" />
     <EmbeddedResource Include="View\Controls\AnimationProgressBar.resx">
       <DependentUpon>AnimationProgressBar.cs</DependentUpon>
     </EmbeddedResource>
@@ -765,35 +637,17 @@
     <EmbeddedResource Include="View\Dialogs\ActionPropertiesDialog.resx">
       <DependentUpon>ActionPropertiesDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Dialogs\ErrorReportDetailsDialog.resx">
-      <DependentUpon>ErrorReportDetailsDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Dialogs\ErrorReportDialog.resx">
-      <DependentUpon>ErrorReportDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Dialogs\FeedbackConfirmationDialog.resx">
-      <DependentUpon>FeedbackConfirmationDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Dialogs\FeedbackDialog.resx">
-      <DependentUpon>FeedbackDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Dialogs\LogEntryDetailsDialog.resx">
       <DependentUpon>LogEntryDetailsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialogs\MonitorPropertiesDialog.resx">
       <DependentUpon>MonitorPropertiesDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Dialogs\NewVersionDialog.resx">
-      <DependentUpon>NewVersionDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Dialogs\RecommendWizard.resx">
       <DependentUpon>RecommendWizard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialogs\RollbackPromptDialog.resx">
       <DependentUpon>RollbackPromptDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Dialogs\SendProgressDialog.resx">
-      <DependentUpon>SendProgressDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialogs\SettingsDialog.resx">
       <DependentUpon>SettingsDialog.cs</DependentUpon>
@@ -804,11 +658,9 @@
     <EmbeddedResource Include="View\Dialogs\UpdateHeadPromptDialog.resx">
       <DependentUpon>UpdateHeadPromptDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Dialogs\UsageInformationHelp.resx">
-      <DependentUpon>UsageInformationHelp.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Panels\ActionsPanel.resx">
       <DependentUpon>ActionsPanel.cs</DependentUpon>
@@ -833,6 +685,9 @@
     </EmbeddedResource>
     <Resource Include="SVNMonitor.exe.licenses" />
     <EmbeddedResource Include="LoggerConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Support\KnownIssues.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

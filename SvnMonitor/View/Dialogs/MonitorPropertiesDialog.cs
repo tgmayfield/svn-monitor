@@ -85,7 +85,7 @@ namespace SVNMonitor.View.Dialogs
 			if (FilterCondition != null)
 			{
 				string thisFilterConditionString = FilterCondition.ToString();
-				IEnumerable<string> existingConflictingMonitors = MonitorSettings.Instance.GetEnumerableMonitors().Where(m => (((m.FilterCondition != null) && (m != Monitor)) && (m.FilterCondition.ToString() == thisFilterConditionString))).Select<SVNMonitor.Entities.Monitor, string>(m => m.Name);
+				IEnumerable<string> existingConflictingMonitors = MonitorSettings.Instance.GetEnumerableMonitors().Where(m => (((m.FilterCondition != null) && (m != Monitor)) && (m.FilterCondition.ToString() == thisFilterConditionString))).Select(m => m.Name);
 				int count = existingConflictingMonitors.Count();
 				if (count > 0)
 				{

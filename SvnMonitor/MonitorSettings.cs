@@ -10,7 +10,6 @@ using SVNMonitor.Extensions;
 using SVNMonitor.Helpers;
 using SVNMonitor.Logging;
 using SVNMonitor.Resources.Text;
-using SVNMonitor.Support;
 using SVNMonitor.View;
 
 namespace SVNMonitor
@@ -98,9 +97,9 @@ namespace SVNMonitor
 		public string GetUsageInformation()
 		{
 			StringBuilder sb = new StringBuilder();
-			sb.AppendFormat("MonitorSettings_SourcesCount={0}{1}", Sources.Count, UsageInformationSender.Separator);
-			sb.AppendFormat("MonitorSettings_MonitorsCount={0}{1}", Monitors.Count, UsageInformationSender.Separator);
-			sb.AppendFormat("MonitorSettings_AverageActions={0}{1}", GetMonitorsAverageActions(), UsageInformationSender.Separator);
+			sb.AppendFormat("MonitorSettings_SourcesCount={0}{1}", Sources.Count, Environment.NewLine);
+			sb.AppendFormat("MonitorSettings_MonitorsCount={0}{1}", Monitors.Count, Environment.NewLine);
+			sb.AppendFormat("MonitorSettings_AverageActions={0}{1}", GetMonitorsAverageActions(), Environment.NewLine);
 			return sb.ToString();
 		}
 

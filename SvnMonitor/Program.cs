@@ -11,7 +11,6 @@ using SVNMonitor.Resources.Text;
 using SVNMonitor.Settings;
 using SVNMonitor.Support;
 using SVNMonitor.View;
-using SVNMonitor.View.Dialogs;
 
 namespace SVNMonitor
 {
@@ -61,26 +60,14 @@ namespace SVNMonitor
 			{
 				HandleException(ex.InnerException, handler);
 			}
-			else if (KnownIssuesHelper.IsKnownIssue(ex, true))
+			else if (KnownIssuesHelper.IsKnownIssue(ex))
 			{
 				Logger.Log.Error("Known Issue: ", ex);
 			}
 			else
 			{
 				Logger.Log.Error(string.Format("Unhandled exception by {0}:", handler), ex);
-				if (!closing)
-				{
-					ErrorReportFeedback report = ErrorReportFeedback.Generate(ex);
-					if (MainForm.FormInstance != null)
-					{
-						MainForm.FormInstance.ReportError(report);
-					}
-					else
-					{
-						ErrorReportDialog.Report(report);
-					}
-				}
-				else
+				if (closing)
 				{
 					Logger.Log.Info("Exception while closing");
 					LogEnd();
@@ -129,29 +116,25 @@ namespace SVNMonitor
 					bool firstRun = InitApplicationSettings();
 					SVNMonitor.Helpers.ThreadHelper.SetMainThreadUICulture(ApplicationSettingsManager.Settings.UILanguage);
 					RemotingServer.Start();
-					if (!UpgradeInfo.CheckIfUpgradeReady())
+					AppendStartMessages();
+					AppDomain.CurrentDomain.UnhandledException += Program.CurrentDomain_UnhandledException;
+					AppDomain.CurrentDomain.AssemblyLoad += Program.CurrentDomain_AssemblyLoad;
+					Application.ThreadException += Program.Application_ThreadException;
+					try
 					{
-						UpgradeInfo.DeleteSavedUpgradeInfo();
-						AppendStartMessages();
-						AppDomain.CurrentDomain.UnhandledException += Program.CurrentDomain_UnhandledException;
-						AppDomain.CurrentDomain.AssemblyLoad += Program.CurrentDomain_AssemblyLoad;
-						Application.ThreadException += Program.Application_ThreadException;
-						try
+						MainForm form = new MainForm
 						{
-							MainForm form = new MainForm
-							{
-								ShowFirstRunNotification = firstRun
-							};
-							Application.Run(form);
-						}
-						catch (Exception ex)
-						{
-							Logger.Log.Error("Fatal Error", ex);
-						}
-						finally
-						{
-							End();
-						}
+							ShowFirstRunNotification = firstRun
+						};
+						Application.Run(form);
+					}
+					catch (Exception ex)
+					{
+						Logger.Log.Error("Fatal Error", ex);
+					}
+					finally
+					{
+						End();
 					}
 				}
 			}

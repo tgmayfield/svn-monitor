@@ -8,7 +8,6 @@ using System.Text;
 using System.Timers;
 
 using SVNMonitor.Logging;
-using SVNMonitor.Support;
 
 namespace SVNMonitor.Helpers
 {
@@ -41,8 +40,8 @@ namespace SVNMonitor.Helpers
 			StringBuilder sb = new StringBuilder();
 			foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
 			{
-				sb.AppendFormat("AppDomain_Assembly={0}{1}", assembly, UsageInformationSender.Separator);
-				sb.AppendFormat("AppDomain_AssemblyLocation={0}{1}", assembly.Location, UsageInformationSender.Separator);
+				sb.AppendFormat("AppDomain_Assembly={0}{1}", assembly, Environment.NewLine);
+				sb.AppendFormat("AppDomain_AssemblyLocation={0}{1}", assembly.Location, Environment.NewLine);
 			}
 			return sb.ToString();
 		}
@@ -54,7 +53,7 @@ namespace SVNMonitor.Helpers
 
 		internal static string GetUsageInformation()
 		{
-			return string.Format("Process_IsAdmin={0}{1}", IsRunningAsAdministrator(), UsageInformationSender.Separator);
+			return string.Format("Process_IsAdmin={0}{1}", IsRunningAsAdministrator(), Environment.NewLine);
 		}
 
 		public static bool IsInVisualStudio()

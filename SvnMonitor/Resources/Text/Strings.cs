@@ -250,16 +250,6 @@ namespace SVNMonitor.Resources.Text
 			get { return ResourceManager.GetString("ErrorSavingTheSettingsFullMessage", resourceCulture); }
 		}
 
-		internal static string ErrorSendingErrorReport_FORMAT
-		{
-			get { return ResourceManager.GetString("ErrorSendingErrorReport_FORMAT", resourceCulture); }
-		}
-
-		internal static string ErrorSendingFeedback_FORMAT
-		{
-			get { return ResourceManager.GetString("ErrorSendingFeedback_FORMAT", resourceCulture); }
-		}
-
 		internal static string ErrorSettingClipboard
 		{
 			get { return ResourceManager.GetString("ErrorSettingClipboard", resourceCulture); }
@@ -298,21 +288,6 @@ namespace SVNMonitor.Resources.Text
 		internal static string ExecutablesFileTypes
 		{
 			get { return ResourceManager.GetString("ExecutablesFileTypes", resourceCulture); }
-		}
-
-		internal static string FailedToExtractTheDownloadedVersion
-		{
-			get { return ResourceManager.GetString("FailedToExtractTheDownloadedVersion", resourceCulture); }
-		}
-
-		internal static string FeedbackErrorText
-		{
-			get { return ResourceManager.GetString("FeedbackErrorText", resourceCulture); }
-		}
-
-		internal static string FeedbackErrorTitle
-		{
-			get { return ResourceManager.GetString("FeedbackErrorTitle", resourceCulture); }
 		}
 
 		internal static string FoundFileAt_FORMAT

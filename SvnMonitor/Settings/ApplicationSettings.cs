@@ -12,7 +12,6 @@ using SVNMonitor.Helpers;
 using SVNMonitor.Logging;
 using SVNMonitor.Settings.DefaultProviders;
 using SVNMonitor.Settings.Validation;
-using SVNMonitor.Support;
 
 namespace SVNMonitor.Settings
 {
@@ -45,7 +44,7 @@ namespace SVNMonitor.Settings
 			{
 				if (!IgnoreWebService(kvp.Key))
 				{
-					sb.AppendFormat("ApplicationSettings_{0}={1}{2}", kvp.Key, kvp.Value, UsageInformationSender.Separator);
+					sb.AppendFormat("ApplicationSettings_{0}={1}{2}", kvp.Key, kvp.Value, Environment.NewLine);
 				}
 			}
 			return sb.ToString();

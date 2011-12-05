@@ -22,7 +22,7 @@ namespace SVNMonitor.View.Controls
 
 		private IEnumerable<ExplorerBarItem> CreateActionItems()
 		{
-			return Monitor.Actions.Where(a => a.Enabled).Select<Actions.Action, ExplorerBarItem>(action => new ExplorerBarItem
+			return Monitor.Actions.Where(a => a.Enabled).Select(action => new ExplorerBarItem
 			{
 				Image = Images.plug,
 				Text = action.SummaryInfo,

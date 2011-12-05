@@ -178,7 +178,7 @@ namespace SVNMonitor.Entities
 
 		public IEnumerable<string> PossibleConflictedPaths
 		{
-			get { return UnreadPaths.Where(p => p.PossibleConflicted).Select<SVNPath, string>(p => p.FilePath); }
+			get { return UnreadPaths.Where(p => p.PossibleConflicted).Select(p => p.FilePath); }
 		}
 
 		public int PossibleConflictedPathsCount
@@ -244,7 +244,7 @@ namespace SVNMonitor.Entities
 
 		public int UnreadPathsCount
 		{
-			get { return Paths.Where(p => p.Unread).Count<SVNPath>(); }
+			get { return Paths.Where(p => p.Unread).Count(); }
 		}
 	}
 }

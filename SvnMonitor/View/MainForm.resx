@@ -371,9 +371,6 @@
   <data name="cmdBigExplore.Text" xml:space="preserve">
     <value>Explore</value>
   </data>
-  <data name="cmdBigSendFeedback.Key" xml:space="preserve">
-    <value>cmdBigSendFeedback</value>
-  </data>
   <data name="svnPathSearchTextBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>524, 2</value>
   </data>
@@ -418,9 +415,6 @@
   </data>
   <data name="&gt;&gt;animationProgressBar1.Type" xml:space="preserve">
     <value>SVNMonitor.View.Controls.AnimationProgressBar, SVNMonitor, Version=100.3.1.195, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="cmdFeedback.Key" xml:space="preserve">
-    <value>cmdFeedback</value>
   </data>
   <data name="menuSource.Key" xml:space="preserve">
     <value>menuSource</value>
@@ -940,23 +934,6 @@
   <data name="uiPanelMonitors.Size" type="System.Drawing.Size, System.Drawing">
     <value>296, 271</value>
   </data>
-  <data name="cmdFeedback.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
-        6QAACukB/XXO0wAAAAd0SU1FB9MDBhcEHSS2/QUAAAJ8SURBVDhPtZNbSJNhGMcfD4TZwduKICO6MMwK
-        JLvIG4kuErKoGeVFIKI5isQLtTCChQeoRZmmlaea2oosSl15mIcpHtJp30zdalrTTTf99ENzbvrN/Xsp
-        GAxBhOiF/9X7//+e53kPRP9ziW8poCuPIrofknRcSZnr1ppspQCLgo6aKyl5/DkVW2sCB340hq3Yvkog
-        Lslh1oQ5jUe2h7Yf2j1aFbS5J59ovwdofuOnnVAfXrZx5+HgbwGoYqplqsbiwmNYx7LBG5JhvJduQXoU
-        9KcOotTXh/MAjKoDduATCyhgF+7CPJKKQXUcvny8gNG+FPBTD1DHFbB9wJ6XAWNkMMp8SeMB6Cq26JyO
-        InANsTANpkKwyZn1NVPTHymtSch1SVDR9hSqRi2y4uMna4P8dngA2nx6AXxg5vdMKrhdSvAmOfSd1/Gq
-        +zRyly6iEAlI/haFY7IQx7UbaeFeB8oVUpJzLgdTozkYaLiMYc1V2Iz3YfhVgDtz5/AMV5BuPIOI0n1Q
-        Vm+zQU+BXoBZFQULXLRbdNWxDpqZejC7UoPbphiUQIpMkwTHFSGo1GUBy2wsDT1ac6WOVv8+YAhzlhKM
-        dGSgWHUWRUhENn8JJ6vDkNebBouhDMb+cqxabrrRRxIviKuZpKJQAN5SBXG5Bfr2csTWhONEbSikikjo
-        1DLMTGhYd06IwksIzTTmBYCWts537J0BeNjnm5CTmYgnsgQ0tcshuudZcBDusTgXOKrHEEmgpk1rxkAL
-        pYizJRCmO7G0aPhbbVoOh3bPBD6TDFYKXvc5/5whf0ebTyfs9Vj9HrOCfnqHYYpGL/lt+M+xUXYtNFIq
-        umjnhkP/YvwNvhK2sqPTCOoAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="txtTestNewVersion.Text" xml:space="preserve">
     <value>&amp;New Version</value>
   </data>
@@ -978,20 +955,11 @@
   <data name="txtTestNewVersion.Key" xml:space="preserve">
     <value>txtTestNewVersion</value>
   </data>
-  <data name="cmdFeedback.Text" xml:space="preserve">
-    <value>Send Feedback</value>
-  </data>
   <data name="&gt;&gt;cmdClose2.Type" xml:space="preserve">
     <value>Janus.Windows.UI.CommandBars.UICommand, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
   </data>
   <data name="txtTestNewVersion1.Key" xml:space="preserve">
     <value>txtTestNewVersion</value>
-  </data>
-  <data name="cmdFeedback2.Key" xml:space="preserve">
-    <value>cmdFeedback</value>
-  </data>
-  <data name="cmdFeedback1.Key" xml:space="preserve">
-    <value>cmdFeedback</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>984, 762</value>
@@ -1426,51 +1394,6 @@
   </data>
   <data name="menuSVNCommit.Key" xml:space="preserve">
     <value>menuSVNCommit</value>
-  </data>
-  <data name="cmdBigSendFeedback.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAK
-        6QAACukB/XXO0wAAAAd0SU1FB9MKBhQUH48sUlAAAAkoSURBVFhHtZcJWM3pHsd/TWXwMJbLYK5lBoPx
-        WO5zBxnG5TIeg2vLOpaKLGEsWWJkJ1sitBBKTdLipJI2VCoprSR1KlpPe6cU1eGc872/93RqXHPdmeeO
-        +T/P53lP//M//+9vf9+IPuylw69r5sO++b+8TSfEgvQLPWhogTeZFHmRXbmE7jfco3h+tjvz8Ye0QMfb
-        lHRzJTS40IeM8z3pXMFVin7qQi+yfTuqi2NHozrHBGqlI3I8SdWtM61k8b9qo9Fsx++OjI6DC+nJPOir
-        wmu0rMCDzjy/SlEpzlQrlXSCLMYA8mwjvK47DMCLuc54Mh5MIPJCP8e3w+gUqw5j9EI+bb/Ts0u7dHtd
-        nUgrIhO+14HRbYlOqCHpcvgG5V6lpXkeZJvrRveeOFKN1LuDuihqFORZy9BYa6UV8dYKufHqouUKr1eZ
-        a4w/KlKnY9tCcmOBidnDe+6RzR+pLlk2GmmTBsGv+yfqM0TO/F0vRl9jRJobpUolndWF9wxQlbUECo2Y
-        eJnPW2LO/Pki48RcZoQBwuOf8VJui2LpLmTFmUGl9kJDxQHcPEyRey0tDxZP7a/CwZlQmE9G/twRiDPo
-        B68ObdUriI6ydB8RIXp4lh4BwgvhXbNnzWJivcQIA5q+eyk/yYI7kRFjisSbc5AQYIgE/zmI85mG2ioH
-        fuY2svy+fnU/5VFDcZAPXhkNA3b/C+UmY5E0fgACenfCEdKRsvhMpiM9OE236qt2acMpPBSCIrzCqIuo
-        rTzKghbIjDFB0q25SAqci+Sbc1ncEI/DliA/dSsqi6zxRuGuSUGdKhAPI4NRVVkNJd+p8T6P2sVDIV8x
-        BqkTBiGgVyfsIIpj8a1MT4o+RQ41XMEinBrBCivIMrewoDFSglksiBHrrXl4Em6MwjQLyEtPQvVG5P0m
-        E8D4acTf8GolnQHH+1aokb3ke8AL5sk1F6SN7YOHw3vgclu9svZELixuxvSguza0pTRxIj/miZLsbSw0
-        Gykhc5l5yIxeAVmGBV6U20AN4eENLRJefbXCwoAQ5g5c8oyxp3w2TmAB7IMOIys1F7m5BQi8GwFbp4s4
-        PvU7xRd6uqJADzIGTBuSHKLJ+cG9+AXX8brRno34CXWVNtqcixYTtSHaTawCISw8D9YYUF3qgOfJlnBL
-        mIGdJdNxqtEY57ESNliEHf7L4XjCCRftL2HLlm3qr4YO9WBR0aKTNfkXU9NuI3V7do1eN4VSFJoIrajw
-        5lV0g/BYiN5Cfe0VFGcdQca9H7kOfkBSwGLciJyFzdkTcVJhDEeswtnGFThQugBrMyZhxvVRmL5linrM
-        hDF+LOjIzGO6MR81zwK9Yi96rFI4atLQJC48Fp4GQPXaE1WFp9nLHVwTRlyIS7kQl2h4Gr4ej7IsYZ4+
-        vklctRLnFKY4VLYQG59Mx5xgAwx36I3WcymExS4yxi3t1zKJOAwFXnSpNs9Mm1MJ6uSOXIj7kRG1GilB
-        RkhlkoOWITXMFHnJe1BVfAEqZTDqlKHY+fh7nKg3gj2L271ZCauKxTDPmI4Fd77BCKe+mHWs1ev27TWD
-        aR3Tv2UAvWUApbuRcVnMCE0hvaiwQ9LNRUgJ5S4IMUbWA3OUPrNBw0sRlUjmHhPBFX8bR9MW4EjtDzin
-        MtV4f7RqCbZnz8Ci8LEY7TwA05zGoizdBN6HKJD1pjGfvK3b8tnOnPoUSkQdRGuiUJJzDLXlYiYEMeHM
-        XY1xYsgIceA+XAs2YV+pIc4pV+C8ehWOVy+BRc5sLI0ah3E/D8Y3NgMgr3/Az8pQE95aZTqfdrNgb+aX
-        feAta/RLfSnmdc05/kEYI9pKEKr9WxggjIuHoj4QN3LMsL1gGnveJG79Yil25RnCKGYCJnoOxdc2/VFU
-        Kwx9yhRC1XgHz7xJNmQAGbZU/zuh0Ml0p53y1O813jW1mPBWhDuWw+/HlX8W6RGb8Sh0HdbEjcY5mOIC
-        V/zJWiNY5hvCNH4ipkiGY4h1L0grhfF53NZJKM8VXVSNhtxtiDxN4fr6NJK1W/8qFU57aECJP70BUjRh
-        VinDIHtqjbSITUgNNuNCXMMFaYbs6INYeH04i6/GmQYT7JPNx+rE7zDd/+8YeKIHEmTeqMiXIP3eft4j
-        zBDnbYqqIuGQEnXxQ+G2l5xY/EtG710jWpXeoJDGCmt++CHK8y/wVDRFauha5CQfhlwm2jMeMqkffHzW
-        4Z/BX+AYh/7HtKmYGTgS/a27wS3UjNtzI8+GDbxJrceTiH0oey7auZiRM0BDfDfl/vWaehAHlv+oB51Y
-        J1pcHtlPDUj50Qe8EYkB9JDhDROpTBJibzsgO9gWe88YY+DZrhjh3gd9Tv4Fx92n8Ca1CY9CdqAo041r
-        5bFWtJZXDixeQlF8GoqEnupYd4pgcTENeVt46+rblzrkuFK2qlFMPSGYwCQyIi3ihVmwPbUXRy3XYsPy
-        xdi+fAEOH5kDX+/lyE1x5K1a1E85U8W80nisrLuDhrQpkN+iF+f30K2B/TQHkpOMKMjO76ZB9+El2lqT
-        MIp/msckaw15zCnw5UPHUezZvgQ/bZiJveZz4Gq/EYkxLpBKo5g4VFQ84+e5m1EBRf5uKB60ViVepeSF
-        U8m99cd0mcWOMauYfzA9mVa/KsZJo6hbnjc9UzaKFsxkpEiP3MVDyZzrYSueRh1AiJ81XFys4epqh/j4
-        MBbOZSp4YF1Ffeq3KAuiytPbyf/z3hpRO8aCmc0MZ3owbZmWveBdI/TCXGlNfXxvrgURyhyuah8UZThD
-        8UqkpIQpZsFsRqwpaMzdjIYYUkY7U/ysSeSmr6cR5jMo8emLxjF9mY6MOAeK0/FvXh3zA+iuolicfEVO
-        RToKtOJNRaWUs7fJf0OBL5VabaAbn3XX5PYsI046M5ghjNj12vwvb99nia7FOhotD6FqtUpMMyHKuVVl
-        ojFnFeqj6E2YA8VMHktXdHU1u9whxoQZw4jDpjh6iz7/Xd6+z4g27ra0riG2nVJZ5Y5XiV/iuYQKLVfS
-        9a5dNN7aMpsZsckMZj79f719nwHC+s4SZzpy9wqFjTegyx/p0AW+d4BZyogjldhcxA73h719byr4i8+0
-        XorDxBRmINOFEf/7/aEQv0/03fvCO5HTrky7P9Pb3zLoT/H235RwQo19whH9AAAAAElFTkSuQmCC
-</value>
   </data>
   <data name="&gt;&gt;menuFile1.Name" xml:space="preserve">
     <value>menuFile1</value>
@@ -2325,9 +2248,6 @@
   <data name="cmdBigCheckSources1.Key" xml:space="preserve">
     <value>cmdBigCheckSources</value>
   </data>
-  <data name="cmdBigSendFeedback1.Key" xml:space="preserve">
-    <value>cmdBigSendFeedback</value>
-  </data>
   <data name="menuTestNewVersion.Text" xml:space="preserve">
     <value>&amp;New Version</value>
   </data>
@@ -2381,9 +2301,6 @@
   <data name="menuTestNewVersion1.Key" xml:space="preserve">
     <value>menuTestNewVersion</value>
   </data>
-  <data name="cmdBigSendFeedback.Text" xml:space="preserve">
-    <value>Send Feedback</value>
-  </data>
   <data name="&gt;&gt;menuItem.Name" xml:space="preserve">
     <value>menuItem</value>
   </data>
@@ -2416,12 +2333,6 @@
   </data>
   <data name="uiPanelSources.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="&gt;&gt;cmdFeedback.Name" xml:space="preserve">
-    <value>cmdFeedback</value>
-  </data>
-  <data name="&gt;&gt;cmdFeedback.Type" xml:space="preserve">
-    <value>Janus.Windows.UI.CommandBars.UICommand, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
   </data>
   <data name="uiPanelMonitorsContainer.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2556,12 +2467,6 @@
   </data>
   <data name="&gt;&gt;menuHelp1.Name" xml:space="preserve">
     <value>menuHelp1</value>
-  </data>
-  <data name="&gt;&gt;cmdFeedback2.Type" xml:space="preserve">
-    <value>Janus.Windows.UI.CommandBars.UICommand, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
-  </data>
-  <data name="&gt;&gt;cmdFeedback2.Name" xml:space="preserve">
-    <value>cmdFeedback2</value>
   </data>
   <data name="uiPanelPaths.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2755,12 +2660,6 @@
   <data name="uiPanelPathsContainer.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 28</value>
   </data>
-  <data name="&gt;&gt;cmdFeedback1.Type" xml:space="preserve">
-    <value>Janus.Windows.UI.CommandBars.UICommand, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
-  </data>
-  <data name="&gt;&gt;cmdFeedback1.Name" xml:space="preserve">
-    <value>cmdFeedback1</value>
-  </data>
   <data name="uiPanelPathsContainer.Size" type="System.Drawing.Size, System.Drawing">
     <value>676, 171</value>
   </data>
@@ -2805,12 +2704,6 @@
   </data>
   <data name="&gt;&gt;updatesGridContainer1.Parent" xml:space="preserve">
     <value>uiPanelUpdatesGridContainerContainer</value>
-  </data>
-  <data name="&gt;&gt;cmdBigSendFeedback1.Name" xml:space="preserve">
-    <value>cmdBigSendFeedback1</value>
-  </data>
-  <data name="&gt;&gt;cmdBigSendFeedback1.Type" xml:space="preserve">
-    <value>Janus.Windows.UI.CommandBars.UICommand, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
   </data>
   <data name="svnLogEntrySearchTextBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>524, 2</value>
@@ -3099,12 +2992,6 @@
   </data>
   <data name="&gt;&gt;uiPanelLogContainer.Parent" xml:space="preserve">
     <value>uiPanelLog</value>
-  </data>
-  <data name="&gt;&gt;cmdBigSendFeedback.Type" xml:space="preserve">
-    <value>Janus.Windows.UI.CommandBars.UICommand, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
-  </data>
-  <data name="&gt;&gt;cmdBigSendFeedback.Name" xml:space="preserve">
-    <value>cmdBigSendFeedback</value>
   </data>
   <data name="&gt;&gt;cmdBigExplore.Type" xml:space="preserve">
     <value>Janus.Windows.UI.CommandBars.UICommand, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>

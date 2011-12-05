@@ -197,7 +197,7 @@ namespace SVNMonitor.Entities
 
 		private void CountUnreadRecommended()
 		{
-			unreadRecommendedCount = Log.UnreadLogEntries.Where(e => e.Recommended).Count<SVNLogEntry>();
+			unreadRecommendedCount = Log.UnreadLogEntries.Where(e => e.Recommended).Count();
 		}
 
 		internal void CreatePatch()
