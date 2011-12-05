@@ -7,7 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <AssemblyName>SVNMonitor</AssemblyName>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>..\output\</OutputPath>
@@ -203,7 +204,9 @@
     <Compile Include="Helpers\ErrorHandler.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\EventArgs!1.cs" />
+    <Compile Include="Helpers\EventArgs!1.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Helpers\FileSystemHelper.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -276,7 +279,9 @@
     <Compile Include="Helpers\UserTypeInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\UserTypesFactory!1.cs" />
+    <Compile Include="Helpers\UserTypesFactory!1.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Helpers\WebHelper.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -295,7 +300,9 @@
     <Compile Include="ParameterAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Presenters\UserEntityPresenter!1.cs" />
+    <Compile Include="Presenters\UserEntityPresenter!1.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Program.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -401,44 +408,66 @@
     <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventArgs.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\getKnownIssues_ver1CompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventArgs.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\getKnownIssues_ver2CompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SharpRegion\sendErrorReportCompletedEventArgs.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\sendErrorReportCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendErrorReportCompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventArgs.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendErrorReport_ver1CompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventArgs.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendErrorReport_ver2CompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SharpRegion\sendFeedbackCompletedEventArgs.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\sendFeedbackCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendFeedbackCompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventArgs.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendFeedback_ver1CompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventArgs.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\sendUpgradeInfoCompletedEventHandler.cs" />
-    <Compile Include="SharpRegion\sendUsageInfoCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\sendFeedback_ver2CompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\sendUpgradeInfoCompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SharpRegion\sendUsageInfoCompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SharpRegion\svnmonitor_server.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SharpRegion\testCompletedEventArgs.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SharpRegion\testCompletedEventHandler.cs" />
+    <Compile Include="SharpRegion\testCompletedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Status.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -469,7 +498,9 @@
     <Compile Include="Support\SendableResult.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Support\SendCallback.cs" />
+    <Compile Include="Support\SendCallback.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Support\UpgradeInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -557,7 +588,9 @@
     <Compile Include="View\Controls\UserEntitiesExplorerBar!1.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Controls\UserEntityExplorerBarGroup!1.cs" />
+    <Compile Include="View\Controls\UserEntityExplorerBarGroup!1.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="View\Dialogs\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -621,9 +654,15 @@
     <Compile Include="View\Interfaces\ISearchable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Interfaces\ISearchablePanel!1.cs" />
-    <Compile Include="View\Interfaces\ISelectableView!1.cs" />
-    <Compile Include="View\Interfaces\IUserEntityView!1.cs" />
+    <Compile Include="View\Interfaces\ISearchablePanel!1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Interfaces\ISelectableView!1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Interfaces\IUserEntityView!1.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -680,7 +719,119 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Logging\SVNMonitor.Logging.LoggerConfig.xml" />
+    <EmbeddedResource Include="Resources\Icons.resx">
+      <DependentUpon>Icons.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icons\check.ico" />
+    <EmbeddedResource Include="Resources\Icons\lightbulb.ico" />
+    <EmbeddedResource Include="Resources\Icons\lightbulb_on.ico" />
+    <EmbeddedResource Include="Resources\Images.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Text\Enums.resx" />
+    <EmbeddedResource Include="Resources\Text\Strings.resx">
+      <DependentUpon>Strings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\UI\ActionsPanel.resx" />
+    <EmbeddedResource Include="Resources\UI\EventLogPanel.resx" />
+    <EmbeddedResource Include="Resources\UI\FilterEditor.resx" />
+    <EmbeddedResource Include="Resources\UI\GridEX.resx">
+      <DependentUpon>GridEX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\UI\LogEntriesPanel.resx" />
+    <EmbeddedResource Include="Resources\UI\MainForm.resx" />
+    <EmbeddedResource Include="Resources\UI\MonitorsPanel.resx" />
+    <EmbeddedResource Include="Resources\UI\PathsPanel.resx" />
+    <EmbeddedResource Include="Resources\UI\SourcesPanel.resx" />
+    <EmbeddedResource Include="Resources\UI\UpdatesGridContainer.resx" />
+    <EmbeddedResource Include="Support\KnownIssues.xml" />
+    <EmbeddedResource Include="View\Controls\AnimationProgressBar.resx">
+      <DependentUpon>AnimationProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\KeyboardEditor.resx">
+      <DependentUpon>KeyboardEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\SearchTextBox.resx" />
+    <EmbeddedResource Include="View\Dialogs\AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\ActionPropertiesDialog.resx">
+      <DependentUpon>ActionPropertiesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\ErrorReportDetailsDialog.resx">
+      <DependentUpon>ErrorReportDetailsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\ErrorReportDialog.resx">
+      <DependentUpon>ErrorReportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\FeedbackConfirmationDialog.resx">
+      <DependentUpon>FeedbackConfirmationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\FeedbackDialog.resx">
+      <DependentUpon>FeedbackDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\LogEntryDetailsDialog.resx">
+      <DependentUpon>LogEntryDetailsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\MonitorPropertiesDialog.resx">
+      <DependentUpon>MonitorPropertiesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\NewVersionDialog.resx">
+      <DependentUpon>NewVersionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\RecommendWizard.resx">
+      <DependentUpon>RecommendWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\RollbackPromptDialog.resx">
+      <DependentUpon>RollbackPromptDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\SendProgressDialog.resx">
+      <DependentUpon>SendProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\SettingsDialog.resx">
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\SourcePropertiesDialog.resx">
+      <DependentUpon>SourcePropertiesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\UpdateHeadPromptDialog.resx">
+      <DependentUpon>UpdateHeadPromptDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\UsageInformationHelp.resx">
+      <DependentUpon>UsageInformationHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\ActionsPanel.resx">
+      <DependentUpon>ActionsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\EventLogPanel.resx">
+      <DependentUpon>EventLogPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\LogEntriesPanel.resx">
+      <DependentUpon>LogEntriesPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\MonitorsPanel.resx">
+      <DependentUpon>MonitorsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\PathsPanel.resx">
+      <DependentUpon>PathsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\SourcesPanel.resx">
+      <DependentUpon>SourcesPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\UpdatesGridContainer.resx">
+      <DependentUpon>UpdatesGridContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <Resource Include="SVNMonitor.exe.licenses" />
+    <EmbeddedResource Include="LoggerConfig.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

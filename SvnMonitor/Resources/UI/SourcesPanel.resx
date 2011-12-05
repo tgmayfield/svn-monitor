@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdDelete.ToolTipText" xml:space="preserve">
+    <value>Delete Source</value>
+  </data>
+  <data name="cmdExplore" xml:space="preserve">
+    <value>E&amp;xplore</value>
+  </data>
+  <data name="cmdExportVisibleSourcesToFolder" xml:space="preserve">
+    <value>Export &amp;Visible Sources</value>
+  </data>
+  <data name="menuWizards" xml:space="preserve">
+    <value>Monitor &amp;This Source</value>
+  </data>
+  <data name="cmdProperties" xml:space="preserve">
+    <value>SVN-&amp;Properties</value>
+  </data>
+  <data name="cmdRepoBrowser" xml:space="preserve">
+    <value>Repo &amp;Browser</value>
+  </data>
+  <data name="cmdShowLog" xml:space="preserve">
+    <value>&amp;Show Log</value>
+  </data>
+  <data name="cmdCopySourcePath" xml:space="preserve">
+    <value>&amp;Path</value>
+  </data>
+  <data name="cmdCopySourceName" xml:space="preserve">
+    <value>&amp;Name</value>
+  </data>
+  <data name="cmdDeleteUnversioned" xml:space="preserve">
+    <value>&amp;Delete Unversioned Items...</value>
+  </data>
+  <data name="filterNotUpToDate" xml:space="preserve">
+    <value>&amp;Has Updates</value>
+  </data>
+  <data name="filterAll" xml:space="preserve">
+    <value>&amp;All</value>
+  </data>
+  <data name="menuImportExport" xml:space="preserve">
+    <value>&amp;Import/Export</value>
+  </data>
+  <data name="cmdCopySourceError" xml:space="preserve">
+    <value>&amp;Error</value>
+  </data>
+  <data name="cmdTSVNSettings" xml:space="preserve">
+    <value>TortoiseSVN &amp;Settings</value>
+  </data>
+  <data name="cmdSVNCommit" xml:space="preserve">
+    <value>&amp;Commit...</value>
+  </data>
+  <data name="menuEvenMore" xml:space="preserve">
+    <value>Even M&amp;ore</value>
+  </data>
+  <data name="cmdCopySourceConflictedItems" xml:space="preserve">
+    <value>Possible &amp;Conflicted Items List</value>
+  </data>
+  <data name="cmdCleanUp" xml:space="preserve">
+    <value>&amp;Clean-Up</value>
+  </data>
+  <data name="cmdSVNUpdate" xml:space="preserve">
+    <value>&amp;Update</value>
+  </data>
+  <data name="cmdLock" xml:space="preserve">
+    <value>Get &amp;Lock...</value>
+  </data>
+  <data name="cmdEdit" xml:space="preserve">
+    <value>&amp;Properties</value>
+  </data>
+  <data name="cmdRevisionGraph" xml:space="preserve">
+    <value>Revision &amp;Graph</value>
+  </data>
+  <data name="filterEnabled" xml:space="preserve">
+    <value>&amp;Enabled</value>
+  </data>
+  <data name="cmdApplyPatch" xml:space="preserve">
+    <value>&amp;Apply Patch...</value>
+  </data>
+  <data name="cmdSVNRevert" xml:space="preserve">
+    <value>&amp;Revert...</value>
+  </data>
+  <data name="cmdClearAllErrors" xml:space="preserve">
+    <value>Clear &amp;All Errors</value>
+  </data>
+  <data name="cmdReintegrate" xml:space="preserve">
+    <value>Rei&amp;ntegrate...</value>
+  </data>
+  <data name="cmdImportFromFile" xml:space="preserve">
+    <value>&amp;Import</value>
+  </data>
+  <data name="cmdSVNModifications" xml:space="preserve">
+    <value>Check &amp;For Modifications</value>
+  </data>
+  <data name="cmdMerge" xml:space="preserve">
+    <value>&amp;Merge...</value>
+  </data>
+  <data name="cmdExportToFile" xml:space="preserve">
+    <value>&amp;Export</value>
+  </data>
+  <data name="cmdMoveDown.Text" xml:space="preserve">
+    <value>Move Do&amp;wn</value>
+  </data>
+  <data name="menuAdditionalTortoiseCommands" xml:space="preserve">
+    <value>&amp;More</value>
+  </data>
+  <data name="cmdCopySourceURL" xml:space="preserve">
+    <value>&amp;URL</value>
+  </data>
+  <data name="cmdMoveDown.ToolTipText" xml:space="preserve">
+    <value>Move Source Down</value>
+  </data>
+  <data name="menuClipboard" xml:space="preserve">
+    <value>Cop&amp;y To Clipboard</value>
+  </data>
+  <data name="cmdCopySourceModifiedItems" xml:space="preserve">
+    <value>&amp;Modified Items List</value>
+  </data>
+  <data name="cmdTSVNHelp" xml:space="preserve">
+    <value>TortoiseSVN &amp;Help</value>
+  </data>
+  <data name="cmdExportAllSourcesToFolder" xml:space="preserve">
+    <value>Export &amp;All Sources</value>
+  </data>
+  <data name="cmdMoveUp.Text" xml:space="preserve">
+    <value>Mo&amp;ve Up</value>
+  </data>
+  <data name="cmdMoveUp.ToolTipText" xml:space="preserve">
+    <value>Move Source Up</value>
+  </data>
+  <data name="menuShow" xml:space="preserve">
+    <value>&amp;Show</value>
+  </data>
+  <data name="cmdExport" xml:space="preserve">
+    <value>&amp;Export</value>
+  </data>
+  <data name="cmdNew" xml:space="preserve">
+    <value>&amp;New Source</value>
+  </data>
+  <data name="cmdClearError" xml:space="preserve">
+    <value>Clear Error</value>
+  </data>
+  <data name="cmdEnabled" xml:space="preserve">
+    <value>&amp;Enabled</value>
+  </data>
+  <data name="cmdDelete.Text" xml:space="preserve">
+    <value>&amp;Delete</value>
+  </data>
+  <data name="cmdRelocate" xml:space="preserve">
+    <value>&amp;Relocate</value>
+  </data>
+  <data name="cmdResolve" xml:space="preserve">
+    <value>Resol&amp;ve...</value>
+  </data>
+  <data name="cmdRefresh" xml:space="preserve">
+    <value>Refresh &amp;Log (might take a few minutes...)</value>
+  </data>
+  <data name="filterModified" xml:space="preserve">
+    <value>&amp;Modified</value>
+  </data>
+  <data name="cmdCopySourceUnversionedItems" xml:space="preserve">
+    <value>Un&amp;versioned Items List</value>
+  </data>
+  <data name="cmdSwitch" xml:space="preserve">
+    <value>&amp;Switch...</value>
+  </data>
+  <data name="cmdUpdate" xml:space="preserve">
+    <value>Chec&amp;k For Updates</value>
+  </data>
+  <data name="cmdUnlock" xml:space="preserve">
+    <value>Rele&amp;ase Lock</value>
+  </data>
+  <data name="cmdCheckout" xml:space="preserve">
+    <value>Chec&amp;kout</value>
+  </data>
+  <data name="cmdBranchTag" xml:space="preserve">
+    <value>Branch/&amp;Tag..</value>
+  </data>
+  <data name="cmdUpdateAll" xml:space="preserve">
+    <value>Check &amp;All For Updates</value>
+  </data>
+  <data name="cmdCreatePatch" xml:space="preserve">
+    <value>&amp;Create Patch...</value>
+  </data>
+</root>

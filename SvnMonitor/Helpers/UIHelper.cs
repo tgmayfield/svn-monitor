@@ -192,7 +192,9 @@
             {
                 try
                 {
+// ReSharper disable ResourceItemNotResolved
                     resourceManager.GetObject(string.Empty);
+// ReSharper restore ResourceItemNotResolved
                 }
                 catch (MissingManifestResourceException)
                 {

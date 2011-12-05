@@ -1,0 +1,2827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="&gt;&gt;checkDismissErrorsWhenClicked.Name" xml:space="preserve">
+    <value>checkDismissErrorsWhenClicked</value>
+  </data>
+  <data name="&gt;&gt;checkDismissErrorsWhenClicked.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="panelRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 10</value>
+  </data>
+  <data name="&gt;&gt;linkUsageInformationHelp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkUsageInformationHelp.Name" xml:space="preserve">
+    <value>linkUsageInformationHelp</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="checkAutomaticInterval.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>544, 15</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panelRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelRight.Name" xml:space="preserve">
+    <value>panelRight</value>
+  </data>
+  <data name="&gt;&gt;linkTortoiseEXEBrowse.Name" xml:space="preserve">
+    <value>linkTortoiseEXEBrowse</value>
+  </data>
+  <data name="&gt;&gt;linkTortoiseEXEBrowse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkEnableVersionUpgrade.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 17</value>
+  </data>
+  <data name="checkEnableVersionUpgrade.Text" xml:space="preserve">
+    <value>&amp;Show a notification when an upgrade is available to be installed.</value>
+  </data>
+  <data name="uiGroupBoxRecommendMessage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkCommitIsAlwaysEnabled.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkCommitIsAlwaysEnabled.Name" xml:space="preserve">
+    <value>checkCommitIsAlwaysEnabled</value>
+  </data>
+  <data name="lblEnableVersionUpgrade.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBoxRecommendMessage.Parent" xml:space="preserve">
+    <value>uiTabPageRecommending</value>
+  </data>
+  <data name="&gt;&gt;checkSendUsageInformation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkSendUsageInformation.Name" xml:space="preserve">
+    <value>checkSendUsageInformation</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageKeyboard.Parent" xml:space="preserve">
+    <value>uiTabs</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;checkEnableVersionCheck.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkCommitIsAlwaysEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 17</value>
+  </data>
+  <data name="checkCommitIsAlwaysEnabled.Text" xml:space="preserve">
+    <value>Always enable '&amp;Commit'</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panelRight.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreDisabledSourcesWhenUpdatingAll.Name" xml:space="preserve">
+    <value>checkIgnoreDisabledSourcesWhenUpdatingAll</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreDisabledSourcesWhenUpdatingAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="uiTabs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 0</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageGeneral.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowLastCheck.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkVersionCheckAtStartup.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="panelBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>632, 51</value>
+  </data>
+  <data name="panelBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="txtTortoiseEXE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 20</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;lblEnableVersionUpgrade.Name" xml:space="preserve">
+    <value>lblEnableVersionUpgrade</value>
+  </data>
+  <data name="&gt;&gt;lblEnableVersionUpgrade.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="checkSendUsageInformation.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="linkTextEditorBrowse.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkSendUsageInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 152</value>
+  </data>
+  <data name="uiTabPageGeneral.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 21</value>
+  </data>
+  <data name="checkEnableVersionUpgrade.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkWatchTheNetworkAvailability.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>&amp;Number of preview lines:</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 13</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>uiTabPageDisplay</value>
+  </data>
+  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label13.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 20</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="checkShowDefaultTextInsteadOfEmptyLogMessage.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label16.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 20</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Keyboard</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>uiTabPageDisplay</value>
+  </data>
+  <data name="&gt;&gt;txtTextEditor.Parent" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="checkMinimizeWhenClosing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 95</value>
+  </data>
+  <data name="lblWatchTheNetworkAvailability.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 267</value>
+  </data>
+  <data name="txtRecommendMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>430, 82</value>
+  </data>
+  <data name="numPreviewLines.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="groupVersionChecks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 198</value>
+  </data>
+  <data name="groupVersionChecks.Text" xml:space="preserve">
+    <value>&amp;Version-Checking</value>
+  </data>
+  <data name="uiTabPageDisplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 21</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>&amp;Text editor:</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="checkEnableVersionUpgrade.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 86</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label14.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 20</value>
+  </data>
+  <data name="&gt;&gt;linkTortoiseEXEBrowse.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowLastCheck.Parent" xml:space="preserve">
+    <value>groupSourcesPanel</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAQAMDAAAAEAIACoJQAARgAAACAgAAABACAAqBAAAO4lAAAYGAAAAQAgAIgJAACWNgAAEBAAAAEA
+        IABoBAAAHkAAACgAAAAwAAAAYAAAAAEAIAAAAAAAgCUAAAAAAAAAAAAAAAAAAAAAAADpsHX/6bB1/+mw
+        df/psHX/6bB1/+mwdf/psHX/6bB1/+mwdf/psHX/6bB1/+mwdf/psHX/6bB1/+mwdf/psHX/6bB1/+mw
+        df/psHX/6bB1/+mwdf/psHX/6bB1/+mwdf/psHX/6bB1/+mwdf/psHX/6bB1/+mwdf/psHX/6bB1/+mw
+        df/psHX/6bB1/+mwdf/psHX/6bB1/+mwdf/psHX/6bB1/+mwdf/psHX/6bB1/+mwdf/psHX/6bB1/+mw
+        df/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iw
+        df/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iw
+        df/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iw
+        df/osHX/6LB1/+iwdf/msXb/5rF2/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQT
+        E/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQT
+        E/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQT
+        E/8UExP/FBMT/xQTE/8UExP/5rF2/+axdv/lsnf/5bJ3/xUVFf8VFRX/FRUV/xUVFf8VFRX/FRUV/xUV
+        Ff8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/FRUV/xUV
+        Ff8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/FRUV/xUV
+        Ff8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/5bJ3/+Wyd//ks3j/5LN4/xcWFv8XFhb/FxYW/xcW
+        Fv8XFhb/FxYW/xcWFv8XFhb/FxYW/xcWFv8XFhb/FxYW/xcWFv8XFhb/FxYW/xcWFv8XFhb/FxYW/xcW
+        Fv8XFhb/FxYW/xcWFv8XFhb/FxYW/xcWFv8XFhb/FxYW/xcWFv8XFhb/FxYW/xcWFv8XFhb/FxYW/xcW
+        Fv8XFhb/FxYW/xcWFv8XFhb/FxYW/xcWFv8XFhb/FxYW/xcWFv8XFhb/5LN4/+SzeP/itHn/4rR5/xkY
+        GP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkY
+        GP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkY
+        GP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/4rR5/+K0
+        ef/gtXr/4LV6/xsaGv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsa
+        Gv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsa
+        Gv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsaGv8bGhr/Gxoa/xsa
+        Gv8bGhr/4LV6/+C1ev/etnv/3rZ7/x0cHP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0c
+        HP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0c
+        HP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0c
+        HP8dHBz/HRwc/x0cHP8dHBz/3rZ7/962e//duHz/3bh8/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8f
+        H/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8f
+        H/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8f
+        H/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//3bh8/924fP/buX7/27l+/yEhIf8hISH/ISEh/yEh
+        If8hISH/ISEh/yEhIf8hISH/ISEh/yEhIf8hISH/ISEh/yEhIf8hISH/ISEh/yEhIf8hISH/ISEh/yEh
+        If8hISH/ISEh/yEhIf8hISH/ISEh/yEhIf8hISH/ISEh/yEhIf8hISH/ISEh/yEhIf8hISH/ISEh/yEh
+        If8hISH/ISEh/yEhIf8hISH/ISEh/yEhIf8hISH/ISEh/yEhIf8hISH/27l+/9u5fv/Zun//2bp//yQj
+        I/8kIyP/JCMj/yQjI/8kIyP/JCMj/yQjI/8kIyP/JCMj/yQjI/8kIyP/JCMj/yQjI/8kIyP/JCMj/yQj
+        I/8kIyP/JCMj/yQjI/8kIyP/JCMj/yQjI/8iISH/ISAg/yIhIf8kIyP/JCMj/yQjI/8kIyP/JCMj/yQj
+        I/8kIyP/JCMj/yQjI/8kIyP/JCMj/yQjI/8kIyP/JCMj/yQjI/8kIyP/JCMj/yQjI/8kIyP/2bp//9m6
+        f//Wu4D/1ruA/yYmJv8mJib/JiYm/yYmJv8mJib/JiYm/yYmJv8mJib/JiYm/yYmJv8mJib/JiYm/yYm
+        Jv8mJib/JiYm/yYmJv8mJib/JiYm/yYmJv8mJib/JiYm/yYmJv8gICD/GRkZ/x0dHf8kJCT/JiYm/yYm
+        Jv8mJib/JiYm/yYmJv8mJib/JiYm/yYmJv8mJib/JiYm/yYmJv8mJib/JiYm/yYmJv8mJib/JiYm/yYm
+        Jv8mJib/1ruA/9a7gP/UvYL/1L2C/yAgIP8gICD/ICAg/yAgIP8gICD/ICAg/yAgIP8gICD/ICAg/yAg
+        IP8gICD/ICAg/yAgIP8gICD/ICAg/yAgIP8gICD/ICAg/yAgIP8gICD/ICAg/yAgIP+faDD/EhIS/xMT
+        E/8eHh7/JiYm/ygoKP8oKCj/KCgo/ygoKP8oKCj/KCgo/ygoKP8oKCj/KCgo/ygoKP8oKCj/KCgo/ygo
+        KP8oKCj/KCgo/ygoKP8oKCj/1L2C/9S9gv/SvoP/0r6D/xMTE/8TExP/ExMT/xMTE/8TExP/ExMT/xMT
+        E/8TExP/ExMT/xMTE/8TExP/ExMT/xMTE/8TExP/ExMT/xMTE/8TExP/ExMT/xMTE/8TExP/ExMT/xMT
+        E/+dZi//eU8k/w0NDf8UFBT/ISEh/ykpKf8rKyv/Kysr/ysrK/8rKyv/Kysr/ysrK/8rKyv/Kysr/ysr
+        K/8rKyv/Kysr/ysrK/8rKyv/Kysr/ysrK/8rKyv/0r6D/9K+g//QwIT/0MCE/39TJv9/Uyb/f1Mm/39T
+        Jv9/Uyb/f1Mm/39TJv9/Uyb/f1Mm/39TJv9/Uyb/f1Mm/39TJv9/Uyb/f1Mm/39TJv9/Uyb/f1Mm/39T
+        Jv9/Uyb/jFsq/6twM/+2dzf/mmUu/3ZNI/8ODg7/FRUV/yIiIv8rKyv/LS0t/y0tLf8tLS3/LS0t/y0t
+        Lf8tLS3/LS0t/y0tLf8tLS3/LS0t/y0tLf8tLS3/LS0t/y0tLf8tLS3/0MCE/9DAhP/OwYb/zsGG/8B+
+        Ov/Afjr/wH46/8B+Ov/Afjr/wH46/8B+Ov/Afjr/wH46/8B+Ov/Afjr/wH46/8B+Ov/Afjr/wH46/8B+
+        Ov/Afjr/wH46/8B+Ov/Afjr/xYA7/9CHP//Wi0D/x4E8/51mL/92TSP/Dw4O/xcWFv8kJCT/Li0t/zAv
+        L/8wLy//MC8v/zAvL/8wLy//MC8v/zAvL/8wLy//MC8v/zAvL/8wLy//MC8v/zAvL/8wLy//zsGG/87B
+        hv/Lw4f/y8OH/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KT
+        RP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/3pBD/8iCPP+dZi//dk0j/w8P
+        D/8YGBj/JiYm/zAwMP8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIy
+        Mv8yMjL/y8OH/8vDh//JxIn/ycSJ/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KT
+        RP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/96Q
+        Q//Igjz/nmcv/3tQJf8SEhL/ICAg/y8vL/80NDT/NDQ0/zQ0NP80NDT/NDQ0/zQ0NP80NDT/NDQ0/zQ0
+        NP80NDT/NDQ0/zQ0NP80NDT/ycSJ/8nEif/Fx4r/xceK/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KT
+        RP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KT
+        RP/ik0T/4pNE/+KTRP/ekUP/zYU+/69yNf+objP/KSkp/zMzM/82Njb/NjY2/zY2Nv82Njb/NjY2/zY2
+        Nv82Njb/NjY2/zY2Nv82Njb/NjY2/zY2Nv82Njb/xceK/8XHiv/DyIz/w8iM/+KTRP/ik0T/4pNE/+KT
+        RP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KT
+        RP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRf/ilUf/45ZJ/+GSRP8rKyv/NjY2/zk5Of85OTn/OTk5/zk5
+        Of85OTn/OTk5/zk5Of85OTn/OTk5/zk5Of85OTn/OTk5/zk5Of85OTn/w8iM/8PIjP/Ayo3/wMqN/+KT
+        RP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KT
+        RP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNF/+KVR//jmEz/5JpQ/y0tLf84ODj/Ozs7/zs7
+        O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87Ozv/wMqN/8DK
+        jf++y4//vsuP/+WeWP/lnlj/5Z5Y/+WeWP/lnlj/5Z5Y/+WeWP/lnlj/5Z5Y/+WeWP/lnlj/5Z5Y/+We
+        WP/lnlj/5Z5Y/+WeWP/lnlj/5Z5Y/+WeWP/lnlj/5Z5Y/+WdVv/kmlD/45dL/+OYTP/kmlD/Li4u/zo6
+        Ov89PT3/PT09/z09Pf89PT3/PT09/z09Pf89PT3/PT09/z09Pf89PT3/PT09/z09Pf89PT3/PT09/z09
+        Pf89PT3/vsuP/77Lj/+7zZD/u82Q/+u1f//rtX//67V//+u1f//rtX//67V//+u1f//rtX//67V//+u1
+        f//rtX//67V//+u1f//rtX//67V//+u1f//rtX//67V//+u1f//rtX//67V//+uze//oqWv/5Z1W/+Sa
+        UP8wMDD/PDw8/z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/
+        P/8/Pz//Pz8//z8/P/8/Pz//u82Q/7vNkP+5zpL/uc6S/0BAQP9AQED/QEBA/0BAQP9AQED/QEBA/0BA
+        QP9AQED/QEBA/0BAQP9AQED/QEBA/0BAQP9AQED/QEBA/0BAQP9AQED/QEBA/0BAQP9AQED/QEBA/z09
+        Pf/Vo3H/25ta/zExMf89PT3/QEBA/0BAQP9AQED/QEBA/0BAQP9AQED/QEBA/0BAQP9AQED/QEBA/0BA
+        QP9AQED/QEBA/0BAQP9AQED/QEBA/0BAQP9AQED/uc6S/7nOkv+30JT/t9CU/0JCQv9CQkL/QkJC/0JC
+        Qv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JC
+        Qv9CQkL/Pz8//zIyMv+cdlD/MzMz/z8/P/9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JC
+        Qv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/QkJC/0JCQv9CQkL/t9CU/7fQlP+00pX/tNKV/15c
+        W/9eXFv/Xlxb/15cW/9eXFv/Xlxb/15cW/9eXFv/Xlxb/15cW/9eXFv/Xlxb/15cW/9eXFv/Xlxb/15c
+        W/9eXFv/Xlxb/15cW/9aWFf/SEZF/yuOUv8pKCf/Pz09/0xKSv9MSkr/TEpK/0xKSv9MSkr/TEpK/0xK
+        Sv9MSkr/TEpK/0xKSv9MSkr/TEpK/0xKSv9MSkr/TEpK/0xKSv9MSkr/TEpK/0xKSv9MSkr/tNKV/7TS
+        lf+y05f/stOX/19dXP9fXVz/X11c/19dXP9fXVz/X11c/19dXP9fXVz/X11c/19dXP9fXVz/X11c/19d
+        XP9fXVz/X11c/19dXP9fXVz/X11c/1pZWP9IR0b/M6hi/yiGTv8cGxv/JSQj/ykoKP8pKCj/KSgo/yko
+        KP8pKCj/KSgo/ykoKP8pKCj/KSgo/ykoKP8pKCj/KSgo/ykoKP8pKCj/KSgo/ykoKP8pKCj/KSgo/yko
+        KP8pKCj/stOX/7LTl/+v1Zj/r9WY/2FfXv9hX17/YV9e/2FfXv9hX17/YV9e/2FfXv9hX17/YV9e/2Ff
+        Xv9hX17/YV9e/2FfXv9hX17/YV9e/2FfXv9hX17/XFpa/0pISP85vG3/OLtt/zKmYP8qi1H/J4BL/yZ/
+        Sv8mf0r/Jn9K/yZ/Sv8mf0r/Jn9K/yZ/Sv8mf0r/Jn9K/yZ/Sv8mf0r/Jn9K/yZ/Sv8mf0r/Jn9K/yZ/
+        Sv8mf0r/Jn9K/yZ/Sv8mf0r/r9WY/6/VmP+t1pr/rdaa/2NhYP9jYWD/Y2Fg/2NhYP9jYWD/Y2Fg/2Nh
+        YP9jYWD/Y2Fg/2NhYP9jYWD/Y2Fg/2NhYP9jYWD/Y2Fg/2NhYP9eXFv/S0pJ/zm8bf89y3b/QNZ8/z/R
+        ef88x3P/OsFw/zrAcP86wHD/OsBw/zrAcP86wHD/OsBw/zrAcP86wHD/OsBw/zrAcP86wHD/OsBw/zrA
+        cP86wHD/OsBw/zrAcP86wHD/OsBw/zrAcP86wHD/rdaa/63Wmv+q2Jv/qtib/2VjYv9lY2L/ZWNi/2Vj
+        Yv9lY2L/ZWNi/2VjYv9lY2L/ZWNi/2VjYv9lY2L/ZWNi/2VjYv9lY2L/ZWNi/2BeXf9NS0v/Obxt/z3L
+        dv9B2X7/ROGC/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Ti
+        g/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/qtib/6rYm/+o2Z3/qNmd/2dl
+        Y/9nZWP/Z2Vj/2dlY/9nZWP/Z2Vj/2dlY/9nZWP/Z2Vj/2dlY/9nZWP/Z2Vj/2dlY/9nZWP/Z2Vj/11b
+        Wv89ynX/Ps94/0HZfv9E4YL/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Ti
+        g/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/qNmd/6jZ
+        nf+l257/pdue/2lnZf9pZ2X/aWdl/2lnZf9pZ2X/aWdl/2lnZf9pZ2X/aWdl/2lnZf9pZ2X/aWdl/2ln
+        Zf9pZ2X/aWdl/17mlP9b5pL/T+SK/0bihP9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Ti
+        g/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Ti
+        g/9E4oP/pdue/6Xbnv+j3KD/o9yg/2tpaP9raWj/a2lo/2tpaP9raWj/a2lo/2tpaP9raWj/a2lo/2tp
+        aP9raWj/a2lo/2tpaP9raWj/a2lo/2tpaP+E7K3/cOmg/1blj/9H4oX/ROKD/0Tig/9E4oP/ROKD/0Ti
+        g/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Ti
+        g/9E4oP/ROKD/0Tig/9E4oP/o9yg/6PcoP+h3qH/od6h/21rav9ta2r/bWtq/21rav9ta2r/bWtq/21r
+        av9ta2r/bWtq/21rav9ta2r/bWtq/21rav9ta2r/bWtq/21rav9ta2r/ie2x/3Hpof9W5Y//R+KF/0Ti
+        g/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Ti
+        g/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/od6h/6Heof+f36L/n9+i/29tbP9vbWz/b21s/29t
+        bP9vbWz/b21s/29tbP9vbWz/b21s/29tbP9vbWz/b21s/29tbP9vbWz/b21s/29tbP9vbWz/b21s/4nt
+        sf9x6aH/VuWP/0vjh/9O5Ir/VeWO/1jlkP9Y5ZD/WOWQ/1jlkP9Y5ZD/WOWQ/1jlkP9Y5ZD/WOWQ/1jl
+        kP9Y5ZD/WOWQ/1jlkP9Y5ZD/WOWQ/1jlkP9Y5ZD/WOWQ/1jlkP9Y5ZD/n9+i/5/fov+c4aT/nOGk/3Jv
+        bv9yb27/cm9u/3Jvbv9yb27/cm9u/3Jvbv9yb27/cm9u/3Jvbv9yb27/cm9u/3Jvbv9yb27/cm9u/3Jv
+        bv9yb27/cm9u/3Jvbv+J7bH/cumh/13mk/9h55b/duqk/3/rqv9/66r/f+uq/3/rqv9/66r/f+uq/3/r
+        qv9/66r/f+uq/3/rqv9/66r/f+uq/3/rqv9/66r/f+uq/3/rqv9/66r/f+uq/3/rqv9/66r/nOGk/5zh
+        pP+a4qX/muKl/3RxcP90cXD/dHFw/3RxcP90cXD/dHFw/3RxcP90cXD/dHFw/3RxcP90cXD/dHFw/3Rx
+        cP90cXD/dHFw/3RxcP90cXD/dHFw/3RxcP90cXD/huyu/2ronP9NS0v/Y2Fg/3RxcP90cXD/dHFw/3Rx
+        cP90cXD/dHFw/3RxcP90cXD/dHFw/3RxcP90cXD/dHFw/3RxcP90cXD/dHFw/3RxcP90cXD/dHFw/3Rx
+        cP90cXD/muKl/5ripf+Y46b/mOOm/3Zzcv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zz
+        cv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zzcv92c3L/dnNy/2nonP9raGf/cG5t/3Zz
+        cv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zz
+        cv92c3L/dnNy/3Zzcv92c3L/mOOm/5jjpv+W5Kj/luSo/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1
+        dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1
+        dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1
+        dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/luSo/5bkqP+V5qn/leap/3p3dv96d3b/end2/3p3
+        dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/end2/3p3
+        dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/end2/3p3
+        dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/leap/5Xmqf+T56r/k+eq/3x5
+        eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5
+        eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5
+        eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5eP98eXj/fHl4/3x5eP98eXj/k+eq/5Pn
+        qv+R6Kv/keir/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357
+        ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357
+        ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357
+        ev9+e3r/keir/5Hoq/+P6az/j+ms/398e/9/fHv/f3x7/398e/9/fHv/f3x7/398e/9/fHv/f3x7/398
+        e/9/fHv/f3x7/398e/9/fHv/f3x7/398e/9/fHv/f3x7/398e/9/fHv/f3x7/398e/9/fHv/f3x7/398
+        e/9/fHv/f3x7/398e/9/fHv/f3x7/398e/9/fHv/f3x7/398e/9/fHv/f3x7/398e/9/fHv/f3x7/398
+        e/9/fHv/f3x7/398e/9/fHv/j+ms/4/prP+O6q3/juqt/4F+ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+
+        ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+
+        ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+
+        ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/juqt/47qrf+N667/jeuu/4KAf/+CgH//goB//4KA
+        f/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KA
+        f/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KA
+        f/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//jeuu/43rrv+L7K//i+yv/4SB
+        gP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SB
+        gP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SB
+        gP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/i+yv/4vs
+        r/+K7K//iuyv/4rsr/+K7K//iuyv/4rsr/+K7K//iuyv/4rsr/+K7K//iuyv/4rsr/+K7K//iuyv/4rs
+        r/+K7K//iuyv/4rsr/+K7K//iuyv/4rsr/+K7K//iuyv/4rsr/+K7K//iuyv/4rsr/+K7K//iuyv/4rs
+        r/+K7K//iuyv/4rsr/+K7K//iuyv/4rsr/+K7K//iuyv/4rsr/+K7K//iuyv/4rsr/+K7K//iuyv/4rs
+        r/+K7K//iuyv/4rsr/+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4nt
+        sP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4nt
+        sP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4nt
+        sP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAIAAAAEAA
+        AAABACAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAAAA6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iw
+        df/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iw
+        df/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/msXb/FBMT/xQTE/8UExP/FBMT/xQT
+        E/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQT
+        E/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/FBMT/xQTE/8UExP/5rF2/+SzeP8WFRX/FhUV/xYV
+        Ff8WFRX/FhUV/xYVFf8WFRX/FhUV/xYVFf8WFRX/FhUV/xYVFf8WFRX/FhUV/xYVFf8WFRX/FhUV/xYV
+        Ff8WFRX/FhUV/xYVFf8WFRX/FhUV/xYVFf8WFRX/FhUV/xYVFf8WFRX/FhUV/xYVFf/ks3j/4rR5/xkY
+        GP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkY
+        GP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/+K0
+        ef/ftnv/HBsb/xwbG/8cGxv/HBsb/xwbG/8cGxv/HBsb/xwbG/8cGxv/HBsb/xwbG/8cGxv/HBsb/xwb
+        G/8cGxv/HBsb/xwbG/8cGxv/HBsb/xwbG/8cGxv/HBsb/xwbG/8cGxv/HBsb/xwbG/8cGxv/HBsb/xwb
+        G/8cGxv/37Z7/924fP8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8f
+        H/8fHx//Hx8f/x8fH/8dHR3/HBwc/x0dHf8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8f
+        H/8fHx//Hx8f/x8fH//duHz/2rl+/yMiIv8jIiL/IyIi/yMiIv8jIiL/IyIi/yMiIv8jIiL/IyIi/yMi
+        Iv8jIiL/IyIi/yMiIv8jIiL/IyIi/x4dHf8XFhb/Gxoa/yEgIP8jIiL/IyIi/yMiIv8jIiL/IyIi/yMi
+        Iv8jIiL/IyIi/yMiIv8jIiL/IyIi/9q5fv/Wu4D/Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8f
+        H/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//n2gw/xEREf8TExP/HR0d/yQkJP8mJib/JiYm/yYm
+        Jv8mJib/JiYm/yYmJv8mJib/JiYm/yYmJv8mJib/1ruA/9O9gv8TEhL/ExIS/xMSEv8TEhL/ExIS/xMS
+        Ev8TEhL/ExIS/xMSEv8TEhL/ExIS/xMSEv8TEhL/ExIS/xMSEv+dZi//eU8k/w0NDf8UExP/IB8f/ygn
+        J/8qKSn/Kikp/yopKf8qKSn/Kikp/yopKf8qKSn/Kikp/yopKf/TvYL/0MCE/39TJv9/Uyb/f1Mm/39T
+        Jv9/Uyb/f1Mm/39TJv9/Uyb/f1Mm/39TJv9/Uyb/f1Mm/39TJv+MWyr/q3Az/7Z3N/+aZS7/dk0j/w4O
+        Dv8VFRX/IiIi/ysrK/8tLS3/LS0t/y0tLf8tLS3/LS0t/y0tLf8tLS3/LS0t/9DAhP/Mwof/wH46/8B+
+        Ov/Afjr/wH46/8B+Ov/Afjr/wH46/8B+Ov/Afjr/wH46/8B+Ov/Afjr/wH46/8WAO//Qhz//1otA/8eB
+        PP+eZy//e1Al/xEREf8eHh7/LCws/zExMf8xMTH/MTEx/zExMf8xMTH/MTEx/zExMf8xMTH/zMKH/8nE
+        if/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KT
+        RP/ik0T/3pFD/82FPv+vcjX/qG4z/ygoKP8yMjL/NDQ0/zQ0NP80NDT/NDQ0/zQ0NP80NDT/NDQ0/zQ0
+        NP/JxIn/xMeL/+WeWP/lnlj/5Z5Y/+WeWP/lnlj/5Z5Y/+WeWP/lnlj/5Z5Y/+WeWP/lnlj/5Z5Y/+We
+        WP/lnlj/5Z1W/+SaUP/jl0v/45ZJ/+GSRP8rKiv/NTQ1/zg3OP84Nzj/ODc4/zg3OP84Nzj/ODc4/zg3
+        OP84Nzj/ODc4/8THi//Ayo3/67V//+u1f//rtX//67V//+u1f//rtX//67V//+u1f//rtX//67V//+u1
+        f//rtX//67V//+u1f//rs3v/6Klr/+WdVv/kmlD/LS0t/zg4OP87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7
+        O/87Ozv/Ozs7/zs7O/87Ozv/wMqN/73MkP8+Pj7/Pj4+/z4+Pv8+Pj7/Pj4+/z4+Pv8+Pj7/Pj4+/z4+
+        Pv8+Pj7/Pj4+/z4+Pv8+Pj7/Pj4+/zs7O//Vo3H/25ta/y8vL/87Ozv/Pj4+/z4+Pv8+Pj7/Pj4+/z4+
+        Pv8+Pj7/Pj4+/z4+Pv8+Pj7/Pj4+/z4+Pv+9zJD/uc6S/0BAQP9AQED/QEBA/0BAQP9AQED/QEBA/0BA
+        QP9AQED/QEBA/0BAQP9AQED/QEBA/0BAQP89PT3/MTEx/5x2UP8yMjL/PT09/0BAQP9AQED/QEBA/0BA
+        QP9AQED/QEBA/0BAQP9AQED/QEBA/0BAQP9AQED/QEBA/7nOkv+10ZT/WVdW/1lXVv9ZV1b/WVdW/1lX
+        Vv9ZV1b/WVdW/1lXVv9ZV1b/WVdW/1lXVv9ZV1b/VVNS/0RCQv8rjlL/JyYl/zs6Of9IRkb/SEZG/0hG
+        Rv9IRkb/SEZG/0hGRv9IRkb/SEZG/0hGRv9IRkb/SEZG/0hGRv9IRkb/tdGU/7LTl/9fXVz/X11c/19d
+        XP9fXVz/X11c/19dXP9fXVz/X11c/19dXP9fXVz/X11c/1pZWP9IR0b/M6hi/yiGTv8cGxv/JSQj/yko
+        KP8pKCj/KSgo/ykoKP8pKCj/KSgo/ykoKP8pKCj/KSgo/ykoKP8pKCj/KSgo/ykoKP+y05f/rtaZ/2Jg
+        X/9iYF//YmBf/2JgX/9iYF//YmBf/2JgX/9iYF//YmBf/2JgX/9dW1r/S0lI/zm8bf84u23/MqZg/yqL
+        Uf8ngEv/Jn9K/yZ/Sv8mf0r/Jn9K/yZ/Sv8mf0r/Jn9K/yZ/Sv8mf0r/Jn9K/yZ/Sv8mf0r/Jn9K/67W
+        mf+q2Jv/ZWNi/2VjYv9lY2L/ZWNi/2VjYv9lY2L/ZWNi/2VjYv9lY2L/ZWNi/1taWf89ynX/Ps94/0DW
+        fP8/0Xn/PMdz/zrBcP86wHD/OsBw/zrAcP86wHD/OsBw/zrAcP86wHD/OsBw/zrAcP86wHD/OsBw/zrA
+        cP86wHD/qtib/6fanf9oZmT/aGZk/2hmZP9oZmT/aGZk/2hmZP9oZmT/aGZk/2hmZP9oZmT/XuaU/1vm
+        kv9P5Ir/RuKE/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Ti
+        g/9E4oP/ROKD/0Tig/+n2p3/o9yg/2tpaP9raWj/a2lo/2tpaP9raWj/a2lo/2tpaP9raWj/a2lo/2tp
+        aP9raWj/hOyt/3DpoP9W5Y//S+OH/07kiv9V5Y7/WOWQ/1jlkP9Y5ZD/WOWQ/1jlkP9Y5ZD/WOWQ/1jl
+        kP9Y5ZD/WOWQ/1jlkP9Y5ZD/WOWQ/6PcoP+g36L/bmxr/25sa/9ubGv/bmxr/25sa/9ubGv/bmxr/25s
+        a/9ubGv/bmxr/25sa/9ubGv/ie2x/3Lpof9d5pP/YeeW/3bqpP9/66r/f+uq/3/rqv9/66r/f+uq/3/r
+        qv9/66r/f+uq/3/rqv9/66r/f+uq/3/rqv9/66r/oN+i/5zhpP9yb27/cm9u/3Jvbv9yb27/cm9u/3Jv
+        bv9yb27/cm9u/3Jvbv9yb27/cm9u/3Jvbv9yb27/huyu/2ronP9MSkn/Yl9e/3Jvbv9yb27/cm9u/3Jv
+        bv9yb27/cm9u/3Jvbv9yb27/cm9u/3Jvbv9yb27/cm9u/3Jvbv+c4aT/meOm/3Vycf91cnH/dXJx/3Vy
+        cf91cnH/dXJx/3Vycf91cnH/dXJx/3Vycf91cnH/dXJx/3Vycf91cnH/aeic/2pnZv9vbWz/dXJx/3Vy
+        cf91cnH/dXJx/3Vycf91cnH/dXJx/3Vycf91cnH/dXJx/3Vycf91cnH/dXJx/5njpv+W5Kj/eHV0/3h1
+        dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1
+        dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/luSo/5Tm
+        qf97eHf/e3h3/3t4d/97eHf/e3h3/3t4d/97eHf/e3h3/3t4d/97eHf/e3h3/3t4d/97eHf/e3h3/3t4
+        d/97eHf/e3h3/3t4d/97eHf/e3h3/3t4d/97eHf/e3h3/3t4d/97eHf/e3h3/3t4d/97eHf/e3h3/3t4
+        d/+U5qn/keir/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357
+        ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357
+        ev9+e3r/fnt6/5Hoq/+P6az/gH18/4B9fP+AfXz/gH18/4B9fP+AfXz/gH18/4B9fP+AfXz/gH18/4B9
+        fP+AfXz/gH18/4B9fP+AfXz/gH18/4B9fP+AfXz/gH18/4B9fP+AfXz/gH18/4B9fP+AfXz/gH18/4B9
+        fP+AfXz/gH18/4B9fP+AfXz/j+ms/43rrv+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KA
+        f/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KA
+        f/+CgH//goB//4KAf/+CgH//goB//4KAf/+N667/i+yv/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SB
+        gP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SB
+        gP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4vsr/+J7bD/ie2w/4ntsP+J7bD/ie2w/4nt
+        sP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4nt
+        sP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/wAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAABgA
+        AAAwAAAAAQAgAAAAAABgCQAAAAAAAAAAAAAAAAAAAAAAAOiwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iw
+        df/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iwdf/osHX/6LB1/+iw
+        df/osHX/6LB1/+Wyd/8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/FRUV/xUV
+        Ff8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/FRUV/xUVFf8VFRX/5bJ3/+K0ef8ZGBj/GRgY/xkY
+        GP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkY
+        GP8ZGBj/GRgY/xkYGP8ZGBj/4rR5/962e/8dHBz/HRwc/x0cHP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0c
+        HP8dHBz/HRwc/xwbG/8aGRn/HBsb/x0cHP8dHBz/HRwc/x0cHP8dHBz/HRwc/x0cHP8dHBz/3rZ7/9u5
+        fv8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xcXF/8UFBT/GRkZ/x8f
+        H/8hISH/ISEh/yEhIf8hISH/ISEh/yEhIf8hISH/27l+/9a7gP8RERH/ERER/xEREf8RERH/ERER/xER
+        Ef8RERH/ERER/xEREf8RERH/ERER/39TJv8NDQ3/ExMT/x0dHf8kJCT/JiYm/yYmJv8mJib/JiYm/yYm
+        Jv8mJib/1ruA/9K+g/9/Uyb/f1Mm/39TJv9/Uyb/f1Mm/39TJv9/Uyb/f1Mm/39TJv+IWSn/l2It/45c
+        K/90TCP/DQ0N/xQUFP8hISH/KSkp/ysrK/8rKyv/Kysr/ysrK/8rKyv/0r6D/87Bhv/Afjr/wH46/8B+
+        Ov/Afjr/wH46/8B+Ov/Afjr/wH46/8B+Ov/FgDv/zIQ9/8B+Ov+cZi//e1Al/xEREf8eHR3/Kyoq/zAv
+        L/8wLy//MC8v/zAvL/8wLy//zsGG/8nEif/ik0T/4pNE/+KTRP/ik0T/4pNE/+KTRP/ik0T/4pNE/+KT
+        RP/ik0T/4pNE/96RQ//NhT7/r3I1/6huM/8oKCj/MjIy/zQ0NP80NDT/NDQ0/zQ0NP80NDT/ycSJ/8PI
+        jP/lnlj/5Z5Y/+WeWP/lnlj/5Z5Y/+WeWP/lnlj/5Z5Y/+WeWP/lnlj/5Z1W/+SbUv/jl0v/4ZJE/ysr
+        K/82Njb/OTk5/zk5Of85OTn/OTk5/zk5Of85OTn/w8iM/77Lj//rtX//67V//+u1f//rtX//67V//+u1
+        f//rtX//67V//+u1f//rtYD/4Kt4/9OcZP/amFb/Li4u/zo6Ov89PT3/PT09/z09Pf89PT3/PT09/z09
+        Pf89PT3/vsuP/7nOkv9AQED/QEBA/0BAQP9AQED/QEBA/0BAQP9AQED/QEBA/0BAQP89PT3/MTEx/5Fv
+        TP8pKSn/MTEx/zQ0NP80NDT/NDQ0/zQ0NP80NDT/NDQ0/zQ0NP80NDT/uc6S/7TSlf9eXFv/Xlxb/15c
+        W/9eXFv/Xlxb/15cW/9eXFv/Xlxb/1pYV/9IRkX/KIdO/yAfH/8kIyP/KSgn/ykoJ/8pKCf/KSgn/yko
+        J/8pKCf/KSgn/ykoJ/8pKCf/tNKV/6/VmP9hX17/YV9e/2FfXv9hX17/YV9e/2FfXv9hX17/XFpa/0pI
+        SP81rmX/LphZ/yiGTv8ngEv/Jn9K/yZ/Sv8mf0r/Jn9K/yZ/Sv8mf0r/Jn9K/yZ/Sv8mf0r/r9WY/6rY
+        m/9lY2L/ZWNi/2VjYv9lY2L/ZWNi/2VjYv9lY2L/W1pZ/z3Kdf89ynX/Pcp1/zzHc/86wXD/OsBw/zrA
+        cP86wHD/OsBw/zrAcP86wHD/OsBw/zrAcP86wHD/qtib/6Xbnv9pZ2X/aWdl/2lnZf9pZ2X/aWdl/2ln
+        Zf9pZ2X/XuaU/1vmkv9P5Ir/RuKE/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Tig/9E4oP/ROKD/0Ti
+        g/9E4oP/pdue/6Heof9ta2r/bWtq/21rav9ta2r/bWtq/21rav9ta2r/bWtq/4Tsrf9w6aD/WeWR/1Hk
+        jP9V5Y7/WOWQ/1jlkP9Y5ZD/WOWQ/1jlkP9Y5ZD/WOWQ/1jlkP9Y5ZD/od6h/5zhpP9yb27/cm9u/3Jv
+        bv9yb27/cm9u/3Jvbv9yb27/cm9u/3Jvbv+K7bH/eeqm/3DpoP956qb/f+uq/3/rqv9/66r/f+uq/3/r
+        qv9/66r/f+uq/3/rqv9/66r/nOGk/5jjpv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zz
+        cv92c3L/geur/2toZ/9wbm3/dnNy/3Zzcv92c3L/dnNy/3Zzcv92c3L/dnNy/3Zzcv92c3L/mOOm/5Xm
+        qf96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/end2/3p3
+        dv96d3b/end2/3p3dv96d3b/end2/3p3dv96d3b/leap/5Hoq/9+e3r/fnt6/357ev9+e3r/fnt6/357
+        ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357
+        ev9+e3r/keir/47qrf+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+
+        ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/gX59/4F+ff+Bfn3/juqt/4vsr/+EgYD/hIGA/4SB
+        gP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SBgP+EgYD/hIGA/4SB
+        gP+EgYD/hIGA/4SBgP+EgYD/i+yv/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4nt
+        sP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAA
+        AAAAAAAAAAAAAAAAAADmsXb/5rF2/+axdv/msXb/5rF2/+axdv/msXb/5rF2/+axdv/msXb/5rF2/+ax
+        dv/msXb/5rF2/+axdv/msXb/4rR5/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkYGP8ZGBj/GRgY/xkY
+        GP8ZGBj/GRgY/xkYGP8ZGBj/4rR5/924fP8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8f
+        H/8fHx//Hx8f/x8fH/8fHx//Hx8f/924fP/Wu4D/JiYm/yYmJv8mJib/JiYm/yYmJv8mJib/JiYm/4BU
+        J/8mJib/JiYm/yYmJv8mJib/JiYm/yYmJv/Wu4D/0MCE/4hZKf+IWSn/iFkp/4hZKf+IWSn/iVop/45c
+        K/+WYi3/o2ox/y0tLf8tLS3/LS0t/y0tLf8tLS3/0MCE/8nEif/MhD3/zIQ9/8yEPf/MhD3/zIQ9/8yE
+        Pf/Phj7/0Ic//9OJP//Wi0D/NDQ0/zQ0NP80NDT/NDQ0/8nEif/Ayo3/6rF5/+qyef/qsnn/6rJ5/+qy
+        ef/qsnn/6rF4/+qvdP/oqmv/Ozs7/zs7O/87Ozv/Ozs7/zs7O//Ayo3/uc6S/0BAQP9AQED/QEBA/0BA
+        QP9AQED/QEBA/0BAQP/uv5H/QEBA/0BAQP9AQED/QEBA/0BAQP9AQED/uc6S/7LTl/9fXVz/X11c/19d
+        XP9fXVz/X11c/19dXP8lfUn/X11c/19dXP9fXVz/X11c/19dXP9fXVz/X11c/7LTl/+q2Jv/ZWNi/2Vj
+        Yv9lY2L/ZWNi/2VjYv8ul1j/K49T/yqNUv8qi1H/KYlQ/ymIT/8piE//KYhP/ymIT/+q2Jv/o9yg/2tp
+        aP9raWj/a2lo/2tpaP88yHT/PMdz/zzJdf8+zXf/Ps53/z7Nd/89zHb/Pcx2/z3Mdv89zHb/o9yg/5zh
+        pP9yb27/cm9u/3Jvbv9yb27/cm9u/13mk/9t6J7/d+ql/3vrp/966qf/eeqm/3nqpv956qb/eeqm/5zh
+        pP+W5Kj/eHV0/3h1dP94dXT/eHV0/3h1dP94dXT/je2z/3h1dP94dXT/eHV0/3h1dP94dXT/eHV0/3h1
+        dP+W5Kj/keir/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357ev9+e3r/fnt6/357
+        ev9+e3r/keir/43rrv+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KAf/+CgH//goB//4KA
+        f/+CgH//goB//43rrv+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4ntsP+J7bD/ie2w/4nt
+        sP+J7bD/ie2w/4ntsP+J7bD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="numVersionCheckInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label17.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 20</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Sources</value>
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 104</value>
+  </data>
+  <data name="checkHideWhenMinimized.Text" xml:space="preserve">
+    <value>&amp;Hide when minimized</value>
+  </data>
+  <data name="checkHideWhenMinimized.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 17</value>
+  </data>
+  <data name="uiTabPageUpdates.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 21</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;checkStartWithWindows.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkStartWithWindows.Name" xml:space="preserve">
+    <value>checkStartWithWindows</value>
+  </data>
+  <data name="checkIgnoreIgnoreOnCommitConflicts.Text" xml:space="preserve">
+    <value>I&amp;gnore possible conflicted items that are in the "ignore-on-commit" changelist</value>
+  </data>
+  <data name="checkIgnoreIgnoreOnCommitConflicts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>385, 17</value>
+  </data>
+  <data name="panelBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="checkStartMinimized.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 17</value>
+  </data>
+  <data name="checkStartMinimized.Text" xml:space="preserve">
+    <value>&amp;Start minimized</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBoxRecommendMessage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkTreatUnversionedAsModified.Name" xml:space="preserve">
+    <value>checkTreatUnversionedAsModified</value>
+  </data>
+  <data name="&gt;&gt;checkTreatUnversionedAsModified.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numPageSize.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkSourcesPanelShowUrl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBoxRecommendMessage.Name" xml:space="preserve">
+    <value>uiGroupBoxRecommendMessage</value>
+  </data>
+  <data name="&gt;&gt;uiGroupBoxRecommendMessage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkEnableVersionUpgrade.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageDisplay.Name" xml:space="preserve">
+    <value>uiTabPageDisplay</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageDisplay.Type" xml:space="preserve">
+    <value>Janus.Windows.UI.Tab.UITabPage, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+  </data>
+  <data name="uiTabPageUpdates.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="label15.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 20</value>
+  </data>
+  <data name="checkCommitIsAlwaysEnabled.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;txtRecommendMessage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label18.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>TortoiseSVN</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 20</value>
+  </data>
+  <data name="&gt;&gt;checkStartMinimized.Parent" xml:space="preserve">
+    <value>uiTabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageVersionCheck.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;checkEnableVersionCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkEnableVersionCheck.Name" xml:space="preserve">
+    <value>checkEnableVersionCheck</value>
+  </data>
+  <data name="&gt;&gt;txtRecommendMessage.Parent" xml:space="preserve">
+    <value>uiGroupBoxRecommendMessage</value>
+  </data>
+  <data name="checkPromptUpdateOldRevision.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 21</value>
+  </data>
+  <data name="keyboardEditor1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 23</value>
+  </data>
+  <data name="checkStartMinimized.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numPageSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 98</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="treeView1.Nodes2" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4
+        CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNl
+        ckRhdGEBAQAAAQABAAEBCAgIAgAAAAYDAAAACU9wZXJhdGlvbgYEAAAADW5vZGVPcGVyYXRpb24A////
+        /wYFAAAAAP////8JBQAAAAAAAAAGBgAAAAlPcGVyYXRpb24L
+</value>
+  </data>
+  <data name="treeView1.Nodes3" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4
+        CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNl
+        ckRhdGEBAQAAAQABAAEBCAgIAgAAAAYDAAAACEtleWJvYXJkBgQAAAAMbm9kZUtleWJvYXJkAP////8G
+        BQAAAAD/////CQUAAAAAAAAABgYAAAAIS2V5Ym9hcmQL
+</value>
+  </data>
+  <data name="treeView1.Nodes1" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4
+        CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNl
+        ckRhdGEBAQAAAQABAAEBCAgIAgAAAAYDAAAAB0Rpc3BsYXkGBAAAAAtub2RlRGlzcGxheQD/////BgUA
+        AAAA/////wkFAAAAAAAAAAYGAAAAB0Rpc3BsYXkL
+</value>
+  </data>
+  <data name="treeView1.Nodes6" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4
+        CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNl
+        ckRhdGEBAQAAAQABAAEBCAgIAgAAAAYDAAAADFJlY29tbWVuZGluZwYEAAAAEG5vZGVSZWNvbW1lbmRp
+        bmcA/////wYFAAAAAP////8JBQAAAAAAAAAGBgAAAAxSZWNvbW1lbmRpbmcL
+</value>
+  </data>
+  <data name="treeView1.Nodes7" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4
+        CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNl
+        ckRhdGEBAQAAAQABAAEBCAgIAgAAAAYDAAAAEFZlcnNpb24gQ2hlY2tpbmcGBAAAABBub2RlVmVyc2lv
+        bkNoZWNrAP////8GBQAAAAD/////CQUAAAAAAAAABgYAAAAPVmVyc2lvbkNoZWNraW5nCw==
+</value>
+  </data>
+  <data name="treeView1.Nodes4" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4
+        CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNl
+        ckRhdGEBAQAAAQABAAEBCAgIAgAAAAYDAAAAB1NvdXJjZXMGBAAAAAdub2RlU1ZOAP////8GBQAAAAD/
+        ////CQUAAAAAAAAABgYAAAAHU291cmNlcws=
+</value>
+  </data>
+  <data name="treeView1.Nodes5" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4
+        CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNl
+        ckRhdGEBAQAAAQABAAEBCAgIAgAAAAYDAAAAC1RvcnRvaXNlU1ZOBgQAAAAPbm9kZVRvcnRvaXNlU1ZO
+        AP////8GBQAAAAD/////CQUAAAAAAAAABgYAAAALVG9ydG9pc2VTVk4L
+</value>
+  </data>
+  <data name="uiTabPageTortoiseSVN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 21</value>
+  </data>
+  <data name="&gt;&gt;checkSVNUpdateSourcesParallel.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="checkAutomaticallyResolveTortoiseSVNProcess.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 26</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>* The '${REVISION}' text will be replaced with the recommended revision number.</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>391, 13</value>
+  </data>
+  <data name="uiTabPageGeneral.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="uiTabPageKeyboard.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageUpdates.Parent" xml:space="preserve">
+    <value>uiTabs</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreDisabledSourcesWhenUpdatingAll.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label20.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 20</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Version Checking</value>
+  </data>
+  <data name="&gt;&gt;checkCommitIsAlwaysEnabled.Parent" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="checkDismissErrorsWhenClicked.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panelLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="linkTortoiseEXEBrowse.Text" xml:space="preserve">
+    <value>&amp;Browse</value>
+  </data>
+  <data name="linkTortoiseEXEBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 13</value>
+  </data>
+  <data name="&gt;&gt;groupVersionChecks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupVersionChecks.Name" xml:space="preserve">
+    <value>groupVersionChecks</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>632, 407</value>
+  </data>
+  <data name="label21.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Recommending</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 20</value>
+  </data>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;treeView1.Parent" xml:space="preserve">
+    <value>panelLeft</value>
+  </data>
+  <data name="cmdTortoiseSVNSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 295</value>
+  </data>
+  <data name="checkIgnoreIgnoreOnCommitConflicts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 224</value>
+  </data>
+  <data name="&gt;&gt;checkPromptUpdateHeadRevision.Name" xml:space="preserve">
+    <value>checkPromptUpdateHeadRevision</value>
+  </data>
+  <data name="&gt;&gt;checkPromptUpdateHeadRevision.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkVersionCheckAtStartup.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Recommending a revision marks the revision so other users of SVN-Monitor get a special notification and are reminded to update this revision.
+
+This feature can be used to have all team-members coordinated with a specific revision.
+
+</value>
+  </data>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 68</value>
+  </data>
+  <data name="checkPromptUpdateHeadRevision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 17</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
+    <value>panelBottom</value>
+  </data>
+  <data name="checkPromptUpdateHeadRevision.Text" xml:space="preserve">
+    <value>Prompt when updating to &amp;HEAD revision</value>
+  </data>
+  <data name="&gt;&gt;checkAutomaticInterval.Name" xml:space="preserve">
+    <value>checkAutomaticInterval</value>
+  </data>
+  <data name="&gt;&gt;checkAutomaticInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numPageSize.Name" xml:space="preserve">
+    <value>numPageSize</value>
+  </data>
+  <data name="&gt;&gt;numPageSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkUnlimitedPageSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkUnlimitedPageSize.Name" xml:space="preserve">
+    <value>checkUnlimitedPageSize</value>
+  </data>
+  <data name="uiTabPageRecommending.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 21</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreIgnoreOnCommit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreIgnoreOnCommit.Name" xml:space="preserve">
+    <value>checkIgnoreIgnoreOnCommit</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numVersionCheckInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 37</value>
+  </data>
+  <data name="&gt;&gt;checkPromptUpdateHeadRevision.Parent" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="groupVersionChecks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="&gt;&gt;panelRight.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkAutomaticallyResolveTortoiseSVNProcess.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="panelLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;checkAutomaticallyResolveTortoiseSVNProcess.Name" xml:space="preserve">
+    <value>checkAutomaticallyResolveTortoiseSVNProcess</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>&amp;Updates interval (minutes):</value>
+  </data>
+  <data name="label16.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 26</value>
+  </data>
+  <data name="&gt;&gt;linkAutoCheckTortoiseSVN.Name" xml:space="preserve">
+    <value>linkAutoCheckTortoiseSVN</value>
+  </data>
+  <data name="&gt;&gt;linkAutoCheckTortoiseSVN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkHideWhenMinimized.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 72</value>
+  </data>
+  <data name="uiTabs.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="numUpdatesInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>&amp;TortoiseProc.exe path:</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 13</value>
+  </data>
+  <data name="checkStartWithWindows.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkWatchTheNetworkAvailability.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="&gt;&gt;checkSVNUpdateSourcesParallel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkShowDefaultTextInsteadOfEmptyLogMessage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 140</value>
+  </data>
+  <data name="&gt;&gt;treeView1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreIgnoreOnCommit.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreDisabledSourcesWhenUpdatingAll.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="&gt;&gt;treeView1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;treeView1.Name" xml:space="preserve">
+    <value>treeView1</value>
+  </data>
+  <data name="txtTextEditor.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lblEnableVersionUpgrade.Size" type="System.Drawing.Size, System.Drawing">
+    <value>299, 13</value>
+  </data>
+  <data name="lblEnableVersionUpgrade.Text" xml:space="preserve">
+    <value>This is enabled only if SVN-Monitor is running as Administrator.</value>
+  </data>
+  <data name="&gt;&gt;checkAutomaticallyResolveTortoiseSVNProcess.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Long interval: Available updates and/or local changes may appear late.
+Short interval: When many sources exist, the application may become very busy and slow.</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>430, 26</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="checkEnableUpdates.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupSourcesPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageVersionCheck.Parent" xml:space="preserve">
+    <value>uiTabs</value>
+  </data>
+  <data name="checkTreatUnversionedAsModified.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageGeneral.Name" xml:space="preserve">
+    <value>uiTabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageGeneral.Type" xml:space="preserve">
+    <value>Janus.Windows.UI.Tab.UITabPage, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+  </data>
+  <data name="panelBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 356</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 13</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>&amp;Default action when pressing 'Enter' or double-clicking a file in the grid:</value>
+  </data>
+  <data name="numSVNUpdateSourcesQueueTimeoutSeconds.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 189</value>
+  </data>
+  <data name="&gt;&gt;checkCommitIsAlwaysEnabled.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="linkTortoiseEXEBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;checkWatchTheNetworkAvailability.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 13</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Version check &amp;interval (minutes):</value>
+  </data>
+  <data name="checkCommitIsAlwaysEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>uiTabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;checkStartMinimized.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;uiTabs.Parent" xml:space="preserve">
+    <value>panelRight</value>
+  </data>
+  <data name="&gt;&gt;cmdTortoiseSVNSettings.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="checkSourcesPanelShowLastCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 17</value>
+  </data>
+  <data name="checkSourcesPanelShowLastCheck.Text" xml:space="preserve">
+    <value>Show "&amp;Last Checked..."</value>
+  </data>
+  <data name="linkAutoCheckTortoiseSVN.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>&amp;Maximum log entries to show:</value>
+  </data>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="txtTortoiseEXE.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numVersionCheckInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numVersionCheckInterval.Name" xml:space="preserve">
+    <value>numVersionCheckInterval</value>
+  </data>
+  <data name="comboDefaultUserAction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Auto-&amp;close TortoiseSVN:</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 13</value>
+  </data>
+  <data name="txtTextEditor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 85</value>
+  </data>
+  <data name="checkIgnoreDisabledSourcesWhenUpdatingAll.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
+    <value>uiTabPageRecommending</value>
+  </data>
+  <data name="checkStartWithWindows.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 17</value>
+  </data>
+  <data name="checkStartWithWindows.Text" xml:space="preserve">
+    <value>Start with &amp;windows</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageTortoiseSVN.Parent" xml:space="preserve">
+    <value>uiTabs</value>
+  </data>
+  <data name="label22.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="uiGroupBoxRecommendMessage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 97</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageUpdates.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblWatchTheNetworkAvailability.Text" xml:space="preserve">
+    <value>Triggers checking all Sources whenever the network goes on.</value>
+  </data>
+  <data name="lblWatchTheNetworkAvailability.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 13</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>&amp;Cancel</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="&gt;&gt;checkPromptUpdateHeadRevision.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkSendUsageInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>336, 17</value>
+  </data>
+  <data name="checkSendUsageInformation.Text" xml:space="preserve">
+    <value>Help SVN-Monitor by sending &amp;usage information to the developers</value>
+  </data>
+  <data name="checkIgnoreDisabledSourcesWhenUpdatingAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 127</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="treeView1.Nodes" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4
+        CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQIVXNl
+        ckRhdGEBAQAAAQABAAEBCAgIAgAAAAYDAAAAB0dlbmVyYWwGBAAAAAtub2RlR2VuZXJhbAD/////BgUA
+        AAAA/////wkFAAAAAAAAAAYGAAAAB0dlbmVyYWwL
+</value>
+  </data>
+  <data name="uiTabPageVersionCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 21</value>
+  </data>
+  <data name="checkAutomaticInterval.Text" xml:space="preserve">
+    <value>&amp;Automatic interval. Seconds per source:</value>
+  </data>
+  <data name="checkAutomaticInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 17</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Recommened: between 100 and 250</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 13</value>
+  </data>
+  <data name="checkSourcesPanelShowNoUpdates.Text" xml:space="preserve">
+    <value>Show "&amp;No Updates..."</value>
+  </data>
+  <data name="checkSourcesPanelShowNoUpdates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 17</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 69</value>
+  </data>
+  <data name="uiTabPageDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 322</value>
+  </data>
+  <data name="uiTabPageDisplay.Text" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="&gt;&gt;panelRight.Parent" xml:space="preserve">
+    <value>panelLeft</value>
+  </data>
+  <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>463, 15</value>
+  </data>
+  <data name="&gt;&gt;numSVNUpdateSourcesQueueTimeoutSeconds.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>&amp;When not updating paralleled, wait for each TortoiseSVN dialog (seconds):</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>359, 13</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreIgnoreOnCommit.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
+    <value>btnOK</value>
+  </data>
+  <data name="label19.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="linkTortoiseEXEBrowse.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkDismissErrorsWhenClicked.Parent" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkMinimizeWhenClosing.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;checkDismissErrorsWhenClicked.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="checkSourcesPanelShowPath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label18.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;groupSourcesPanel.Parent" xml:space="preserve">
+    <value>uiTabPageDisplay</value>
+  </data>
+  <data name="&gt;&gt;uiTabs.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkHideWhenMinimized.Parent" xml:space="preserve">
+    <value>uiTabPageGeneral</value>
+  </data>
+  <data name="groupVersionChecks.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="comboAutoCloseTortoiseSVN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 21</value>
+  </data>
+  <data name="label22.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="checkUnlimitedPageSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 72</value>
+  </data>
+  <data name="&gt;&gt;cmdTortoiseSVNSettings.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;comboAutoCloseTortoiseSVN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboAutoCloseTortoiseSVN.Name" xml:space="preserve">
+    <value>comboAutoCloseTortoiseSVN</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 173</value>
+  </data>
+  <data name="&gt;&gt;checkAutomaticallyResolveTortoiseSVNProcess.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="linkTextEditorBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>402, 88</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageRecommending.Parent" xml:space="preserve">
+    <value>uiTabs</value>
+  </data>
+  <data name="checkVersionCheckAtStartup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 17</value>
+  </data>
+  <data name="checkVersionCheckAtStartup.Text" xml:space="preserve">
+    <value>&amp;Check for new version when the application starts</value>
+  </data>
+  <data name="checkUnlimitedPageSize.Text" xml:space="preserve">
+    <value>&amp;Unlimited log entries (Note: waste of memory and performance. Not recommended!)</value>
+  </data>
+  <data name="checkUnlimitedPageSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>416, 17</value>
+  </data>
+  <data name="txtTortoiseEXE.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="groupSourcesPanel.Text" xml:space="preserve">
+    <value>&amp;Sources</value>
+  </data>
+  <data name="groupSourcesPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 113</value>
+  </data>
+  <data name="&gt;&gt;panelLeft.Name" xml:space="preserve">
+    <value>panelLeft</value>
+  </data>
+  <data name="&gt;&gt;panelLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="uiTabPageOperation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 21</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageTortoiseSVN.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;checkHideWhenMinimized.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>uiTabPageKeyboard</value>
+  </data>
+  <data name="checkShowDefaultTextInsteadOfEmptyLogMessage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkEnableUpdates.Text" xml:space="preserve">
+    <value>&amp;Enable SVN updates</value>
+  </data>
+  <data name="checkEnableUpdates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 17</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="treeView1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 10</value>
+  </data>
+  <data name="checkHideWhenMinimized.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkIgnoreDisabledSourcesWhenUpdatingAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 17</value>
+  </data>
+  <data name="checkIgnoreDisabledSourcesWhenUpdatingAll.Text" xml:space="preserve">
+    <value>&amp;Ignore disabled sources when updating all</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowUrl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowUrl.Name" xml:space="preserve">
+    <value>checkSourcesPanelShowUrl</value>
+  </data>
+  <data name="checkCommitIsAlwaysEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 180</value>
+  </data>
+  <data name="linkUsageInformationHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 13</value>
+  </data>
+  <data name="linkUsageInformationHelp.Text" xml:space="preserve">
+    <value>What's this?</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;comboDefaultUserAction.Parent" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="checkEnableVersionCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 26</value>
+  </data>
+  <data name="lblWatchTheNetworkAvailability.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkStartMinimized.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkStartMinimized.Name" xml:space="preserve">
+    <value>checkStartMinimized</value>
+  </data>
+  <data name="&gt;&gt;linkAutoCheckTortoiseSVN.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="&gt;&gt;comboDefaultUserAction.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupVersionChecks</value>
+  </data>
+  <data name="&gt;&gt;numSVNUpdateSourcesQueueTimeoutSeconds.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="linkTortoiseEXEBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>402, 65</value>
+  </data>
+  <data name="groupVersionChecks.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;checkVersionCheckAtStartup.Name" xml:space="preserve">
+    <value>checkVersionCheckAtStartup</value>
+  </data>
+  <data name="&gt;&gt;checkVersionCheckAtStartup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label19.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="&gt;&gt;numSVNUpdateSourcesQueueTimeoutSeconds.Name" xml:space="preserve">
+    <value>numSVNUpdateSourcesQueueTimeoutSeconds</value>
+  </data>
+  <data name="&gt;&gt;numSVNUpdateSourcesQueueTimeoutSeconds.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkAutomaticInterval.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="checkSourcesPanelShowLastCheck.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkStartMinimized.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label15.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="checkAutomaticallyResolveTortoiseSVNProcess.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 17</value>
+  </data>
+  <data name="checkAutomaticallyResolveTortoiseSVNProcess.Text" xml:space="preserve">
+    <value>&amp;Automatically locate TortoiseProc.exe</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkEnableUpdates.Name" xml:space="preserve">
+    <value>checkEnableUpdates</value>
+  </data>
+  <data name="&gt;&gt;checkEnableUpdates.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="treeView1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="uiTabPageVersionCheck.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;linkAutoCheckTortoiseSVN.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageRecommending.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="numSecondsPerSource.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="uiTabPageTortoiseSVN.Text" xml:space="preserve">
+    <value>TortoiseSVN</value>
+  </data>
+  <data name="uiTabPageTortoiseSVN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 324</value>
+  </data>
+  <data name="checkSVNUpdateSourcesParallel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;numVersionCheckInterval.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtRecommendMessage.Name" xml:space="preserve">
+    <value>txtRecommendMessage</value>
+  </data>
+  <data name="&gt;&gt;txtRecommendMessage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="linkUsageInformationHelp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;numUpdatesInterval.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowLastCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowLastCheck.Name" xml:space="preserve">
+    <value>checkSourcesPanelShowLastCheck</value>
+  </data>
+  <data name="checkEnableVersionCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numPreviewLines.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="numPageSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 46</value>
+  </data>
+  <data name="&gt;&gt;linkTextEditorBrowse.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label13.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="keyboardEditor1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="checkSourcesPanelShowUrl.Text" xml:space="preserve">
+    <value>Show Source's &amp;URL</value>
+  </data>
+  <data name="checkSourcesPanelShowUrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 17</value>
+  </data>
+  <data name="checkAutomaticInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label21.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
+    <value>panelBottom</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="uiTabPageDisplay.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="uiTabPageKeyboard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 21</value>
+  </data>
+  <data name="&gt;&gt;cmdTortoiseSVNSettings.Name" xml:space="preserve">
+    <value>cmdTortoiseSVNSettings</value>
+  </data>
+  <data name="&gt;&gt;cmdTortoiseSVNSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkSourcesPanelShowPath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;comboDefaultUserAction.Name" xml:space="preserve">
+    <value>comboDefaultUserAction</value>
+  </data>
+  <data name="&gt;&gt;comboDefaultUserAction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>uiGroupBoxRecommendMessage</value>
+  </data>
+  <data name="uiTabPageVersionCheck.Text" xml:space="preserve">
+    <value>Version Checking</value>
+  </data>
+  <data name="uiTabPageVersionCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 322</value>
+  </data>
+  <data name="numSVNUpdateSourcesQueueTimeoutSeconds.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtRecommendMessage.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkWatchTheNetworkAvailability.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;linkTextEditorBrowse.Parent" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="&gt;&gt;linkUsageInformationHelp.Parent" xml:space="preserve">
+    <value>groupVersionChecks</value>
+  </data>
+  <data name="panelLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panelLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>632, 356</value>
+  </data>
+  <data name="&gt;&gt;checkShowDefaultTextInsteadOfEmptyLogMessage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkAutomaticallyResolveTortoiseSVNProcess.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;numVersionCheckInterval.Parent" xml:space="preserve">
+    <value>groupVersionChecks</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numUpdatesInterval.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkAutomaticInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkUnlimitedPageSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;linkUsageInformationHelp.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="checkSendUsageInformation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="&gt;&gt;numUpdatesInterval.Name" xml:space="preserve">
+    <value>numUpdatesInterval</value>
+  </data>
+  <data name="&gt;&gt;numUpdatesInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkIgnoreIgnoreOnCommit.Text" xml:space="preserve">
+    <value>&amp;Ignore modified items that are in the "ignore-on-commit" changelist</value>
+  </data>
+  <data name="checkIgnoreIgnoreOnCommit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>337, 17</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageDisplay.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupSourcesPanel.Name" xml:space="preserve">
+    <value>groupSourcesPanel</value>
+  </data>
+  <data name="&gt;&gt;groupSourcesPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblWatchTheNetworkAvailability.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblWatchTheNetworkAvailability.Name" xml:space="preserve">
+    <value>lblWatchTheNetworkAvailability</value>
+  </data>
+  <data name="checkCommitIsAlwaysEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 101</value>
+  </data>
+  <data name="label20.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="checkHideWhenMinimized.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numSecondsPerSource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 66</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 140</value>
+  </data>
+  <data name="checkSourcesPanelShowNoUpdates.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboDefaultUserAction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 21</value>
+  </data>
+  <data name="checkWatchTheNetworkAvailability.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 17</value>
+  </data>
+  <data name="checkWatchTheNetworkAvailability.Text" xml:space="preserve">
+    <value>&amp;Watch the network availability</value>
+  </data>
+  <data name="&gt;&gt;checkStartWithWindows.Parent" xml:space="preserve">
+    <value>uiTabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;checkAutomaticInterval.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkShowDefaultTextInsteadOfEmptyLogMessage.Parent" xml:space="preserve">
+    <value>uiTabPageDisplay</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="linkTextEditorBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="linkTextEditorBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="panelLeft.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 0</value>
+  </data>
+  <data name="checkSourcesPanelShowLastCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="txtRecommendMessage.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panelRight.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>uiTabPageVersionCheck</value>
+  </data>
+  <data name="&gt;&gt;checkPromptUpdateOldRevision.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="checkEnableUpdates.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 26</value>
+  </data>
+  <data name="comboDefaultUserAction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="checkPromptUpdateOldRevision.Text" xml:space="preserve">
+    <value>&amp;Prompt when rolling-back (updating to an older revision)</value>
+  </data>
+  <data name="checkPromptUpdateOldRevision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 17</value>
+  </data>
+  <data name="checkIgnoreIgnoreOnCommit.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="txtTextEditor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 20</value>
+  </data>
+  <data name="checkIgnoreDisabledSourcesWhenUpdatingAll.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="uiGroupBoxRecommendMessage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="checkSVNUpdateSourcesParallel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="lblEnableVersionUpgrade.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 106</value>
+  </data>
+  <data name="cmdTortoiseSVNSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 23</value>
+  </data>
+  <data name="cmdTortoiseSVNSettings.Text" xml:space="preserve">
+    <value>T&amp;ortoiseSVN Settings...</value>
+  </data>
+  <data name="checkSVNUpdateSourcesParallel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 17</value>
+  </data>
+  <data name="checkSVNUpdateSourcesParallel.Text" xml:space="preserve">
+    <value>When updating all sources - do it &amp;paralleled</value>
+  </data>
+  <data name="label20.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="uiTabPageTortoiseSVN.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="numUpdatesInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 117</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblEnableVersionUpgrade.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="treeView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 346</value>
+  </data>
+  <data name="treeView1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;numPreviewLines.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="comboDefaultUserAction.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;checkWatchTheNetworkAvailability.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkWatchTheNetworkAvailability.Name" xml:space="preserve">
+    <value>checkWatchTheNetworkAvailability</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageDisplay.Parent" xml:space="preserve">
+    <value>uiTabs</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
+  </data>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkVersionCheckAtStartup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkDismissErrorsWhenClicked.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="uiTabPageOperation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="linkAutoCheckTortoiseSVN.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="uiTabPageRecommending.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageVersionCheck.Name" xml:space="preserve">
+    <value>uiTabPageVersionCheck</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageVersionCheck.Type" xml:space="preserve">
+    <value>Janus.Windows.UI.Tab.UITabPage, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+  </data>
+  <data name="comboDefaultUserAction.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkDismissErrorsWhenClicked.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 157</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageUpdates.Type" xml:space="preserve">
+    <value>Janus.Windows.UI.Tab.UITabPage, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageUpdates.Name" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreIgnoreOnCommitConflicts.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkIgnoreIgnoreOnCommitConflicts.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreIgnoreOnCommitConflicts.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="checkSourcesPanelShowPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 17</value>
+  </data>
+  <data name="checkSourcesPanelShowPath.Text" xml:space="preserve">
+    <value>Show Source's &amp;Path</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;checkTreatUnversionedAsModified.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;checkPromptUpdateOldRevision.Parent" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="checkStartWithWindows.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 26</value>
+  </data>
+  <data name="&gt;&gt;checkStartWithWindows.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkPromptUpdateHeadRevision.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="checkWatchTheNetworkAvailability.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="checkShowDefaultTextInsteadOfEmptyLogMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 17</value>
+  </data>
+  <data name="checkShowDefaultTextInsteadOfEmptyLogMessage.Text" xml:space="preserve">
+    <value>Show '[No Comment]' instead of &amp;empty log messages</value>
+  </data>
+  <data name="groupSourcesPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="checkPromptUpdateOldRevision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 111</value>
+  </data>
+  <data name="checkMinimizeWhenClosing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 17</value>
+  </data>
+  <data name="checkMinimizeWhenClosing.Text" xml:space="preserve">
+    <value>&amp;Minimize when closing</value>
+  </data>
+  <data name="uiTabs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 346</value>
+  </data>
+  <data name="uiTabs.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="linkTortoiseEXEBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;lblWatchTheNetworkAvailability.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageKeyboard.Type" xml:space="preserve">
+    <value>Janus.Windows.UI.Tab.UITabPage, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageKeyboard.Name" xml:space="preserve">
+    <value>uiTabPageKeyboard</value>
+  </data>
+  <data name="&gt;&gt;checkHideWhenMinimized.Name" xml:space="preserve">
+    <value>checkHideWhenMinimized</value>
+  </data>
+  <data name="&gt;&gt;checkHideWhenMinimized.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;lblWatchTheNetworkAvailability.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtRecommendMessage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="uiTabPageRecommending.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 322</value>
+  </data>
+  <data name="uiTabPageRecommending.Text" xml:space="preserve">
+    <value>Recommending</value>
+  </data>
+  <data name="checkStartWithWindows.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreIgnoreOnCommitConflicts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkIgnoreIgnoreOnCommitConflicts.Name" xml:space="preserve">
+    <value>checkIgnoreIgnoreOnCommitConflicts</value>
+  </data>
+  <data name="&gt;&gt;numPageSize.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="uiTabPageGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="uiTabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 324</value>
+  </data>
+  <data name="checkUnlimitedPageSize.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 46</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelBottom.Name" xml:space="preserve">
+    <value>panelBottom</value>
+  </data>
+  <data name="numPreviewLines.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 114</value>
+  </data>
+  <data name="uiGroupBoxRecommendMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 131</value>
+  </data>
+  <data name="uiGroupBoxRecommendMessage.Text" xml:space="preserve">
+    <value>&amp;Use this text as the commit message:</value>
+  </data>
+  <data name="&gt;&gt;checkEnableUpdates.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;numPreviewLines.Parent" xml:space="preserve">
+    <value>uiTabPageDisplay</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="linkAutoCheckTortoiseSVN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 46</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SettingsDialog</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>SVNMonitor.View.Dialogs.BaseDialog, SVNMonitor, Version=1.3.3.218, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="lblWatchTheNetworkAvailability.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkSourcesPanelShowLastCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;groupVersionChecks.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowNoUpdates.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowNoUpdates.Name" xml:space="preserve">
+    <value>checkSourcesPanelShowNoUpdates</value>
+  </data>
+  <data name="txtTextEditor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;keyboardEditor1.Parent" xml:space="preserve">
+    <value>uiTabPageKeyboard</value>
+  </data>
+  <data name="checkEnableVersionUpgrade.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkShowDefaultTextInsteadOfEmptyLogMessage.Name" xml:space="preserve">
+    <value>checkShowDefaultTextInsteadOfEmptyLogMessage</value>
+  </data>
+  <data name="&gt;&gt;checkShowDefaultTextInsteadOfEmptyLogMessage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
+  </data>
+  <data name="&gt;&gt;keyboardEditor1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numSecondsPerSource.Name" xml:space="preserve">
+    <value>numSecondsPerSource</value>
+  </data>
+  <data name="&gt;&gt;numSecondsPerSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>uiTabPageDisplay</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkSVNUpdateSourcesParallel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 150</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;numPageSize.Parent" xml:space="preserve">
+    <value>uiTabPageDisplay</value>
+  </data>
+  <data name="keyboardEditor1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 288</value>
+  </data>
+  <data name="keyboardEditor1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;linkTextEditorBrowse.Name" xml:space="preserve">
+    <value>linkTextEditorBrowse</value>
+  </data>
+  <data name="&gt;&gt;linkTextEditorBrowse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label17.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;checkTreatUnversionedAsModified.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="panelRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>468, 346</value>
+  </data>
+  <data name="panelRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="checkMinimizeWhenClosing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="uiTabPageOperation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 324</value>
+  </data>
+  <data name="uiTabPageOperation.Text" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>uiTabPageDisplay</value>
+  </data>
+  <data name="&gt;&gt;checkEnableUpdates.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="checkSourcesPanelShowNoUpdates.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkTextEditorBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 13</value>
+  </data>
+  <data name="linkTextEditorBrowse.Text" xml:space="preserve">
+    <value>&amp;Browse</value>
+  </data>
+  <data name="linkAutoCheckTortoiseSVN.Text" xml:space="preserve">
+    <value>Auto-check</value>
+  </data>
+  <data name="linkAutoCheckTortoiseSVN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="uiTabPageKeyboard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 314</value>
+  </data>
+  <data name="uiTabPageKeyboard.Text" xml:space="preserve">
+    <value>Keyboard</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="checkSourcesPanelShowLastCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 65</value>
+  </data>
+  <data name="checkTreatUnversionedAsModified.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;lblEnableVersionUpgrade.Parent" xml:space="preserve">
+    <value>groupVersionChecks</value>
+  </data>
+  <data name="&gt;&gt;numSecondsPerSource.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="txtRecommendMessage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;txtTextEditor.Name" xml:space="preserve">
+    <value>txtTextEditor</value>
+  </data>
+  <data name="&gt;&gt;txtTextEditor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;checkEnableVersionUpgrade.Parent" xml:space="preserve">
+    <value>groupVersionChecks</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>uiTabPageUpdates</value>
+  </data>
+  <data name="comboAutoCloseTortoiseSVN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 101</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageOperation.Name" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="&gt;&gt;groupVersionChecks.Parent" xml:space="preserve">
+    <value>uiTabPageVersionCheck</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageOperation.Type" xml:space="preserve">
+    <value>Janus.Windows.UI.Tab.UITabPage, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;panelLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cmdTortoiseSVNSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="checkSourcesPanelShowUrl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;txtTortoiseEXE.Name" xml:space="preserve">
+    <value>txtTortoiseEXE</value>
+  </data>
+  <data name="&gt;&gt;txtTortoiseEXE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboAutoCloseTortoiseSVN.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="checkAutomaticallyResolveTortoiseSVNProcess.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="linkUsageInformationHelp.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;lblEnableVersionUpgrade.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupSourcesPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 169</value>
+  </data>
+  <data name="checkStartMinimized.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkWatchTheNetworkAvailability.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 247</value>
+  </data>
+  <data name="checkDismissErrorsWhenClicked.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 17</value>
+  </data>
+  <data name="checkDismissErrorsWhenClicked.Text" xml:space="preserve">
+    <value>Dismiss &amp;errors when clicked</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowPath.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkPromptUpdateOldRevision.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkEnableVersionCheck.Text" xml:space="preserve">
+    <value>&amp;Enable checking for new versions</value>
+  </data>
+  <data name="checkEnableVersionCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 17</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="checkSourcesPanelShowUrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numSecondsPerSource.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="checkSourcesPanelShowPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="&gt;&gt;comboAutoCloseTortoiseSVN.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="checkPromptUpdateHeadRevision.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowPath.Name" xml:space="preserve">
+    <value>checkSourcesPanelShowPath</value>
+  </data>
+  <data name="label18.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="checkTreatUnversionedAsModified.Text" xml:space="preserve">
+    <value>&amp;Treat unversioned items as modified</value>
+  </data>
+  <data name="checkTreatUnversionedAsModified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 17</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;checkEnableVersionUpgrade.Name" xml:space="preserve">
+    <value>checkEnableVersionUpgrade</value>
+  </data>
+  <data name="&gt;&gt;checkEnableVersionUpgrade.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="checkIgnoreIgnoreOnCommitConflicts.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageOperation.Parent" xml:space="preserve">
+    <value>uiTabs</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;checkMinimizeWhenClosing.Parent" xml:space="preserve">
+    <value>uiTabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowPath.Parent" xml:space="preserve">
+    <value>groupSourcesPanel</value>
+  </data>
+  <data name="&gt;&gt;checkMinimizeWhenClosing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkMinimizeWhenClosing.Name" xml:space="preserve">
+    <value>checkMinimizeWhenClosing</value>
+  </data>
+  <data name="&gt;&gt;keyboardEditor1.Type" xml:space="preserve">
+    <value>SVNMonitor.View.Controls.KeyboardEditor, SVNMonitor, Version=1.3.3.218, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;keyboardEditor1.Name" xml:space="preserve">
+    <value>keyboardEditor1</value>
+  </data>
+  <data name="checkEnableUpdates.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numSecondsPerSource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="&gt;&gt;checkMinimizeWhenClosing.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;checkUnlimitedPageSize.Parent" xml:space="preserve">
+    <value>uiTabPageDisplay</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageTortoiseSVN.Type" xml:space="preserve">
+    <value>Janus.Windows.UI.Tab.UITabPage, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 30</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageTortoiseSVN.Name" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="groupSourcesPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;checkEnableVersionUpgrade.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowUrl.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;uiTabs.Type" xml:space="preserve">
+    <value>Janus.Windows.UI.Tab.UITab, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+  </data>
+  <data name="&gt;&gt;uiTabs.Name" xml:space="preserve">
+    <value>uiTabs</value>
+  </data>
+  <data name="&gt;&gt;panelLeft.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowNoUpdates.Parent" xml:space="preserve">
+    <value>groupSourcesPanel</value>
+  </data>
+  <data name="txtTortoiseEXE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 62</value>
+  </data>
+  <data name="&gt;&gt;checkPromptUpdateOldRevision.Name" xml:space="preserve">
+    <value>checkPromptUpdateOldRevision</value>
+  </data>
+  <data name="&gt;&gt;checkPromptUpdateOldRevision.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label14.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageGeneral.Parent" xml:space="preserve">
+    <value>uiTabs</value>
+  </data>
+  <data name="checkShowDefaultTextInsteadOfEmptyLogMessage.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cmdTortoiseSVNSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="checkSourcesPanelShowNoUpdates.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 88</value>
+  </data>
+  <data name="txtRecommendMessage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="&gt;&gt;checkSendUsageInformation.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkVersionCheckAtStartup.Parent" xml:space="preserve">
+    <value>groupVersionChecks</value>
+  </data>
+  <data name="lblWatchTheNetworkAvailability.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowUrl.Parent" xml:space="preserve">
+    <value>groupSourcesPanel</value>
+  </data>
+  <data name="comboAutoCloseTortoiseSVN.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="checkSourcesPanelShowNoUpdates.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;comboAutoCloseTortoiseSVN.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="&gt;&gt;checkUnlimitedPageSize.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkVersionCheckAtStartup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 63</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageRecommending.Name" xml:space="preserve">
+    <value>uiTabPageRecommending</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageRecommending.Type" xml:space="preserve">
+    <value>Janus.Windows.UI.Tab.UITabPage, Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+  </data>
+  <data name="&gt;&gt;checkSVNUpdateSourcesParallel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkSVNUpdateSourcesParallel.Name" xml:space="preserve">
+    <value>checkSVNUpdateSourcesParallel</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>uiTabPageOperation</value>
+  </data>
+  <data name="checkSourcesPanelShowPath.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtTortoiseEXE.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="&gt;&gt;checkSendUsageInformation.Parent" xml:space="preserve">
+    <value>groupVersionChecks</value>
+  </data>
+  <data name="uiTabPageUpdates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 322</value>
+  </data>
+  <data name="uiTabPageUpdates.Text" xml:space="preserve">
+    <value>Sources</value>
+  </data>
+  <data name="numSVNUpdateSourcesQueueTimeoutSeconds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="&gt;&gt;checkSourcesPanelShowNoUpdates.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>uiTabPageRecommending</value>
+  </data>
+  <data name="checkEnableVersionCheck.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="numVersionCheckInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageOperation.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;txtTortoiseEXE.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numUpdatesInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numPreviewLines.Name" xml:space="preserve">
+    <value>numPreviewLines</value>
+  </data>
+  <data name="&gt;&gt;numPreviewLines.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkIgnoreIgnoreOnCommit.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;uiTabPageKeyboard.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="linkUsageInformationHelp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 172</value>
+  </data>
+  <data name="btnOK.Text" xml:space="preserve">
+    <value>&amp;Save</value>
+  </data>
+  <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;linkTortoiseEXEBrowse.Parent" xml:space="preserve">
+    <value>uiTabPageTortoiseSVN</value>
+  </data>
+  <data name="&gt;&gt;checkEnableVersionCheck.Parent" xml:space="preserve">
+    <value>uiTabPageVersionCheck</value>
+  </data>
+  <data name="&gt;&gt;txtTextEditor.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 26</value>
+  </data>
+  <data name="checkPromptUpdateHeadRevision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 134</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 85</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="keyboardEditor1.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="checkTreatUnversionedAsModified.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 178</value>
+  </data>
+  <data name="checkIgnoreIgnoreOnCommit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 201</value>
+  </data>
+</root>

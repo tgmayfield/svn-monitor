@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<KnownIssues>
+  <List>
+    <Issue
+          ID="128"
+          ExceptionName="System.Net.NetworkInformation.NetworkInformationException"
+          StackFrame="Microsoft.VisualBasic.Devices.Network.NetworkAvailabilityChangedHandler"/>
+    <!--
+System.Net.NetworkInformation.NetworkInformationException: Die Daten sind unzul?ssig
+at System.Net.NetworkInformation.SystemNetworkInterface.GetAdaptersAddresses(AddressFamily family, FixedInfo fixedInfo)
+at System.Net.NetworkInformation.SystemNetworkInterface.PostWin2KGetNetworkInterfaces(AddressFamily family)
+at System.Net.NetworkInformation.SystemNetworkInterface.GetNetworkInterfaces(AddressFamily family)
+at System.Net.NetworkInformation.SystemNetworkInterface.InternalGetIsNetworkAvailable()
+at System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()
+at Microsoft.VisualBasic.Devices.Network.NetworkAvailabilityChangedHandler(Object state)
+-->
+    <Issue
+          ID="79"
+          ExceptionName="System.AccessViolationException"
+          StackFrame="SharpSvn.SvnClient.Status"/>
+    <!--
+System.AccessViolationException: Attempted to read or write protected memory. 
+This is often an indication that other memory is corrupt. 
+at svn_client_status4(Int32* , SByte* , svn_opt_revision_t* , IntPtr , Void* , svn_depth_t , Int32 , Int32 , Int32 , Int32 , apr_array_header_t* , svn_client_ctx_t* , apr_pool_t* ) 
+at SharpSvn.SvnClient.Status(String path, SvnStatusArgs args, EventHandler`1 statusHandler) 
+at SharpSvn.SvnClient.GetStatus(String path, SvnStatusArgs args, Collection`1& statuses) 
+at SVNMonitor.SVN.SharpSVNClient.GetStatus(Source source, Boolean getRemote, Boolean getAll, Collection`1& collection) in d:\Projects\SharpRegion\svnmonitor\trunk\SVNMonitor\SVN\SharpSVNClient.cs:line 119 
+at SVNMonitor.SVN.SVNFactory.GetStatusCollection(Source source, Boolean getRemote, Boolean getAll) in d:\Projects\SharpRegion\svnmonitor\trunk\SVNMonitor\SVN\SVNFactory.cs:line 107 
+at SVNMonitor.SVN.SVNFactory.GetLog(Source source, Int64 startRevision) in d:\Projects\SharpRegion\svnmonitor\trunk\SVNMonitor\SVN\SVNFactory.cs:line 62 
+at SVNMonitor.Entities.SVNLog.Update() in d:\Projects\SharpRegion\svnmonitor\trunk\SVNMonitor\Entities\SVNLog.cs:line 166 
+at SVNMonitor.Entities.Source.CheckUpdates() in d:\Projects\SharpRegion\svnmonitor\trunk\SVNMonitor\Entities\Source.cs:line 1010 
+at SVNMonitor.Updater.UpdateLog(Source source, Boolean force) in d:\Projects\SharpRegion\svnmonitor\trunk\SVNMonitor\Updater.cs:line 199
+-->
+  </List>
+</KnownIssues>

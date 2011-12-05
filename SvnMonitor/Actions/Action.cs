@@ -9,7 +9,8 @@
     using System.Collections.Generic;
     using System.ComponentModel;
 
-    [Serializable, Obsolete("Actions will be rewritten fram scratch")]
+    [Serializable]
+	/*[Obsolete("Actions will be rewritten fram scratch")]*/
     public abstract class Action
     {
         private bool enabled = true;

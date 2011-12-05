@@ -1,0 +1,645 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DisabledEntity" xml:space="preserve">
+    <value>disabled</value>
+  </data>
+  <data name="UserEntityError" xml:space="preserve">
+    <value>Error. Click here for more information</value>
+  </data>
+  <data name="ErrorKeyAlreadyAssigned_FORMAT" xml:space="preserve">
+    <value>The selected shortcut key is already assigned to:
+{0}</value>
+  </data>
+  <data name="ExecutablesFileTypes" xml:space="preserve">
+    <value>Executables</value>
+  </data>
+  <data name="ToolTipRecommended" xml:space="preserve">
+    <value>Recommended</value>
+  </data>
+  <data name="PathUnread" xml:space="preserve">
+    <value>Unread</value>
+  </data>
+  <data name="NewUpdatesAreAvailable_FORMAT" xml:space="preserve">
+    <value>{0} new updates are available for '{1}'.</value>
+  </data>
+  <data name="ToolTipUnreadAndRecommended" xml:space="preserve">
+    <value>Unread &amp; Recommended</value>
+  </data>
+  <data name="LogCreatedForSource_FORMAT" xml:space="preserve">
+    <value>Log created for '{0}'.</value>
+  </data>
+  <data name="PossibleConflicts_FORMAT" xml:space="preserve">
+    <value>{0} possible {1}</value>
+  </data>
+  <data name="UnversionedItems_FORMAT" xml:space="preserve">
+    <value>{0} unversioned {1}</value>
+  </data>
+  <data name="LogItemsPanelTitle" xml:space="preserve">
+    <value>Items:</value>
+  </data>
+  <data name="ErrorGettingInfoOfSource_FORMAT" xml:space="preserve">
+    <value>Error getting info of '{0}'</value>
+  </data>
+  <data name="HereItIs" xml:space="preserve">
+    <value>Here it is!</value>
+  </data>
+  <data name="NewUpdateAvailableByAuthor_FORMAT" xml:space="preserve">
+    <value>A new update is available for '{0}' by {1}.</value>
+  </data>
+  <data name="KeyBoardEditorDefaultLabel" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="SourcesExplorerBar_RevisionRepository" xml:space="preserve">
+    <value>Repository revision:</value>
+  </data>
+  <data name="ErrorCantPerformDefaultPathAction_FORMAT" xml:space="preserve">
+    <value>Can't perform default action ({0}) on the selected item(s)</value>
+  </data>
+  <data name="WizardSoundCommitsNotifications" xml:space="preserve">
+    <value>Sound Commits Notifications...</value>
+  </data>
+  <data name="SavingItemRevisionDone_FORMAT" xml:space="preserve">
+    <value>File saved: {0}</value>
+  </data>
+  <data name="UpdatesAreDisabled" xml:space="preserve">
+    <value>Updates are disabled.</value>
+  </data>
+  <data name="LogPossibleConflicts_Conflicts" xml:space="preserve">
+    <value>conflicts</value>
+  </data>
+  <data name="UpdatesAreEnabled" xml:space="preserve">
+    <value>Updates are enabled.</value>
+  </data>
+  <data name="KeyboardShortcutUpdateAllAvailable_Text" xml:space="preserve">
+    <value>Update all sources</value>
+  </data>
+  <data name="ErrorLoadingSettingsCreatingDefault" xml:space="preserve">
+    <value>Error loading the settings. Creating default.</value>
+  </data>
+  <data name="AvailableUpdates_FORMAT" xml:space="preserve">
+    <value>{0} available {1} ({2} {3})</value>
+  </data>
+  <data name="AskCheckRegistryForInstalledFile" xml:space="preserve">
+    <value>Check the registry for the installed file?</value>
+  </data>
+  <data name="LogItemsCount_Item" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="ModifiedItems_Items" xml:space="preserve">
+    <value>items</value>
+  </data>
+  <data name="ClickToAdd" xml:space="preserve">
+    <value>click to add</value>
+  </data>
+  <data name="ANewVersionIsAvailable" xml:space="preserve">
+    <value>A new version is available!</value>
+  </data>
+  <data name="SourcesExplorerBar_PossibleConflictedAndMore" xml:space="preserve">
+    <value>And more...</value>
+  </data>
+  <data name="ModifiedItems_Item" xml:space="preserve">
+    <value>item</value>
+  </data>
+  <data name="SVNMonitorDisabled" xml:space="preserve">
+    <value>SVN-Monitor (Disabled)</value>
+  </data>
+  <data name="ErrorCantGetSourceInformationForTheCheckout" xml:space="preserve">
+    <value>Can't get source information for the checkout.</value>
+  </data>
+  <data name="LogPossibleConflicts_FORMAT" xml:space="preserve">
+    <value>, {0} possible {1}</value>
+  </data>
+  <data name="WelcomeMessage" xml:space="preserve">
+    <value>Welcome!</value>
+  </data>
+  <data name="AskCantFindTortoiseSVN" xml:space="preserve">
+    <value>Can't find it. Are you sure you have it installed?
+(It's a rhetorical question...)</value>
+  </data>
+  <data name="ErrorCommitFailedCheckLog_FORMAT" xml:space="preserve">
+    <value>Commit failed.
+{0}
+Please check the Event-Log for more information.</value>
+  </data>
+  <data name="StatusAnimationTitle_FORMAT" xml:space="preserve">
+    <value>Processing {0}...</value>
+  </data>
+  <data name="SourcesExplorerBar_Revision" xml:space="preserve">
+    <value>Revision:</value>
+  </data>
+  <data name="AvailableUpdates_Update" xml:space="preserve">
+    <value>update</value>
+  </data>
+  <data name="WizardRepositoryMirror" xml:space="preserve">
+    <value>Repository Mirror...</value>
+  </data>
+  <data name="ErrorSavingItemRevision_FORMAT" xml:space="preserve">
+    <value>Error saving revision {0} of '{1}'</value>
+  </data>
+  <data name="ConditionForAllUpdates" xml:space="preserve">
+    <value>All updates</value>
+  </data>
+  <data name="ErrorNoCommitPermissions" xml:space="preserve">
+    <value>Please check if you have permissions to commit changes to this source.</value>
+  </data>
+  <data name="ErrorLoadingMonitorSettings" xml:space="preserve">
+    <value>Load monitor settings</value>
+  </data>
+  <data name="SourcesExplorerBar_PossibleConflicted_FORMAT" xml:space="preserve">
+    <value>{0} possible conflicted {1}</value>
+  </data>
+  <data name="SourcesExplorerBar_NotYetCheckedTipText" xml:space="preserve">
+    <value>This source has not been checked for updates yet</value>
+  </data>
+  <data name="PreUpgradeNotification" xml:space="preserve">
+    <value>SVN-Monitor will be closed and restarted with the new version in a few seconds...</value>
+  </data>
+  <data name="ErrorLoadingFileSeeLog_FORMAT" xml:space="preserve">
+    <value>Error loading {0}.
+    
+Please see the log file for details.</value>
+  </data>
+  <data name="SourcesExplorerBar_PossibleConflictedItems" xml:space="preserve">
+    <value>items</value>
+  </data>
+  <data name="SourcesExplorerBar_PossibleConflictedItem" xml:space="preserve">
+    <value>item</value>
+  </data>
+  <data name="SourcesExplorerBar_LastCheckedTipText" xml:space="preserve">
+    <value>Last check for modifications and updates:</value>
+  </data>
+  <data name="SelectALogEntryToShowPaths" xml:space="preserve">
+    <value>Select a log-entry from the above list to show it's files.</value>
+  </data>
+  <data name="ErrorTryingToRecommend_FORMAT" xml:space="preserve">
+    <value>Error when trying to recommend revision {0} of '{1}'</value>
+  </data>
+  <data name="SourcesCreated_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="ApplicationClosing" xml:space="preserve">
+    <value>Closing...</value>
+  </data>
+  <data name="PathDoesNotExist" xml:space="preserve">
+    <value>This item does not exist locally</value>
+  </data>
+  <data name="NoUnversionedItems" xml:space="preserve">
+    <value>no unversioned items</value>
+  </data>
+  <data name="ErrorSendingFeedback_FORMAT" xml:space="preserve">
+    <value>Error sending the Feedback: {0}.</value>
+  </data>
+  <data name="KeyboardShortcutShowMainWindow_Text" xml:space="preserve">
+    <value>Show/Hide SVN-Monitor</value>
+  </data>
+  <data name="UnversionedItems_Items" xml:space="preserve">
+    <value>items</value>
+  </data>
+  <data name="UICommandCustom" xml:space="preserve">
+    <value>Custom...</value>
+  </data>
+  <data name="TextCopiedToClipboard_FORMAT" xml:space="preserve">
+    <value>Text copied to the clipboard: '{0}'.</value>
+  </data>
+  <data name="EmptyLogMessage" xml:space="preserve">
+    <value>[no comment]</value>
+  </data>
+  <data name="ErrorNoPathActionFound_FORMAT" xml:space="preserve">
+    <value>No action found for "{0}".</value>
+  </data>
+  <data name="SourcesExplorerBar_PossibleConflictedClickToViewDiff" xml:space="preserve">
+    <value>click to view diff</value>
+  </data>
+  <data name="PathModified" xml:space="preserve">
+    <value>Modified</value>
+  </data>
+  <data name="SourcesCreated_FORMAT" xml:space="preserve">
+    <value>{0} {1} created.</value>
+  </data>
+  <data name="TrayCommandHide" xml:space="preserve">
+    <value>&amp;Hide</value>
+  </data>
+  <data name="KeyboardShortcutCheckModifications_Text" xml:space="preserve">
+    <value>Check modifications</value>
+  </data>
+  <data name="PossibleConflicts_Conflicts" xml:space="preserve">
+    <value>conflicts</value>
+  </data>
+  <data name="ClickToOpenCommitDialog" xml:space="preserve">
+    <value>click to open the commit dialog</value>
+  </data>
+  <data name="MonitorExistsWithSameCondition_FORMAT" xml:space="preserve">
+    <value>A monitor already exists with the same condition.
+Are you sure you want to save?
+
+The existing monitor is:
+{0}</value>
+  </data>
+  <data name="LogPossibleConflicts_Conflict" xml:space="preserve">
+    <value>conflict</value>
+  </data>
+  <data name="WizardCodeReviewByMailName_FORMAT" xml:space="preserve">
+    <value>{0} code review by mail</value>
+  </data>
+  <data name="ErrorInitializingLogger" xml:space="preserve">
+    <value>Error initializing the logger.
+Please reinstall the application.</value>
+  </data>
+  <data name="SourcesExplorerBar_NoUpdatesNoChangesClickToCheckModifications" xml:space="preserve">
+    <value>click to check modifications</value>
+  </data>
+  <data name="FeedbackErrorTitle" xml:space="preserve">
+    <value>Error Sending Feedback</value>
+  </data>
+  <data name="SourcesExplorerBar_RevisionLocal" xml:space="preserve">
+    <value>Local revision:</value>
+  </data>
+  <data name="MonitorsExistWithSameCondition_FORMAT" xml:space="preserve">
+    <value>Some monitors already exist with the same condition.
+Are you sure you want to save?
+
+The existing monitors are:
+{0}</value>
+  </data>
+  <data name="ErrorAssignShortcutKey_FORMAT" xml:space="preserve">
+    <value>The '{0}' shortcut key can't be assigned. It might be already in-use by another application. Please check your settings.</value>
+  </data>
+  <data name="WizardCustomName" xml:space="preserve">
+    <value>Monitor Name</value>
+  </data>
+  <data name="AvailableUpdates_Item" xml:space="preserve">
+    <value>item</value>
+  </data>
+  <data name="PathPossibleConflict" xml:space="preserve">
+    <value>Possible Conflict</value>
+  </data>
+  <data name="WizardCustom" xml:space="preserve">
+    <value>Custom...</value>
+  </data>
+  <data name="ErrorSettingClipboard" xml:space="preserve">
+    <value>Error copying text to the clipboard.</value>
+  </data>
+  <data name="WarningExistingSourceWithSamePath_FORMAT" xml:space="preserve">
+    <value>A source with the same path/url exists: "{0}". are you sure you want to create this source?</value>
+  </data>
+  <data name="KeyboardShortcutCheckSources_Description" xml:space="preserve">
+    <value>Checks all sources for available updates</value>
+  </data>
+  <data name="PanelCaptionLog" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="AppDataFolderCreated_FORMAT" xml:space="preserve">
+    <value>Application-Data folder created: '{0}'.</value>
+  </data>
+  <data name="ErrorSavingTheSettingsFullMessage" xml:space="preserve">
+    <value>Can't save the settings. Check the errors panel or the log for details.</value>
+  </data>
+  <data name="WarningVersionChecksDisabled" xml:space="preserve">
+    <value>Version-checks are now disabled.</value>
+  </data>
+  <data name="MonitorDeleted_FORMAT" xml:space="preserve">
+    <value>Monitor '{0}' deleted.</value>
+  </data>
+  <data name="FailedToExtractTheDownloadedVersion" xml:space="preserve">
+    <value>Failed to extract the downloaded version of SVN-Monitor</value>
+  </data>
+  <data name="ErrorUpdateFailed" xml:space="preserve">
+    <value>Update failed</value>
+  </data>
+  <data name="NoPossibleConflicts" xml:space="preserve">
+    <value>no possible conflicts</value>
+  </data>
+  <data name="MonitorTriggering_FORMAT" xml:space="preserve">
+    <value>Triggering monitor '{0}'...</value>
+  </data>
+  <data name="WizardCommitsNotificationsName_FORMAT" xml:space="preserve">
+    <value>{0} commits notifications</value>
+  </data>
+  <data name="NoModifiedItems" xml:space="preserve">
+    <value>no modified items</value>
+  </data>
+  <data name="SourcesExplorerBar_LastCheckedText" xml:space="preserve">
+    <value>Last Checked:</value>
+  </data>
+  <data name="KeyboardShortcutCheckModifications_Description" xml:space="preserve">
+    <value>Opens the 'Check Modifications' TortoiseSVN window</value>
+  </data>
+  <data name="ErrorSvnVersionTooOld" xml:space="preserve">
+    <value>This feature only works for svn version 1.5 and above. Please check your server version.</value>
+  </data>
+  <data name="KeyboardShortcutShowMainWindow_Description" xml:space="preserve">
+    <value>Shows or hides the main application window</value>
+  </data>
+  <data name="SourcesExplorerBar_NoUpdatesNoChanges" xml:space="preserve">
+    <value>No available updates. No local changes.</value>
+  </data>
+  <data name="ErrorLoadingSettingsSeeLogForDetails" xml:space="preserve">
+    <value>Can't load the settings. Check the errors panel or the log for details.
+Default settings loaded instead.</value>
+  </data>
+  <data name="WizardCodeReviewByMail" xml:space="preserve">
+    <value>Code Review By Mail...</value>
+  </data>
+  <data name="ErrorWithTortoiseSVN" xml:space="preserve">
+    <value>Error with TortoiseSVN. Please see the log for details</value>
+  </data>
+  <data name="UnversionedItems_Item" xml:space="preserve">
+    <value>item</value>
+  </data>
+  <data name="ToolTipUnread" xml:space="preserve">
+    <value>Unread</value>
+  </data>
+  <data name="WizardCommitsNotifications" xml:space="preserve">
+    <value>Commits Notifications...</value>
+  </data>
+  <data name="AndMore" xml:space="preserve">
+    <value>And more...</value>
+  </data>
+  <data name="SavingItemRevision_FORMAT" xml:space="preserve">
+    <value>Save revision {0} of {1}</value>
+  </data>
+  <data name="ANewVersionIsAvailableWithVersion_FORMAT" xml:space="preserve">
+    <value>A new version is available for download: v{0}</value>
+  </data>
+  <data name="SVNMonitorCaption" xml:space="preserve">
+    <value>SVN-Monitor</value>
+  </data>
+  <data name="KeyboardShortcutCheckSources_Text" xml:space="preserve">
+    <value>Check sources for updates</value>
+  </data>
+  <data name="FeedbackErrorText" xml:space="preserve">
+    <value>Your feedback was not sent. The server may be down or unreachabe.
+The Event-Log may contain additional information about the error.
+
+Please try again later.</value>
+  </data>
+  <data name="ClickToEditMonitor" xml:space="preserve">
+    <value>click to edit</value>
+  </data>
+  <data name="LogItemsCount_Items" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="MonitorWithoutCondition" xml:space="preserve">
+    <value>No condition has been set. The actions will be applied to all updates.
+Are you sure you want to save?</value>
+  </data>
+  <data name="WarningVersionChecksEnabled" xml:space="preserve">
+    <value>Version-checks are now enabled.</value>
+  </data>
+  <data name="AvailableUpdates_Items" xml:space="preserve">
+    <value>items</value>
+  </data>
+  <data name="ErrorDeletingDirectory_FORMAT" xml:space="preserve">
+    <value>Error deleting '{0}'</value>
+  </data>
+  <data name="WizardCodeReviewByMailActionSubject_FORMAT" xml:space="preserve">
+    <value>SVN Updates for {0}</value>
+  </data>
+  <data name="CheckingForANewVersion" xml:space="preserve">
+    <value>Checking for a new version of SVN-Monitor...</value>
+  </data>
+  <data name="WizardSoundCommitsNotificationsName_FORMAT" xml:space="preserve">
+    <value>{0} sound commits notifications</value>
+  </data>
+  <data name="KeyboardShortcutUpdateAllAvailable_Description" xml:space="preserve">
+    <value>Updates all not up-to-date sources</value>
+  </data>
+  <data name="KeyNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="LogUnreadCount_FORMAT" xml:space="preserve">
+    <value>{0} unread</value>
+  </data>
+  <data name="ErrorUpdateSuccessfulButFailedRefreshingRecommended" xml:space="preserve">
+    <value>Update was successful, but failed refreshing the recommended list</value>
+  </data>
+  <data name="TryingOpenWithInstead" xml:space="preserve">
+    <value>Trying 'Open With...' instead...</value>
+  </data>
+  <data name="PanelCaptionLogAndName_FORMAT" xml:space="preserve">
+    <value>Log - {0}</value>
+  </data>
+  <data name="WindowsIsShuttingDown" xml:space="preserve">
+    <value>Windows is shutting-down</value>
+  </data>
+  <data name="ManuallyBrowse" xml:space="preserve">
+    <value>Open the following link in your internet browser:</value>
+  </data>
+  <data name="EntityDeleteConfirmationText_FORMAT" xml:space="preserve">
+    <value>Delete '{0}'?</value>
+  </data>
+  <data name="CheckingSourceForUpdates_FORMAT" xml:space="preserve">
+    <value>Checking '{0}' for updates...</value>
+  </data>
+  <data name="ModifiedItems_FORMAT" xml:space="preserve">
+    <value>{0} modified {1}</value>
+  </data>
+  <data name="ToolTipPossibleConflictAndRecommended" xml:space="preserve">
+    <value>Possible Conflict &amp; Recommended</value>
+  </data>
+  <data name="SourceDeleted_FORMAT" xml:space="preserve">
+    <value>Source '{0}' deleted.</value>
+  </data>
+  <data name="WarningVersionUpgradesEnabled" xml:space="preserve">
+    <value>Version-upgrades are now enabled.</value>
+  </data>
+  <data name="ErrorDeletingLog_FORMAT" xml:space="preserve">
+    <value>Error deleting ths log of '{0}'</value>
+  </data>
+  <data name="ErrorLoadingLogFile_FORMAT" xml:space="preserve">
+    <value>Error loading '{0}'</value>
+  </data>
+  <data name="SourcesExplorerBar_NotYetCheckedText" xml:space="preserve">
+    <value>Not yet checked</value>
+  </data>
+  <data name="NoSourcesAreDefined" xml:space="preserve">
+    <value>No sources are defined.
+Double click here to create a new source.
+    
+You can also drag folders and drop them here.
+Hold the 'Control' key to make it even faster.</value>
+  </data>
+  <data name="AvailableUpdates_Updates" xml:space="preserve">
+    <value>updates</value>
+  </data>
+  <data name="ClickToUpdateHEAD" xml:space="preserve">
+    <value>click to update HEAD</value>
+  </data>
+  <data name="PossibleConflicts_Conflict" xml:space="preserve">
+    <value>conflict</value>
+  </data>
+  <data name="ErrorPathDoesNotExists_FORMAT" xml:space="preserve">
+    <value>'{0}' does not exist.</value>
+  </data>
+  <data name="ErrorOpeningPath_FORMAT" xml:space="preserve">
+    <value>Error opening '{0}'.</value>
+  </data>
+  <data name="WizardRepositoryMirrorName_FORMAT" xml:space="preserve">
+    <value>{0} repository mirror</value>
+  </data>
+  <data name="SourcesCreated_Sources" xml:space="preserve">
+    <value>Sources</value>
+  </data>
+  <data name="VersionUpgradedNotification_FORMAT" xml:space="preserve">
+    <value>SVN-Monitor has been upgraded to version {0}</value>
+  </data>
+  <data name="ErrorSavingTheSettings" xml:space="preserve">
+    <value>Error saving the settings.</value>
+  </data>
+  <data name="WarningVersionUpgradesDisabled" xml:space="preserve">
+    <value>Version-upgrades are now disabled.</value>
+  </data>
+  <data name="NoMonitorsAreDefined" xml:space="preserve">
+    <value>No monitors are defined.
+Double click here to create a new monitor.</value>
+  </data>
+  <data name="SelectASourceToShowLog" xml:space="preserve">
+    <value>Select a source from the sources list to show it's log.</value>
+  </data>
+  <data name="ErrorSendingErrorReport_FORMAT" xml:space="preserve">
+    <value>Error sending the Error-Report: {0}.</value>
+  </data>
+  <data name="AskCloseWizardWithoutCommitting" xml:space="preserve">
+    <value>Are you sure you want to close this wizard without committing?</value>
+  </data>
+  <data name="ErrorDeletingFile_FORMAT" xml:space="preserve">
+    <value>Error deleting '{0}'</value>
+  </data>
+  <data name="NoAvailableUpdates" xml:space="preserve">
+    <value>no available updates</value>
+  </data>
+  <data name="ToolTipPossibleConflict" xml:space="preserve">
+    <value>Possible Conflict</value>
+  </data>
+  <data name="FoundFileAt_FORMAT" xml:space="preserve">
+    <value>Found it at '{0}'</value>
+  </data>
+  <data name="ErrorTortoiseSVNProcessNotExists_FORMAT" xml:space="preserve">
+    <value>Can't find TortoiseSVN process at {0}'{1}'.
+Please check your settings.</value>
+  </data>
+  <data name="PageSizeChangedUseRefreshLog" xml:space="preserve">
+    <value>Page size has been changed.
+You can use the "Refresh log" context-menu command of a source in-order to create the log with the new size.</value>
+  </data>
+  <data name="EntityDeleteConfirmationCaption" xml:space="preserve">
+    <value>Delete Confirmation</value>
+  </data>
+</root>
