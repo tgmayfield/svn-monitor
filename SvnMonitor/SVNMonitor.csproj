@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{c5f0445f-83f3-4fe2-b640-0c2ff3797c30}</ProjectGuid>
+    <ProjectGuid>{C5F0445F-83F3-4FE2-B640-0C2FF3797C30}</ProjectGuid>
     <SchemaVersion>2</SchemaVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -10,22 +10,26 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\output\</OutputPath>
     <DebugSymbols>true</DebugSymbols>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <Optimize>false</Optimize>
     <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\output\</OutputPath>
     <DebugSymbols>false</DebugSymbols>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <WarningLevel>4</WarningLevel>
     <DebugType>pdbonly</DebugType>
     <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>SVNMonitor</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Xml" />
@@ -166,7 +170,9 @@
     <Compile Include="SVNMonitor.SVN\SharpSVNClient.cs" />
     <Compile Include="SVNMonitor.SVN\TortoiseProcess.cs" />
     <Compile Include="SVNMonitor.SVN\TortoiseSVNAutoClose.cs" />
-    <Compile Include="SVNMonitor.View.Controls\ActionSelector.cs" />
+    <Compile Include="SVNMonitor.View.Controls\ActionSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SVNMonitor.Helpers\UserTypesFactory`1.cs" />
     <Compile Include="SVNMonitor.Helpers\UserTypeInfo.cs" />
     <Compile Include="SVNMonitor.Helpers\CustomAttribute.cs" />
@@ -187,62 +193,148 @@
     <Compile Include="SVNMonitor.Helpers\ProcessHelper.cs" />
     <Compile Include="SVNMonitor\MonitorSettings.cs" />
     <Compile Include="SVNMonitor.Resources\Images.cs" />
-    <Compile Include="SVNMonitor.View.Controls\ActionsGrid.cs" />
-    <Compile Include="SVNMonitor.View.Controls\AnimationProgressBar.cs" />
-    <Compile Include="SVNMonitor.View.Controls\EventLogGrid.cs" />
+    <Compile Include="SVNMonitor.View.Controls\ActionsGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\AnimationProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\EventLogGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SVNMonitor.View.Controls\HtmlViewer.cs" />
-    <Compile Include="SVNMonitor.View.Controls\KeyboardEditor.cs" />
+    <Compile Include="SVNMonitor.View.Controls\KeyboardEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SVNMonitor.View.Controls\KeyboardEditorRow.cs" />
-    <Compile Include="SVNMonitor.View.Controls\UserEntitiesExplorerBar`1.cs" />
-    <Compile Include="SVNMonitor.View.Controls\MonitorsExplorerBar.cs" />
+    <Compile Include="SVNMonitor.View.Controls\UserEntitiesExplorerBar`1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\MonitorsExplorerBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SVNMonitor.View.Controls\UserEntityExplorerBarGroup`1.cs" />
     <Compile Include="SVNMonitor.View.Controls\MonitorExplorerBarGroup.cs" />
-    <Compile Include="SVNMonitor.View.Controls\PathsGrid.cs" />
-    <Compile Include="SVNMonitor.View.Controls\LogEntriesGrid.cs" />
-    <Compile Include="SVNMonitor.View.Controls\SearchTextBox`1.cs" />
-    <Compile Include="SVNMonitor.View.Controls\SVNLogEntrySearchTextBox.cs" />
-    <Compile Include="SVNMonitor.View.Controls\SVNPathSearchTextBox.cs" />
-    <Compile Include="SVNMonitor.View.Controls\EventLogEntrySearchTextBox.cs" />
-    <Compile Include="SVNMonitor.View.Controls\SourceSearchTextBox.cs" />
-    <Compile Include="SVNMonitor.View.Controls\MonitorSearchTextBox.cs" />
-    <Compile Include="SVNMonitor.View.Controls\SourcesExplorerBar.cs" />
+    <Compile Include="SVNMonitor.View.Controls\PathsGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\LogEntriesGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\SearchTextBox`1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\SVNLogEntrySearchTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\SVNPathSearchTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\EventLogEntrySearchTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\SourceSearchTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\MonitorSearchTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Controls\SourcesExplorerBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SVNMonitor.View.Controls\SourceExplorerBarGroup.cs" />
     <Compile Include="SVNMonitor\Updater.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\BaseDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\AboutDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\ActionPropertiesDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\BaseFeedbackDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\BasePromptDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\ErrorReportDetailsDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\ErrorReportDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\FeedbackConfirmationDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\FeedbackDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\LogEntryDetailsDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\MonitorPropertiesDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\NewVersionDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\RecommendWizard.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\RollbackPromptDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\SendProgressDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\SettingsDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\SourcePropertiesDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\UpdateHeadPromptDialog.cs" />
-    <Compile Include="SVNMonitor.View.Dialogs\UsageInformationHelp.cs" />
+    <Compile Include="SVNMonitor.View.Dialogs\BaseDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\ActionPropertiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\BaseFeedbackDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\BasePromptDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\ErrorReportDetailsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\ErrorReportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\FeedbackConfirmationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\FeedbackDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\LogEntryDetailsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\MonitorPropertiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\NewVersionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\RecommendWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\RollbackPromptDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\SendProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\SettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\SourcePropertiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\UpdateHeadPromptDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Dialogs\UsageInformationHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SVNMonitor.View.Interfaces\ISearchablePanel`1.cs" />
     <Compile Include="SVNMonitor.View.Interfaces\ISelectableView`1.cs" />
     <Compile Include="SVNMonitor.View.Interfaces\IUserEntityView`1.cs" />
     <Compile Include="SVNMonitor.View.Interfaces\ILogEntriesView.cs" />
     <Compile Include="SVNMonitor.View\MainForm.cs" />
     <Compile Include="SVNMonitor.View\MainNotifier.cs" />
-    <Compile Include="SVNMonitor.View.Panels\ActionsPanel.cs" />
-    <Compile Include="SVNMonitor.View.Panels\GridPanel.cs" />
-    <Compile Include="SVNMonitor.View.Panels\EventLogPanel.cs" />
-    <Compile Include="SVNMonitor.View.Panels\MonitorsPanel.cs" />
-    <Compile Include="SVNMonitor.View.Panels\SourcesPanel.cs" />
-    <Compile Include="SVNMonitor.View.Panels\UpdatesGridContainer.cs" />
-    <Compile Include="SVNMonitor.View.Panels\LogEntriesPanel.cs" />
-    <Compile Include="SVNMonitor.View.Panels\PathsPanel.cs" />
+    <Compile Include="SVNMonitor.View.Panels\ActionsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Panels\GridPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Panels\EventLogPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Panels\MonitorsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Panels\SourcesPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Panels\UpdatesGridContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Panels\LogEntriesPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SVNMonitor.View.Panels\PathsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SVNMonitor\Program.cs" />
-    <Compile Include="SVNMonitor.SharpRegion\svnmonitor_server.cs" />
+    <Compile Include="SVNMonitor.SharpRegion\svnmonitor_server.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SVNMonitor.SharpRegion\testCompletedEventHandler.cs" />
     <Compile Include="SVNMonitor.SharpRegion\testCompletedEventArgs.cs" />
     <Compile Include="SVNMonitor.SharpRegion\sendUsageInfoCompletedEventHandler.cs" />
