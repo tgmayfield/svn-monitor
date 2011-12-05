@@ -30,6 +30,13 @@ namespace SVNMonitor.View
 {
 	internal partial class MainForm : Form
 	{
+		private bool endSessionPending;
+		private static MainForm formInstance;
+		private const int BalloonTipTimeOut = 0xea60;
+		private readonly System.Collections.Generic.Dictionary<Janus.Windows.UI.CommandBars.UICommand, string> baseMenuTexts = new System.Collections.Generic.Dictionary<Janus.Windows.UI.CommandBars.UICommand, string>();
+		private bool realClose;
+		private const int WM_QUERYENDSESSION = 0x11;
+		
 		public MainForm()
 		{
 			if (formInstance != null)

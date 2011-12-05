@@ -548,8 +548,14 @@
     <Compile Include="View\Panels\ActionsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="View\Panels\ActionsPanel.Designer.cs">
+      <DependentUpon>ActionsPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Panels\EventLogPanel.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\EventLogPanel.Designer.cs">
+      <DependentUpon>EventLogPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Panels\GridPanel.cs">
       <SubType>UserControl</SubType>
@@ -557,17 +563,32 @@
     <Compile Include="View\Panels\LogEntriesPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="View\Panels\LogEntriesPanel.Designer.cs">
+      <DependentUpon>LogEntriesPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Panels\MonitorsPanel.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\MonitorsPanel.Designer.cs">
+      <DependentUpon>MonitorsPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Panels\PathsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="View\Panels\PathsPanel.Designer.cs">
+      <DependentUpon>PathsPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Panels\SourcesPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="View\Panels\SourcesPanel.Designer.cs">
+      <DependentUpon>SourcesPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Panels\UpdatesGridContainer.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\UpdatesGridContainer.Designer.cs">
+      <DependentUpon>UpdatesGridContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Wizards\CodeReviewMailerWizard.cs">
       <SubType>Code</SubType>

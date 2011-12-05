@@ -1425,8 +1425,6 @@ namespace SVNMonitor.View
 		#endregion
 
 		private SVNMonitor.View.Controls.AnimationProgressBar animationProgressBar1;
-		private const int BalloonTipTimeOut = 0xea60;
-		private readonly System.Collections.Generic.Dictionary<Janus.Windows.UI.CommandBars.UICommand, string> baseMenuTexts = new System.Collections.Generic.Dictionary<Janus.Windows.UI.CommandBars.UICommand, string>();
 		private Janus.Windows.UI.CommandBars.UIRebar BottomRebar1;
 		private Janus.Windows.EditControls.UICheckBox checkGroupByBox;
 		private Janus.Windows.UI.CommandBars.UICommand cmdAbout;
@@ -1483,10 +1481,8 @@ namespace SVNMonitor.View
 		private Janus.Windows.UI.CommandBars.UICommand cmdTSVNHelp1;
 		private Janus.Windows.UI.CommandBars.UICommand cmdTSVNSettings;
 		private Janus.Windows.UI.CommandBars.UICommand cmdTSVNSettings1;
-		private bool endSessionPending;
 		private SVNMonitor.View.Controls.EventLogEntrySearchTextBox eventLogEntrySearchTextBox1;
 		private SVNMonitor.View.Panels.EventLogPanel eventLogPanel1;
-		private static MainForm formInstance;
 		private System.Windows.Forms.FormWindowState lastWindowState;
 		private Janus.Windows.UI.CommandBars.UIRebar LeftRebar1;
 		private SVNMonitor.View.Panels.LogEntriesPanel logEntriesPanel1;
@@ -1524,7 +1520,6 @@ namespace SVNMonitor.View
 		private SVNMonitor.View.Panels.MonitorsPanel monitorsPanel1;
 		private System.Windows.Forms.NotifyIcon notifyIcon1;
 		private SVNMonitor.View.Panels.PathsPanel pathsPanel1;
-		private bool realClose;
 		private Janus.Windows.UI.CommandBars.UIRebar RightRebar1;
 		private Janus.Windows.UI.CommandBars.UICommand Separator1;
 		private Janus.Windows.UI.CommandBars.UICommand Separator2;
@@ -1565,6 +1560,5 @@ namespace SVNMonitor.View
 		private Janus.Windows.UI.Dock.UIPanelInnerContainer uiPanelUpdatesGridContainerContainer;
 		private Janus.Windows.UI.StatusBar.UIStatusBar uiStatusBar1;
 		private SVNMonitor.View.Panels.UpdatesGridContainer updatesGridContainer1;
-		private const int WM_QUERYENDSESSION = 0x11;
 	}
 }

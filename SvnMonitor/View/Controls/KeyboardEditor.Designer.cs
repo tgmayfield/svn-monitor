@@ -142,7 +142,6 @@ namespace SVNMonitor.View.Controls
 		private System.Windows.Forms.Label lblDescription;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Panel panel2;
-		private bool? refreshButtons;
 		private System.Windows.Forms.GroupBox uiGroupBox1;
 	}
 }

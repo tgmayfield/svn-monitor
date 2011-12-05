@@ -5,7 +5,7 @@ using Janus.Windows.GridEX;
 
 namespace SVNMonitor.View.Panels
 {
-	internal class GridPanel : UserControl
+	internal partial class GridPanel : UserControl
 	{
 		public virtual string GetGridLayout()
 		{

@@ -19,6 +19,7 @@ namespace SVNMonitor.View.Controls
 	public partial class KeyboardEditor : UserControl
 	{
 		private IEnumerable<KeyboardEditorRow> list;
+		private bool? refreshButtons;
 		
 		public KeyboardEditor()
 		{

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="uiCommandManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>159, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -137,23 +140,6 @@
         EfY4nWGj0fip5MEtflpyOpiwSuuftFbbl7DshvJHHLLwDaUOHlcnGv+lAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="cmdDeleteAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAr2AAAK9gHCr3ADAAACXklE
-        QVQ4T62TXUjTYRTGn/9/lumYM7dMp0MRXWY2TMpSt0KbShO1zciy7KJvLKmb6CKDCoIgIsKLIoRu7AuH
-        KGKIiX0JGascXTRC1gcGlhSYkOTMPR1BJDW78tycm/P8nvd9zvsCi139gO0x0PQayJrL7gUOdCro7gC2
-        nQbUed7vgWuf3XmhiQtV9CnK078HXgIlby3GIKstHLTq2alRxGtOBRINH9lYS16q4lDxGr4C9k6NSM/2
-        JuhHeSiLdCUxkGtkG9A4D+AFLgfr3eT57eTZUr4waIcfAoXPV0R9Ze0mcmcqR50mtoerg3IN/TzAOyBz
-        wGYJ8ZwAThUxuD+Hz4y6EOts5J4MTlYms9esnZSMShbMvk+jPmF9KXmygDyWTx7PJfetJXel0Z9j4AOg
-        4b+LewSUfdiSRtaJ+OB6EVvJ3as4XJxAj4L++8CyBQGSdKI4dA2Vi+hozrQ4ndyRwmF7LO8BPc2A9l8A
-        pQ843GeOGZmotZNHNpA1meIs4soUstxMlpn43R5DjwpvF2CaBekBXIGNSeSJPHEVYfVqssrC3+5ksiKR
-        k854BotjGSwyctSuZ1ukOiSn2ToDaZFVDWTHSdLiKKuacv1RmsA23ZKJQJaeIWcsxx0GjhVEc2xzFEds
-        kbwFSFzT1a5RfOMuEbrlFBVmfnGsZKs27FsrkOcBrgesOo4XLudPu44j+Vp2m8J4G6iZAUiyV8YccfxV
-        Fs8366LZrCo+CTN1ekCRV9fgT4+g3xrBdoOGAr06K4MmwNi6VPW2RGo+3QHO3ADC5yZ9F7h4U16q9IxF
-        /cB/AIckJDQl5699AAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="cmdOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
@@ -172,26 +158,20 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="eventLogGrid1_DesignTimeLayout_Reference_0.Instance" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="cmdCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAr2AAAK9gHCr3ADAAACiElE
-        QVQ4T61TXUiTYRh96iKsLibNhAi8saLCiwzWn1IXBupcWmK4wkhHkfmX1hxYUUQL62KYUKmhSCMJLcWM
-        oG9tKpY/aVqps7ksnQtKyw1kavrpTs+UNiTryg8O78f3vec85znP+xIt+6NsDaIEk2716TZLQHaXuC7z
-        7YxfUmMPKeq0FCUE/r+eypIs1fS5outmENsAhFTOYcP9SawvdEJy9QtWKk0OSngTu7SIaiA5OH/IndIM
-        bKkGKLsfkqxOSDRmrM2zgi7ZQXlDIKVJpEMtMYtFjrUFSdW9LlULINUzuZhFLr6D2zEI0WnHk46vII2N
-        MQA63w+S145SxGN/n0i8USevnkRIlRt0b47hRrDWCnF8FFPjTlT2TTB5GKRmJ+fMoKQm0P6HuV4Bv5TX
-        luOGWVABb7w9xesUNuuGgVkXgDnU8SvlsoOcj6CMbpCqDRSub/QKBKR3iOGPJkE3naBbjHwHtt79wWSR
-        AQjfWCDn80L19A+gE69AByrsXgFpasv09pIx0LXvoOsj82tgkQt3LECBGTjV6hH4tEBO7QIlGkFh+mFf
-        C8qXPZsKmXiZ+5wHJ55phX9GO3bc6AOlWUBnmXymc8F+3HOQrNTgCzGyRrvxCqerYZuepNUDiNa2A9M/
-        uYEJmB0cbib/95ATDKCDVaDQonSfQJQhcNVRwbHiAm+aD8qMw8VWJntCBGwz3EIGf080gWKegnaV2Wh3
-        xZrFZ0HRFEvxgkhZvWz5PdvtxraiMcTV/uIJDIKOvPDMH7TvwQTJqsOWPo1yo5wia0ZIWQ862cwVG5go
-        gBTPQBGVXLnURrKaf5D/SMoECYWVqWlPeT3P2kZ7y4doZ4lAocVpf9tehqv8G9zRkFvHg73RAAAAAElF
-        TkSuQmCC
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAArpAAAK6QH9dc7TAAAB/ElE
+        QVQ4T7WT+0tTYRyH/RuLLuBvJjqvLH9IM12r8PbLzEs6dSFpalvaNBfOudkuajDXHLIJ7Y2jzrPTioTy
+        hp5dPn3f95RbThCCXng4cDjv8z7nC29Jyf9YbQ12cIx102jRWQX3yiZxt3SMc/vKM8f7fVAUpQguMFTZ
+        iiWdZic4T/ocaDXNCho7p6F/PAVPYANyUsHuriIKgr6dYgnffNniAoNpTkgSCU1QyPmvtD97d74/l8sh
+        S6iZnCj4lDgWklFLAE5bFFPmMIIfGOpLh3GpgJu4JJ3VBIVsS0kwJmMrlkTNLXNeYOy2i4JQeBtrQQne
+        NQmuFQkOn4SZZQk7qR/QG0fhnothoj+EWFSG7uZgsUDk08lpyj9NZ3GiZnF4lsH+SQa1LSNC8LI3hM3N
+        C4KHJq3Au/oZnhWGRT+D4z2D3cNgczF8P06jhgQuewxjPeuIRGRU3hjIFzR3vRaCAA1nefW3wKsJrCT4
+        JgTDWHwTxYun6whv7KGqUNDUYRUCPwncVLDgY3hLBTNuhleuOFJHJHgwhAht/Bjag9+fwJ1rffkCvXFc
+        CJYCDE7Kn/+TvxTHhDMO5VBFdfMQuh/NiuGVXx/4e4gVjSNC8PVIFaRowxdCOVAh/1QR3z9F5f2CqV+8
+        DHxAdYbnhEWj1YJagr/n6CifP6+8RP/ywS9Qty49FEp2cwAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="eventLogGrid1_DesignTimeLayout.LayoutString" xml:space="preserve">
-    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="Type"&gt;&lt;AllowDrag&gt;False&lt;/AllowDrag&gt;&lt;AllowRemove&gt;False&lt;/AllowRemove&gt;&lt;AllowSize&gt;False&lt;/AllowSize&gt;&lt;AllowSort&gt;False&lt;/AllowSort&gt;&lt;BoundMode&gt;Unbound&lt;/BoundMode&gt;&lt;ColumnType&gt;Image&lt;/ColumnType&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;HeaderImage Reference="GridEXLayoutData.RootTable.Columns.Column0.HeaderImage" /&gt;&lt;Image Reference="GridEXLayoutData.RootTable.Columns.Column0.Image" /&gt;&lt;Key&gt;Type&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;Selectable&gt;False&lt;/Selectable&gt;&lt;Width&gt;20&lt;/Width&gt;&lt;/Column0&gt;&lt;Column1 ID="DateTime"&gt;&lt;AllowDrag&gt;False&lt;/AllowDrag&gt;&lt;AllowRemove&gt;False&lt;/AllowRemove&gt;&lt;AllowSort&gt;False&lt;/AllowSort&gt;&lt;Caption&gt;Date and Time&lt;/Caption&gt;&lt;DataMember&gt;DateTime&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;DateTime&lt;/Key&gt;&lt;Position&gt;1&lt;/Position&gt;&lt;Selectable&gt;False&lt;/Selectable&gt;&lt;Width&gt;126&lt;/Width&gt;&lt;/Column1&gt;&lt;Column2 ID="Message"&gt;&lt;AllowDrag&gt;False&lt;/AllowDrag&gt;&lt;AllowRemove&gt;False&lt;/AllowRemove&gt;&lt;AllowSort&gt;False&lt;/AllowSort&gt;&lt;Caption&gt;Message&lt;/Caption&gt;&lt;DataMember&gt;Message&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;Message&lt;/Key&gt;&lt;Position&gt;2&lt;/Position&gt;&lt;Selectable&gt;False&lt;/Selectable&gt;&lt;Width&gt;445&lt;/Width&gt;&lt;/Column2&gt;&lt;Column3 ID="ID"&gt;&lt;Caption&gt;ID&lt;/Caption&gt;&lt;DataMember&gt;ID&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;ID&lt;/Key&gt;&lt;Position&gt;3&lt;/Position&gt;&lt;Visible&gt;False&lt;/Visible&gt;&lt;/Column3&gt;&lt;/Columns&gt;&lt;AllowGroup&gt;False&lt;/AllowGroup&gt;&lt;GroupCondition /&gt;&lt;RowHeight&gt;20&lt;/RowHeight&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
   </data>
   <data name="cmdCopyError.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -211,19 +191,42 @@
         GFfsYly2iXFhvBjnLJ0VSyliNMYlop0WOfI/PrL8BOwWA8NO3tQvAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="cmdCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="cmdDeleteAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAArpAAAK6QH9dc7TAAAB/ElE
-        QVQ4T7WT+0tTYRyH/RuLLuBvJjqvLH9IM12r8PbLzEs6dSFpalvaNBfOudkuajDXHLIJ7Y2jzrPTioTy
-        hp5dPn3f95RbThCCXng4cDjv8z7nC29Jyf9YbQ12cIx102jRWQX3yiZxt3SMc/vKM8f7fVAUpQguMFTZ
-        iiWdZic4T/ocaDXNCho7p6F/PAVPYANyUsHuriIKgr6dYgnffNniAoNpTkgSCU1QyPmvtD97d74/l8sh
-        S6iZnCj4lDgWklFLAE5bFFPmMIIfGOpLh3GpgJu4JJ3VBIVsS0kwJmMrlkTNLXNeYOy2i4JQeBtrQQne
-        NQmuFQkOn4SZZQk7qR/QG0fhnothoj+EWFSG7uZgsUDk08lpyj9NZ3GiZnF4lsH+SQa1LSNC8LI3hM3N
-        C4KHJq3Au/oZnhWGRT+D4z2D3cNgczF8P06jhgQuewxjPeuIRGRU3hjIFzR3vRaCAA1nefW3wKsJrCT4
-        JgTDWHwTxYun6whv7KGqUNDUYRUCPwncVLDgY3hLBTNuhleuOFJHJHgwhAht/Bjag9+fwJ1rffkCvXFc
-        CJYCDE7Kn/+TvxTHhDMO5VBFdfMQuh/NiuGVXx/4e4gVjSNC8PVIFaRowxdCOVAh/1QR3z9F5f2CqV+8
-        DHxAdYbnhEWj1YJagr/n6CifP6+8RP/ywS9Qty49FEp2cwAAAABJRU5ErkJggg==
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAr2AAAK9gHCr3ADAAACXklE
+        QVQ4T62TXUjTYRTGn/9/lumYM7dMp0MRXWY2TMpSt0KbShO1zciy7KJvLKmb6CKDCoIgIsKLIoRu7AuH
+        KGKIiX0JGascXTRC1gcGlhSYkOTMPR1BJDW78tycm/P8nvd9zvsCi139gO0x0PQayJrL7gUOdCro7gC2
+        nQbUed7vgWuf3XmhiQtV9CnK078HXgIlby3GIKstHLTq2alRxGtOBRINH9lYS16q4lDxGr4C9k6NSM/2
+        JuhHeSiLdCUxkGtkG9A4D+AFLgfr3eT57eTZUr4waIcfAoXPV0R9Ze0mcmcqR50mtoerg3IN/TzAOyBz
+        wGYJ8ZwAThUxuD+Hz4y6EOts5J4MTlYms9esnZSMShbMvk+jPmF9KXmygDyWTx7PJfetJXel0Z9j4AOg
+        4b+LewSUfdiSRtaJ+OB6EVvJ3as4XJxAj4L++8CyBQGSdKI4dA2Vi+hozrQ4ndyRwmF7LO8BPc2A9l8A
+        pQ843GeOGZmotZNHNpA1meIs4soUstxMlpn43R5DjwpvF2CaBekBXIGNSeSJPHEVYfVqssrC3+5ksiKR
+        k854BotjGSwyctSuZ1ukOiSn2ToDaZFVDWTHSdLiKKuacv1RmsA23ZKJQJaeIWcsxx0GjhVEc2xzFEds
+        kbwFSFzT1a5RfOMuEbrlFBVmfnGsZKs27FsrkOcBrgesOo4XLudPu44j+Vp2m8J4G6iZAUiyV8YccfxV
+        Fs8366LZrCo+CTN1ekCRV9fgT4+g3xrBdoOGAr06K4MmwNi6VPW2RGo+3QHO3ADC5yZ9F7h4U16q9IxF
+        /cB/AIckJDQl5699AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="uiContextMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="eventLogGrid1_DesignTimeLayout_Reference_0.Instance" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAr2AAAK9gHCr3ADAAACiElE
+        QVQ4T61TXUiTYRh96iKsLibNhAi8saLCiwzWn1IXBupcWmK4wkhHkfmX1hxYUUQL62KYUKmhSCMJLcWM
+        oG9tKpY/aVqps7ksnQtKyw1kavrpTs+UNiTryg8O78f3vec85znP+xIt+6NsDaIEk2716TZLQHaXuC7z
+        7YxfUmMPKeq0FCUE/r+eypIs1fS5outmENsAhFTOYcP9SawvdEJy9QtWKk0OSngTu7SIaiA5OH/IndIM
+        bKkGKLsfkqxOSDRmrM2zgi7ZQXlDIKVJpEMtMYtFjrUFSdW9LlULINUzuZhFLr6D2zEI0WnHk46vII2N
+        MQA63w+S145SxGN/n0i8USevnkRIlRt0b47hRrDWCnF8FFPjTlT2TTB5GKRmJ+fMoKQm0P6HuV4Bv5TX
+        luOGWVABb7w9xesUNuuGgVkXgDnU8SvlsoOcj6CMbpCqDRSub/QKBKR3iOGPJkE3naBbjHwHtt79wWSR
+        AQjfWCDn80L19A+gE69AByrsXgFpasv09pIx0LXvoOsj82tgkQt3LECBGTjV6hH4tEBO7QIlGkFh+mFf
+        C8qXPZsKmXiZ+5wHJ55phX9GO3bc6AOlWUBnmXymc8F+3HOQrNTgCzGyRrvxCqerYZuepNUDiNa2A9M/
+        uYEJmB0cbib/95ATDKCDVaDQonSfQJQhcNVRwbHiAm+aD8qMw8VWJntCBGwz3EIGf080gWKegnaV2Wh3
+        xZrFZ0HRFEvxgkhZvWz5PdvtxraiMcTV/uIJDIKOvPDMH7TvwQTJqsOWPo1yo5wia0ZIWQ862cwVG5go
+        gBTPQBGVXLnURrKaf5D/SMoECYWVqWlPeT3P2kZ7y4doZ4lAocVpf9tehqv8G9zRkFvHg73RAAAAAElF
+        TkSuQmCC
 </value>
   </data>
   <data name="eventLogGrid1_DesignTimeLayout_Reference_1.Instance" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -243,5 +246,8 @@
         gBTPQBGVXLnURrKaf5D/SMoECYWVqWlPeT3P2kZ7y4doZ4lAocVpf9tehqv8G9zRkFvHg73RAAAAAElF
         TkSuQmCC
 </value>
+  </data>
+  <data name="eventLogGrid1_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="Type"&gt;&lt;AllowDrag&gt;False&lt;/AllowDrag&gt;&lt;AllowRemove&gt;False&lt;/AllowRemove&gt;&lt;AllowSize&gt;False&lt;/AllowSize&gt;&lt;AllowSort&gt;False&lt;/AllowSort&gt;&lt;BoundMode&gt;Unbound&lt;/BoundMode&gt;&lt;ColumnType&gt;Image&lt;/ColumnType&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;HeaderImage Reference="GridEXLayoutData.RootTable.Columns.Column0.HeaderImage" /&gt;&lt;Image Reference="GridEXLayoutData.RootTable.Columns.Column0.Image" /&gt;&lt;Key&gt;Type&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;Selectable&gt;False&lt;/Selectable&gt;&lt;Width&gt;20&lt;/Width&gt;&lt;/Column0&gt;&lt;Column1 ID="DateTime"&gt;&lt;AllowDrag&gt;False&lt;/AllowDrag&gt;&lt;AllowRemove&gt;False&lt;/AllowRemove&gt;&lt;AllowSort&gt;False&lt;/AllowSort&gt;&lt;Caption&gt;Date and Time&lt;/Caption&gt;&lt;DataMember&gt;DateTime&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;DateTime&lt;/Key&gt;&lt;Position&gt;1&lt;/Position&gt;&lt;Selectable&gt;False&lt;/Selectable&gt;&lt;Width&gt;126&lt;/Width&gt;&lt;/Column1&gt;&lt;Column2 ID="Message"&gt;&lt;AllowDrag&gt;False&lt;/AllowDrag&gt;&lt;AllowRemove&gt;False&lt;/AllowRemove&gt;&lt;AllowSort&gt;False&lt;/AllowSort&gt;&lt;Caption&gt;Message&lt;/Caption&gt;&lt;DataMember&gt;Message&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;Message&lt;/Key&gt;&lt;Position&gt;2&lt;/Position&gt;&lt;Selectable&gt;False&lt;/Selectable&gt;&lt;Width&gt;445&lt;/Width&gt;&lt;/Column2&gt;&lt;Column3 ID="ID"&gt;&lt;Caption&gt;ID&lt;/Caption&gt;&lt;DataMember&gt;ID&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;ID&lt;/Key&gt;&lt;Position&gt;3&lt;/Position&gt;&lt;Visible&gt;False&lt;/Visible&gt;&lt;/Column3&gt;&lt;/Columns&gt;&lt;AllowGroup&gt;False&lt;/AllowGroup&gt;&lt;GroupCondition /&gt;&lt;RowHeight&gt;20&lt;/RowHeight&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
   </data>
 </root>

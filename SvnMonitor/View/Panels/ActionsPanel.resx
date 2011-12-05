@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="uiCommandManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>159, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -132,6 +135,24 @@
         n0KLPS48XsFOXIxnljd4Ql7ExyUCu+VFcO+v9SZSkCR5hqbpnQjLwWl/jWUZgVxgGtG3V7BiXsYipd+g
         xIRJLyEOny+csB65UqlUelIulz96bDBtP1DMHyyIp/apW6c/37k7L5mZmT02NN0miNH5b+g3ixNk7ewo
         lHwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="cmdEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAArpAAAK6QH9dc7TAAACpUlE
+        QVQ4T62TXUiTYRiGvxKDDjwqPTQIhcADoUAizwyDkkLcJmRz2nLLz83pZOZsZGomqQRaNrc0UzdrW+bf
+        p7ZSSCXUfixTE5XmNjV/cvg3TdP23n0eNIhmR97wHrwHz/W89/08L0XthXJzs4/FxfGbBQJBqVAolLOH
+        Gx8fH8rn8wMkEonPnx5dR31zTb4+qxqKYrQUddjdWy6//zQ9XW3mcGK6IyOjrFxutJ3Die7j8bjvY2Iu
+        9kdxeckTVaXSmcggsiY9DXOgH1hIqxtQUtLnML9848rJyoFUROOyMBnZ2cVQKguJPPXOUkRc+HTvhy9b
+        znuZWBWeRG/IEbAvsLsBRUXdE1bLtGtqehIjjAFMCwNdTTX0NU/wvL4O0Z2B0L4uxOCwFV0ZSWgN8Ptl
+        PLA/3A3Iu2UesDpAJreAxfZGWDcB2ypgXQLk/RHId/JQTGJBV1/CVZmMyDIyU/7KXqVq7J53uMgagPVX
+        JsyzgEX2kv8pAZmz5/Bg+wqkQ2cRWOxHvG9S1/4ZnEJhYqzftsmSiwW8MGB9G9CPaSH9Ggo1SYBi/DyC
+        1f44mOVV5HHqMpmu9vP4BrH9AL7X62Fju6e1X4AaQqjsUThR4Q/vDKqGLd7nESCRVJUNDq+QeTaDhTod
+        LCzAUClGmDEAQQ8P4fiNEGRdb4/ddedo+nFBT98cWSOAq6kKk7PL4ESEIUmuxN3mNrwbI0hPa1DsCkhM
+        LFe1dNiIhbUwV/sIA1Ob6Hk7AucGYFkA+m1AaorBs/8dqlisSW5gxoiNLZjTaTG6Any0/4TFAaysA7Mz
+        W5BKa3cy8CyxuFxgfDbIGmBl1GB4dBlM0xDK1B1OdsSdEom+QKlsO7UrQCTSnFEqTc6828yQiK6uSEyq
+        FNG0NpjHa/Pai8/6X8ZveBKfylfys14AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="cmdDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -179,24 +200,6 @@
         ZlV75K95/ek/DOmvgkjTDFOd8aiAIfNBNnmaidQFACOg4WA0OgbvAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="cmdEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAArpAAAK6QH9dc7TAAACpUlE
-        QVQ4T62TXUiTYRiGvxKDDjwqPTQIhcADoUAizwyDkkLcJmRz2nLLz83pZOZsZGomqQRaNrc0UzdrW+bf
-        p7ZSSCXUfixTE5XmNjV/cvg3TdP23n0eNIhmR97wHrwHz/W89/08L0XthXJzs4/FxfGbBQJBqVAolLOH
-        Gx8fH8rn8wMkEonPnx5dR31zTb4+qxqKYrQUddjdWy6//zQ9XW3mcGK6IyOjrFxutJ3Die7j8bjvY2Iu
-        9kdxeckTVaXSmcggsiY9DXOgH1hIqxtQUtLnML9848rJyoFUROOyMBnZ2cVQKguJPPXOUkRc+HTvhy9b
-        znuZWBWeRG/IEbAvsLsBRUXdE1bLtGtqehIjjAFMCwNdTTX0NU/wvL4O0Z2B0L4uxOCwFV0ZSWgN8Ptl
-        PLA/3A3Iu2UesDpAJreAxfZGWDcB2ypgXQLk/RHId/JQTGJBV1/CVZmMyDIyU/7KXqVq7J53uMgagPVX
-        JsyzgEX2kv8pAZmz5/Bg+wqkQ2cRWOxHvG9S1/4ZnEJhYqzftsmSiwW8MGB9G9CPaSH9Ggo1SYBi/DyC
-        1f44mOVV5HHqMpmu9vP4BrH9AL7X62Fju6e1X4AaQqjsUThR4Q/vDKqGLd7nESCRVJUNDq+QeTaDhTod
-        LCzAUClGmDEAQQ8P4fiNEGRdb4/ddedo+nFBT98cWSOAq6kKk7PL4ESEIUmuxN3mNrwbI0hPa1DsCkhM
-        LFe1dNiIhbUwV/sIA1Ob6Hk7AucGYFkA+m1AaorBs/8dqlisSW5gxoiNLZjTaTG6Any0/4TFAaysA7Mz
-        W5BKa3cy8CyxuFxgfDbIGmBl1GB4dBlM0xDK1B1OdsSdEom+QKlsO7UrQCTSnFEqTc6828yQiK6uSEyq
-        FNG0NpjHa/Pai8/6X8ZveBKfylfys14AAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="cmdTest.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
@@ -213,6 +216,9 @@
         9y4Oi080AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="uiContextMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="actionsGrid1_DesignTimeLayout.LayoutString" xml:space="preserve">
     <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="DisplayName"&gt;&lt;AllowSort&gt;False&lt;/AllowSort&gt;&lt;Caption&gt;Action Type&lt;/Caption&gt;&lt;DataMember&gt;DisplayName&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;DisplayName&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;Selectable&gt;False&lt;/Selectable&gt;&lt;Width&gt;638&lt;/Width&gt;&lt;/Column0&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;PreviewRow&gt;True&lt;/PreviewRow&gt;&lt;PreviewRowLines&gt;5&lt;/PreviewRowLines&gt;&lt;PreviewRowMember&gt;SummaryInfo&lt;/PreviewRowMember&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
   </data>
