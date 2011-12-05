@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Dialogs
+﻿using System.Linq;
+
+namespace SVNMonitor.View.Dialogs
 {
     using SVNMonitor.Entities;
     using SVNMonitor.Extensions;
@@ -126,7 +128,7 @@
             }
         }
 
-        private static Predicate<LogEntryDetailsDialog> GetPredicate(SVNLogEntry entry)
+        private static Func<LogEntryDetailsDialog, bool> GetPredicate(SVNLogEntry entry)
         {
             return d => (d.LogEntry == entry);
         }
@@ -393,9 +395,9 @@
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            this.txtLogMessage.GotFocus += (, ) => this.HideTextBoxCaret(this.txtLogMessage);
-            this.txtAuthor.GotFocus += (, ) => this.HideTextBoxCaret(this.txtAuthor);
-            this.txtDateTime.GotFocus += (, ) => this.HideTextBoxCaret(this.txtDateTime);
+            this.txtLogMessage.GotFocus += (s, ea) => this.HideTextBoxCaret(this.txtLogMessage);
+            this.txtAuthor.GotFocus += (s, ea) => this.HideTextBoxCaret(this.txtAuthor);
+            this.txtDateTime.GotFocus += (s, ea) => this.HideTextBoxCaret(this.txtDateTime);
             this.LoadSettings();
         }
 
@@ -441,8 +443,8 @@
         public static void ShowLogEntryDetails(ILogEntriesView view, SVNLogEntry entry)
         {
             LogEntryDetailsDialog dialog;
-            Predicate<LogEntryDetailsDialog> predicate = GetPredicate(entry);
-            if (OpenDialogs.Contains<LogEntryDetailsDialog>(predicate))
+            var predicate = GetPredicate(entry);
+            if (OpenDialogs.Any<LogEntryDetailsDialog>(predicate))
             {
                 dialog = OpenDialogs.Where<LogEntryDetailsDialog>(predicate).First<LogEntryDetailsDialog>();
             }

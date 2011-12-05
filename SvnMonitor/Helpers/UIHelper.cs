@@ -27,11 +27,11 @@
             {
                 ClipboardCommands.Add(manager, new Dictionary<string, CopyCommandInfo>());
             }
-            CopyCommandInfo <>g__initLocal5 = new CopyCommandInfo {
+            CopyCommandInfo tempLocal5 = new CopyCommandInfo {
                 Action = action,
                 Text = cmd.Text
             };
-            ClipboardCommands[manager][cmd.Key] = <>g__initLocal5;
+            ClipboardCommands[manager][cmd.Key] = tempLocal5;
             cmd.Click += new CommandEventHandler(UIHelper.CmdCopy_Click);
         }
 
@@ -230,10 +230,10 @@
             foreach (UserTypeInfo item in list)
             {
                 UserTypeInfo userTypeInfo = item;
-                UICommand <>g__initLocal0 = new UICommand(menu.Key + item.Type.FullName, item.DisplayName) {
+                UICommand tempLocal0 = new UICommand(menu.Key + item.Type.FullName, item.DisplayName) {
                     Image = menu.Image
                 };
-                UICommand command = <>g__initLocal0;
+                UICommand command = tempLocal0;
                 command.Click += CreateCommandEventHandler<T>(view, contextMenu, userTypeInfo, getBaseName, tableName, columnName);
                 menu.Commands.Add(command);
             }
@@ -245,11 +245,11 @@
                 Key = menu.Key + "custom",
                 Text = Strings.UICommandCustom
             };
-            UserTypeInfo <>g__initLocal1 = new UserTypeInfo {
+            UserTypeInfo tempLocal1 = new UserTypeInfo {
                 DisplayName = Strings.UICommandCustom,
                 Type = typeof(CustomWizard)
             };
-            custom.Click += CreateCommandEventHandler<T>(view, contextMenu, <>g__initLocal1, getBaseName, tableName, columnName);
+            custom.Click += CreateCommandEventHandler<T>(view, contextMenu, tempLocal1, getBaseName, tableName, columnName);
             menu.Commands.Add(custom);
         }
 

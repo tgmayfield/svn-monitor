@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.Entities
+﻿using System.Linq;
+
+namespace SVNMonitor.Entities
 {
     using SharpSvn;
     using SVNMonitor;
@@ -111,7 +113,7 @@
 
         internal virtual List<SVNLogEntry> CheckUpdates()
         {
-            List<SVNLogEntry> CS$1$0000;
+            List<SVNLogEntry> tempAnotherLocal0;
             try
             {
                 this.LastCheck = new DateTime?(DateTime.Now);
@@ -145,7 +147,7 @@
                     this.LogUpdatesToEventLog(updates);
                     this.OnStatusChanged(StatusChangedReason.Updated);
                 }
-                CS$1$0000 = updates;
+                tempAnotherLocal0 = updates;
             }
             catch
             {
@@ -155,7 +157,7 @@
             {
                 this.Updating = false;
             }
-            return CS$1$0000;
+            return tempAnotherLocal0;
         }
 
         internal void CleanUp()

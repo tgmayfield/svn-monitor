@@ -12,20 +12,20 @@
     [ResourceProvider("WizardCodeReviewByMail")]
     internal class CodeReviewMailerWizard : Wizard
     {
-        protected override IEnumerable<Action> CreateActions(string baseName)
+        protected override IEnumerable<Actions.Action> CreateActions(string baseName)
         {
             MailSenderAction action = new MailSenderAction {
                 Subject = Strings.WizardCodeReviewByMailActionSubject_FORMAT.FormatWith(new object[] { baseName })
             };
-            ActionPropertiesDialog <>g__initLocal2 = new ActionPropertiesDialog {
+            ActionPropertiesDialog tempLocal2 = new ActionPropertiesDialog {
                 Action = action
             };
-            ActionPropertiesDialog dialog = <>g__initLocal2;
+            ActionPropertiesDialog dialog = tempLocal2;
             if (dialog.ShowDialog() == DialogResult.Cancel)
             {
                 throw new WizardCancelledException();
             }
-            return new Action[] { action };
+			return new Actions.Action[] { action };
         }
 
         protected override string GetWizardName(string baseName)

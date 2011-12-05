@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Interfaces
+﻿using SVNMonitor.Entities;
+
+namespace SVNMonitor.View.Interfaces
 {
     using System;
     using System.Collections.Generic;

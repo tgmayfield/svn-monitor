@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Controls
+﻿using System.Linq;
+
+namespace SVNMonitor.View.Controls
 {
     using Janus.Windows.ExplorerBar;
     using SVNMonitor.Entities;

@@ -14,11 +14,11 @@
 
         static KeyInfo()
         {
-            KeyInfo <>g__initLocal1 = new KeyInfo {
+            KeyInfo tempLocal1 = new KeyInfo {
                 Modifier = ModifierKey.None,
                 Key = SVNMonitor.Helpers.Key.None
             };
-            none = <>g__initLocal1;
+            none = tempLocal1;
         }
 
         private KeyInfo()

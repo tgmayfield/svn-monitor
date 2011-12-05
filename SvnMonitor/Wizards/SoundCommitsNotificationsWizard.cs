@@ -12,18 +12,18 @@
     [ResourceProvider("WizardSoundCommitsNotifications")]
     internal class SoundCommitsNotificationsWizard : Wizard
     {
-        protected override IEnumerable<Action> CreateActions(string baseName)
+		protected override IEnumerable<Actions.Action> CreateActions(string baseName)
         {
             SoundPlayerAction action = new SoundPlayerAction();
-            ActionPropertiesDialog <>g__initLocal0 = new ActionPropertiesDialog {
+            ActionPropertiesDialog tempLocal0 = new ActionPropertiesDialog {
                 Action = action
             };
-            ActionPropertiesDialog actionDialog = <>g__initLocal0;
+            ActionPropertiesDialog actionDialog = tempLocal0;
             if (actionDialog.ShowDialog() == DialogResult.Cancel)
             {
                 throw new WizardCancelledException();
             }
-            return new Action[] { action };
+			return new Actions.Action[] { action };
         }
 
         protected override string GetWizardName(string baseName)

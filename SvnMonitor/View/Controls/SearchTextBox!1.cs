@@ -282,19 +282,7 @@
             this.searchTimer.Start();
         }
 
-        public int RightMargin
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.<RightMargin>k__BackingField;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.<RightMargin>k__BackingField = value;
-            }
-        }
+		public int RightMargin { get; set; }
 
         public ISearchablePanel<T> SearchablePanel
         {

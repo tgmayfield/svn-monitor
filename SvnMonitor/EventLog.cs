@@ -108,14 +108,14 @@
                 return 0L;
             }
             Logger.Log.InfoFormat("Event-Log: Type={0}, Message={1}, HasException={2}", type, message, ex != null);
-            SVNMonitor.EventLogEntry <>g__initLocal0 = new SVNMonitor.EventLogEntry {
+            SVNMonitor.EventLogEntry tempLocal0 = new SVNMonitor.EventLogEntry {
                 DateTime = DateTime.Now,
                 Type = type,
                 Message = message,
                 SourceObject = sourceObject,
                 Exception = ex
             };
-            SVNMonitor.EventLogEntry entry = <>g__initLocal0;
+            SVNMonitor.EventLogEntry entry = tempLocal0;
             List.Add(entry);
             OnAfterLog();
             return entry.ID;

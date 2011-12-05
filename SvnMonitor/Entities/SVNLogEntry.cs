@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.Entities
+﻿using System.Linq;
+
+namespace SVNMonitor.Entities
 {
     using SVNMonitor.Extensions;
     using SVNMonitor.Resources.Text;

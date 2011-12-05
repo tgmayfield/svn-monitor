@@ -44,12 +44,12 @@
         {
             ToolStripMenuItem[] items = new ToolStripMenuItem[this.sourceRevisions.Count];
             int index = 0;
-            using (Dictionary<Source, StartEndRevisions>.KeyCollection.Enumerator CS$5$0000 = this.sourceRevisions.Keys.GetEnumerator())
+            using (Dictionary<Source, StartEndRevisions>.KeyCollection.Enumerator tempAnotherLocal0 = this.sourceRevisions.Keys.GetEnumerator())
             {
                 Source source;
-                while (CS$5$0000.MoveNext())
+                while (tempAnotherLocal0.MoveNext())
                 {
-                    source = CS$5$0000.Current;
+                    source = tempAnotherLocal0.Current;
                     StartEndRevisions revisions = this.sourceRevisions[source];
                     string updatesString = string.Format((revisions.UpdatesCount == 1) ? "{0} update" : "{0} updates", revisions.UpdatesCount);
                     ToolStripMenuItem item = new ToolStripMenuItem(string.Format("Show log: {0} ({1} by {2})", source.Name, updatesString, revisions.AuthorsString));
@@ -83,7 +83,7 @@
         {
             ToolStripMenuItem[] menuItems = this.CreateMenuItems();
             new TrayNotifier();
-            TrayNotifier.TrayNotifierInfo <>g__initLocal0 = new TrayNotifier.TrayNotifierInfo {
+            TrayNotifier.TrayNotifierInfo tempLocal0 = new TrayNotifier.TrayNotifierInfo {
                 Icon = Icon,
                 Text = Strings.SVNMonitorCaption,
                 TipText = this.TipText,
@@ -94,7 +94,7 @@
                 ShowBalloonTip = this.ShowBalloonTip,
                 Source = this.firstUpdatedSource
             };
-            TrayNotifier.Show(<>g__initLocal0);
+            TrayNotifier.Show(tempLocal0);
         }
 
         private void SetFirstUpdatedSource(List<SVNLogEntry> logEntries, List<SVNPath> paths)
@@ -157,12 +157,12 @@
         {
             if (!this.sourceRevisions.ContainsKey(source))
             {
-                StartEndRevisions <>g__initLocal6 = new StartEndRevisions {
+                StartEndRevisions tempLocal6 = new StartEndRevisions {
                     StartRevision = revision,
                     EndRevision = revision,
                     UpdatesCount = 1
                 };
-                StartEndRevisions revisions = <>g__initLocal6;
+                StartEndRevisions revisions = tempLocal6;
                 revisions.AddAuthor(author);
                 this.sourceRevisions.Add(source, revisions);
             }

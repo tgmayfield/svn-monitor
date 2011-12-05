@@ -38,7 +38,8 @@
                         Logger.Log.InfoFormat("Executing remote command: {0}", commandName);
                         if (MainForm.FormInstance.InvokeRequired)
                         {
-                            MainForm.FormInstance.BeginInvoke(() => method.Invoke(this, null));
+                        	Action d = () => method.Invoke(this, null);
+                        	MainForm.FormInstance.BeginInvoke(d);
                         }
                         else
                         {

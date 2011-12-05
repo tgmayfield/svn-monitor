@@ -126,7 +126,7 @@
             {
                 throw new FileNotFoundException(string.Format("The system cannot find the path specified: {0}", fileName));
             }
-            ProcessStartInfo <>g__initLocal0 = new ProcessStartInfo(fileName) {
+            ProcessStartInfo tempLocal0 = new ProcessStartInfo(fileName) {
                 Arguments = arguments,
                 CreateNoWindow = true,
                 RedirectStandardOutput = true,
@@ -134,7 +134,7 @@
                 UseShellExecute = false,
                 WorkingDirectory = workingDirectory
             };
-            ProcessStartInfo startInfo = <>g__initLocal0;
+            ProcessStartInfo startInfo = tempLocal0;
             bool timeoutOccured = false;
             bool processFinished = false;
             Process process = StartProcess(startInfo);

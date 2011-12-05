@@ -14,16 +14,16 @@
 
         private static int GetEmbeddedKnownIssue(Exception ex)
         {
-            int CS$1$0000;
+            int tempAnotherLocal0;
             using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SVNMonitor.Support.KnownIssues.xml"))
             {
                 using (StreamReader reader = new StreamReader(stream))
                 {
                     string xml = reader.ReadToEnd();
-                    CS$1$0000 = GetKnownIssueFromXml(ex, xml);
+                    tempAnotherLocal0 = GetKnownIssueFromXml(ex, xml);
                 }
             }
-            return CS$1$0000;
+            return tempAnotherLocal0;
         }
 
         private static int GetKnownIssueFromXml(Exception exception, string xml)

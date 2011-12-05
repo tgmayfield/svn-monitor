@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Panels
+﻿using System.Linq;
+
+namespace SVNMonitor.View.Panels
 {
     using Janus.Windows.GridEX;
     using Janus.Windows.UI;

@@ -113,12 +113,12 @@
         internal static void Save(System.Version version, string location)
         {
             byte[] hash = CalculateHash(location);
-            UpgradeInfo <>g__initLocal0 = new UpgradeInfo {
+            UpgradeInfo tempLocal0 = new UpgradeInfo {
                 Version = version.ToString(),
                 Location = location,
                 Hash = hash
             };
-            UpgradeInfo info = <>g__initLocal0;
+            UpgradeInfo info = tempLocal0;
             SerializationHelper.XmlFileSerialize<UpgradeInfo>(info, FileFullName);
         }
 

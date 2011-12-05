@@ -7,17 +7,17 @@
     {
         public static SVNAction ToSVNAction(SvnChangeAction action)
         {
-            SvnChangeAction CS$0$0000 = action;
-            if (CS$0$0000 <= SvnChangeAction.Add)
+            SvnChangeAction tempAnotherLocal0 = action;
+            if (tempAnotherLocal0 <= SvnChangeAction.Add)
             {
-                if ((CS$0$0000 != SvnChangeAction.None) && (CS$0$0000 == SvnChangeAction.Add))
+                if ((tempAnotherLocal0 != SvnChangeAction.None) && (tempAnotherLocal0 == SvnChangeAction.Add))
                 {
                     return SVNAction.Added;
                 }
             }
             else
             {
-                switch (CS$0$0000)
+                switch (tempAnotherLocal0)
                 {
                     case SvnChangeAction.Delete:
                         return SVNAction.Deleted;

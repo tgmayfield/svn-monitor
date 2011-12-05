@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Controls
+﻿using System.Linq;
+
+namespace SVNMonitor.View.Controls
 {
     using Janus.Windows.ExplorerBar;
     using Janus.Windows.GridEX;
@@ -22,7 +24,7 @@
 
         private IEnumerable<ExplorerBarItem> CreateActionItems()
         {
-            return this.Monitor.Actions.Where<Action>(a => a.Enabled).Select<Action, ExplorerBarItem>(action => new ExplorerBarItem { Image = Images.plug, Text = action.SummaryInfo, ToolTipText = string.Format("{0}{1}({2})", action.SummaryInfo, Environment.NewLine, Strings.ClickToEditMonitor), Key = "Action" });
+			return this.Monitor.Actions.Where<Actions.Action>(a => a.Enabled).Select<Actions.Action, ExplorerBarItem>(action => new ExplorerBarItem { Image = Images.plug, Text = action.SummaryInfo, ToolTipText = string.Format("{0}{1}({2})", action.SummaryInfo, Environment.NewLine, Strings.ClickToEditMonitor), Key = "Action" });
         }
 
         protected override void CreateSubItems()

@@ -10,9 +10,9 @@
     public class ActionsGrid : Janus.Windows.GridEX.GridEX
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<Action> actions;
+		private List<Actions.Action> actions;
 
-        public List<Action> Actions
+		public List<Actions.Action> Actions
         {
             [DebuggerNonUserCode]
             get
@@ -28,15 +28,15 @@
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Action SelectedAction
+		public Actions.Action SelectedAction
         {
             get
             {
-                Action action = null;
+				Actions.Action action = null;
                 GridEXRow row = this.SelectedRow;
                 if (row != null)
                 {
-                    action = (Action) row.DataRow;
+					action = (Actions.Action)row.DataRow;
                 }
                 return action;
             }

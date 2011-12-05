@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Controls
+﻿using System.Linq;
+
+namespace SVNMonitor.View.Controls
 {
     using Janus.Windows.GridEX;
     using SVNMonitor.Extensions;
@@ -126,7 +128,7 @@
             {
                 modifier |= ModifierKey.Win;
             }
-            string selectedKey = this.comboKey.SelectedItem ?? Strings.KeyNone;
+            string selectedKey = this.comboKey.SelectedItem == null ? Strings.KeyNone : comboKey.SelectedItem.ToString();
             if ((selectedKey == Strings.KeyNone) || string.IsNullOrEmpty(selectedKey))
             {
                 key = Key.None;

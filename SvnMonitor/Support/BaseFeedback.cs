@@ -75,11 +75,11 @@
         {
             if (callback != null)
             {
-                SendableResult <>g__initLocal0 = new SendableResult {
+                SendableResult tempLocal0 = new SendableResult {
                     Id = id,
                     Proxy = base.Proxy
                 };
-                SendableResult result = <>g__initLocal0;
+                SendableResult result = tempLocal0;
                 callback(result);
             }
         }

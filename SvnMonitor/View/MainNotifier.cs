@@ -1,4 +1,8 @@
-﻿namespace SVNMonitor.View
+﻿using System.Linq;
+
+using SVNMonitor.Entities;
+
+namespace SVNMonitor.View
 {
     using SVNMonitor;
     using SVNMonitor.Extensions;
@@ -199,7 +203,7 @@
         {
             try
             {
-                NOTIFYICONDATA clsNID;
+                NOTIFYICONDATA clsNID = default(NOTIFYICONDATA);
                 FieldInfo windowField = this.NotifyIcon.GetType().GetField("window", BindingFlags.NonPublic | BindingFlags.Instance);
                 FieldInfo idField = this.NotifyIcon.GetType().GetField("id", BindingFlags.NonPublic | BindingFlags.Instance);
                 IntPtr ptrWindow = ((NativeWindow) windowField.GetValue(this.NotifyIcon)).Handle;

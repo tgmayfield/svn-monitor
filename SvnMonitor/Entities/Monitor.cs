@@ -17,13 +17,13 @@
     public class Monitor : UserEntity, ISearchable
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<Action> actions = new List<Action>();
+		private List<Actions.Action> actions = new List<Actions.Action>();
         private ConditionSerializationContext conditionSerializationContext;
         [NonSerialized, DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private GridEXFilterCondition filterCondition;
         private string filterConditionString;
         [NonSerialized]
-        private List<Action> rejectionActions = new List<Action>();
+		private List<Actions.Action> rejectionActions = new List<Actions.Action>();
         [NonSerialized]
         private ConditionSerializationContext rejectionConditionSerializationContext;
 
@@ -58,7 +58,7 @@
             List<string> list = new List<string>();
             if (this.Actions != null)
             {
-                foreach (Action action in this.Actions.ToArray())
+                foreach (var action in this.Actions.ToArray())
                 {
                     list.Add(action.DisplayName);
                     list.Add(action.SummaryInfo);
@@ -91,7 +91,7 @@
         private void RejectActionsChanges()
         {
             this.Actions = this.rejectionActions;
-            foreach (Action action in this.Actions)
+			foreach (Actions.Action action in this.Actions)
             {
                 action.RejectChanges();
             }
@@ -106,15 +106,15 @@
             this.RefreshFilterCondition();
         }
 
-        private void RunAction(Action action, List<SVNLogEntry> updates, List<SVNPath> paths)
+		private void RunAction(Actions.Action action, List<SVNLogEntry> updates, List<SVNPath> paths)
         {
             action.RunAction(updates, paths);
         }
 
         private void SetActionsRejectionPoint()
         {
-            this.rejectionActions = new List<Action>();
-            foreach (Action action in this.Actions)
+			this.rejectionActions = new List<Actions.Action>();
+			foreach (Actions.Action action in this.Actions)
             {
                 action.SetRejectionPoint();
                 this.rejectionActions.Add(action);
@@ -139,7 +139,7 @@
             SVNMonitor.EventLog.Log(SVNMonitor.EventLogEntryType.Monitor, Strings.MonitorTriggering_FORMAT.FormatWith(new object[] { base.Name }), this);
             try
             {
-                foreach (Action action in this.Actions.ToArray())
+				foreach (Actions.Action action in this.Actions.ToArray())
                 {
                     try
                     {
@@ -176,7 +176,7 @@
         }
 
         [Browsable(false)]
-        public List<Action> Actions
+		public List<Actions.Action> Actions
         {
             [DebuggerNonUserCode]
             get

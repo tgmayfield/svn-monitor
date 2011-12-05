@@ -18,7 +18,7 @@
 
     internal class ActionsPanel : UserControl
     {
-        private List<Action> actions;
+		private List<Actions.Action> actions;
         private ActionsGrid actionsGrid1;
         private UIRebar BottomRebar1;
         private UICommand cmdDelete;
@@ -132,7 +132,7 @@
 
         protected virtual void DeleteAction()
         {
-            Action action = this.SelectedAction;
+			Actions.Action action = this.SelectedAction;
             if (action != null)
             {
                 DialogResult result = MessageBox.Show(MainForm.FormInstance, string.Format("Delete action '{0}'?", action.DisplayName), "Delete Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -155,13 +155,13 @@
 
         protected virtual void EditAction()
         {
-            Action action = this.SelectedAction;
+			Actions.Action action = this.SelectedAction;
             if (action != null)
             {
-                ActionPropertiesDialog <>g__initLocal0 = new ActionPropertiesDialog {
+                ActionPropertiesDialog tempLocal0 = new ActionPropertiesDialog {
                     Action = action
                 };
-                ActionPropertiesDialog dialog = <>g__initLocal0;
+                ActionPropertiesDialog dialog = tempLocal0;
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     int index = this.actions.IndexOf(action);
@@ -180,7 +180,7 @@
             }
             else
             {
-                Action action = this.SelectedAction;
+				Actions.Action action = this.SelectedAction;
                 this.cmdNew.Enabled = Janus.Windows.UI.InheritableBoolean.True;
                 if (action == null)
                 {
@@ -414,8 +414,8 @@
 
         private void MoveAction(Direction direction)
         {
-            Action action = this.SelectedAction;
-            int newIndex = this.Actions.IndexOf(action) + direction;
+			Actions.Action action = this.SelectedAction;
+            int newIndex = this.Actions.IndexOf(action) + (int)direction;
             this.Actions.Remove(action);
             this.Actions.Insert(newIndex, action);
             this.Grid.Refetch();
@@ -444,7 +444,7 @@
 
         private void TestAction()
         {
-            Action action = this.SelectedAction;
+			Actions.Action action = this.SelectedAction;
             if (action != null)
             {
                 action.Test();
@@ -452,7 +452,7 @@
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public List<Action> Actions
+		public List<Actions.Action> Actions
         {
             [DebuggerNonUserCode]
             get
@@ -477,19 +477,13 @@
         }
 
         [Browsable(false)]
-        public Action SelectedAction
+		public Actions.Action SelectedAction
         {
             [DebuggerNonUserCode]
             get
             {
                 return ((ActionsGrid) this.Grid).SelectedAction;
             }
-        }
-
-        private enum Direction
-        {
-            Down = 1,
-            Up = -1
         }
     }
 }

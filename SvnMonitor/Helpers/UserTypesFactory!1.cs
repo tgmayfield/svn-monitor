@@ -65,11 +65,11 @@
                     {
                         string displayName = UserTypesFactory<T>.GetUserTypeDisplayName(type);
                         Logger.Log.DebugFormat("displayName={0}", displayName);
-                        UserTypeInfo <>g__initLocal0 = new UserTypeInfo {
+                        UserTypeInfo tempLocal0 = new UserTypeInfo {
                             Type = type,
                             DisplayName = displayName
                         };
-                        list.Add(<>g__initLocal0);
+                        list.Add(tempLocal0);
                     }
                 }
             }

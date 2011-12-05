@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor
+﻿using System.Linq;
+
+namespace SVNMonitor
 {
     using SVNMonitor.Extensions;
     using SVNMonitor.Support;
@@ -109,95 +111,23 @@
             }
         }
 
-        [Parameter("test")]
-        public static bool Test
-        {
-            [CompilerGenerated]
-            get
-            {
-                return <Test>k__BackingField;
-            }
-            [CompilerGenerated]
-            private set
-            {
-                <Test>k__BackingField = value;
-            }
-        }
+		[Parameter("test")]
+		public static bool Test { get; private set; }
 
-        [Parameter("testnewversion")]
-        public static string TestNewVersion
-        {
-            [CompilerGenerated]
-            get
-            {
-                return <TestNewVersion>k__BackingField;
-            }
-            [CompilerGenerated]
-            private set
-            {
-                <TestNewVersion>k__BackingField = value;
-            }
-        }
+		[Parameter("testnewversion")]
+		public static string TestNewVersion { get; private set; }
 
-        [Parameter("testnewversionfile")]
-        public static string TestNewVersionFile
-        {
-            [CompilerGenerated]
-            get
-            {
-                return <TestNewVersionFile>k__BackingField;
-            }
-            [CompilerGenerated]
-            private set
-            {
-                <TestNewVersionFile>k__BackingField = value;
-            }
-        }
+		[Parameter("testnewversionfile")]
+		public static string TestNewVersionFile { get; private set; }
 
-        [Parameter("testupgrader")]
-        public static bool TestUpgrader
-        {
-            [CompilerGenerated]
-            get
-            {
-                return <TestUpgrader>k__BackingField;
-            }
-            [CompilerGenerated]
-            private set
-            {
-                <TestUpgrader>k__BackingField = value;
-            }
-        }
+		[Parameter("testupgrader")]
+		public static bool TestUpgrader { get; private set; }
 
-        [Parameter("upgradedfrom"), Parameter("uf")]
-        public static string UpgradedFrom
-        {
-            [CompilerGenerated]
-            get
-            {
-                return <UpgradedFrom>k__BackingField;
-            }
-            [CompilerGenerated]
-            private set
-            {
-                <UpgradedFrom>k__BackingField = value;
-            }
-        }
+		[Parameter("upgradedfrom"), Parameter("uf")]
+		public static string UpgradedFrom { get; private set; }
 
-        [Parameter("data"), Parameter("d"), Parameter("userdata")]
-        public static string UserAppData
-        {
-            [CompilerGenerated]
-            get
-            {
-                return <UserAppData>k__BackingField;
-            }
-            [CompilerGenerated]
-            private set
-            {
-                <UserAppData>k__BackingField = value;
-            }
-        }
+		[Parameter("data"), Parameter("d"), Parameter("userdata")]
+		public static string UserAppData { get; private set; }
     }
 }
 

@@ -159,10 +159,10 @@
 
         public static DialogResult ShowProgress(IWin32Window owner, ISendable packet)
         {
-            SendProgressDialog <>g__initLocal0 = new SendProgressDialog {
+            SendProgressDialog tempLocal0 = new SendProgressDialog {
                 Packet = packet
             };
-            SendProgressDialog dialog = <>g__initLocal0;
+            SendProgressDialog dialog = tempLocal0;
             return dialog.ShowDialog(owner);
         }
 

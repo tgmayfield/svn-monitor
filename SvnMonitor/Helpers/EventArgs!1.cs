@@ -10,19 +10,7 @@
             this.Item = item;
         }
 
-        public T Item
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.<Item>k__BackingField;
-            }
-            [CompilerGenerated]
-            private set
-            {
-                this.<Item>k__BackingField = value;
-            }
-        }
+		public T Item { get; private set; }
     }
 }
 

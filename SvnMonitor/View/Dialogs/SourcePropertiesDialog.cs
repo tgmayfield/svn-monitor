@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Dialogs
+﻿using System.Linq;
+
+namespace SVNMonitor.View.Dialogs
 {
     using SVNMonitor;
     using SVNMonitor.Entities;
@@ -70,10 +72,10 @@
 
         private void BrowsePath()
         {
-            FolderBrowserDialog <>g__initLocal0 = new FolderBrowserDialog {
+            FolderBrowserDialog tempLocal0 = new FolderBrowserDialog {
                 SelectedPath = this.txtPath.Text
             };
-            FolderBrowserDialog dialog = <>g__initLocal0;
+            FolderBrowserDialog dialog = tempLocal0;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 this.txtPath.Text = dialog.SelectedPath;

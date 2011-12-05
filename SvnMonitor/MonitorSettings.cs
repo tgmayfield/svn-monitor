@@ -176,17 +176,17 @@
 
         internal virtual void OnMonitorsChanged()
         {
-            if (this.monitorsChanged != null)
+            if (this.MonitorsChanged != null)
             {
-                this.monitorsChanged(this, EventArgs.Empty);
+                this.MonitorsChanged(this, EventArgs.Empty);
             }
         }
 
         internal virtual void OnSourcesChanged()
         {
-            if (this.sourcesChanged != null)
+            if (this.SourcesChanged != null)
             {
-                this.sourcesChanged(this, EventArgs.Empty);
+                this.SourcesChanged(this, EventArgs.Empty);
             }
         }
 

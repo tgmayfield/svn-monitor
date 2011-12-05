@@ -14,7 +14,7 @@
         {
         }
 
-        protected abstract IEnumerable<Action> CreateActions(string baseName);
+        protected abstract IEnumerable<Actions.Action> CreateActions(string baseName);
         private static GridEXColumn GetColumn(string tableName, string columnName)
         {
             GridEXTable table = Updater.Instance.UpdatesGrid.Tables[tableName];
@@ -35,18 +35,18 @@
 
         private void TryRun(string baseName, string tableName, string columnName)
         {
-            Monitor <>g__initLocal0 = new Monitor {
+            Monitor tempLocal0 = new Monitor {
                 Name = this.GetWizardName(baseName)
             };
-            Monitor monitor = <>g__initLocal0;
-            GridEXFilterCondition <>g__initLocal1 = new GridEXFilterCondition {
+            Monitor monitor = tempLocal0;
+            GridEXFilterCondition tempLocal1 = new GridEXFilterCondition {
                 Column = GetColumn(tableName, columnName),
                 ConditionOperator = ConditionOperator.Equal,
                 Value1 = baseName
             };
-            GridEXFilterCondition condition = <>g__initLocal1;
+            GridEXFilterCondition condition = tempLocal1;
             monitor.FilterCondition = condition;
-            IEnumerable<Action> actions = this.CreateActions(baseName);
+			IEnumerable<Actions.Action> actions = this.CreateActions(baseName);
             if (actions != null)
             {
                 monitor.Actions.AddRange(actions);

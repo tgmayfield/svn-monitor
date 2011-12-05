@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Panels
+﻿using System.Linq;
+
+namespace SVNMonitor.View.Panels
 {
     using Janus.Windows.GridEX;
     using Janus.Windows.UI;
@@ -841,7 +843,7 @@
             base.OnLoad(e);
             if (!base.DesignMode)
             {
-                ApplicationSettingsManager.SavedSettings += (, ) => this.SyncUIWithSettings();
+                ApplicationSettingsManager.SavedSettings += (s, ea) => this.SyncUIWithSettings();
                 this.Grid.SelectionChanged += new EventHandler(this.Grid_SelectionChanged);
             }
         }

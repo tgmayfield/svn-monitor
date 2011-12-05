@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.Resources
+﻿using SVNMonitor.Resources.Text;
+
+namespace SVNMonitor.Resources
 {
     using System;
     using System.Runtime.CompilerServices;

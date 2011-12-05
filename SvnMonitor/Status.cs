@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor
+﻿using System.Linq;
+
+namespace SVNMonitor
 {
     using SVNMonitor.Entities;
     using SVNMonitor.Extensions;
@@ -68,19 +70,7 @@
             }
         }
 
-        internal static bool Closing
-        {
-            [CompilerGenerated]
-            get
-            {
-                return <Closing>k__BackingField;
-            }
-            [CompilerGenerated]
-            private set
-            {
-                <Closing>k__BackingField = value;
-            }
-        }
+		internal static bool Closing { get; private set; }
 
         internal static bool Conflict
         {

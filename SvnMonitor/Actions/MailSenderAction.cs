@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.Actions
+﻿using SVNMonitor.Entities;
+
+namespace SVNMonitor.Actions
 {
     using SVNMonitor;
     using SVNMonitor.Logging;
@@ -49,18 +51,18 @@
 
         protected override void Run(List<SVNLogEntry> logEntries, List<SVNPath> paths)
         {
-            MailMessage <>g__initLocal0 = new MailMessage {
+            MailMessage tempLocal0 = new MailMessage {
                 From = new MailAddress(this.From),
                 Subject = this.Subject,
                 Body = logEntries[0].Message
             };
-            MailMessage message = <>g__initLocal0;
+            MailMessage message = tempLocal0;
             message.To.Add(this.To);
-            SmtpClient <>g__initLocal1 = new SmtpClient {
+            SmtpClient tempLocal1 = new SmtpClient {
                 Host = this.SmtpHost,
                 Port = this.Port
             };
-            SmtpClient smtp = <>g__initLocal1;
+            SmtpClient smtp = tempLocal1;
             if (!string.IsNullOrEmpty(this.UserName))
             {
                 smtp.UseDefaultCredentials = false;

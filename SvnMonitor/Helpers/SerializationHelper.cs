@@ -66,7 +66,8 @@
             return (T) obj;
         }
 
-        public static void XmlFileSerialize<T>(T obj, string fileName)
+		public static void XmlFileSerialize<T>(T obj, string fileName)
+			where T : class
         {
             lock (obj)
             {
@@ -82,6 +83,7 @@
         }
 
         public static string XmlSerialize<T>(T obj)
+			where T : class
         {
             lock (obj)
             {

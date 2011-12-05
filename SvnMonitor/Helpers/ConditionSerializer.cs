@@ -32,11 +32,11 @@
             ConditionSerializationContext context = new ConditionSerializationContext(string.Format("<{0}>{1}</{0}>", "FilterCondition", writer));
             if (condition.Column != null)
             {
-                ColumnInfo <>g__initLocal0 = new ColumnInfo {
+                ColumnInfo tempLocal0 = new ColumnInfo {
                     ColumnKey = condition.Column.Key,
                     TableKey = condition.Column.Table.Key
                 };
-                ColumnInfo key = <>g__initLocal0;
+                ColumnInfo key = tempLocal0;
                 context.AddColumnKey(key);
                 SetContextColumns(context, condition.Conditions);
             }
@@ -67,30 +67,18 @@
             {
                 if (condition.Column != null)
                 {
-                    ColumnInfo <>g__initLocal1 = new ColumnInfo {
+                    ColumnInfo tempLocal1 = new ColumnInfo {
                         ColumnKey = condition.Column.Key,
                         TableKey = condition.Column.Table.Key
                     };
-                    ColumnInfo key = <>g__initLocal1;
+                    ColumnInfo key = tempLocal1;
                     context.AddColumnKey(key);
                 }
                 SetContextColumns(context, condition.Conditions);
             }
         }
 
-        public static Janus.Windows.GridEX.GridEX Grid
-        {
-            [CompilerGenerated]
-            get
-            {
-                return <Grid>k__BackingField;
-            }
-            [CompilerGenerated]
-            set
-            {
-                <Grid>k__BackingField = value;
-            }
-        }
+		public static Janus.Windows.GridEX.GridEX Grid { get; set; }
     }
 }
 

@@ -30,7 +30,7 @@
         {
             this.timer.Tick += new EventHandler(this.timer_Tick);
             this.usageInformationSender = new SVNMonitor.Support.UsageInformationSender();
-            ApplicationSettingsManager.SavedSettings += (, ) => this.ReadSettings();
+            ApplicationSettingsManager.SavedSettings += (s, ea) => this.ReadSettings();
             if (ApplicationSettingsManager.Settings.VersionCheckAtStartup)
             {
                 SVNMonitor.Helpers.ThreadHelper.Queue(new WaitCallback(this.QueueVersionCheck), "VERSION");

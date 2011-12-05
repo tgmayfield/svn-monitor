@@ -36,10 +36,10 @@
         public virtual void RunTest()
         {
             List<SVNLogEntry> list = new List<SVNLogEntry>();
-            Source <>g__initLocal0 = new Source {
+            Source tempLocal0 = new Source {
                 Name = "SVNMonitor"
             };
-            Source source = <>g__initLocal0;
+            Source source = tempLocal0;
             SVNLogEntry entry = new SVNLogEntry(source, 0x4d2L, "Chuck", DateTime.Now, "Fixed all bugs in the world.");
             list.Add(entry);
             EventLog.LogInfo(string.Format("Testing '{0}'...", this.DisplayName), this);

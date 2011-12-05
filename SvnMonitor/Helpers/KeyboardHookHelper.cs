@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.Helpers
+﻿using SVNMonitor.Entities;
+
+namespace SVNMonitor.Helpers
 {
     using SVNMonitor;
     using SVNMonitor.Extensions;

@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.Helpers
+﻿using System.Linq;
+
+namespace SVNMonitor.Helpers
 {
     using SVNMonitor;
     using SVNMonitor.Entities;

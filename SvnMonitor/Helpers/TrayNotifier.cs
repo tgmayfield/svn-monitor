@@ -41,7 +41,7 @@
                 {
                     notifyIcon.Dispose();
                 }
-                NotifyIcon <>g__initLocal0 = new NotifyIcon {
+                NotifyIcon tempLocal0 = new NotifyIcon {
                     Text = trayNotifierInfo.Text,
                     Icon = trayNotifierInfo.Icon,
                     BalloonTipIcon = trayNotifierInfo.TipIcon,
@@ -49,7 +49,7 @@
                     BalloonTipTitle = trayNotifierInfo.TipTitle,
                     ContextMenuStrip = CreateContextMenu(trayNotifierInfo.MenuItems)
                 };
-                notifyIcon = <>g__initLocal0;
+                notifyIcon = tempLocal0;
                 EventHandler showFormClick = delegate {
                     if (trayNotifierInfo.Source != null)
                     {
@@ -71,10 +71,10 @@
                 }
                 if (trayNotifierInfo.TimeOut > 0)
                 {
-                    Timer <>g__initLocal1 = new Timer {
+                    Timer tempLocal1 = new Timer {
                         Interval = trayNotifierInfo.TimeOut * 0x3e8
                     };
-                    timer = <>g__initLocal1;
+                    timer = tempLocal1;
                     timer.Tick += delegate {
                         notifyIcon.Dispose();
                         timer.Stop();

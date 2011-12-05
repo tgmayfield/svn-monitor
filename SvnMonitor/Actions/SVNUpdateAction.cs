@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.Actions
+﻿using SVNMonitor.Entities;
+
+namespace SVNMonitor.Actions
 {
     using SVNMonitor;
     using SVNMonitor.Resources;

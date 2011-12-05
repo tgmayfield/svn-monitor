@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Dialogs
+﻿using System.Linq;
+
+namespace SVNMonitor.View.Dialogs
 {
     using Janus.Windows.Common;
     using Janus.Windows.FilterEditor;

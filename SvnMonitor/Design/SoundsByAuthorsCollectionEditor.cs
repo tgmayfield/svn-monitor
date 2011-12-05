@@ -1,4 +1,8 @@
-﻿namespace SVNMonitor.Design
+﻿using System.Collections.Generic;
+
+using SVNMonitor.Actions;
+
+namespace SVNMonitor.Design
 {
     using System;
     using System.ComponentModel.Design;

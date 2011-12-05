@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Controls
+﻿using SVNMonitor.Entities;
+
+namespace SVNMonitor.View.Controls
 {
     using Janus.Windows.ExplorerBar;
     using SVNMonitor.Helpers;
@@ -87,19 +89,7 @@
         {
         }
 
-        public T Entity
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.<Entity>k__BackingField;
-            }
-            [CompilerGenerated]
-            private set
-            {
-                this.<Entity>k__BackingField = value;
-            }
-        }
+		public T Entity { get; private set; }
 
         protected ExplorerBarItem ErrorItem
         {

@@ -13,10 +13,10 @@
         {
             if ((provider != null) && (provider.GetService(typeof(IWindowsFormsEditorService)) != null))
             {
-                OpenFileDialog <>g__initLocal0 = new OpenFileDialog {
+                OpenFileDialog tempLocal0 = new OpenFileDialog {
                     CheckFileExists = false
                 };
-                OpenFileDialog dialog = <>g__initLocal0;
+                OpenFileDialog dialog = tempLocal0;
                 if (value is string)
                 {
                     dialog.FileName = (string) value;

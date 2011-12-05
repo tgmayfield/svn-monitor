@@ -20,7 +20,7 @@
             FileSystemHelper.DeleteFile(tempFile);
             tempFile = tempFile + extension;
             FileSystemHelper.WriteAllText(tempFile, content);
-            base.DocumentCompleted += (, ) => FileSystemHelper.DeleteFile(tempFile);
+            base.DocumentCompleted += (s, ea) => FileSystemHelper.DeleteFile(tempFile);
             base.Navigate(tempFile);
         }
 

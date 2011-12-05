@@ -9,7 +9,7 @@
     [ResourceProvider("WizardCustom"), Custom]
     internal class CustomWizard : Wizard
     {
-        protected override IEnumerable<Action> CreateActions(string baseName)
+		protected override IEnumerable<Actions.Action> CreateActions(string baseName)
         {
             return null;
         }

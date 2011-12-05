@@ -10,18 +10,18 @@
         public static void Generate()
         {
             IssuesCollection issues = new IssuesCollection();
-            Issue <>g__initLocal0 = new Issue {
+            Issue tempLocal0 = new Issue {
                 ID = 1,
                 ExceptionName = "System.Exception",
                 StackFrame = "System."
             };
-            issues.Add(<>g__initLocal0);
-            Issue <>g__initLocal1 = new Issue {
+            issues.Add(tempLocal0);
+            Issue tempLocal1 = new Issue {
                 ID = 2,
                 ExceptionName = "System.Exception",
                 StackFrame = "System."
             };
-            issues.Add(<>g__initLocal1);
+            issues.Add(tempLocal1);
             SerializationHelper.XmlFileSerialize<IssuesCollection>(issues, @"c:\issues.xml");
         }
     }

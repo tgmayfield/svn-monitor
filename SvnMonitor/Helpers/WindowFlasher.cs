@@ -21,7 +21,7 @@
                     AutoReset = false,
                     Interval = 2000.0
                 };
-                timer.Elapsed += (, ) => StopFlash(form);
+                timer.Elapsed += (s, ea) => StopFlash(form);
                 timer.Start();
             }
         }

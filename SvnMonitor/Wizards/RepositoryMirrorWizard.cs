@@ -11,7 +11,7 @@
     [ResourceProvider("WizardRepositoryMirror")]
     internal class RepositoryMirrorWizard : Wizard
     {
-        protected override IEnumerable<Action> CreateActions(string baseName)
+		protected override IEnumerable<Actions.Action> CreateActions(string baseName)
         {
             SVNUpdateAction action = new SVNUpdateAction();
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
@@ -20,7 +20,7 @@
                 throw new WizardCancelledException();
             }
             action.Path = folderDialog.SelectedPath;
-            return new Action[] { action };
+			return new Actions.Action[] { action };
         }
 
         protected override string GetWizardName(string baseName)

@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.Helpers
+﻿using System.Linq;
+
+namespace SVNMonitor.Helpers
 {
     using Microsoft.Win32;
     using SVNMonitor.Extensions;

@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View.Dialogs
+﻿using System.Linq;
+
+namespace SVNMonitor.View.Dialogs
 {
     using Janus.Windows.UI.Tab;
     using Microsoft.Win32;
@@ -141,13 +143,13 @@
 
         internal static string BrowseSvnExe(string initialDirectory)
         {
-            OpenFileDialog <>g__initLocal0 = new OpenFileDialog {
+            OpenFileDialog tempLocal0 = new OpenFileDialog {
                 CheckFileExists = true,
                 DefaultExt = ".exe",
                 Filter = "svn.exe|svn.exe",
                 InitialDirectory = initialDirectory
             };
-            OpenFileDialog dialog = <>g__initLocal0;
+            OpenFileDialog dialog = tempLocal0;
             if (dialog.ShowDialog() != DialogResult.OK)
             {
                 return null;
@@ -157,12 +159,12 @@
 
         private void BrowseTextEditor()
         {
-            OpenFileDialog <>g__initLocal2 = new OpenFileDialog {
+            OpenFileDialog tempLocal2 = new OpenFileDialog {
                 CheckFileExists = true,
                 DefaultExt = ".exe",
                 Filter = string.Format("{0}(*.EXE;*.COM;*.BAT;*.CMD)|*.EXE;*.COM;*.BAT;*.CMD", Strings.ExecutablesFileTypes)
             };
-            OpenFileDialog dialog = <>g__initLocal2;
+            OpenFileDialog dialog = tempLocal2;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 this.txtTextEditor.Text = dialog.FileName;
@@ -171,13 +173,13 @@
 
         private void BrowseTortoiseSvnExe()
         {
-            OpenFileDialog <>g__initLocal1 = new OpenFileDialog {
+            OpenFileDialog tempLocal1 = new OpenFileDialog {
                 CheckFileExists = true,
                 DefaultExt = ".exe",
                 Filter = "TortoiseProc.exe|TortoiseProc.exe",
                 InitialDirectory = this.txtTortoiseEXE.Text
             };
-            OpenFileDialog dialog = <>g__initLocal1;
+            OpenFileDialog dialog = tempLocal1;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 this.txtTortoiseEXE.Text = dialog.FileName;
@@ -448,16 +450,16 @@
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Name = "label14";
             resources.ApplyResources(this.numPreviewLines, "numPreviewLines");
-            int[] CS$0$0001 = new int[4];
-            CS$0$0001[0] = 0xf423f;
-            this.numPreviewLines.Maximum = new decimal(CS$0$0001);
-            int[] CS$0$0002 = new int[4];
-            CS$0$0002[0] = 1;
-            this.numPreviewLines.Minimum = new decimal(CS$0$0002);
+            int[] tempAnotherLocal1 = new int[4];
+            tempAnotherLocal1[0] = 0xf423f;
+            this.numPreviewLines.Maximum = new decimal(tempAnotherLocal1);
+            int[] tempAnotherLocal2 = new int[4];
+            tempAnotherLocal2[0] = 1;
+            this.numPreviewLines.Minimum = new decimal(tempAnotherLocal2);
             this.numPreviewLines.Name = "numPreviewLines";
-            int[] CS$0$0003 = new int[4];
-            CS$0$0003[0] = 1;
-            this.numPreviewLines.Value = new decimal(CS$0$0003);
+            int[] tempAnotherLocal3 = new int[4];
+            tempAnotherLocal3[0] = 1;
+            this.numPreviewLines.Value = new decimal(tempAnotherLocal3);
             resources.ApplyResources(this.checkUnlimitedPageSize, "checkUnlimitedPageSize");
             this.checkUnlimitedPageSize.BackColor = System.Drawing.Color.Transparent;
             this.checkUnlimitedPageSize.Checked = true;
@@ -476,16 +478,16 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Name = "label10";
             resources.ApplyResources(this.numPageSize, "numPageSize");
-            int[] CS$0$0004 = new int[4];
-            CS$0$0004[0] = 0xf423f;
-            this.numPageSize.Maximum = new decimal(CS$0$0004);
-            int[] CS$0$0005 = new int[4];
-            CS$0$0005[0] = 1;
-            this.numPageSize.Minimum = new decimal(CS$0$0005);
+            int[] tempAnotherLocal4 = new int[4];
+            tempAnotherLocal4[0] = 0xf423f;
+            this.numPageSize.Maximum = new decimal(tempAnotherLocal4);
+            int[] tempAnotherLocal5 = new int[4];
+            tempAnotherLocal5[0] = 1;
+            this.numPageSize.Minimum = new decimal(tempAnotherLocal5);
             this.numPageSize.Name = "numPageSize";
-            int[] CS$0$0006 = new int[4];
-            CS$0$0006[0] = 1;
-            this.numPageSize.Value = new decimal(CS$0$0006);
+            int[] tempAnotherLocal6 = new int[4];
+            tempAnotherLocal6[0] = 1;
+            this.numPageSize.Value = new decimal(tempAnotherLocal6);
             this.uiTabPageOperation.Controls.Add(this.checkCommitIsAlwaysEnabled);
             this.uiTabPageOperation.Controls.Add(this.linkTextEditorBrowse);
             this.uiTabPageOperation.Controls.Add(this.checkDismissErrorsWhenClicked);
@@ -624,20 +626,20 @@
             this.checkAutomaticInterval.UseVisualStyleBackColor = true;
             this.checkAutomaticInterval.CheckedChanged += new EventHandler(this.checkAutomaticInterval_CheckedChanged);
             resources.ApplyResources(this.numSecondsPerSource, "numSecondsPerSource");
-            int[] CS$0$0007 = new int[4];
-            CS$0$0007[0] = 0xe10;
-            this.numSecondsPerSource.Maximum = new decimal(CS$0$0007);
-            int[] CS$0$0008 = new int[4];
-            CS$0$0008[0] = 1;
-            this.numSecondsPerSource.Minimum = new decimal(CS$0$0008);
+            int[] tempAnotherLocal7 = new int[4];
+            tempAnotherLocal7[0] = 0xe10;
+            this.numSecondsPerSource.Maximum = new decimal(tempAnotherLocal7);
+            int[] tempAnotherLocal8 = new int[4];
+            tempAnotherLocal8[0] = 1;
+            this.numSecondsPerSource.Minimum = new decimal(tempAnotherLocal8);
             this.numSecondsPerSource.Name = "numSecondsPerSource";
-            int[] CS$0$0009 = new int[4];
-            CS$0$0009[0] = 1;
-            this.numSecondsPerSource.Value = new decimal(CS$0$0009);
+            int[] tempAnotherLocal9 = new int[4];
+            tempAnotherLocal9[0] = 1;
+            this.numSecondsPerSource.Value = new decimal(tempAnotherLocal9);
             resources.ApplyResources(this.numUpdatesInterval, "numUpdatesInterval");
-            int[] CS$0$0010 = new int[4];
-            CS$0$0010[0] = 0x5a0;
-            this.numUpdatesInterval.Maximum = new decimal(CS$0$0010);
+            int[] tempAnotherLocal10 = new int[4];
+            tempAnotherLocal10[0] = 0x5a0;
+            this.numUpdatesInterval.Maximum = new decimal(tempAnotherLocal10);
             this.numUpdatesInterval.Name = "numUpdatesInterval";
             resources.ApplyResources(this.label2, "label2");
             this.label2.BackColor = System.Drawing.Color.Transparent;
@@ -672,16 +674,16 @@
             this.checkAutomaticallyResolveTortoiseSVNProcess.UseVisualStyleBackColor = true;
             this.checkAutomaticallyResolveTortoiseSVNProcess.CheckedChanged += new EventHandler(this.checkAutomaticallyResolveTortoiseSVNProcess_CheckedChanged);
             resources.ApplyResources(this.numSVNUpdateSourcesQueueTimeoutSeconds, "numSVNUpdateSourcesQueueTimeoutSeconds");
-            int[] CS$0$0011 = new int[4];
-            CS$0$0011[0] = 300;
-            this.numSVNUpdateSourcesQueueTimeoutSeconds.Maximum = new decimal(CS$0$0011);
-            int[] CS$0$0012 = new int[4];
-            CS$0$0012[0] = 1;
-            this.numSVNUpdateSourcesQueueTimeoutSeconds.Minimum = new decimal(CS$0$0012);
+            int[] tempAnotherLocal11 = new int[4];
+            tempAnotherLocal11[0] = 300;
+            this.numSVNUpdateSourcesQueueTimeoutSeconds.Maximum = new decimal(tempAnotherLocal11);
+            int[] tempAnotherLocal12 = new int[4];
+            tempAnotherLocal12[0] = 1;
+            this.numSVNUpdateSourcesQueueTimeoutSeconds.Minimum = new decimal(tempAnotherLocal12);
             this.numSVNUpdateSourcesQueueTimeoutSeconds.Name = "numSVNUpdateSourcesQueueTimeoutSeconds";
-            int[] CS$0$0013 = new int[4];
-            CS$0$0013[0] = 1;
-            this.numSVNUpdateSourcesQueueTimeoutSeconds.Value = new decimal(CS$0$0013);
+            int[] tempAnotherLocal13 = new int[4];
+            tempAnotherLocal13[0] = 1;
+            this.numSVNUpdateSourcesQueueTimeoutSeconds.Value = new decimal(tempAnotherLocal13);
             resources.ApplyResources(this.label9, "label9");
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Name = "label9";
@@ -795,9 +797,9 @@
             this.checkEnableVersionUpgrade.Name = "checkEnableVersionUpgrade";
             this.checkEnableVersionUpgrade.UseVisualStyleBackColor = true;
             resources.ApplyResources(this.numVersionCheckInterval, "numVersionCheckInterval");
-            int[] CS$0$0014 = new int[4];
-            CS$0$0014[0] = 0x5a0;
-            this.numVersionCheckInterval.Maximum = new decimal(CS$0$0014);
+            int[] tempAnotherLocal14 = new int[4];
+            tempAnotherLocal14[0] = 0x5a0;
+            this.numVersionCheckInterval.Maximum = new decimal(tempAnotherLocal14);
             this.numVersionCheckInterval.Name = "numVersionCheckInterval";
             resources.ApplyResources(this.checkVersionCheckAtStartup, "checkVersionCheckAtStartup");
             this.checkVersionCheckAtStartup.BackColor = System.Drawing.Color.Transparent;

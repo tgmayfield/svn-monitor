@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor
+﻿using System.Linq;
+
+namespace SVNMonitor
 {
     using Janus.Windows.GridEX;
     using Microsoft.VisualBasic.Devices;
@@ -30,8 +32,8 @@
             instance = this;
             this.timer = new System.Windows.Forms.Timer();
             this.timer.Tick += new EventHandler(this.timer_Tick);
-            ApplicationSettingsManager.SavedSettings += (, ) => this.ReadSettings();
-            MonitorSettings.Instance.SourcesChanged += (, ) => this.ReadSettings();
+            ApplicationSettingsManager.SavedSettings += (s, ea) => this.ReadSettings();
+            MonitorSettings.Instance.SourcesChanged += (s, ea) => this.ReadSettings();
             this.SetNetworkWatcher();
         }
 
@@ -165,11 +167,11 @@
 
         public void QueueUpdate(Source source, bool force)
         {
-            SourceUpdateInfo <>g__initLocal4 = new SourceUpdateInfo {
+            SourceUpdateInfo tempLocal4 = new SourceUpdateInfo {
                 Source = source,
                 Force = force
             };
-            SourceUpdateInfo info = <>g__initLocal4;
+            SourceUpdateInfo info = tempLocal4;
             SVNMonitor.Helpers.ThreadHelper.Queue(new WaitCallback(this.UpdateLog), "UPDATE", info);
         }
 

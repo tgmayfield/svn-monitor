@@ -96,9 +96,9 @@
             }
             else
             {
-                if (this.statusChanged != null)
+                if (this.StatusChanged != null)
                 {
-                    this.statusChanged(this, new StatusChangedEventArgs(this, reason));
+                    this.StatusChanged(this, new StatusChangedEventArgs(this, reason));
                 }
                 Status.OnStatusChanged();
             }

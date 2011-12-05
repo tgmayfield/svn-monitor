@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.Presenters
+﻿using SVNMonitor.Entities;
+
+namespace SVNMonitor.Presenters
 {
     using SVNMonitor;
     using SVNMonitor.Extensions;
@@ -103,7 +105,7 @@
             }
         }
 
-        private void Move(MoveDirection<T> direction)
+        private void Move(Direction direction)
         {
             T entity = this.view.SelectedItem;
             try
@@ -111,7 +113,7 @@
                 if (entity != null)
                 {
                     int index = this.view.Entities.IndexOf(entity);
-                    int newIndex = index + direction;
+                    int newIndex = index + (int)direction;
                     Logger.Log.InfoFormat("Moving {0} {1} from {2} to {3}", new object[] { entity, direction, index, newIndex });
                     this.view.Entities.Remove(entity);
                     this.view.Entities.Insert(newIndex, entity);
@@ -128,12 +130,12 @@
 
         public virtual void MoveDown()
         {
-            this.Move(MoveDirection<T>.Down);
+            this.Move(Direction.Down);
         }
 
         public virtual void MoveUp()
         {
-            this.Move(MoveDirection<T>.Up);
+            this.Move(Direction.Up);
         }
 
         public virtual void New()
@@ -159,12 +161,6 @@
             {
                 cancel = true;
             }
-        }
-
-        private enum MoveDirection
-        {
-            public const UserEntityPresenter<T>.MoveDirection Down = UserEntityPresenter<T>.MoveDirection.Down;,
-            public const UserEntityPresenter<T>.MoveDirection Up = UserEntityPresenter<T>.MoveDirection.Up;
         }
     }
 }

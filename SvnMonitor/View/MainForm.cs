@@ -1,4 +1,6 @@
-﻿namespace SVNMonitor.View
+﻿using System.Linq;
+
+namespace SVNMonitor.View
 {
     using Janus.Windows.EditControls;
     using Janus.Windows.GridEX;
@@ -631,17 +633,17 @@
             }
             else
             {
-                bool CS$0$0000;
-                bool CS$0$0001;
-                bool CS$0$0002;
+                bool tempAnotherLocal0;
+                bool tempAnotherLocal1;
+                bool tempAnotherLocal2;
                 bool sourcesExists = MonitorSettings.Instance.Sources.Count > 0;
                 bool availableUpdatesExists = Status.NotUpToDateSources.Count<Source>() > 0;
                 this.CanSVNUpdateAllAvailable = availableUpdatesExists;
                 this.CanSVNUpdateAll = sourcesExists;
-                this.CanCheckUpdates = CS$0$0000 = true;
-                this.CanRevert = CS$0$0001 = CS$0$0000;
-                this.CanCommit = CS$0$0002 = CS$0$0001;
-                this.CanCheckModifications = this.CanUpdate = CS$0$0002;
+                this.CanCheckUpdates = tempAnotherLocal0 = true;
+                this.CanRevert = tempAnotherLocal1 = tempAnotherLocal0;
+                this.CanCommit = tempAnotherLocal2 = tempAnotherLocal1;
+                this.CanCheckModifications = this.CanUpdate = tempAnotherLocal2;
                 this.CanBigCheckModifications = this.SourcesPanel.CanSVNCheckForModifications;
                 this.CanBigCheckSource = this.SourcesPanel.CanCheckForUpdates;
                 this.CanBigCheckSources = sourcesExists;
@@ -1777,17 +1779,17 @@
                 this.ReadSettings();
                 if (!Updater.Instance.Enabled)
                 {
-                    bool CS$0$0000;
-                    bool CS$0$0001;
-                    bool CS$0$0002;
-                    bool CS$0$0003;
-                    bool CS$0$0004;
-                    this.CanCheckUpdates = CS$0$0000 = false;
-                    this.CanRevert = CS$0$0001 = CS$0$0000;
-                    this.CanCommit = CS$0$0002 = CS$0$0001;
-                    this.CanUpdate = CS$0$0003 = CS$0$0002;
-                    this.CanCheckModifications = CS$0$0004 = CS$0$0003;
-                    this.CanSVNUpdateAll = this.CanSVNUpdateAllAvailable = CS$0$0004;
+                    bool tempAnotherLocal0;
+                    bool tempAnotherLocal1;
+                    bool tempAnotherLocal2;
+                    bool tempAnotherLocal3;
+                    bool tempAnotherLocal4;
+                    this.CanCheckUpdates = tempAnotherLocal0 = false;
+                    this.CanRevert = tempAnotherLocal1 = tempAnotherLocal0;
+                    this.CanCommit = tempAnotherLocal2 = tempAnotherLocal1;
+                    this.CanUpdate = tempAnotherLocal3 = tempAnotherLocal2;
+                    this.CanCheckModifications = tempAnotherLocal4 = tempAnotherLocal3;
+                    this.CanSVNUpdateAll = this.CanSVNUpdateAllAvailable = tempAnotherLocal4;
                 }
                 else
                 {
@@ -1826,14 +1828,14 @@
             VersionChecker.Instance.NewVersionAvailable += new EventHandler<VersionChecker.VersionEventArgs>(this.versionChecker_NewVersionAvailable);
             VersionChecker.Instance.NoNewVersionAvailable += new EventHandler(this.versionChecker_NoNewVersionAvailable);
             VersionChecker.Instance.UpgradeAvailable += new EventHandler<VersionChecker.VersionEventArgs>(this.Instance_UpgradeAvailable);
-            ApplicationSettingsManager.SavedSettings += (, ) => this.InstallKeyHooks();
+            ApplicationSettingsManager.SavedSettings += (s, ea) => this.InstallKeyHooks();
         }
 
         private void RegisterMonitorSettingsEvents()
         {
             MonitorSettings settings = MonitorSettings.Instance;
-            settings.SourcesChanged += (, ) => this.SetPanelsEntities();
-            settings.MonitorsChanged += (, ) => this.SetPanelsEntities();
+            settings.SourcesChanged += (s, ea) => this.SetPanelsEntities();
+            settings.MonitorsChanged += (s, ea) => this.SetPanelsEntities();
         }
 
         public void ReportError(ErrorReportFeedback report)
@@ -2013,7 +2015,7 @@
             }
             else
             {
-                EventHandler handler = (, ) => this.ShowNewVersionDialog(e);
+                EventHandler handler = (s, ea) => this.ShowNewVersionDialog(e);
                 this.Notifier.ShowBalloonTip(0xea60, Strings.SVNMonitorCaption, Strings.ANewVersionIsAvailable, ToolTipIcon.Info, handler);
             }
         }

@@ -114,10 +114,10 @@
 
         public static DialogResult ShowFeedbackConfirmation(IWin32Window owner, int feedbackNumber)
         {
-            FeedbackConfirmationDialog <>g__initLocal0 = new FeedbackConfirmationDialog {
+            FeedbackConfirmationDialog tempLocal0 = new FeedbackConfirmationDialog {
                 FeedbackNumber = feedbackNumber
             };
-            FeedbackConfirmationDialog dialog = <>g__initLocal0;
+            FeedbackConfirmationDialog dialog = tempLocal0;
             return dialog.ShowDialog(owner);
         }
 

@@ -10,9 +10,9 @@
     [ResourceProvider("WizardCommitsNotifications")]
     internal class CommitsNotificationsWizard : Wizard
     {
-        protected override IEnumerable<Action> CreateActions(string baseName)
+        protected override IEnumerable<Actions.Action> CreateActions(string baseName)
         {
-            return new Action[] { new InfoBalloonTipAction() };
+			return new Actions.Action[] { new InfoBalloonTipAction() };
         }
 
         protected override string GetWizardName(string baseName)
