@@ -306,8 +306,10 @@
     <Compile Include="Resources\Icons.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Resources\Images.cs">
-      <SubType>Code</SubType>
+    <Compile Include="Resources\Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\ResourceProviderAttribute.cs">
       <SubType>Code</SubType>
@@ -595,8 +597,8 @@
     <EmbeddedResource Include="Resources\Icons\lightbulb.ico" />
     <EmbeddedResource Include="Resources\Icons\lightbulb_on.ico" />
     <EmbeddedResource Include="Resources\Images.resx">
-      <DependentUpon>Images.cs</DependentUpon>
-      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Text\Enums.resx" />
     <EmbeddedResource Include="Resources\Text\Strings.resx">
