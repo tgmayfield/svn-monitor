@@ -440,6 +440,9 @@
     <Compile Include="View\Controls\KeyboardEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="View\Controls\KeyboardEditor.Designer.cs">
+      <DependentUpon>KeyboardEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\KeyboardEditorRow.cs">
       <SubType>Code</SubType>
     </Compile>
