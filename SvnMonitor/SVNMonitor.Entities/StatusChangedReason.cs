@@ -1,0 +1,40 @@
+﻿namespace SVNMonitor.Entities
+{
+public enum StatusChangedReason
+{
+	Deleted
+	,
+	Enabled
+	,
+	HasError
+	,
+	Recommended
+	,
+	Refreshed
+	,
+	SVNApplyPatch
+	,
+	SVNCommit
+	,
+	SVNDeleteUnversioned
+	,
+	SVNMerge
+	,
+	SVNRelocate
+	,
+	SVNResolve
+	,
+	SVNRevert
+	,
+	SVNStatusChanged
+	,
+	SVNSwitch
+	,
+	SVNUpdate
+	,
+	Updated
+	,
+	Updating
+
+}
+}
