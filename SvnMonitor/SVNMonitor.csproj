@@ -53,11 +53,13 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="SharpSvn">
-      <HintPath>..\lib\SharpSvn.dll</HintPath>
+    <Reference Include="SharpSvn, Version=1.6003.1304.38397, Culture=neutral, PublicKeyToken=d729672594885a28, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SharpSvn\SharpSvn.dll</HintPath>
     </Reference>
-    <Reference Include="SharpSvn.UI">
-      <HintPath>..\lib\SharpSvn.UI.dll</HintPath>
+    <Reference Include="SharpSvn.UI, Version=1.6003.1304.38397, Culture=neutral, PublicKeyToken=33789aa53ca44aa9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SharpSvn\SharpSvn.UI.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Design" />
