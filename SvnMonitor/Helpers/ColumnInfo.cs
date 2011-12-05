@@ -1,24 +1,14 @@
-﻿using System;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-[Serializable]
-internal class ColumnInfo
-{
-	public string ColumnKey
-	{
-		get;
-		set;
-	}
+    using System;
+    using System.Runtime.CompilerServices;
 
-	public string TableKey
-	{
-		get;
-		set;
-	}
+    [Serializable]
+    internal class ColumnInfo
+    {
+        public string ColumnKey { get; set; }
 
-	public ColumnInfo()
-	{
-	}
+        public string TableKey { get; set; }
+    }
 }
-}
+

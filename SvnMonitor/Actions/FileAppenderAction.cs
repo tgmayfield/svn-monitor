@@ -1,64 +1,56 @@
-﻿using SVNMonitor.Resources;
-using System;
-using System.ComponentModel;
-using System.IO;
-
-namespace SVNMonitor.Actions
+﻿namespace SVNMonitor.Actions
 {
-[ResourceProvider("Write information to a text file")]
-[Serializable]
-internal class FileAppenderAction : TextAppenderAction
-{
-	[NonSerialized]
-	private string rejectionFileName;
+    using SVNMonitor.Design;
+    using SVNMonitor.Resources;
+    using System;
+    using System.ComponentModel;
+    using System.Drawing.Design;
+    using System.IO;
+    using System.Runtime.CompilerServices;
 
-	[Description("Name of the file to append the text into.")]
-	[DisplayName("File Name")]
-	[Category("File Appender")]
-	[Editor(typeof(OptionalFileNameEditor), typeof(UITypeEditor))]
-	public string FileName
-	{
-		get;
-		set;
-	}
+    [Serializable, ResourceProvider("Write information to a text file")]
+    internal class FileAppenderAction : TextAppenderAction
+    {
+        [NonSerialized]
+        private string rejectionFileName;
 
-	public bool IsValid
-	{
-		get
-		{
-			if (string.IsNullOrEmpty(this.FileName))
-			{
-				return false;
-			}
-			return true;
-		}
-	}
+        protected override void AppendText(string text)
+        {
+            File.AppendAllText(this.FileName, text);
+        }
 
-	public string SummaryInfo
-	{
-		get
-		{
-			return string.Format("Append log information to: {0}.", this.FileName);
-		}
-	}
+        public override void RejectChanges()
+        {
+            this.FileName = this.rejectionFileName;
+        }
 
-	public FileAppenderAction()
-	{
-	}
+        public override void SetRejectionPoint()
+        {
+            this.rejectionFileName = this.FileName;
+        }
 
-	protected override void AppendText(string text)
-	{
-		File.AppendAllText(this.FileName, text);
-	}
+        [Description("Name of the file to append the text into."), DisplayName("File Name"), Category("File Appender"), Editor(typeof(OptionalFileNameEditor), typeof(UITypeEditor))]
+        public string FileName { get; set; }
 
-	public override void RejectChanges()
-	{
-		this.FileName = this.rejectionFileName;
-	}
+        public override bool IsValid
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.FileName))
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
 
-	public override void SetRejectionPoint()
-	{
-		this.rejectionFileName = this.FileName;
-	}
+        public override string SummaryInfo
+        {
+            get
+            {
+                return string.Format("Append log information to: {0}.", this.FileName);
+            }
+        }
+    }
 }
-}
+

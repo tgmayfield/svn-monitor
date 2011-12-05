@@ -1,16 +1,14 @@
 ﻿namespace SVNMonitor.SVN
 {
-public enum TortoiseSVNAutoClose
-{
-	IfNoErrors
-	,
-	IfNoErrorsAndConflicts
-	,
-	IfNoErrorsAndConflictsAndMerges
-	,
-	IfNoErrorsAndConflictsAndMergesForLocalOperations
-	,
-	NoAutoClose
+    using System;
 
+    public enum TortoiseSVNAutoClose
+    {
+        NoAutoClose,
+        IfNoErrors,
+        IfNoErrorsAndConflicts,
+        IfNoErrorsAndConflictsAndMerges,
+        IfNoErrorsAndConflictsAndMergesForLocalOperations
+    }
 }
-}
+

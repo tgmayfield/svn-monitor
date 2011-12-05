@@ -1,26 +1,24 @@
-﻿using System;
-using SVNMonitor.Helpers;
-
-namespace SVNMonitor.Settings.Validation
+﻿namespace SVNMonitor.Settings.Validation
 {
-internal class KeyboardShortcutConfigValidator : IConfigValidator
-{
-	public KeyboardShortcutConfigValidator()
-	{
-	}
+    using SVNMonitor.Helpers;
+    using System;
+    using System.Runtime.InteropServices;
 
-	public object Validate(object value, out bool isValid)
-	{
-		string retString = (string)value;
-		isValid = 0;
-		try
-		{
-			isValid = KeyInfo.IsValid(retString);
-		}
-		catch
-		{
-		}
-		return retString;
-	}
+    internal class KeyboardShortcutConfigValidator : IConfigValidator
+    {
+        public object Validate(object value, out bool isValid)
+        {
+            string retString = (string) value;
+            isValid = false;
+            try
+            {
+                isValid = KeyInfo.IsValid(retString);
+            }
+            catch
+            {
+            }
+            return retString;
+        }
+    }
 }
-}
+

@@ -1,34 +1,24 @@
-﻿using System;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-internal class UserTypeInfo : IComparable
-{
-	public string DisplayName
-	{
-		get;
-		set;
-	}
+    using System;
+    using System.Runtime.CompilerServices;
 
-	public Type Type
-	{
-		get;
-		set;
-	}
+    internal class UserTypeInfo : IComparable
+    {
+        public int CompareTo(object obj)
+        {
+            UserTypeInfo that = (UserTypeInfo) obj;
+            return this.DisplayName.CompareTo(that.DisplayName);
+        }
 
-	public UserTypeInfo()
-	{
-	}
+        public override string ToString()
+        {
+            return this.DisplayName;
+        }
 
-	public int CompareTo(object obj)
-	{
-		UserTypeInfo that = (UserTypeInfo)obj;
-		return this.DisplayName.CompareTo(that.DisplayName);
-	}
+        public string DisplayName { get; set; }
 
-	public override string ToString()
-	{
-		return this.DisplayName;
-	}
+        public System.Type Type { get; set; }
+    }
 }
-}
+

@@ -1,36 +1,24 @@
 ﻿namespace SVNMonitor.Helpers
 {
-public enum UserAction
-{
-	Blame
-	,
-	Browse
-	,
-	Commit
-	,
-	Diff
-	,
-	DiffLocalWithBase
-	,
-	DiffWithPrevious
-	,
-	Edit
-	,
-	Explore
-	,
-	Open
-	,
-	OpenWith
-	,
-	Revert
-	,
-	Rollback
-	,
-	SaveRevision
-	,
-	ShowLog
-	,
-	Update
+    using System;
 
+    public enum UserAction
+    {
+        Explore,
+        Browse,
+        Open,
+        OpenWith,
+        Diff,
+        DiffLocalWithBase,
+        DiffWithPrevious,
+        Blame,
+        ShowLog,
+        Update,
+        Rollback,
+        Commit,
+        Revert,
+        Edit,
+        SaveRevision
+    }
 }
-}
+

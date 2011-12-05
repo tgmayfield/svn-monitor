@@ -1,12 +1,12 @@
-﻿using System;
+﻿namespace SVNMonitor.Settings.Validation
+{
+    using System;
 
-namespace SVNMonitor.Settings.Validation
-{
-internal class AdministratorConfigValidatorAttribute : ConfigValidatorAttribute
-{
-	public AdministratorConfigValidatorAttribute(object valueIfNonAdmin)
-	{
-		object[] objArray;
-	}
+    internal class AdministratorConfigValidatorAttribute : ConfigValidatorAttribute
+    {
+        public AdministratorConfigValidatorAttribute(object valueIfNonAdmin) : base(typeof(AdministratorConfigValidator), new object[] { valueIfNonAdmin })
+        {
+        }
+    }
 }
-}
+

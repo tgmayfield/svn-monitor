@@ -1,14 +1,13 @@
 ﻿namespace SVNMonitor.Settings.Validation
 {
-internal enum ValidationOperator
-{
-	Less
-	,
-	LessOrEqual
-	,
-	More
-	,
-	MoreOrEqual
+    using System;
 
+    internal enum ValidationOperator
+    {
+        More,
+        MoreOrEqual,
+        Less,
+        LessOrEqual
+    }
 }
-}
+

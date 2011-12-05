@@ -1,119 +1,90 @@
-﻿using SVNMonitor.Resources;
-using System;
-using System.ComponentModel;
-using System.Collections.Generic;
-using SVNMonitor.Logging;
-using SVNMonitor.Helpers;
-
-namespace SVNMonitor.Actions
+﻿namespace SVNMonitor.Actions
 {
-[ResourceProvider("Run an external program")]
-[Serializable]
-internal class ExternalAction : Action
-{
-	[NonSerialized]
-	private string rejectionArguments;
+    using SVNMonitor.Helpers;
+    using SVNMonitor.Logging;
+    using SVNMonitor.Resources;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Drawing.Design;
+    using System.Runtime.CompilerServices;
+    using System.Windows.Forms.Design;
 
-	[NonSerialized]
-	private string rejectionFileName;
+    [Serializable, ResourceProvider("Run an external program")]
+    internal class ExternalAction : Action
+    {
+        [NonSerialized]
+        private string rejectionArguments;
+        [NonSerialized]
+        private string rejectionFileName;
+        [NonSerialized]
+        private int rejectionTimeout;
+        [NonSerialized]
+        private string rejectionWorkingDirectory;
 
-	[NonSerialized]
-	private int rejectionTimeout;
+        public override void RejectChanges()
+        {
+            this.FileName = this.rejectionFileName;
+            this.Arguments = this.rejectionArguments;
+            this.WorkingDirectory = this.rejectionWorkingDirectory;
+            this.Timeout = this.rejectionTimeout;
+        }
 
-	[NonSerialized]
-	private string rejectionWorkingDirectory;
+        protected override void Run(List<SVNLogEntry> logEntries, List<SVNPath> paths)
+        {
+            Logger.Log.DebugFormat("FileName={0}, Arguments={1}, WorkingDirectory={2}", this.FileName, this.Arguments, this.WorkingDirectory);
+            ProcessHelper.StreamProcess(this.FileName, this.Arguments, this.WorkingDirectory, this.Timeout);
+        }
 
-	[Description("Arguments to pass to the file.")]
-	[Category("File")]
-	public string Arguments
-	{
-		get;
-		set;
-	}
+        public override void SetRejectionPoint()
+        {
+            this.rejectionFileName = this.FileName;
+            this.rejectionArguments = this.Arguments;
+            this.rejectionWorkingDirectory = this.WorkingDirectory;
+            this.rejectionTimeout = this.Timeout;
+        }
 
-	[DisplayName("File Name")]
-	[Category("File")]
-	[Editor(typeof(FileNameEditor), typeof(UITypeEditor))]
-	[Description("Name of the file to run.")]
-	public string FileName
-	{
-		get;
-		set;
-	}
+        [Description("Arguments to pass to the file."), Category("File")]
+        public string Arguments { get; set; }
 
-	public bool IsValid
-	{
-		get
-		{
-			if (string.IsNullOrEmpty(this.FileName))
-			{
-				return false;
-			}
-			return true;
-		}
-	}
+        [DisplayName("File Name"), Category("File"), Editor(typeof(FileNameEditor), typeof(UITypeEditor)), Description("Name of the file to run.")]
+        public string FileName { get; set; }
 
-	public string SummaryInfo
-	{
-		get
-		{
-			string workDirString = string.Empty;
-			if (!string.IsNullOrEmpty(this.WorkingDirectory))
-			{
-				workDirString = string.Format(" in {0}", this.WorkingDirectory);
-			}
-			string argsString = string.Empty;
-			if (!string.IsNullOrEmpty(this.Arguments))
-			{
-				argsString = string.Format(" {0}", this.Arguments);
-			}
-			string retString = string.Format("Run \"{0}{1}\"{2}.", this.FileName, argsString, workDirString);
-			return retString;
-		}
-	}
+        public override bool IsValid
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.FileName))
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
 
-	[Description("Timeout, in milliseconds, before the process is terminated (0 = no timeout).")]
-	[Category("File")]
-	[DisplayName("Timeout")]
-	public int Timeout
-	{
-		get;
-		set;
-	}
+        public override string SummaryInfo
+        {
+            get
+            {
+                string workDirString = string.Empty;
+                if (!string.IsNullOrEmpty(this.WorkingDirectory))
+                {
+                    workDirString = string.Format(" in {0}", this.WorkingDirectory);
+                }
+                string argsString = string.Empty;
+                if (!string.IsNullOrEmpty(this.Arguments))
+                {
+                    argsString = string.Format(" {0}", this.Arguments);
+                }
+                return string.Format("Run \"{0}{1}\"{2}.", this.FileName, argsString, workDirString);
+            }
+        }
 
-	[Description("The directory where the file will run.")]
-	[Category("File")]
-	[DisplayName("Working Directory")]
-	public string WorkingDirectory
-	{
-		get;
-		set;
-	}
+        [Description("Timeout, in milliseconds, before the process is terminated (0 = no timeout)."), Category("File"), DisplayName("Timeout")]
+        public int Timeout { get; set; }
 
-	public ExternalAction()
-	{
-	}
-
-	public override void RejectChanges()
-	{
-		this.FileName = this.rejectionFileName;
-		this.Arguments = this.rejectionArguments;
-		this.WorkingDirectory = this.rejectionWorkingDirectory;
-		this.Timeout = this.rejectionTimeout;
-	}
-
-	protected override void Run(List<SVNLogEntry> logEntries, List<SVNPath> paths)
-	{
-		Logger.Log.DebugFormat("FileName={0}, Arguments={1}, WorkingDirectory={2}", this.FileName, this.Arguments, this.WorkingDirectory);
-		ProcessHelper.StreamProcess(this.FileName, this.Arguments, this.WorkingDirectory, this.Timeout);
-	}
-
-	public override void SetRejectionPoint()
-	{
-		this.rejectionFileName = this.FileName;
-		this.rejectionArguments = this.Arguments;
-		this.rejectionWorkingDirectory = this.WorkingDirectory;
-		this.rejectionTimeout = this.Timeout;
-	}
+        [Description("The directory where the file will run."), Category("File"), DisplayName("Working Directory")]
+        public string WorkingDirectory { get; set; }
+    }
 }
-}
+

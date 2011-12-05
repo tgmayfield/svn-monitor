@@ -1,18 +1,29 @@
-﻿using System.Diagnostics;
-using System;
-using SVNMonitor.Helpers;
+﻿namespace SVNMonitor.Support
+{
+    using SVNMonitor.Helpers;
+    using System;
+    using System.Diagnostics;
 
-namespace SVNMonitor.Support
-{
-public static class SampleIssuesGenerator
-{
-	[Conditional("DEBUG")]
-	public static void Generate()
-	{
-		IssuesCollection issues = new IssuesCollection();
-		Issue issue1.StackFrame = "System.".Add(issue1);
-		Issue issue2.StackFrame = "System.".Add(issue2);
-		SerializationHelper.XmlFileSerialize<IssuesCollection>(issues, "c:\\issues.xml");
-	}
+    public static class SampleIssuesGenerator
+    {
+        [Conditional("DEBUG")]
+        public static void Generate()
+        {
+            IssuesCollection issues = new IssuesCollection();
+            Issue <>g__initLocal0 = new Issue {
+                ID = 1,
+                ExceptionName = "System.Exception",
+                StackFrame = "System."
+            };
+            issues.Add(<>g__initLocal0);
+            Issue <>g__initLocal1 = new Issue {
+                ID = 2,
+                ExceptionName = "System.Exception",
+                StackFrame = "System."
+            };
+            issues.Add(<>g__initLocal1);
+            SerializationHelper.XmlFileSerialize<IssuesCollection>(issues, @"c:\issues.xml");
+        }
+    }
 }
-}
+

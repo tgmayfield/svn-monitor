@@ -1,24 +1,26 @@
-﻿using SVNMonitor.Entities;
-using System.Collections.Generic;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-internal static class SVNPathsExtension
-{
-	public static SVNPathCommands CreateCommands(this SVNPath path)
-	{
-		List<SVNPath> sVNPaths = new List<SVNPath>();
-		sVNPaths.Add(path);
-		return sVNPaths.CreateCommands();
-	}
+    using SVNMonitor.Entities;
+    using SVNMonitor.Extensions;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
 
-	public static SVNPathCommands CreateCommands(this IEnumerable<SVNPath> paths)
-	{
-		if (paths == null || paths.Count<SVNPath>() == 0)
-		{
-			return null;
-		}
-		return new SVNPathCommands(paths);
-	}
+    internal static class SVNPathsExtension
+    {
+        public static SVNPathCommands CreateCommands(this SVNPath path)
+        {
+            return new List<SVNPath> { path }.CreateCommands();
+        }
+
+        public static SVNPathCommands CreateCommands(this IEnumerable<SVNPath> paths)
+        {
+            if ((paths != null) && (paths.Count<SVNPath>() != 0))
+            {
+                return new SVNPathCommands(paths);
+            }
+            return null;
+        }
+    }
 }
-}
+

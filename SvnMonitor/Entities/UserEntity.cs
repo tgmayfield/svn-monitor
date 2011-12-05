@@ -1,282 +1,271 @@
-﻿using System;
-using System.Diagnostics;
-using SVNMonitor.Logging;
-using System.Xml.Serialization;
-using System.IO;
-using SVNMonitor.Helpers;
-using System.ComponentModel;
-using SVNMonitor;
-
-namespace SVNMonitor.Entities
+﻿namespace SVNMonitor.Entities
 {
-[Serializable]
-public abstract class UserEntity : VersionEntity, IComparable
-{
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	private bool enabled;
+    using SVNMonitor;
+    using SVNMonitor.Helpers;
+    using SVNMonitor.Logging;
+    using System;
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Runtime.CompilerServices;
+    using System.Xml.Serialization;
 
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	[NonSerialized]
-	private long errorEventID;
+    [Serializable]
+    public abstract class UserEntity : VersionEntity, IComparable
+    {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private bool enabled = true;
+        [NonSerialized, DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private long errorEventID;
+        [NonSerialized, DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string errorText;
+        private string guid;
+        [NonSerialized, DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private bool hasError;
+        [NonSerialized]
+        private bool isInEditMode;
+        [NonSerialized]
+        private bool rejectionEnabled;
+        [NonSerialized]
+        private string rejectionName;
+        private bool saved;
 
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	[NonSerialized]
-	private string errorText;
+        [field: NonSerialized]
+        public event EventHandler<StatusChangedEventArgs> StatusChanged;
 
-	private string guid;
+        public UserEntity()
+        {
+            this.GenerateGuid();
+        }
 
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	[NonSerialized]
-	private bool hasError;
+        internal virtual void BeginEdit()
+        {
+            this.SetRejectionPoint();
+            this.isInEditMode = true;
+        }
 
-	[NonSerialized]
-	private bool isInEditMode;
+        internal virtual void ClearError()
+        {
+            if (this.HasError)
+            {
+                Logger.Log.InfoFormat("Error cleared: {0}", this.ErrorText);
+                this.ErrorText = null;
+                this.ErrorEventID = 0L;
+                this.HasError = false;
+            }
+        }
 
-	[NonSerialized]
-	private bool rejectionEnabled;
+        public int CompareTo(object obj)
+        {
+            UserEntity entity = (UserEntity) obj;
+            return this.OrderNumber.CompareTo(entity.OrderNumber);
+        }
 
-	[NonSerialized]
-	private string rejectionName;
+        internal virtual void DeleteFile()
+        {
+            Logger.Log.DebugFormat("Deleting file: {0}", this.FileName);
+            FileSystemHelper.DeleteFile(this.FileName);
+        }
 
-	private bool saved;
+        internal virtual void EndEdit()
+        {
+            this.isInEditMode = false;
+        }
 
-	[NonSerialized]
-	private EventHandler<StatusChangedEventArgs> statusChanged;
+        internal void GenerateGuid()
+        {
+            this.guid = System.Guid.NewGuid().ToString();
+        }
 
-	public bool Enabled
-	{
-		get
-		{
-			return this.enabled;
-		}
-		set
-		{
-			if (this.enabled != value)
-			{
-				this.enabled = value;
-				Logger.Log.InfoFormat("Set {0} = {1}", this.Name, value);
-				this.SaveExisting();
-				if (!value)
-				{
-					this.ClearError();
-				}
-				this.OnStatusChanged(StatusChangedReason.Enabled);
-			}
-		}
-	}
+        public static T Load<T>(string fileName, bool save) where T: UserEntity
+        {
+            T entity = (T) SerializationHelper.BinaryDeserialize(fileName);
+            entity.Upgrade();
+            if (save)
+            {
+                entity.Save();
+            }
+            return entity;
+        }
 
-	[XmlIgnore]
-	public long ErrorEventID
-	{
-		get
-		{
-			return this.errorEventID;
-		}
-		protected set
-		{
-			this.errorEventID = value;
-		}
-	}
+        protected virtual void OnStatusChanged(StatusChangedReason reason)
+        {
+            if (Status.Closing)
+            {
+                Status.OnCanExit();
+            }
+            else
+            {
+                if (this.statusChanged != null)
+                {
+                    this.statusChanged(this, new StatusChangedEventArgs(this, reason));
+                }
+                Status.OnStatusChanged();
+            }
+        }
 
-	[XmlIgnore]
-	public string ErrorText
-	{
-		get
-		{
-			return this.errorText;
-		}
-		protected set
-		{
-			this.errorText = value;
-		}
-	}
+        internal virtual void RejectChanges()
+        {
+            this.Enabled = this.rejectionEnabled;
+            this.Name = this.rejectionName;
+        }
 
-	public string FileExtension { get; }
+        internal virtual void Save()
+        {
+            this.Save(this.FileName);
+        }
 
-	protected string FileName
-	{
-		get
-		{
-			string fileName = string.Concat(Path.Combine(FileSystemHelper.AppData, this.Guid), this.FileExtension);
-			return fileName;
-		}
-	}
+        internal virtual void Save(string fileName)
+        {
+            Logger.Log.DebugFormat("BinarySerialize(FileName={0})", this.FileName);
+            SerializationHelper.BinarySerialize(this, fileName);
+            this.saved = true;
+        }
 
-	public string Guid
-	{
-		get
-		{
-			return this.guid;
-		}
-	}
+        internal virtual void SaveExisting()
+        {
+            if (FileSystemHelper.FileExists(this.FileName))
+            {
+                this.Save();
+            }
+            else
+            {
+                Logger.Log.InfoFormat("{0} does not exist.", this.FileName);
+            }
+        }
 
-	[XmlIgnore]
-	public bool HasError
-	{
-		get
-		{
-			return this.hasError;
-		}
-		protected set
-		{
-			if (this.hasError != value)
-			{
-				this.hasError = value;
-				this.OnStatusChanged(StatusChangedReason.HasError);
-			}
-		}
-	}
+        internal virtual void SetError(string errorText, long errorEventID)
+        {
+            this.ErrorText = errorText;
+            this.ErrorEventID = errorEventID;
+            this.HasError = true;
+        }
 
-	public bool IsAlive { get; }
+        internal virtual void SetRejectionPoint()
+        {
+            this.rejectionEnabled = this.Enabled;
+            this.rejectionName = this.Name;
+        }
 
-	[Browsable(false)]
-	public bool IsInEditMode
-	{
-		get
-		{
-			return this.isInEditMode;
-		}
-	}
+        public override string ToString()
+        {
+            return this.Name;
+        }
 
-	public string Name
-	{
-		get;
-		set;
-	}
+        public virtual bool Enabled
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.enabled;
+            }
+            set
+            {
+                if (this.enabled != value)
+                {
+                    this.enabled = value;
+                    Logger.Log.InfoFormat("Set {0} = {1}", this.Name, value);
+                    this.SaveExisting();
+                    if (!value)
+                    {
+                        this.ClearError();
+                    }
+                    this.OnStatusChanged(StatusChangedReason.Enabled);
+                }
+            }
+        }
 
-	public int OrderNumber
-	{
-		get;
-		set;
-	}
+        [XmlIgnore]
+        public long ErrorEventID
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.errorEventID;
+            }
+            [DebuggerNonUserCode]
+            protected set
+            {
+                this.errorEventID = value;
+            }
+        }
 
-	public bool Saved
-	{
-		get
-		{
-			return this.saved;
-		}
-	}
+        [XmlIgnore]
+        public string ErrorText
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.errorText;
+            }
+            [DebuggerNonUserCode]
+            protected set
+            {
+                this.errorText = value;
+            }
+        }
 
-	public UserEntity()
-	{
-		this.enabled = true;
-		base();
-		this.GenerateGuid();
-	}
+        public abstract string FileExtension { get; }
 
-	internal virtual void BeginEdit()
-	{
-		this.SetRejectionPoint();
-		this.isInEditMode = true;
-	}
+        protected string FileName
+        {
+            get
+            {
+                return (Path.Combine(FileSystemHelper.AppData, this.Guid) + this.FileExtension);
+            }
+        }
 
-	internal virtual void ClearError()
-	{
-		if (!this.HasError)
-		{
-			return;
-		}
-		Logger.Log.InfoFormat("Error cleared: {0}", this.ErrorText);
-		this.ErrorText = null;
-		this.ErrorEventID = (long)0;
-		this.HasError = false;
-	}
+        public string Guid
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.guid;
+            }
+        }
 
-	public int CompareTo(object obj)
-	{
-		UserEntity entity = (UserEntity)obj;
-		int orderNumber = this.OrderNumber;
-		return orderNumber.CompareTo(entity.OrderNumber);
-	}
+        [XmlIgnore]
+        public bool HasError
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.hasError;
+            }
+            protected set
+            {
+                if (this.hasError != value)
+                {
+                    this.hasError = value;
+                    this.OnStatusChanged(StatusChangedReason.HasError);
+                }
+            }
+        }
 
-	internal virtual void DeleteFile()
-	{
-		Logger.Log.DebugFormat("Deleting file: {0}", this.FileName);
-		FileSystemHelper.DeleteFile(this.FileName);
-	}
+        public abstract bool IsAlive { get; }
 
-	internal virtual void EndEdit()
-	{
-		this.isInEditMode = false;
-	}
+        [Browsable(false)]
+        public bool IsInEditMode
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.isInEditMode;
+            }
+        }
 
-	internal void GenerateGuid()
-	{
-		Guid guid = Guid.NewGuid().guid = guid.ToString();
-	}
+        public string Name { get; set; }
 
-	public static T Load<T>(string fileName, bool save)
-	{
-		T entity = (T)SerializationHelper.BinaryDeserialize(fileName);
-		&entity.Upgrade();
-		if (save)
-		{
-			&entity.Save();
-		}
-		return entity;
-	}
+        public int OrderNumber { get; set; }
 
-	protected virtual void OnStatusChanged(StatusChangedReason reason)
-	{
-		if (Status.Closing)
-		{
-			Status.OnCanExit();
-			return;
-		}
-		if (this.statusChanged != null)
-		{
-			this.statusChanged(this, new StatusChangedEventArgs(this, reason));
-		}
-		Status.OnStatusChanged();
-	}
-
-	internal virtual void RejectChanges()
-	{
-		this.Enabled = this.rejectionEnabled;
-		this.Name = this.rejectionName;
-	}
-
-	internal virtual void Save()
-	{
-		this.Save(this.FileName);
-	}
-
-	internal virtual void Save(string fileName)
-	{
-		Logger.Log.DebugFormat("BinarySerialize(FileName={0})", this.FileName);
-		SerializationHelper.BinarySerialize(this, fileName);
-		this.saved = true;
-	}
-
-	internal virtual void SaveExisting()
-	{
-		if (FileSystemHelper.FileExists(this.FileName))
-		{
-			this.Save();
-			return;
-		}
-		Logger.Log.InfoFormat("{0} does not exist.", this.FileName);
-	}
-
-	internal virtual void SetError(string errorText, long errorEventID)
-	{
-		this.ErrorText = errorText;
-		this.ErrorEventID = errorEventID;
-		this.HasError = true;
-	}
-
-	internal virtual void SetRejectionPoint()
-	{
-		this.rejectionEnabled = this.Enabled;
-		this.rejectionName = this.Name;
-	}
-
-	public override string ToString()
-	{
-		return this.Name;
-	}
-
-	public event EventHandler<StatusChangedEventArgs> StatusChanged;
+        public bool Saved
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.saved;
+            }
+        }
+    }
 }
-}
+

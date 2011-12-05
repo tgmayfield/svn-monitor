@@ -1,27 +1,21 @@
-﻿using System;
-using System.Diagnostics;
-
-namespace SVNMonitor.Entities
+﻿namespace SVNMonitor.Entities
 {
-public class StatusChangedEventArgs : EventArgs
-{
-	public UserEntity Entity
-	{
-		get;
-		private set;
-	}
+    using System;
+    using System.Diagnostics;
+    using System.Runtime.CompilerServices;
 
-	public StatusChangedReason Reason
-	{
-		get;
-		private set;
-	}
+    public class StatusChangedEventArgs : EventArgs
+    {
+        [DebuggerNonUserCode]
+        public StatusChangedEventArgs(UserEntity entity, StatusChangedReason reason)
+        {
+            this.Entity = entity;
+            this.Reason = reason;
+        }
 
-	[DebuggerNonUserCode]
-	public StatusChangedEventArgs(UserEntity entity, StatusChangedReason reason)
-	{
-		this.Entity = entity;
-		this.Reason = reason;
-	}
+        public UserEntity Entity { get; private set; }
+
+        public StatusChangedReason Reason { get; private set; }
+    }
 }
-}
+

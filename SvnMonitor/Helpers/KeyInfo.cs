@@ -1,239 +1,226 @@
-﻿using System;
-using System.Collections.Generic;
-using SVNMonitor.Resources.Text;
-using SVNMonitor.Logging;
-using System.Windows.Forms;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-public class KeyInfo
-{
-	private static KeyInfo none;
+    using SVNMonitor.Logging;
+    using SVNMonitor.Resources.Text;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Runtime.CompilerServices;
+    using System.Windows.Forms;
 
-	public bool Alt
-	{
-		get
-		{
-			return this.IsModifier(ModifierKey.Alt);
-		}
-	}
+    public class KeyInfo
+    {
+        private static KeyInfo none;
 
-	public bool Control
-	{
-		get
-		{
-			return this.IsModifier(ModifierKey.Control);
-		}
-	}
+        static KeyInfo()
+        {
+            KeyInfo <>g__initLocal1 = new KeyInfo {
+                Modifier = ModifierKey.None,
+                Key = SVNMonitor.Helpers.Key.None
+            };
+            none = <>g__initLocal1;
+        }
 
-	public Key Key
-	{
-		get;
-		set;
-	}
+        private KeyInfo()
+        {
+        }
 
-	public string KeyString
-	{
-		get
-		{
-			return this.ToString();
-		}
-	}
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is KeyInfo))
+            {
+                return false;
+            }
+            KeyInfo that = (KeyInfo) obj;
+            return ((this.Key == that.Key) && (this.Modifier == that.Modifier));
+        }
 
-	public ModifierKey Modifier
-	{
-		get;
-		set;
-	}
+        internal static IEnumerable<string> GetAvailableKeys()
+        {
+            List<string> list = new List<string>();
+            foreach (SVNMonitor.Helpers.Key key in Enum.GetValues(typeof(SVNMonitor.Helpers.Key)))
+            {
+                if (key == SVNMonitor.Helpers.Key.None)
+                {
+                    list.Add(Strings.KeyNone);
+                }
+                else
+                {
+                    list.Add(key.ToString());
+                }
+            }
+            return list;
+        }
 
-	public static KeyInfo None
-	{
-		get
-		{
-			return KeyInfo.none;
-		}
-	}
+        public override int GetHashCode()
+        {
+            return (this.Key.GetHashCode() * this.Modifier.GetHashCode());
+        }
 
-	public bool Shift
-	{
-		get
-		{
-			return this.IsModifier(ModifierKey.Shift);
-		}
-	}
+        public static KeyInfo GetKeyInfo(string keyString)
+        {
+            if (string.IsNullOrEmpty(keyString))
+            {
+                return None;
+            }
+            if (IsNone(keyString))
+            {
+                return None;
+            }
+            string[] keys = keyString.Split(new char[] { '+' }, StringSplitOptions.RemoveEmptyEntries);
+            int len = keys.Length;
+            if ((len < 2) || (len > 5))
+            {
+                Logger.Log.ErrorFormat("Bad key description: {0}", keyString);
+                return None;
+            }
+            SVNMonitor.Helpers.Key key = SVNMonitor.Helpers.Key.None;
+            ModifierKey modifier = ModifierKey.None;
+            for (int i = 0; i < len; i++)
+            {
+                string current = keys[i];
+                try
+                {
+                    if (i == (len - 1))
+                    {
+                        key = (SVNMonitor.Helpers.Key) Enum.Parse(typeof(SVNMonitor.Helpers.Key), current, true);
+                        if (key == SVNMonitor.Helpers.Key.None)
+                        {
+                            return None;
+                        }
+                    }
+                    else
+                    {
+                        ModifierKey modKey = (ModifierKey) Enum.Parse(typeof(ModifierKey), current, true);
+                        modifier |= modKey;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Log.Error(string.Format("Error parsing key: {0}", current), ex);
+                    return None;
+                }
+            }
+            return GetKeyInfo(modifier, key);
+        }
 
-	public bool Win
-	{
-		get
-		{
-			return this.IsModifier(ModifierKey.Win);
-		}
-	}
+        public static KeyInfo GetKeyInfo(ModifierKey modifier, SVNMonitor.Helpers.Key key)
+        {
+            if ((modifier == ModifierKey.None) || (key == SVNMonitor.Helpers.Key.None))
+            {
+                return None;
+            }
+            return new KeyInfo { Modifier = modifier, Key = key };
+        }
 
-	static KeyInfo()
-	{
-		KeyInfo keyInfo = new KeyInfo();
-		keyInfo.Modifier = ModifierKey.None;
-		keyInfo.Key = Key.None;
-		KeyInfo.none = keyInfo;
-	}
+        public static KeyInfo GetKeyInfo(ModifierKey modifier, Keys realKey)
+        {
+            SVNMonitor.Helpers.Key key = EnumHelper.ParseEnum<SVNMonitor.Helpers.Key>(realKey.ToString());
+            return GetKeyInfo(modifier, key);
+        }
 
-	private KeyInfo()
-	{
-	}
+        private bool IsModifier(ModifierKey key)
+        {
+            return ((this.Modifier & key) != ModifierKey.None);
+        }
 
-	public override bool Equals(object obj)
-	{
-		if (obj == null)
-		{
-			return false;
-		}
-		if (!obj as KeyInfo)
-		{
-			return false;
-		}
-		KeyInfo that = (KeyInfo)obj;
-		if (this.Key == that.Key)
-		{
-			return this.Modifier == that.Modifier;
-		}
-		return false;
-	}
+        public static bool IsNone(string keyString)
+        {
+            if (string.IsNullOrEmpty(keyString))
+            {
+                return false;
+            }
+            return (keyString.Trim().ToLower() == None.ToString().ToLower());
+        }
 
-	internal static IEnumerable<string> GetAvailableKeys()
-	{
-		List<string> list = new List<string>();
-		foreach (Key key in Enum.GetValues(typeof(Key)))
-		{
-			if (key == Key.None)
-			{
-				list.Add(Strings.KeyNone);
-			}
-			else
-			{
-				list.Add(key.ToString());
-			}
-		}
-		return list;
-	}
+        public static bool IsValid(string keyString)
+        {
+            if (string.IsNullOrEmpty(keyString))
+            {
+                return false;
+            }
+            KeyInfo keyInfo = GetKeyInfo(keyString);
+            if (keyInfo == null)
+            {
+                return false;
+            }
+            if (keyInfo.Equals(None))
+            {
+                return IsNone(keyString);
+            }
+            return true;
+        }
 
-	public override int GetHashCode()
-	{
-		return this.Key.GetHashCode() * this.Modifier.GetHashCode();
-	}
+        public override string ToString()
+        {
+            if (this == None)
+            {
+                return Strings.KeyNone;
+            }
+            string modifier = this.Modifier.ToString().Replace(", ", "+");
+            return string.Format("{0}+{1}", modifier, this.Key);
+        }
 
-	public static KeyInfo GetKeyInfo(string keyString)
-	{
-		char[] chrArray;
-		if (string.IsNullOrEmpty(keyString))
-		{
-			return KeyInfo.None;
-		}
-		if (KeyInfo.IsNone(keyString))
-		{
-			return KeyInfo.None;
-		}
-		string[] keys = keyString.Split(new char[] { 43 }, StringSplitOptions.RemoveEmptyEntries);
-		int len = (int)keys.Length;
-		if (len < 2 || len > 5)
-		{
-			Logger.Log.ErrorFormat("Bad key description: {0}", keyString);
-			return KeyInfo.None;
-		}
-		Key key = Key.None;
-		ModifierKey modifier = ModifierKey.None;
-		for (int i = 0; i < len; i++)
-		{
-			string current = keys[i];
-			try
-			{
-				if (i == len - 1)
-				{
-					key = (Key)Enum.Parse(typeof(Key), current, true);
-					if (key == Key.None)
-					{
-						return KeyInfo.None;
-						ModifierKey modKey = (ModifierKey)Enum.Parse(typeof(ModifierKey), current, true);
-						modifier = modifier | modKey;
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				Logger.Log.Error(string.Format("Error parsing key: {0}", current), ex);
-				return KeyInfo.None;
-			}
-		}
-		KeyInfo keyInfo = KeyInfo.GetKeyInfo(modifier, key);
-		return keyInfo;
-	}
+        public bool Alt
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.IsModifier(ModifierKey.None | ModifierKey.Alt);
+            }
+        }
 
-	public static KeyInfo GetKeyInfo(ModifierKey modifier, Keys realKey)
-	{
-		Key key = EnumHelper.ParseEnum<Key>(realKey.ToString());
-		KeyInfo keyInfo = KeyInfo.GetKeyInfo(modifier, key);
-		return keyInfo;
-	}
+        public bool Control
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.IsModifier(ModifierKey.Control);
+            }
+        }
 
-	public static KeyInfo GetKeyInfo(ModifierKey modifier, Key key)
-	{
-		if (modifier == ModifierKey.None || key == Key.None)
-		{
-			return KeyInfo.None;
-		}
-		KeyInfo keyInfo = new KeyInfo();
-		keyInfo.Modifier = modifier;
-		keyInfo.Key = key;
-		KeyInfo keyInfo = keyInfo;
-		return keyInfo;
-	}
+        public SVNMonitor.Helpers.Key Key { get; set; }
 
-	private bool IsModifier(ModifierKey key)
-	{
-		bool isModifier = (this.Modifier & key) != ModifierKey.None;
-		return isModifier;
-	}
+        public string KeyString
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
 
-	public static bool IsNone(string keyString)
-	{
-		if (string.IsNullOrEmpty(keyString))
-		{
-			return false;
-		}
-		if (keyString.Trim().ToLower() == KeyInfo.None.ToString().ToLower())
-		{
-			return true;
-		}
-		return false;
-	}
+        public ModifierKey Modifier { get; set; }
 
-	public static bool IsValid(string keyString)
-	{
-		if (string.IsNullOrEmpty(keyString))
-		{
-			return false;
-		}
-		KeyInfo keyInfo = KeyInfo.GetKeyInfo(keyString);
-		if (keyInfo == null)
-		{
-			return false;
-		}
-		if (keyInfo.Equals(KeyInfo.None))
-		{
-			bool isNone = KeyInfo.IsNone(keyString);
-			return isNone;
-		}
-		return true;
-	}
+        public static KeyInfo None
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return none;
+            }
+        }
 
-	public override string ToString()
-	{
-		if (this == KeyInfo.None)
-		{
-			return Strings.KeyNone;
-		}
-		string modifier = this.Modifier.ToString().Replace(", ", "+");
-		return string.Format("{0}+{1}", modifier, this.Key);
-	}
+        public bool Shift
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.IsModifier(ModifierKey.Shift);
+            }
+        }
+
+        public bool Win
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.IsModifier(ModifierKey.Win);
+            }
+        }
+    }
 }
-}
+

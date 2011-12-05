@@ -1,9 +1,7 @@
 ﻿namespace SVNMonitor.View.Controls
 {
-public class EventLogEntrySearchTextBox : SearchTextBox<EventLogEntry>
-{
-	public EventLogEntrySearchTextBox()
-	{
-	}
+    public class EventLogEntrySearchTextBox : SearchTextBox<EventLogEntry>
+    {
+    }
 }
-}
+

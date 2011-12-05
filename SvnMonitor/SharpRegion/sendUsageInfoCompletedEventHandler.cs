@@ -1,18 +1,11 @@
-﻿using System.CodeDom.Compiler;
-using System;
-using System.ComponentModel;
-
-namespace SVNMonitor.SharpRegion
+﻿namespace SVNMonitor.SharpRegion
 {
-[GeneratedCode("System.Web.Services", "2.0.50727.4918")]
-public sealed class sendUsageInfoCompletedEventHandler : MulticastDelegate
-{
-	public sendUsageInfoCompletedEventHandler(object object, IntPtr method);
+    using System;
+    using System.CodeDom.Compiler;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
 
-	public virtual IAsyncResult BeginInvoke(object sender, AsyncCompletedEventArgs e, AsyncCallback callback, object object);
-
-	public virtual void EndInvoke(IAsyncResult result);
-
-	public virtual void Invoke(object sender, AsyncCompletedEventArgs e);
+    [GeneratedCode("System.Web.Services", "2.0.50727.4918")]
+    public delegate void sendUsageInfoCompletedEventHandler(object sender, AsyncCompletedEventArgs e);
 }
-}
+

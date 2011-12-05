@@ -1,19 +1,20 @@
-﻿using System.ComponentModel.Design;
-using System.Collections.Generic;
-
-namespace SVNMonitor.Design
+﻿namespace SVNMonitor.Design
 {
-public class SoundsByAuthorsCollectionEditor : CollectionEditor
-{
-	public SoundsByAuthorsCollectionEditor() : base(typeof(List<SoundByAuthor>))
-	{
-	}
+    using System;
+    using System.ComponentModel.Design;
 
-	protected override CollectionForm CreateCollectionForm()
-	{
-		CollectionForm form = base.CreateCollectionForm();
-		form.Text = "Sounds-By-Authors Collection";
-		return form;
-	}
+    public class SoundsByAuthorsCollectionEditor : CollectionEditor
+    {
+        public SoundsByAuthorsCollectionEditor() : base(typeof(List<SoundByAuthor>))
+        {
+        }
+
+        protected override CollectionEditor.CollectionForm CreateCollectionForm()
+        {
+            CollectionEditor.CollectionForm form = base.CreateCollectionForm();
+            form.Text = "Sounds-By-Authors Collection";
+            return form;
+        }
+    }
 }
-}
+

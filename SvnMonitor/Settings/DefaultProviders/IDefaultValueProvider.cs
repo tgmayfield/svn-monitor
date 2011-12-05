@@ -1,9 +1,10 @@
-﻿using System;
+﻿namespace SVNMonitor.Settings.DefaultProviders
+{
+    using System;
 
-namespace SVNMonitor.Settings.DefaultProviders
-{
-internal interface IDefaultValueProvider
-{
-	object GetDefaultValue();
+    internal interface IDefaultValueProvider
+    {
+        object GetDefaultValue();
+    }
 }
-}
+

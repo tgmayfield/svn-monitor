@@ -1,44 +1,40 @@
-﻿using SVNMonitor.Resources;
-using System;
-using System.Diagnostics;
-
-namespace SVNMonitor.Actions
+﻿namespace SVNMonitor.Actions
 {
-[ResourceProvider("Write an event log entry")]
-[Serializable]
-internal class EventLogAction : TextAppenderAction
-{
-	public bool IsValid
-	{
-		get
-		{
-			return true;
-		}
-	}
+    using SVNMonitor.Resources;
+    using System;
+    using System.Diagnostics;
 
-	public string SummaryInfo
-	{
-		get
-		{
-			return "Write updates summary to the event log.";
-		}
-	}
+    [Serializable, ResourceProvider("Write an event log entry")]
+    internal class EventLogAction : TextAppenderAction
+    {
+        protected override void AppendText(string text)
+        {
+            EventLog.WriteEntry("SVN-Monitor", text, EventLogEntryType.Information);
+        }
 
-	public EventLogAction()
-	{
-	}
+        public override void RejectChanges()
+        {
+        }
 
-	protected override void AppendText(string text)
-	{
-		EventLog.WriteEntry("SVN-Monitor", text, EventLogEntryType.Information);
-	}
+        public override void SetRejectionPoint()
+        {
+        }
 
-	public override void RejectChanges()
-	{
-	}
+        public override bool IsValid
+        {
+            get
+            {
+                return true;
+            }
+        }
 
-	public override void SetRejectionPoint()
-	{
-	}
+        public override string SummaryInfo
+        {
+            get
+            {
+                return "Write updates summary to the event log.";
+            }
+        }
+    }
 }
-}
+

@@ -1,88 +1,82 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Timers;
-using System.Runtime.InteropServices;
-using SVNMonitor.Logging;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-internal class WindowFlasher
-{
-	public WindowFlasher()
-	{
-	}
+    using SVNMonitor.Logging;
+    using System;
+    using System.Runtime.InteropServices;
+    using System.Timers;
+    using System.Windows.Forms;
 
-	public static void Flash(Form form)
-	{
-		object[] objArray;
-		ElapsedEventHandler elapsedEventHandler = null;
-		WindowFlasher windowFlasher = new WindowFlasher();
-		windowFlasher.form = form;
-		if (windowFlasher.form.InvokeRequired)
-		{
-			windowFlasher.form.BeginInvoke(new Action<Form>(null.WindowFlasher.Flash), new object[] { windowFlasher.form });
-			return;
-		}
-		WindowFlasher.InternalFlash(windowFlasher.form, FlashFlags.FLASHW_ALL);
-		Timer timer = new Timer();
-		timer.AutoReset = false;
-		timer.Interval = 2000;
-	}
+    internal class WindowFlasher
+    {
+        public static void Flash(Form form)
+        {
+            if (form.InvokeRequired)
+            {
+                form.BeginInvoke(new Action<Form>(WindowFlasher.Flash), new object[] { form });
+            }
+            else
+            {
+                InternalFlash(form, FlashFlags.FLASHW_ALL);
+                System.Timers.Timer timer = new System.Timers.Timer {
+                    AutoReset = false,
+                    Interval = 2000.0
+                };
+                timer.Elapsed += (, ) => StopFlash(form);
+                timer.Start();
+            }
+        }
 
-	[DllImport("user32.dll", CharSet=CharSet.None)]
-	private static extern int FlashWindowEx(ref FLASHWINFO pwfi);
+        [DllImport("user32.dll")]
+        private static extern int FlashWindowEx(ref FLASHWINFO pwfi);
+        private static void InternalFlash(Form form, FlashFlags flags)
+        {
+            FLASHWINFO fw = new FLASHWINFO {
+                cbSize = Convert.ToUInt32(Marshal.SizeOf(typeof(FLASHWINFO))),
+                hwnd = form.Handle,
+                dwFlags = (int) flags,
+                uCount = uint.MaxValue
+            };
+            FlashWindowEx(ref fw);
+        }
 
-	private static void InternalFlash(Form form, FlashFlags flags)
-	{
-		FLASHWINFO fw = new FLASHWINFO();
-		fw.cbSize = Convert.ToUInt32(Marshal.SizeOf(typeof(FLASHWINFO)));
-		fw.hwnd = form.Handle;
-		fw.dwFlags = flags;
-		fw.uCount = -1;
-		WindowFlasher.FlashWindowEx(ref fw);
-	}
+        public static void StopFlash(Form form)
+        {
+            try
+            {
+                if (form.InvokeRequired)
+                {
+                    form.BeginInvoke(new Action<Form>(WindowFlasher.StopFlash), new object[] { form });
+                }
+                else
+                {
+                    InternalFlash(form, FlashFlags.FLASHW_STOP);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error("Error trying to stop flashing the window.", ex);
+            }
+        }
 
-	public static void StopFlash(Form form)
-	{
-		object[] objArray;
-		try
-		{
-			if (form.InvokeRequired)
-			{
-				form.BeginInvoke(new Action<Form>(null.WindowFlasher.StopFlash), new object[] { form });
-			}
-			else
-			{
-				WindowFlasher.InternalFlash(form, FlashFlags.FLASHW_STOP);
-			}
-		}
-		catch (Exception ex)
-		{
-			Logger.Log.Error("Error trying to stop flashing the window.", ex);
-		}
-	}
+        private enum FlashFlags
+        {
+            FLASHW_ALL = 3,
+            FLASHW_CAPTION = 1,
+            FLASHW_STOP = 0,
+            FLASHW_TIMER = 4,
+            FLASHW_TIMERNOFG = 12,
+            FLASHW_TRAY = 2
+        }
 
-	private enum FlashFlags
-	{
-		FLASHW_ALL = 3,
-		FLASHW_CAPTION = 1,
-		FLASHW_STOP = 0,
-		FLASHW_TIMER = 4,
-		FLASHW_TIMERNOFG = 12,
-		FLASHW_TRAY = 2
-	}
-
-	private struct FLASHWINFO
-	{
-		public uint cbSize;
-
-		public int dwFlags;
-
-		public int dwTimeout;
-
-		public IntPtr hwnd;
-
-		public uint uCount;
-	}
+        [StructLayout(LayoutKind.Sequential)]
+        private struct FLASHWINFO
+        {
+            public uint cbSize;
+            public IntPtr hwnd;
+            public int dwFlags;
+            public uint uCount;
+            public int dwTimeout;
+        }
+    }
 }
-}
+

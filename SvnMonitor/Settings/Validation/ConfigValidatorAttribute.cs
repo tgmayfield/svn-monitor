@@ -1,19 +1,17 @@
-﻿using System;
-
-namespace SVNMonitor.Settings.Validation
+﻿namespace SVNMonitor.Settings.Validation
 {
-[AttributeUsage(AttributeTargets.Property, AllowMultiple=true)]
-internal class ConfigValidatorAttribute : Attribute
-{
-	public IConfigValidator ConfigValidator
-	{
-		get;
-		private set;
-	}
+    using System;
+    using System.Runtime.CompilerServices;
 
-	public ConfigValidatorAttribute(Type configValidatorType, object[] args)
-	{
-		this.ConfigValidator = (IConfigValidator)Activator.CreateInstance(configValidatorType, args);
-	}
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple=true)]
+    internal class ConfigValidatorAttribute : Attribute
+    {
+        public ConfigValidatorAttribute(Type configValidatorType, params object[] args)
+        {
+            this.ConfigValidator = (IConfigValidator) Activator.CreateInstance(configValidatorType, args);
+        }
+
+        public IConfigValidator ConfigValidator { get; private set; }
+    }
 }
-}
+

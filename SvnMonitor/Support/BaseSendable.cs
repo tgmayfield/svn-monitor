@@ -1,68 +1,53 @@
-﻿using System;
-using SVNMonitor.SharpRegion;
-using SVNMonitor.Logging;
-using SVNMonitor.Web;
-
-namespace SVNMonitor.Support
+﻿namespace SVNMonitor.Support
 {
-public abstract class BaseSendable : ISendable
-{
-	private bool aborted;
+    using SVNMonitor.Logging;
+    using SVNMonitor.SharpRegion;
+    using SVNMonitor.Web;
+    using System;
+    using System.Runtime.CompilerServices;
 
-	public string Email
-	{
-		get;
-		set;
-	}
+    public abstract class BaseSendable : ISendable
+    {
+        private bool aborted;
 
-	public string Name
-	{
-		get;
-		set;
-	}
+        protected BaseSendable()
+        {
+        }
 
-	public string Note
-	{
-		get;
-		set;
-	}
+        protected abstract void SendInternal(SendCallback callback);
+        void ISendable.Abort()
+        {
+            this.aborted = true;
+            if (this.Proxy != null)
+            {
+                Logger.Log.Debug("Aborting SharpRegion's proxy...");
+                this.Proxy.Abort();
+                this.Proxy.Dispose();
+                Logger.Log.Debug("SharpRegion's proxy aborted");
+            }
+        }
 
-	protected svnmonitor_server Proxy
-	{
-		get;
-		private set;
-	}
+        void ISendable.Send(SendCallback callback)
+        {
+            this.Proxy = SharpRegion.GetServer();
+            this.SendInternal(callback);
+        }
 
-	private bool SVNMonitor.Support.ISendable.Aborted
-	{
-		get
-		{
-			return this.aborted;
-		}
-	}
+        public string Email { get; set; }
 
-	protected BaseSendable()
-	{
-	}
+        public string Name { get; set; }
 
-	protected abstract void SendInternal(SendCallback callback);
+        public string Note { get; set; }
 
-	private void SVNMonitor.Support.ISendable.Abort()
-	{
-		this.aborted = true;
-		if (this.Proxy != null)
-		{
-			Logger.Log.Debug("Aborting SharpRegion's proxy...");
-			this.Proxy.Abort();
-			this.Proxy.Dispose();
-			Logger.Log.Debug("SharpRegion's proxy aborted");
-		}
-	}
+        protected svnmonitor_server Proxy { get; private set; }
 
-	private void SVNMonitor.Support.ISendable.Send(SendCallback callback)
-	{
-		this.Proxy = SharpRegion.GetServer();
-		this.SendInternal(callback);
-	}
+        bool ISendable.Aborted
+        {
+            get
+            {
+                return this.aborted;
+            }
+        }
+    }
 }
-}
+

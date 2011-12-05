@@ -1,42 +1,37 @@
-﻿using SVNMonitor.Resources;
-using System.Collections.Generic;
-using System;
-using SVNMonitor.Actions;
-using SVNMonitor.Resources.Text;
-using SVNMonitor.View.Dialogs;
-using System.Windows.Forms;
-
-namespace SVNMonitor.Wizards
+﻿namespace SVNMonitor.Wizards
 {
-[ResourceProvider("WizardCodeReviewByMail")]
-internal class CodeReviewMailerWizard : Wizard
-{
-	public CodeReviewMailerWizard()
-	{
-	}
+    using SVNMonitor.Actions;
+    using SVNMonitor.Extensions;
+    using SVNMonitor.Resources;
+    using SVNMonitor.Resources.Text;
+    using SVNMonitor.View.Dialogs;
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Forms;
 
-	protected override IEnumerable<Action> CreateActions(string baseName)
-	{
-		object[] objArray;
-		MailSenderAction action = new MailSenderAction();
-		action.Subject = Strings.WizardCodeReviewByMailActionSubject_FORMAT.FormatWith(new object[] { baseName });
-		ActionPropertiesDialog actionPropertiesDialog = new ActionPropertiesDialog();
-		actionPropertiesDialog.Action = action;
-		ActionPropertiesDialog dialog = actionPropertiesDialog;
-		DialogResult result = dialog.ShowDialog();
-		if (result == DialogResult.Cancel)
-		{
-			throw new WizardCancelledException();
-		}
-		Action[] actionArray = new Action[1];
-		actionArray[0] = action;
-		return actionArray;
-	}
+    [ResourceProvider("WizardCodeReviewByMail")]
+    internal class CodeReviewMailerWizard : Wizard
+    {
+        protected override IEnumerable<Action> CreateActions(string baseName)
+        {
+            MailSenderAction action = new MailSenderAction {
+                Subject = Strings.WizardCodeReviewByMailActionSubject_FORMAT.FormatWith(new object[] { baseName })
+            };
+            ActionPropertiesDialog <>g__initLocal2 = new ActionPropertiesDialog {
+                Action = action
+            };
+            ActionPropertiesDialog dialog = <>g__initLocal2;
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+            {
+                throw new WizardCancelledException();
+            }
+            return new Action[] { action };
+        }
 
-	protected override string GetWizardName(string baseName)
-	{
-		object[] objArray;
-		return Strings.WizardCodeReviewByMailName_FORMAT.FormatWith(new object[] { baseName });
-	}
+        protected override string GetWizardName(string baseName)
+        {
+            return Strings.WizardCodeReviewByMailName_FORMAT.FormatWith(new object[] { baseName });
+        }
+    }
 }
-}
+

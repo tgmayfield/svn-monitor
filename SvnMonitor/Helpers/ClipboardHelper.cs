@@ -1,36 +1,30 @@
-﻿using System;
-using SVNMonitor.Logging;
-using System.Windows.Forms;
-using SVNMonitor;
-using SVNMonitor.Resources.Text;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-internal class ClipboardHelper
-{
-	public ClipboardHelper()
-	{
-	}
+    using SVNMonitor;
+    using SVNMonitor.Extensions;
+    using SVNMonitor.Logging;
+    using SVNMonitor.Resources.Text;
+    using System;
+    using System.Windows.Forms;
 
-	public static void SetText(string text)
-	{
-		object[] objArray;
-		try
-		{
-			Logger.Log.DebugFormat("Copying '{0}'", text);
-			Clipboard.SetText(text);
-			EventLog.LogInfo(Strings.TextCopiedToClipboard_FORMAT.FormatWith(new object[] { text }), text);
-		}
-		catch (Exception ex)
-		{
-			EventLog.LogError(Strings.ErrorSettingClipboard, null, ex);
-		}
-		if (string.IsNullOrEmpty(text))
-		{
-		}
-		else
-		{
-		}
-	}
+    internal class ClipboardHelper
+    {
+        public static void SetText(string text)
+        {
+            try
+            {
+                Logger.Log.DebugFormat("Copying '{0}'", text);
+                if (!string.IsNullOrEmpty(text))
+                {
+                    Clipboard.SetText(text);
+                    EventLog.LogInfo(Strings.TextCopiedToClipboard_FORMAT.FormatWith(new object[] { text }), text);
+                }
+            }
+            catch (Exception ex)
+            {
+                EventLog.LogError(Strings.ErrorSettingClipboard, null, ex);
+            }
+        }
+    }
 }
-}
+

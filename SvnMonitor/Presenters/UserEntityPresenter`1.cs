@@ -162,7 +162,7 @@ internal class UserEntityPresenter<T>
 		}
 	}
 
-	private enum MoveDirection<T>
+	private enum MoveDirection
 	{
 		Down = 1,
 		Up = -1

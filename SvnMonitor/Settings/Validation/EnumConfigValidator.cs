@@ -1,26 +1,25 @@
-﻿using System;
-
-namespace SVNMonitor.Settings.Validation
+﻿namespace SVNMonitor.Settings.Validation
 {
-internal class EnumConfigValidator : IConfigValidator
-{
-	internal Type EnumType
-	{
-		get;
-		private set;
-	}
+    using System;
+    using System.Runtime.CompilerServices;
+    using System.Runtime.InteropServices;
 
-	public EnumConfigValidator(Type enumType)
-	{
-		this.EnumType = enumType;
-	}
+    internal class EnumConfigValidator : IConfigValidator
+    {
+        public EnumConfigValidator(Type enumType)
+        {
+            this.EnumType = enumType;
+        }
 
-	public object Validate(object value, out bool isValid)
-	{
-		string retValue = (string)value;
-		Enum.Parse(this.EnumType, retValue);
-		isValid = 1;
-		return retValue;
-	}
+        public object Validate(object value, out bool isValid)
+        {
+            string retValue = (string) value;
+            Enum.Parse(this.EnumType, retValue);
+            isValid = true;
+            return retValue;
+        }
+
+        internal Type EnumType { get; private set; }
+    }
 }
-}
+

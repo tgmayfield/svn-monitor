@@ -1,41 +1,34 @@
-﻿using System;
-using System.Runtime.Remoting.Channels.Ipc;
-using System.Runtime.Remoting.Channels;
-using System.Runtime.Remoting;
-
-namespace SVNMonitor.Remoting
+﻿namespace SVNMonitor.Remoting
 {
-public class RemotingClient
-{
-	public RemotingClient()
-	{
-	}
+    using System;
+    using System.Runtime.Remoting;
+    using System.Runtime.Remoting.Channels;
+    using System.Runtime.Remoting.Channels.Ipc;
 
-	public static void Close()
-	{
-		RemoteProxy proxy = RemotingClient.GetRemoteProxy();
-		proxy.ExecuteCommand("close");
-	}
+    public class RemotingClient
+    {
+        public static void Close()
+        {
+            GetRemoteProxy().ExecuteCommand("close");
+        }
 
-	private static RemoteProxy GetRemoteProxy()
-	{
-		IpcChannel channel = new IpcChannel();
-		ChannelServices.RegisterChannel(channel, false);
-		RemotingConfiguration.RegisterWellKnownClientType(typeof(RemoteProxy), "ipc://svnmonitor/proxy");
-		RemoteProxy obj = new RemoteProxy();
-		return obj;
-	}
+        private static RemoteProxy GetRemoteProxy()
+        {
+            IpcChannel channel = new IpcChannel();
+            ChannelServices.RegisterChannel(channel, false);
+            RemotingConfiguration.RegisterWellKnownClientType(typeof(RemoteProxy), "ipc://svnmonitor/proxy");
+            return new RemoteProxy();
+        }
 
-	public static void Show()
-	{
-		RemoteProxy proxy = RemotingClient.GetRemoteProxy();
-		proxy.ExecuteCommand("show");
-	}
+        public static void Show()
+        {
+            GetRemoteProxy().ExecuteCommand("show");
+        }
 
-	public static void ShowOrHide()
-	{
-		RemoteProxy proxy = RemotingClient.GetRemoteProxy();
-		proxy.ExecuteCommand("showorhide");
-	}
+        public static void ShowOrHide()
+        {
+            GetRemoteProxy().ExecuteCommand("showorhide");
+        }
+    }
 }
-}
+

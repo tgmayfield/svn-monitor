@@ -1,42 +1,39 @@
-﻿using System.Drawing.Design;
-using System;
-using System.ComponentModel;
-using System.Windows.Forms.Design;
-using System.Windows.Forms;
-using SVNMonitor.Logging;
-
-namespace SVNMonitor.Design
+﻿namespace SVNMonitor.Design
 {
-public class OptionalFileNameEditor : UITypeEditor
-{
-	public OptionalFileNameEditor()
-	{
-	}
+    using SVNMonitor.Logging;
+    using System;
+    using System.ComponentModel;
+    using System.Drawing.Design;
+    using System.Windows.Forms;
+    using System.Windows.Forms.Design;
 
-	public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
-	{
-		if (provider != null && provider.GetService(typeof(IWindowsFormsEditorService)) != null)
-		{
-			OpenFileDialog openFileDialog = new OpenFileDialog();
-			openFileDialog.CheckFileExists = false;
-			OpenFileDialog dialog = openFileDialog;
-			if (value as string)
-			{
-				dialog.FileName = (string)value;
-			}
-			DialogResult result = dialog.ShowDialog();
-			if (result == DialogResult.OK)
-			{
-				Logger.Log.DebugFormat("User selected file: {0}", dialog.FileName);
-				value = dialog.FileName;
-			}
-		}
-		return value;
-	}
+    public class OptionalFileNameEditor : UITypeEditor
+    {
+        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
+        {
+            if ((provider != null) && (provider.GetService(typeof(IWindowsFormsEditorService)) != null))
+            {
+                OpenFileDialog <>g__initLocal0 = new OpenFileDialog {
+                    CheckFileExists = false
+                };
+                OpenFileDialog dialog = <>g__initLocal0;
+                if (value is string)
+                {
+                    dialog.FileName = (string) value;
+                }
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    Logger.Log.DebugFormat("User selected file: {0}", dialog.FileName);
+                    value = dialog.FileName;
+                }
+            }
+            return value;
+        }
 
-	public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
-	{
-		return 2;
-	}
+        public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
+        {
+            return UITypeEditorEditStyle.Modal;
+        }
+    }
 }
-}
+

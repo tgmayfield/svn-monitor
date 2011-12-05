@@ -1,123 +1,127 @@
-﻿using System.Windows.Forms;
-using SVNMonitor.Resources.Text;
-using System;
-using System.Drawing;
-using SVNMonitor.Entities;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-internal class TrayNotifier
-{
-	private static NotifyIcon notifyIcon;
+    using SVNMonitor.Entities;
+    using SVNMonitor.Resources.Text;
+    using SVNMonitor.View;
+    using System;
+    using System.Drawing;
+    using System.Runtime.CompilerServices;
+    using System.Windows.Forms;
 
-	private static Timer timer;
+    internal class TrayNotifier
+    {
+        private static NotifyIcon notifyIcon;
+        private static Timer timer;
 
-	public TrayNotifier()
-	{
-	}
+        private static ContextMenuStrip CreateContextMenu(ToolStripItem[] menuItems)
+        {
+            ContextMenuStrip menu = new ContextMenuStrip();
+            menu.Items.Add(Strings.TrayCommandHide, null, new EventHandler(TrayNotifier.HideClick));
+            menu.Items.Add(new ToolStripSeparator());
+            if (menuItems != null)
+            {
+                menu.Items.AddRange(menuItems);
+            }
+            return menu;
+        }
 
-	private static ContextMenuStrip CreateContextMenu(ToolStripItem[] menuItems)
-	{
-		ContextMenuStrip menu = new ContextMenuStrip();
-		menu.Items.Add(Strings.TrayCommandHide, null, new EventHandler(null.TrayNotifier.HideClick));
-		menu.Items.Add(new ToolStripSeparator());
-		if (menuItems != null)
-		{
-			menu.Items.AddRange(menuItems);
-		}
-		return menu;
-	}
+        private static void HideClick(object sender, EventArgs e)
+        {
+            if (notifyIcon != null)
+            {
+                notifyIcon.Dispose();
+            }
+        }
 
-	private static void HideClick(object sender, EventArgs e)
-	{
-		if (TrayNotifier.notifyIcon != null)
-		{
-			TrayNotifier.notifyIcon.Dispose();
-		}
-	}
+        public static void Show(TrayNotifierInfo trayNotifierInfo)
+        {
+            if ((trayNotifierInfo != null) && (trayNotifierInfo.TimeOut >= 0))
+            {
+                if (notifyIcon != null)
+                {
+                    notifyIcon.Dispose();
+                }
+                NotifyIcon <>g__initLocal0 = new NotifyIcon {
+                    Text = trayNotifierInfo.Text,
+                    Icon = trayNotifierInfo.Icon,
+                    BalloonTipIcon = trayNotifierInfo.TipIcon,
+                    BalloonTipText = trayNotifierInfo.TipText,
+                    BalloonTipTitle = trayNotifierInfo.TipTitle,
+                    ContextMenuStrip = CreateContextMenu(trayNotifierInfo.MenuItems)
+                };
+                notifyIcon = <>g__initLocal0;
+                EventHandler showFormClick = delegate {
+                    if (trayNotifierInfo.Source != null)
+                    {
+                        MainForm.ShowInstance(trayNotifierInfo.Source);
+                    }
+                    else
+                    {
+                        MainForm.ShowInstance();
+                    }
+                    notifyIcon.Dispose();
+                };
+                notifyIcon.BalloonTipClicked += showFormClick;
+                notifyIcon.DoubleClick += showFormClick;
+                notifyIcon.Click += showFormClick;
+                notifyIcon.Visible = true;
+                if (trayNotifierInfo.ShowBalloonTip)
+                {
+                    notifyIcon.ShowBalloonTip(trayNotifierInfo.TimeOut * 0x3e8);
+                }
+                if (trayNotifierInfo.TimeOut > 0)
+                {
+                    Timer <>g__initLocal1 = new Timer {
+                        Interval = trayNotifierInfo.TimeOut * 0x3e8
+                    };
+                    timer = <>g__initLocal1;
+                    timer.Tick += delegate {
+                        notifyIcon.Dispose();
+                        timer.Stop();
+                    };
+                    timer.Start();
+                }
+            }
+        }
 
-	public static void Show(TrayNotifierInfo trayNotifierInfo)
-	{
-		if (trayNotifierInfo.TimeOut < 0)
-		{
-			return;
-		}
-		if (TrayNotifier.notifyIcon != null)
-		{
-			TrayNotifier.notifyIcon.Dispose();
-		}
-		NotifyIcon notifyIcon = new NotifyIcon();
-		notifyIcon.Text = trayNotifier.trayNotifierInfo.Text;
-		notifyIcon.Icon = trayNotifier.trayNotifierInfo.Icon;
-		notifyIcon.BalloonTipIcon = trayNotifier.trayNotifierInfo.TipIcon;
-		notifyIcon.BalloonTipText = trayNotifier.trayNotifierInfo.TipText;
-		notifyIcon.BalloonTipTitle = trayNotifier.trayNotifierInfo.TipTitle;
-		notifyIcon.ContextMenuStrip = TrayNotifier.CreateContextMenu(trayNotifier.trayNotifierInfo.MenuItems);
-		TrayNotifier.notifyIcon = notifyIcon;
-		EventHandler showFormClick = new EventHandler(trayNotifier.<Show>b__2);
-		TrayNotifier.notifyIcon.BalloonTipClicked += showFormClick;
-		TrayNotifier.notifyIcon.DoubleClick += showFormClick;
-		TrayNotifier.notifyIcon.Click += showFormClick;
-		TrayNotifier.notifyIcon.Visible = true;
-		if (trayNotifier.trayNotifierInfo.ShowBalloonTip)
-		{
-			TrayNotifier.notifyIcon.ShowBalloonTip(trayNotifier.trayNotifierInfo.TimeOut * 1000);
-		}
-		if (trayNotifier.trayNotifierInfo.TimeOut > 0)
-		{
-			Timer timer = new Timer();
-			timer.Interval = trayNotifier.trayNotifierInfo.TimeOut * 1000;
-			TrayNotifier.timer = timer;
-			TrayNotifier.CS$<>9__CachedAnonymousMethodDelegate4.add_Tick(new EventHandler((, ) => {
-				TrayNotifier.notifyIcon.Dispose();
-				TrayNotifier.timer.Stop();
-			}
-			));
-			TrayNotifier.timer.Start();
-		}
-	}
+        public static string TrimLongTipText(string tipText)
+        {
+            if (tipText.Length > 0x40)
+            {
+                tipText = tipText.Substring(0, 0x3b) + "...";
+            }
+            return tipText;
+        }
 
-	public static string TrimLongTipText(string tipText)
-	{
-		if (tipText.Length <= 64)
-		{
-			return tipText;
-		}
-		tipText = string.Concat(tipText.Substring(0, 59), "...");
-		return tipText;
-	}
+        public static string TrimLongTipTextMore(string tipText)
+        {
+            if (tipText.Length > 60)
+            {
+                tipText = tipText.Substring(0, 0x37) + "...";
+            }
+            return tipText;
+        }
 
-	public static string TrimLongTipTextMore(string tipText)
-	{
-		if (tipText.Length <= 60)
-		{
-			return tipText;
-		}
-		tipText = string.Concat(tipText.Substring(0, 55), "...");
-		return tipText;
-	}
+        internal class TrayNotifierInfo
+        {
+            public System.Drawing.Icon Icon { get; set; }
 
-	internal class TrayNotifierInfo
-	{
-		public Icon Icon;
+            public ToolStripMenuItem[] MenuItems { get; set; }
 
-		public ToolStripMenuItem[] MenuItems;
+            public bool ShowBalloonTip { get; set; }
 
-		public bool ShowBalloonTip;
+            public SVNMonitor.Entities.Source Source { get; set; }
 
-		public Source Source;
+            public string Text { get; set; }
 
-		public string Text;
+            public int TimeOut { get; set; }
 
-		public int TimeOut;
+            public ToolTipIcon TipIcon { get; set; }
 
-		public ToolTipIcon TipIcon;
+            public string TipText { get; set; }
 
-		public string TipText;
-
-		public string TipTitle;
-
-		public TrayNotifierInfo();
-	}
+            public string TipTitle { get; set; }
+        }
+    }
 }
-}
+

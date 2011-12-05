@@ -1,17 +1,13 @@
-﻿using System;
-
-namespace SVNMonitor.Settings.DefaultProviders
+﻿namespace SVNMonitor.Settings.DefaultProviders
 {
-internal class DefaultGuidProvider : IDefaultValueProvider
-{
-	public DefaultGuidProvider()
-	{
-	}
+    using System;
 
-	public object GetDefaultValue()
-	{
-		Guid guid = Guid.NewGuid();
-		return guid.ToString();
-	}
+    internal class DefaultGuidProvider : IDefaultValueProvider
+    {
+        public object GetDefaultValue()
+        {
+            return Guid.NewGuid().ToString();
+        }
+    }
 }
-}
+

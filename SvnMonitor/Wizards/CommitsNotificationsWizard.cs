@@ -1,29 +1,24 @@
-﻿using SVNMonitor.Resources;
-using System.Collections.Generic;
-using System;
-using SVNMonitor.Actions;
-using SVNMonitor.Resources.Text;
-
-namespace SVNMonitor.Wizards
+﻿namespace SVNMonitor.Wizards
 {
-[ResourceProvider("WizardCommitsNotifications")]
-internal class CommitsNotificationsWizard : Wizard
-{
-	public CommitsNotificationsWizard()
-	{
-	}
+    using SVNMonitor.Actions;
+    using SVNMonitor.Extensions;
+    using SVNMonitor.Resources;
+    using SVNMonitor.Resources.Text;
+    using System;
+    using System.Collections.Generic;
 
-	protected override IEnumerable<Action> CreateActions(string baseName)
-	{
-		Action[] infoBalloonTipAction = new Action[1];
-		infoBalloonTipAction[0] = new InfoBalloonTipAction();
-		return infoBalloonTipAction;
-	}
+    [ResourceProvider("WizardCommitsNotifications")]
+    internal class CommitsNotificationsWizard : Wizard
+    {
+        protected override IEnumerable<Action> CreateActions(string baseName)
+        {
+            return new Action[] { new InfoBalloonTipAction() };
+        }
 
-	protected override string GetWizardName(string baseName)
-	{
-		object[] objArray;
-		return Strings.WizardCommitsNotificationsName_FORMAT.FormatWith(new object[] { baseName });
-	}
+        protected override string GetWizardName(string baseName)
+        {
+            return Strings.WizardCommitsNotificationsName_FORMAT.FormatWith(new object[] { baseName });
+        }
+    }
 }
-}
+

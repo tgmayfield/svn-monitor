@@ -1,14 +1,13 @@
 ﻿namespace SVNMonitor.Entities
 {
-public enum SVNAction
-{
-	Added
-	,
-	Deleted
-	,
-	Modified
-	,
-	Replaced
+    using System;
 
+    public enum SVNAction
+    {
+        Added,
+        Modified,
+        Deleted,
+        Replaced
+    }
 }
-}
+

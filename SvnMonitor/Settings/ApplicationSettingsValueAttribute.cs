@@ -1,38 +1,27 @@
-﻿using System;
-using SVNMonitor.Settings.DefaultProviders;
-
-namespace SVNMonitor.Settings
+﻿namespace SVNMonitor.Settings
 {
-[AttributeUsage(AttributeTargets.Property)]
-internal class ApplicationSettingsValueAttribute : Attribute
-{
-	public object DefaultValue
-	{
-		get;
-		private set;
-	}
+    using SVNMonitor.Settings.DefaultProviders;
+    using System;
+    using System.Runtime.CompilerServices;
 
-	public string Description
-	{
-		get;
-		set;
-	}
+    [AttributeUsage(AttributeTargets.Property)]
+    internal class ApplicationSettingsValueAttribute : Attribute
+    {
+        public ApplicationSettingsValueAttribute(object defaultValue)
+        {
+            this.DefaultValue = defaultValue;
+        }
 
-	public bool IsCDATA
-	{
-		get;
-		set;
-	}
+        public ApplicationSettingsValueAttribute(Type defaultValueProvider)
+        {
+            this.DefaultValue = ((IDefaultValueProvider) Activator.CreateInstance(defaultValueProvider)).GetDefaultValue();
+        }
 
-	public ApplicationSettingsValueAttribute(Type defaultValueProvider)
-	{
-		IDefaultValueProvider provider = (IDefaultValueProvider)Activator.CreateInstance(defaultValueProvider);
-		this.DefaultValue = provider.GetDefaultValue();
-	}
+        public object DefaultValue { get; private set; }
 
-	public ApplicationSettingsValueAttribute(object defaultValue)
-	{
-		this.DefaultValue = defaultValue;
-	}
+        public string Description { get; set; }
+
+        public bool IsCDATA { get; set; }
+    }
 }
-}
+

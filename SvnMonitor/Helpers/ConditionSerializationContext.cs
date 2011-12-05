@@ -1,67 +1,66 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Collections.ObjectModel;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-[Serializable]
-internal class ConditionSerializationContext
-{
-	private readonly List<ColumnInfo> columnKeys;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Diagnostics;
 
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	private string conditionXml;
+    [Serializable]
+    internal class ConditionSerializationContext
+    {
+        private readonly List<ColumnInfo> columnKeys = new List<ColumnInfo>();
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string conditionXml;
+        private int currentColumnIndex;
 
-	private int currentColumnIndex;
+        public ConditionSerializationContext(string conditionXml)
+        {
+            this.conditionXml = conditionXml;
+        }
 
-	public ReadOnlyCollection<ColumnInfo> ColumnKeys
-	{
-		get
-		{
-			return this.columnKeys.AsReadOnly();
-		}
-	}
+        public void AddColumnKey(ColumnInfo key)
+        {
+            this.columnKeys.Add(key);
+        }
 
-	public string ConditionXml
-	{
-		get
-		{
-			return this.conditionXml;
-		}
-	}
+        public ColumnInfo NextColumnKey()
+        {
+            ColumnInfo key = null;
+            if (this.currentColumnIndex < this.columnKeys.Count)
+            {
+                key = this.columnKeys[this.currentColumnIndex];
+                this.currentColumnIndex++;
+            }
+            return key;
+        }
 
-	public ConditionSerializationContext(string conditionXml)
-	{
-		this.columnKeys = new List<ColumnInfo>();
-		base();
-		this.conditionXml = conditionXml;
-	}
+        public void Reset()
+        {
+            this.currentColumnIndex = 0;
+        }
 
-	public void AddColumnKey(ColumnInfo key)
-	{
-		this.columnKeys.Add(key);
-	}
+        public override string ToString()
+        {
+            return this.conditionXml;
+        }
 
-	public ColumnInfo NextColumnKey()
-	{
-		ColumnInfo key = null;
-		if (this.currentColumnIndex < this.columnKeys.Count)
-		{
-			key = this.columnKeys[this.currentColumnIndex];
-			this.currentColumnIndex = this.currentColumnIndex + 1;
-		}
-		return key;
-	}
+        public ReadOnlyCollection<ColumnInfo> ColumnKeys
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.columnKeys.AsReadOnly();
+            }
+        }
 
-	public void Reset()
-	{
-		this.currentColumnIndex = 0;
-	}
-
-	public override string ToString()
-	{
-		return this.conditionXml;
-	}
+        public string ConditionXml
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.conditionXml;
+            }
+        }
+    }
 }
-}
+

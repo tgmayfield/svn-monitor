@@ -1,12 +1,14 @@
-﻿using System;
+﻿namespace SVNMonitor.Extensions
+{
+    using System;
+    using System.Runtime.CompilerServices;
 
-namespace SVNMonitor.Extensions
-{
-public static class Misc
-{
-	public static string FormatWith(this string format, object[] args)
-	{
-		return string.Format(format, args);
-	}
+    public static class Misc
+    {
+        public static string FormatWith(this string format, params object[] args)
+        {
+            return string.Format(format, args);
+        }
+    }
 }
-}
+

@@ -1,50 +1,45 @@
-﻿using System.Windows.Forms;
-using Janus.Windows.GridEX;
-using System;
-
-namespace SVNMonitor.View.Panels
+﻿namespace SVNMonitor.View.Panels
 {
-internal class GridPanel : UserControl
-{
-	protected GridEX Grid
-	{
-		get
-		{
-			return null;
-		}
-	}
+    using Janus.Windows.GridEX;
+    using System;
+    using System.Windows.Forms;
 
-	protected string LayoutSettings
-	{
-		get
-		{
-			return string.Empty;
-		}
-	}
+    internal class GridPanel : UserControl
+    {
+        public virtual string GetGridLayout()
+        {
+            return this.Grid.GetLayout().GetXmlString();
+        }
 
-	public GridPanel()
-	{
-	}
+        public void SetGridLayout()
+        {
+            this.SetGridLayout(this.LayoutSettings);
+        }
 
-	public virtual string GetGridLayout()
-	{
-		GridEXLayout layout = this.Grid.GetLayout();
-		return layout.GetXmlString();
-	}
+        public virtual void SetGridLayout(string layoutString)
+        {
+            if (!string.IsNullOrEmpty(layoutString))
+            {
+                GridEXLayout layout = GridEXLayout.FromXMLString(layoutString);
+                this.Grid.LoadLayout(layout);
+            }
+        }
 
-	public void SetGridLayout()
-	{
-		this.SetGridLayout(this.LayoutSettings);
-	}
+        protected virtual Janus.Windows.GridEX.GridEX Grid
+        {
+            get
+            {
+                return null;
+            }
+        }
 
-	public virtual void SetGridLayout(string layoutString)
-	{
-		if (string.IsNullOrEmpty(layoutString))
-		{
-			return;
-		}
-		GridEXLayout layout = GridEXLayout.FromXMLString(layoutString);
-		this.Grid.LoadLayout(layout);
-	}
+        protected virtual string LayoutSettings
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
+    }
 }
-}
+

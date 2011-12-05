@@ -1,28 +1,26 @@
-﻿using System;
-using Janus.Windows.GridEX;
-
-namespace SVNMonitor.Settings.Validation
+﻿namespace SVNMonitor.Settings.Validation
 {
-internal class GridLayoutConfigValidator : IConfigValidator
-{
-	public GridLayoutConfigValidator()
-	{
-	}
+    using Janus.Windows.GridEX;
+    using System;
+    using System.Runtime.InteropServices;
 
-	public object Validate(object value, out bool isValid)
-	{
-		string retValue = string.Empty;
-		isValid = 0;
-		try
-		{
-			GridEXLayout.FromXMLString((string)value);
-			retValue = (string)value;
-			isValid = 1;
-		}
-		catch
-		{
-		}
-		return retValue;
-	}
+    internal class GridLayoutConfigValidator : IConfigValidator
+    {
+        public object Validate(object value, out bool isValid)
+        {
+            string retValue = string.Empty;
+            isValid = false;
+            try
+            {
+                GridEXLayout.FromXMLString((string) value);
+                retValue = (string) value;
+                isValid = true;
+            }
+            catch
+            {
+            }
+            return retValue;
+        }
+    }
 }
-}
+

@@ -1,19 +1,17 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-public class KeyPressedEventArgs : EventArgs
-{
-	public KeyInfo KeyInfo
-	{
-		get;
-		private set;
-	}
+    using System;
+    using System.Runtime.CompilerServices;
+    using System.Windows.Forms;
 
-	internal KeyPressedEventArgs(ModifierKey modifier, Keys key)
-	{
-		this.KeyInfo = KeyInfo.GetKeyInfo(modifier, key);
-	}
+    public class KeyPressedEventArgs : EventArgs
+    {
+        internal KeyPressedEventArgs(ModifierKey modifier, Keys key)
+        {
+            this.KeyInfo = SVNMonitor.Helpers.KeyInfo.GetKeyInfo(modifier, key);
+        }
+
+        public SVNMonitor.Helpers.KeyInfo KeyInfo { get; private set; }
+    }
 }
-}
+

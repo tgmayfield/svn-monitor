@@ -1,15 +1,8 @@
-﻿using System;
-
-namespace SVNMonitor.Support
+﻿namespace SVNMonitor.Support
 {
-public sealed class SendCallback : MulticastDelegate
-{
-	public SendCallback(object object, IntPtr method);
+    using System;
+    using System.Runtime.CompilerServices;
 
-	public virtual IAsyncResult BeginInvoke(SendableResult result, AsyncCallback callback, object object);
-
-	public virtual void EndInvoke(IAsyncResult result);
-
-	public virtual void Invoke(SendableResult result);
+    public delegate void SendCallback(SendableResult result);
 }
-}
+

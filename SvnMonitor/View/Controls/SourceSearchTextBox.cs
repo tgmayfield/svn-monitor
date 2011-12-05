@@ -1,9 +1,7 @@
 ﻿namespace SVNMonitor.View.Controls
 {
-public class SourceSearchTextBox : SearchTextBox<Source>
-{
-	public SourceSearchTextBox()
-	{
-	}
+    public class SourceSearchTextBox : SearchTextBox<Source>
+    {
+    }
 }
-}
+

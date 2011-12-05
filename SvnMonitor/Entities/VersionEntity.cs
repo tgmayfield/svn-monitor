@@ -1,52 +1,55 @@
-﻿using System;
-using System.Diagnostics;
-using System.Xml.Serialization;
-using SVNMonitor.Helpers;
-
-namespace SVNMonitor.Entities
+﻿namespace SVNMonitor.Entities
 {
-[Serializable]
-public abstract class VersionEntity
-{
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	private Version version;
+    using SVNMonitor.Helpers;
+    using System;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
 
-	[XmlIgnore]
-	public Version Version
-	{
-		get
-		{
-			return this.version;
-		}
-		private set
-		{
-			this.version = value;
-		}
-	}
+    [Serializable]
+    public abstract class VersionEntity
+    {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private System.Version version;
 
-	protected VersionEntity()
-	{
-		this.SetCurrentVersion();
-	}
+        protected VersionEntity()
+        {
+            this.SetCurrentVersion();
+        }
 
-	protected virtual void AfterUpgrade()
-	{
-	}
+        protected virtual void AfterUpgrade()
+        {
+        }
 
-	protected virtual void BeforeUpgrade()
-	{
-	}
+        protected virtual void BeforeUpgrade()
+        {
+        }
 
-	private void SetCurrentVersion()
-	{
-		this.Version = FileSystemHelper.CurrentVersion;
-	}
+        private void SetCurrentVersion()
+        {
+            this.Version = FileSystemHelper.CurrentVersion;
+        }
 
-	internal void Upgrade()
-	{
-		this.BeforeUpgrade();
-		this.SetCurrentVersion();
-		this.AfterUpgrade();
-	}
+        internal void Upgrade()
+        {
+            this.BeforeUpgrade();
+            this.SetCurrentVersion();
+            this.AfterUpgrade();
+        }
+
+        [XmlIgnore]
+        public System.Version Version
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.version;
+            }
+            [DebuggerNonUserCode]
+            private set
+            {
+                this.version = value;
+            }
+        }
+    }
 }
-}
+

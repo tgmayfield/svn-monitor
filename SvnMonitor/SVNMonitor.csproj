@@ -71,7 +71,6 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="_Module_.cs" />
     <Compile Include="Actions\Action.cs" />
     <Compile Include="Actions\BalloonTipAction.cs" />
     <Compile Include="Actions\TextAppenderAction.cs" />
@@ -90,7 +89,6 @@
     <Compile Include="Extensions\Func`3.cs" />
     <Compile Include="Extensions\Func`4.cs" />
     <Compile Include="Extensions\Func`5.cs" />
-    <Compile Include="System.Runtime.CompilerServices\ExtensionAttribute.cs" />
     <Compile Include="Extensions\Misc.cs" />
     <Compile Include="Resources\UI\GridEX.cs" />
     <Compile Include="Settings\ApplicationSettings.cs" />
@@ -220,7 +218,9 @@
     <Compile Include="View\Controls\EventLogGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Controls\HtmlViewer.cs" />
+    <Compile Include="View\Controls\HtmlViewer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View\Controls\KeyboardEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -323,7 +323,9 @@
     <Compile Include="View\Interfaces\ISelectableView`1.cs" />
     <Compile Include="View\Interfaces\IUserEntityView`1.cs" />
     <Compile Include="View\Interfaces\ILogEntriesView.cs" />
-    <Compile Include="View\MainForm.cs" />
+    <Compile Include="View\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\MainNotifier.cs" />
     <Compile Include="View\Panels\ActionsPanel.cs">
       <SubType>UserControl</SubType>
@@ -381,7 +383,6 @@
     <Compile Include="Wizards\RepositoryMirrorWizard.cs" />
     <Compile Include="Wizards\SoundCommitsNotificationsWizard.cs" />
     <Compile Include="Wizards\WizardCancelledException.cs" />
-    <Compile Include="__f__AnonymousType0`2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

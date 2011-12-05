@@ -1,12 +1,10 @@
-﻿using System;
+﻿namespace SVNMonitor.Wizards
+{
+    using System;
 
-namespace SVNMonitor.Wizards
-{
-[Serializable]
-internal class WizardCancelledException : Exception
-{
-	public WizardCancelledException()
-	{
-	}
+    [Serializable]
+    internal class WizardCancelledException : Exception
+    {
+    }
 }
-}
+

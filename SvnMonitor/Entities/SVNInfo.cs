@@ -1,101 +1,66 @@
-﻿using System;
-using SVNMonitor.SVN;
-using SVNMonitor.Helpers;
-using SVNMonitor.Resources.Text;
-using System.Web;
-using SVNMonitor.Logging;
-
-namespace SVNMonitor.Entities
+﻿namespace SVNMonitor.Entities
 {
-[Serializable]
-public class SVNInfo
-{
-	public string LastChangedAuthor
-	{
-		get;
-		set;
-	}
+    using SVNMonitor.Extensions;
+    using SVNMonitor.Helpers;
+    using SVNMonitor.Logging;
+    using SVNMonitor.Resources.Text;
+    using SVNMonitor.SVN;
+    using System;
+    using System.Runtime.CompilerServices;
+    using System.Web;
 
-	public DateTime LastChangedDate
-	{
-		get;
-		set;
-	}
+    [Serializable]
+    public class SVNInfo
+    {
+        internal static SVNInfo Create(SVNMonitor.Entities.Source source)
+        {
+            SVNInfo info = null;
+            try
+            {
+                info = SVNFactory.GetInfo(source);
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.Append(Strings.ErrorGettingInfoOfSource_FORMAT.FormatWith(new object[] { source.Name }), source, ex);
+            }
+            return info;
+        }
 
-	public string Path
-	{
-		get;
-		set;
-	}
+        public override string ToString()
+        {
+            return HttpUtility.UrlDecode(string.Format("Path: {0}{1}URL: {2}{1}Root: {3}", new object[] { this.Path, Environment.NewLine, this.URL, this.RepositoryRoot }));
+        }
 
-	public string RepositoryRoot
-	{
-		get;
-		set;
-	}
+        internal void Update()
+        {
+            if (this.Source != null)
+            {
+                Logger.Log.DebugFormat("svnFactory.GetInfo(source={0})", this.Source);
+                SVNInfo newInfo = SVNFactory.GetInfo(this.Source);
+                if (newInfo != null)
+                {
+                    this.URL = newInfo.URL;
+                    this.RepositoryRoot = newInfo.RepositoryRoot;
+                    this.Revision = newInfo.Revision;
+                    this.LastChangedAuthor = newInfo.LastChangedAuthor;
+                    this.LastChangedDate = newInfo.LastChangedDate;
+                }
+            }
+        }
 
-	public long Revision
-	{
-		get;
-		set;
-	}
+        public string LastChangedAuthor { get; set; }
 
-	public Source Source
-	{
-		get;
-		set;
-	}
+        public DateTime LastChangedDate { get; set; }
 
-	public string URL
-	{
-		get;
-		set;
-	}
+        public string Path { get; set; }
 
-	public SVNInfo()
-	{
-	}
+        public string RepositoryRoot { get; set; }
 
-	internal static SVNInfo Create(Source source)
-	{
-		object[] objArray;
-		SVNInfo info = null;
-		try
-		{
-			return SVNFactory.GetInfo(source);
-		}
-		catch (Exception ex)
-		{
-			ErrorHandler.Append(Strings.ErrorGettingInfoOfSource_FORMAT.FormatWith(new object[] { source.Name }), source, ex);
-		}
-		return info;
-	}
+        public long Revision { get; set; }
 
-	public override string ToString()
-	{
-		object[] objArray;
-		string str = string.Format("Path: {0}{1}URL: {2}{1}Root: {3}", new object[] { this.Path, Environment.NewLine, this.URL, this.RepositoryRoot });
-		string decoded = HttpUtility.UrlDecode(str);
-		return decoded;
-	}
+        public SVNMonitor.Entities.Source Source { get; set; }
 
-	internal void Update()
-	{
-		if (this.Source == null)
-		{
-			return;
-		}
-		Logger.Log.DebugFormat("svnFactory.GetInfo(source={0})", this.Source);
-		SVNInfo newInfo = SVNFactory.GetInfo(this.Source);
-		if (newInfo == null)
-		{
-			return;
-		}
-		this.URL = newInfo.URL;
-		this.RepositoryRoot = newInfo.RepositoryRoot;
-		this.Revision = newInfo.Revision;
-		this.LastChangedAuthor = newInfo.LastChangedAuthor;
-		this.LastChangedDate = newInfo.LastChangedDate;
-	}
+        public string URL { get; set; }
+    }
 }
-}
+

@@ -1,1159 +1,1034 @@
-﻿using System.Diagnostics;
-using System.CodeDom.Compiler;
-using System.Runtime.CompilerServices;
-using System.Globalization;
-using System.Resources;
-using System.Drawing;
-using System;
-using System.ComponentModel;
-
-namespace SVNMonitor.Resources
+﻿namespace SVNMonitor.Resources
 {
-[DebuggerNonUserCode]
-[GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
-[CompilerGenerated]
-internal class Images
-{
-	private static CultureInfo resourceCulture;
-
-	private static ResourceManager resourceMan;
-
-	internal static Bitmap animation_1_1
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("animation_1_1", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap animation_8_1
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("animation_8_1", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap arrow_down_blue
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("arrow_down_blue", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap arrow_down_green
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("arrow_down_green", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap arrow_down_green_disabled
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("arrow_down_green_disabled", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap arrow_right_blue
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("arrow_right_blue", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap arrow_up_blue
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("arrow_up_blue", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap arrow_up_blue_disabled
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("arrow_up_blue_disabled", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap background_01
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("background_01", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap branch_view
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("branch_view", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap brush3
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("brush3", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap bug_red
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("bug_red", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap clear_error
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("clear_error", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap client_network
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("client_network", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap copy
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("copy", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	[EditorBrowsable(EditorBrowsableState.Advanced)]
-	internal static CultureInfo Culture
-	{
-		get
-		{
-			return Images.resourceCulture;
-		}
-		set
-		{
-			Images.resourceCulture = value;
-		}
-	}
-
-	internal static Bitmap data
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("data", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap data_all_refresh
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("data_all_refresh", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap data_copy
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("data_copy", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap data_into
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("data_into", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap data_new
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("data_new", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap data_refresh
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("data_refresh", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap data_view
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("data_view", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap data_warning
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("data_warning", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap delete2
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("delete2", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap disk_blue
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("disk_blue", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap document_gear
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("document_gear", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap document_plain
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("document_plain", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap documents
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("documents", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap earth_find
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("earth_find", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap earth2
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("earth2", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap edit
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("edit", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap elements1
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("elements1", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap elements1_unchecked
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("elements1_unchecked", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap error
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("error", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap export1
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("export1", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap find
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("find", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap find_again
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("find_again", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap folder
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("folder", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap folders
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("folders", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap funnel
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("funnel", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap funnel_new
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("funnel_new", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap gear
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("gear", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap gear_information
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("gear_information", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap gear_new
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("gear_new", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap heart
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("heart", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap heart_broken
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("heart_broken", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap information
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("information", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap KeyboardShortcutCheckModifications_Image
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("KeyboardShortcutCheckModifications_Image", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap KeyboardShortcutCheckSources_Image
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("KeyboardShortcutCheckSources_Image", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap KeyboardShortcutShowMainWindow_Image
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("KeyboardShortcutShowMainWindow_Image", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap KeyboardShortcutUpdateAllAvailable_Image
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("KeyboardShortcutUpdateAllAvailable_Image", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap lightbulb_on
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("lightbulb_on", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap Logo_01
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("Logo_01", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap Logo_02
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("Logo_02", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap loudspeaker
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("loudspeaker", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap media_pause
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("media_pause", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap media_play_green
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("media_play_green", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap monitor
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("monitor", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap monitor_author
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("monitor_author", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap monitor_file
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("monitor_file", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap monitor_source
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("monitor_source", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap navigate_down2
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("navigate_down2", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap navigate_down2_unchecked
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("navigate_down2_unchecked", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap note_edit
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("note_edit", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap notepad
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("notepad", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap pin_green
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("pin_green", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap plug
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("plug", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap preferences
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("preferences", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap recommend_down
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("recommend_down", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap recommend_up
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("recommend_up", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap refresh
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("refresh", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap repo
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("repo", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap repo_disabled
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("repo_disabled", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap repo_error
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("repo_error", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap repo_updating
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("repo_updating", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	[EditorBrowsable(EditorBrowsableState.Advanced)]
-	internal static ResourceManager ResourceManager
-	{
-		get
-		{
-			if (object.ReferenceEquals(Images.resourceMan, null))
-			{
-				ResourceManager temp = new ResourceManager("SVNMonitor.Resources.Images", typeof(Images).Assembly);
-				Images.resourceMan = temp;
-			}
-			return Images.resourceMan;
-		}
-	}
-
-	internal static Bitmap satellite_dish
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("satellite_dish", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap satellite_dish_32
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("satellite_dish_32", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap satellite_dish_32_disabled
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("satellite_dish_32_disabled", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap satellite_dish_new
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("satellite_dish_new", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap scroll
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("scroll", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap selection_delete
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("selection_delete", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap server
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("server", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap server_error
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("server_error", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap star_blue
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("star_blue", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap star_green
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("star_green", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap star_green_warning
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("star_green_warning", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap star_grey
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("star_grey", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap star_yellow
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("star_yellow", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap star_yellow_32
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("star_yellow_32", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap star_yellow_48
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("star_yellow_48", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap star_yellow_warning
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("star_yellow_warning", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_checkout
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_checkout", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_commit
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_commit", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_commit_32
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_commit_32", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_commit_48
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_commit_48", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_modifications
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_modifications", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_modifications_available
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_modifications_available", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_rollback
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_rollback", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_update
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_update", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_update_32
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_update_32", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_update_48
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_update_48", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_update_all
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_update_all", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_update_all_unread
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_update_all_unread", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap svn_update_available
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("svn_update_available", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap SVNMonitor_04
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("SVNMonitor_04", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap undo
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("undo", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap unknown
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("unknown", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap unknown_disabled
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("unknown_disabled", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap unversioned
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("unversioned", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap unversioned_disabled
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("unversioned_disabled", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap user1_message
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("user1_message", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap view
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("view", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap warning
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("warning", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap warning_disabled
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("warning_disabled", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap wc
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("wc", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap wc_disabled
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("wc_disabled", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap wc_downdate
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("wc_downdate", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap wc_downdate_modified
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("wc_downdate_modified", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap wc_error
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("wc_error", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap wc_modified
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("wc_modified", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap wc_updating
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("wc_updating", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap window
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("window", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal static Bitmap windows
-	{
-		get
-		{
-			object obj = Images.ResourceManager.GetObject("windows", Images.resourceCulture);
-			return (Bitmap)obj;
-		}
-	}
-
-	internal Images()
-	{
-	}
+    using System;
+    using System.CodeDom.Compiler;
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Drawing;
+    using System.Globalization;
+    using System.Resources;
+    using System.Runtime.CompilerServices;
+
+    [DebuggerNonUserCode, GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0"), CompilerGenerated]
+    internal class Images
+    {
+        private static CultureInfo resourceCulture;
+        private static System.Resources.ResourceManager resourceMan;
+
+        internal Images()
+        {
+        }
+
+        internal static Bitmap animation_1_1
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("animation_1_1", resourceCulture);
+            }
+        }
+
+        internal static Bitmap animation_8_1
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("animation_8_1", resourceCulture);
+            }
+        }
+
+        internal static Bitmap arrow_down_blue
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("arrow_down_blue", resourceCulture);
+            }
+        }
+
+        internal static Bitmap arrow_down_green
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("arrow_down_green", resourceCulture);
+            }
+        }
+
+        internal static Bitmap arrow_down_green_disabled
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("arrow_down_green_disabled", resourceCulture);
+            }
+        }
+
+        internal static Bitmap arrow_right_blue
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("arrow_right_blue", resourceCulture);
+            }
+        }
+
+        internal static Bitmap arrow_up_blue
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("arrow_up_blue", resourceCulture);
+            }
+        }
+
+        internal static Bitmap arrow_up_blue_disabled
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("arrow_up_blue_disabled", resourceCulture);
+            }
+        }
+
+        internal static Bitmap background_01
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("background_01", resourceCulture);
+            }
+        }
+
+        internal static Bitmap branch_view
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("branch_view", resourceCulture);
+            }
+        }
+
+        internal static Bitmap brush3
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("brush3", resourceCulture);
+            }
+        }
+
+        internal static Bitmap bug_red
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("bug_red", resourceCulture);
+            }
+        }
+
+        internal static Bitmap clear_error
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("clear_error", resourceCulture);
+            }
+        }
+
+        internal static Bitmap client_network
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("client_network", resourceCulture);
+            }
+        }
+
+        internal static Bitmap copy
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("copy", resourceCulture);
+            }
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        internal static CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+
+        internal static Bitmap data
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("data", resourceCulture);
+            }
+        }
+
+        internal static Bitmap data_all_refresh
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("data_all_refresh", resourceCulture);
+            }
+        }
+
+        internal static Bitmap data_copy
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("data_copy", resourceCulture);
+            }
+        }
+
+        internal static Bitmap data_into
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("data_into", resourceCulture);
+            }
+        }
+
+        internal static Bitmap data_new
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("data_new", resourceCulture);
+            }
+        }
+
+        internal static Bitmap data_refresh
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("data_refresh", resourceCulture);
+            }
+        }
+
+        internal static Bitmap data_view
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("data_view", resourceCulture);
+            }
+        }
+
+        internal static Bitmap data_warning
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("data_warning", resourceCulture);
+            }
+        }
+
+        internal static Bitmap delete2
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("delete2", resourceCulture);
+            }
+        }
+
+        internal static Bitmap disk_blue
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("disk_blue", resourceCulture);
+            }
+        }
+
+        internal static Bitmap document_gear
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("document_gear", resourceCulture);
+            }
+        }
+
+        internal static Bitmap document_plain
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("document_plain", resourceCulture);
+            }
+        }
+
+        internal static Bitmap documents
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("documents", resourceCulture);
+            }
+        }
+
+        internal static Bitmap earth_find
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("earth_find", resourceCulture);
+            }
+        }
+
+        internal static Bitmap earth2
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("earth2", resourceCulture);
+            }
+        }
+
+        internal static Bitmap edit
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("edit", resourceCulture);
+            }
+        }
+
+        internal static Bitmap elements1
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("elements1", resourceCulture);
+            }
+        }
+
+        internal static Bitmap elements1_unchecked
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("elements1_unchecked", resourceCulture);
+            }
+        }
+
+        internal static Bitmap error
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("error", resourceCulture);
+            }
+        }
+
+        internal static Bitmap export1
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("export1", resourceCulture);
+            }
+        }
+
+        internal static Bitmap find
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("find", resourceCulture);
+            }
+        }
+
+        internal static Bitmap find_again
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("find_again", resourceCulture);
+            }
+        }
+
+        internal static Bitmap folder
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("folder", resourceCulture);
+            }
+        }
+
+        internal static Bitmap folders
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("folders", resourceCulture);
+            }
+        }
+
+        internal static Bitmap funnel
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("funnel", resourceCulture);
+            }
+        }
+
+        internal static Bitmap funnel_new
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("funnel_new", resourceCulture);
+            }
+        }
+
+        internal static Bitmap gear
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("gear", resourceCulture);
+            }
+        }
+
+        internal static Bitmap gear_information
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("gear_information", resourceCulture);
+            }
+        }
+
+        internal static Bitmap gear_new
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("gear_new", resourceCulture);
+            }
+        }
+
+        internal static Bitmap heart
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("heart", resourceCulture);
+            }
+        }
+
+        internal static Bitmap heart_broken
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("heart_broken", resourceCulture);
+            }
+        }
+
+        internal static Bitmap information
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("information", resourceCulture);
+            }
+        }
+
+        internal static Bitmap KeyboardShortcutCheckModifications_Image
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("KeyboardShortcutCheckModifications_Image", resourceCulture);
+            }
+        }
+
+        internal static Bitmap KeyboardShortcutCheckSources_Image
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("KeyboardShortcutCheckSources_Image", resourceCulture);
+            }
+        }
+
+        internal static Bitmap KeyboardShortcutShowMainWindow_Image
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("KeyboardShortcutShowMainWindow_Image", resourceCulture);
+            }
+        }
+
+        internal static Bitmap KeyboardShortcutUpdateAllAvailable_Image
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("KeyboardShortcutUpdateAllAvailable_Image", resourceCulture);
+            }
+        }
+
+        internal static Bitmap lightbulb_on
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("lightbulb_on", resourceCulture);
+            }
+        }
+
+        internal static Bitmap Logo_01
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("Logo_01", resourceCulture);
+            }
+        }
+
+        internal static Bitmap Logo_02
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("Logo_02", resourceCulture);
+            }
+        }
+
+        internal static Bitmap loudspeaker
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("loudspeaker", resourceCulture);
+            }
+        }
+
+        internal static Bitmap media_pause
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("media_pause", resourceCulture);
+            }
+        }
+
+        internal static Bitmap media_play_green
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("media_play_green", resourceCulture);
+            }
+        }
+
+        internal static Bitmap monitor
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("monitor", resourceCulture);
+            }
+        }
+
+        internal static Bitmap monitor_author
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("monitor_author", resourceCulture);
+            }
+        }
+
+        internal static Bitmap monitor_file
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("monitor_file", resourceCulture);
+            }
+        }
+
+        internal static Bitmap monitor_source
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("monitor_source", resourceCulture);
+            }
+        }
+
+        internal static Bitmap navigate_down2
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("navigate_down2", resourceCulture);
+            }
+        }
+
+        internal static Bitmap navigate_down2_unchecked
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("navigate_down2_unchecked", resourceCulture);
+            }
+        }
+
+        internal static Bitmap note_edit
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("note_edit", resourceCulture);
+            }
+        }
+
+        internal static Bitmap notepad
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("notepad", resourceCulture);
+            }
+        }
+
+        internal static Bitmap pin_green
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("pin_green", resourceCulture);
+            }
+        }
+
+        internal static Bitmap plug
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("plug", resourceCulture);
+            }
+        }
+
+        internal static Bitmap preferences
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("preferences", resourceCulture);
+            }
+        }
+
+        internal static Bitmap recommend_down
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("recommend_down", resourceCulture);
+            }
+        }
+
+        internal static Bitmap recommend_up
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("recommend_up", resourceCulture);
+            }
+        }
+
+        internal static Bitmap refresh
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("refresh", resourceCulture);
+            }
+        }
+
+        internal static Bitmap repo
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("repo", resourceCulture);
+            }
+        }
+
+        internal static Bitmap repo_disabled
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("repo_disabled", resourceCulture);
+            }
+        }
+
+        internal static Bitmap repo_error
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("repo_error", resourceCulture);
+            }
+        }
+
+        internal static Bitmap repo_updating
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("repo_updating", resourceCulture);
+            }
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        internal static System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("SVNMonitor.Resources.Images", typeof(Images).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        internal static Bitmap satellite_dish
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("satellite_dish", resourceCulture);
+            }
+        }
+
+        internal static Bitmap satellite_dish_32
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("satellite_dish_32", resourceCulture);
+            }
+        }
+
+        internal static Bitmap satellite_dish_32_disabled
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("satellite_dish_32_disabled", resourceCulture);
+            }
+        }
+
+        internal static Bitmap satellite_dish_new
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("satellite_dish_new", resourceCulture);
+            }
+        }
+
+        internal static Bitmap scroll
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("scroll", resourceCulture);
+            }
+        }
+
+        internal static Bitmap selection_delete
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("selection_delete", resourceCulture);
+            }
+        }
+
+        internal static Bitmap server
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("server", resourceCulture);
+            }
+        }
+
+        internal static Bitmap server_error
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("server_error", resourceCulture);
+            }
+        }
+
+        internal static Bitmap star_blue
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("star_blue", resourceCulture);
+            }
+        }
+
+        internal static Bitmap star_green
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("star_green", resourceCulture);
+            }
+        }
+
+        internal static Bitmap star_green_warning
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("star_green_warning", resourceCulture);
+            }
+        }
+
+        internal static Bitmap star_grey
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("star_grey", resourceCulture);
+            }
+        }
+
+        internal static Bitmap star_yellow
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("star_yellow", resourceCulture);
+            }
+        }
+
+        internal static Bitmap star_yellow_32
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("star_yellow_32", resourceCulture);
+            }
+        }
+
+        internal static Bitmap star_yellow_48
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("star_yellow_48", resourceCulture);
+            }
+        }
+
+        internal static Bitmap star_yellow_warning
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("star_yellow_warning", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_checkout
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_checkout", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_commit
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_commit", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_commit_32
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_commit_32", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_commit_48
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_commit_48", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_modifications
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_modifications", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_modifications_available
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_modifications_available", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_rollback
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_rollback", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_update
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_update", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_update_32
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_update_32", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_update_48
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_update_48", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_update_all
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_update_all", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_update_all_unread
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_update_all_unread", resourceCulture);
+            }
+        }
+
+        internal static Bitmap svn_update_available
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("svn_update_available", resourceCulture);
+            }
+        }
+
+        internal static Bitmap SVNMonitor_04
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("SVNMonitor_04", resourceCulture);
+            }
+        }
+
+        internal static Bitmap undo
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("undo", resourceCulture);
+            }
+        }
+
+        internal static Bitmap unknown
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("unknown", resourceCulture);
+            }
+        }
+
+        internal static Bitmap unknown_disabled
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("unknown_disabled", resourceCulture);
+            }
+        }
+
+        internal static Bitmap unversioned
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("unversioned", resourceCulture);
+            }
+        }
+
+        internal static Bitmap unversioned_disabled
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("unversioned_disabled", resourceCulture);
+            }
+        }
+
+        internal static Bitmap user1_message
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("user1_message", resourceCulture);
+            }
+        }
+
+        internal static Bitmap view
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("view", resourceCulture);
+            }
+        }
+
+        internal static Bitmap warning
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("warning", resourceCulture);
+            }
+        }
+
+        internal static Bitmap warning_disabled
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("warning_disabled", resourceCulture);
+            }
+        }
+
+        internal static Bitmap wc
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("wc", resourceCulture);
+            }
+        }
+
+        internal static Bitmap wc_disabled
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("wc_disabled", resourceCulture);
+            }
+        }
+
+        internal static Bitmap wc_downdate
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("wc_downdate", resourceCulture);
+            }
+        }
+
+        internal static Bitmap wc_downdate_modified
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("wc_downdate_modified", resourceCulture);
+            }
+        }
+
+        internal static Bitmap wc_error
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("wc_error", resourceCulture);
+            }
+        }
+
+        internal static Bitmap wc_modified
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("wc_modified", resourceCulture);
+            }
+        }
+
+        internal static Bitmap wc_updating
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("wc_updating", resourceCulture);
+            }
+        }
+
+        internal static Bitmap window
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("window", resourceCulture);
+            }
+        }
+
+        internal static Bitmap windows
+        {
+            get
+            {
+                return (Bitmap) ResourceManager.GetObject("windows", resourceCulture);
+            }
+        }
+    }
 }
-}
+

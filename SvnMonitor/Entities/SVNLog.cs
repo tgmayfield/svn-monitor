@@ -1,253 +1,242 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Diagnostics;
-using SVNMonitor.Helpers;
-using SVNMonitor.Settings;
-using SVNMonitor.Logging;
-using SVNMonitor.SVN;
-using SVNMonitor.Resources.Text;
-using System.Threading;
-
-namespace SVNMonitor.Entities
+﻿namespace SVNMonitor.Entities
 {
-[Serializable]
-public class SVNLog : VersionEntity, IEnumerable<SVNLogEntry>, IEnumerable
-{
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-	[NonSerialized]
-	private Source source;
+    using SVNMonitor.Extensions;
+    using SVNMonitor.Helpers;
+    using SVNMonitor.Logging;
+    using SVNMonitor.Resources.Text;
+    using SVNMonitor.Settings;
+    using SVNMonitor.SVN;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Runtime.CompilerServices;
+    using System.Threading;
 
-	internal bool IsCached
-	{
-		get
-		{
-			string fileName = this.Source.CacheFileName;
-			bool fileExists = FileSystemHelper.FileExists(fileName);
-			return fileExists;
-		}
-	}
+    [Serializable]
+    public class SVNLog : VersionEntity, IEnumerable<SVNLogEntry>, IEnumerable
+    {
+        [NonSerialized, DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private SVNMonitor.Entities.Source source;
 
-	public List<SVNLogEntry> LogEntries
-	{
-		get;
-		private set;
-	}
+        public SVNLog()
+        {
+            this.LogEntries = new List<SVNLogEntry>();
+        }
 
-	public List<string> PossibleConflictedFilePaths
-	{
-		get
-		{
-			List<string> list = new List<string>();
-			SVNLogEntry[] enumerableLogEntries = this.GetEnumerableLogEntries();
-			foreach (SVNLogEntry entry in enumerableLogEntries)
-			{
-				foreach (string path in entry.PossibleConflictedPaths)
-				{
-					if (!list.Contains(path))
-					{
-						list.Add(path);
-					}
-				}
-			}
-			return list;
-		}
-	}
+        private void Compact()
+        {
+            int pageSize = ApplicationSettingsManager.Settings.LogEntriesPageSize;
+            if ((pageSize >= 0) && (this.LogEntries.Count > pageSize))
+            {
+                Logger.Log.DebugFormat("From {0} to {1}", this.LogEntries.Count, pageSize);
+                SVNLogEntry[] entries = new SVNLogEntry[pageSize];
+                this.LogEntries.CopyTo(this.LogEntries.Count - pageSize, entries, 0, pageSize);
+                this.LogEntries = new List<SVNLogEntry>(entries);
+            }
+        }
 
-	public Source Source
-	{
-		get
-		{
-			return this.source;
-		}
-		set
-		{
-			this.source = value;
-			this.SetLogEntriesSource();
-		}
-	}
+        internal static SVNLog Create(SVNMonitor.Entities.Source source)
+        {
+            Logger.Log.DebugFormat("SVNFactory.GetLog(source={0})", source);
+            SVNLog log = SVNFactory.GetLog(source);
+            log.LogEntries.Sort();
+            Logger.Log.Debug("log.Save");
+            log.Save();
+            return log;
+        }
 
-	public IEnumerable<SVNLogEntry> UnreadLogEntries
-	{
-		get
-		{
-			return this.GetEnumerableLogEntries().Where<SVNLogEntry>(new Predicate<SVNLogEntry>((e) => e.Unread));
-		}
-	}
+        internal void Delete()
+        {
+            this.Source.DeleteCache();
+        }
 
-	public SVNLog()
-	{
-		this.LogEntries = new List<SVNLogEntry>();
-	}
+        public SVNLogEntry[] GetEnumerableLogEntries()
+        {
+            SVNLogEntry[] array = new SVNLogEntry[this.LogEntries.Count];
+            this.LogEntries.CopyTo(array);
+            return array;
+        }
 
-	private void Compact()
-	{
-		int pageSize = ApplicationSettingsManager.Settings.LogEntriesPageSize;
-		if (pageSize < 0)
-		{
-			return;
-		}
-		if (this.LogEntries.Count <= pageSize)
-		{
-			return;
-		}
-		Logger.Log.DebugFormat("From {0} to {1}", this.LogEntries.Count, pageSize);
-		SVNLogEntry[] entries = new SVNLogEntry[pageSize];
-		this.LogEntries.CopyTo(this.LogEntries.Count - pageSize, entries, 0, pageSize);
-		this.LogEntries = new List<SVNLogEntry>(entries);
-	}
+        public IEnumerator GetEnumerator()
+        {
+            return this.LogEntries.GetEnumerator();
+        }
 
-	internal static SVNLog Create(Source source)
-	{
-		Logger.Log.DebugFormat("SVNFactory.GetLog(source={0})", source);
-		SVNLog log = SVNFactory.GetLog(source);
-		log.LogEntries.Sort();
-		Logger.Log.Debug("log.Save");
-		log.Save();
-		return log;
-	}
+        internal static long GetMaxRevision(IEnumerable<SVNLogEntry> list)
+        {
+            long max = 0L;
+            foreach (SVNLogEntry entry in list)
+            {
+                if (entry.Revision > max)
+                {
+                    max = entry.Revision;
+                }
+            }
+            return max;
+        }
 
-	internal void Delete()
-	{
-		this.Source.DeleteCache();
-	}
+        internal static SVNLog Load(SVNMonitor.Entities.Source source, bool createIfNotExist)
+        {
+            Logger.Log.DebugFormat("GetFileNameForSource(source={0}, createIfNotExist={1})", source, createIfNotExist);
+            string fileName = source.CacheFileName;
+            SVNLog log = null;
+            bool fileExists = FileSystemHelper.FileExists(fileName);
+            Logger.Log.DebugFormat("File {0} exists: {1}", fileName, fileExists);
+            if (fileExists)
+            {
+                try
+                {
+                    Logger.Log.DebugFormat("SerializationHelper.BinaryDeserialize(fileName={0})", fileName);
+                    log = (SVNLog) SerializationHelper.BinaryDeserialize(fileName);
+                    log.Source = source;
+                }
+                catch (Exception ex)
+                {
+                    ErrorHandler.Append(Strings.ErrorLoadingLogFile_FORMAT.FormatWith(new object[] { fileName }), source, ex);
+                }
+            }
+            if ((log == null) && createIfNotExist)
+            {
+                Logger.Log.DebugFormat("Create(source={0})", source);
+                log = Create(source);
+            }
+            if (log != null)
+            {
+                Logger.Log.Debug("UpdateRevision");
+                log.UpdateRevision();
+            }
+            return log;
+        }
 
-	public SVNLogEntry[] GetEnumerableLogEntries()
-	{
-		SVNLogEntry[] array = new SVNLogEntry[this.LogEntries.Count];
-		this.LogEntries.CopyTo(array);
-		return array;
-	}
+        protected virtual List<SVNLogEntry> Merge(SVNLog log)
+        {
+            List<SVNLogEntry> newEntries = new List<SVNLogEntry>();
+            if (log.LogEntries.Count != 0)
+            {
+                foreach (SVNLogEntry entry in log.GetEnumerableLogEntries())
+                {
+                    if (!this.LogEntries.Contains(entry))
+                    {
+                        newEntries.Add(entry);
+                        this.LogEntries.Add(entry);
+                    }
+                }
+                newEntries.Sort();
+                this.LogEntries.Sort();
+                this.Compact();
+            }
+            return newEntries;
+        }
 
-	public IEnumerator GetEnumerator()
-	{
-		return this.LogEntries.GetEnumerator();
-	}
+        internal virtual void Save()
+        {
+            SVNMonitor.Helpers.ThreadHelper.Queue(new WaitCallback(this.Save), "SAVE_LOG");
+        }
 
-	internal static long GetMaxRevision(IEnumerable<SVNLogEntry> list)
-	{
-		long max = (long)0;
-		foreach (SVNLogEntry entry in list)
-		{
-			if (entry.Revision > max)
-			{
-				max = entry.Revision;
-			}
-		}
-		return max;
-	}
+        private void Save(object state)
+        {
+            if (!this.Source.IsAlive)
+            {
+                Logger.Log.DebugFormat("This source is no longer alive. (Source={0})", this.Source);
+            }
+            else
+            {
+                Logger.Log.DebugFormat("GetFileNameForSource(Source={0})", this.Source);
+                string fileName = this.Source.CacheFileName;
+                Logger.Log.DebugFormat("BinarySerialize(fileName={0})", fileName);
+                SerializationHelper.BinarySerialize(this, fileName);
+            }
+        }
 
-	internal static SVNLog Load(Source source, bool createIfNotExist)
-	{
-		object[] objArray;
-		Logger.Log.DebugFormat("GetFileNameForSource(source={0}, createIfNotExist={1})", source, createIfNotExist);
-		string fileName = source.CacheFileName;
-		SVNLog log = null;
-		bool fileExists = FileSystemHelper.FileExists(fileName);
-		Logger.Log.DebugFormat("File {0} exists: {1}", fileName, fileExists);
-		if (fileExists)
-		{
-			Logger.Log.DebugFormat("SerializationHelper.BinaryDeserialize(fileName={0})", fileName);
-			log = (SVNLog)SerializationHelper.BinaryDeserialize(fileName);
-			log.Source = source;
-			ErrorHandler.Append(Strings.ErrorLoadingLogFile_FORMAT.FormatWith(new object[] { fileName }), source, ex);
-		}
-		try
-		{
-		}
-		catch (Exception ex)
-		{
-		}
-		if (log == null && createIfNotExist)
-		{
-			Logger.Log.DebugFormat("Create(source={0})", source);
-			log = SVNLog.Create(source);
-		}
-		if (log != null)
-		{
-			Logger.Log.Debug("UpdateRevision");
-			log.UpdateRevision();
-		}
-		return log;
-	}
+        private void SetLogEntriesSource()
+        {
+            foreach (SVNLogEntry entry in this.GetEnumerableLogEntries())
+            {
+                entry.Source = this.Source;
+            }
+        }
 
-	protected virtual List<SVNLogEntry> Merge(SVNLog log)
-	{
-		List<SVNLogEntry> newEntries = new List<SVNLogEntry>();
-		if (log.LogEntries.Count == 0)
-		{
-			return newEntries;
-		}
-		SVNLogEntry[] enumerableLogEntries = log.GetEnumerableLogEntries();
-		foreach (SVNLogEntry entry in enumerableLogEntries)
-		{
-			if (!this.LogEntries.Contains(entry))
-			{
-				newEntries.Add(entry);
-				this.LogEntries.Add(entry);
-			}
-		}
-		newEntries.Sort();
-		this.LogEntries.Sort();
-		this.Compact();
-		return newEntries;
-	}
+        IEnumerator<SVNLogEntry> IEnumerable<SVNLogEntry>.GetEnumerator()
+        {
+            return this.LogEntries.GetEnumerator();
+        }
 
-	internal virtual void Save()
-	{
-		ThreadHelper.Queue(new WaitCallback(this.Save), "SAVE_LOG");
-	}
+        public override string ToString()
+        {
+            return string.Format("{0}: {1} Entries", this.Source.Name, this.LogEntries.Count);
+        }
 
-	private void Save(object state)
-	{
-		if (!this.Source.IsAlive)
-		{
-			Logger.Log.DebugFormat("This source is no longer alive. (Source={0})", this.Source);
-			return;
-		}
-		Logger.Log.DebugFormat("GetFileNameForSource(Source={0})", this.Source);
-		string fileName = this.Source.CacheFileName;
-		Logger.Log.DebugFormat("BinarySerialize(fileName={0})", fileName);
-		SerializationHelper.BinarySerialize(this, fileName);
-	}
+        internal virtual List<SVNLogEntry> Update()
+        {
+            SVNLog updates = SVNFactory.GetUpdates(this.Source);
+            List<SVNLogEntry> newEntries = this.Merge(updates);
+            if (newEntries.Count > 0)
+            {
+                Logger.Log.DebugFormat("newEntries={0}", newEntries.Count);
+                this.UpdateRevision();
+                this.Save();
+            }
+            return newEntries;
+        }
 
-	private void SetLogEntriesSource()
-	{
-		SVNLogEntry[] enumerableLogEntries = this.GetEnumerableLogEntries();
-		foreach (SVNLogEntry entry in enumerableLogEntries)
-		{
-			entry.Source = this.Source;
-		}
-	}
+        private void UpdateRevision()
+        {
+            long oldRevision = this.Source.Revision;
+            this.Source.Revision = GetMaxRevision(this.LogEntries);
+            Logger.Log.InfoFormat("Source:{0}, From:{1}, To:{2}", this.Source, oldRevision, this.Source.Revision);
+        }
 
-	private IEnumerator<SVNLogEntry> System.Collections.Generic.IEnumerable<SVNMonitor.Entities.SVNLogEntry>.GetEnumerator()
-	{
-		return this.LogEntries.GetEnumerator();
-	}
+        internal bool IsCached
+        {
+            get
+            {
+                return FileSystemHelper.FileExists(this.Source.CacheFileName);
+            }
+        }
 
-	public override string ToString()
-	{
-		return string.Format("{0}: {1} Entries", this.Source.Name, this.LogEntries.Count);
-	}
+        public List<SVNLogEntry> LogEntries { get; private set; }
 
-	internal virtual List<SVNLogEntry> Update()
-	{
-		SVNLog updates = SVNFactory.GetUpdates(this.Source);
-		List<SVNLogEntry> newEntries = this.Merge(updates);
-		if (newEntries.Count > 0)
-		{
-			Logger.Log.DebugFormat("newEntries={0}", newEntries.Count);
-			this.UpdateRevision();
-			this.Save();
-		}
-		return newEntries;
-	}
+        public List<string> PossibleConflictedFilePaths
+        {
+            get
+            {
+                List<string> list = new List<string>();
+                foreach (SVNLogEntry entry in this.GetEnumerableLogEntries())
+                {
+                    foreach (string path in entry.PossibleConflictedPaths)
+                    {
+                        if (!list.Contains(path))
+                        {
+                            list.Add(path);
+                        }
+                    }
+                }
+                return list;
+            }
+        }
 
-	private void UpdateRevision()
-	{
-		long oldRevision = this.Source.Revision;
-		this.Source.Revision = SVNLog.GetMaxRevision(this.LogEntries);
-		Logger.Log.InfoFormat("Source:{0}, From:{1}, To:{2}", this.Source, oldRevision, this.Source.Revision);
-	}
+        public SVNMonitor.Entities.Source Source
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.source;
+            }
+            set
+            {
+                this.source = value;
+                this.SetLogEntriesSource();
+            }
+        }
+
+        public IEnumerable<SVNLogEntry> UnreadLogEntries
+        {
+            get
+            {
+                return this.GetEnumerableLogEntries().Where<SVNLogEntry>(e => e.Unread);
+            }
+        }
+    }
 }
-}
+

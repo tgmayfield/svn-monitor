@@ -1,98 +1,102 @@
-﻿using System.Xml;
-using System;
-using SVNMonitor.Logging;
-using SVNMonitor.Helpers;
-
-namespace SVNMonitor.Support
+﻿namespace SVNMonitor.Support
 {
-public abstract class BaseFeedback : BaseSendable
-{
-	private XmlDocument xmldoc;
+    using SVNMonitor.Helpers;
+    using SVNMonitor.Logging;
+    using System;
+    using System.Diagnostics;
+    using System.Xml;
 
-	public string Xml
-	{
-		get
-		{
-			return this.xmldoc.OuterXml;
-		}
-	}
+    public abstract class BaseFeedback : BaseSendable
+    {
+        private XmlDocument xmldoc;
 
-	protected BaseFeedback()
-	{
-	}
+        protected BaseFeedback() : this(null)
+        {
+        }
 
-	protected BaseFeedback(Exception ex)
-	{
-		this.xmldoc = new XmlDocument();
-		XmlElement documentElement = this.xmldoc.CreateElement("Feedback");
-		this.xmldoc.AppendChild(documentElement);
-		if (ex != null)
-		{
-			this.AddException(ex, 0);
-		}
-		this.CollectApplicationData();
-	}
+        protected BaseFeedback(Exception ex)
+        {
+            this.xmldoc = new XmlDocument();
+            XmlElement documentElement = this.xmldoc.CreateElement("Feedback");
+            this.xmldoc.AppendChild(documentElement);
+            if (ex != null)
+            {
+                this.AddException(ex, 0);
+            }
+            this.CollectApplicationData();
+        }
 
-	public void Add(string key, string value)
-	{
-		XmlElement element = this.xmldoc.CreateElement(key);
-		value = BaseFeedback.EscapeCDATA(value);
-		value = string.Concat(Environment.NewLine, value);
-		XmlCDataSection cdata = this.xmldoc.CreateCDataSection(value);
-		element.AppendChild(cdata);
-		this.xmldoc.DocumentElement.AppendChild(element);
-	}
+        public void Add(string key, string value)
+        {
+            XmlElement element = this.xmldoc.CreateElement(key);
+            value = EscapeCDATA(value);
+            value = Environment.NewLine + value;
+            XmlCDataSection cdata = this.xmldoc.CreateCDataSection(value);
+            element.AppendChild(cdata);
+            this.xmldoc.DocumentElement.AppendChild(element);
+        }
 
-	private void AddException(Exception ex, int index)
-	{
-		if (ex != null)
-		{
-			this.Add(string.Concat("Exception", index), ex.ToString());
-			if (ex.InnerException != null)
-			{
-				ex.InnerException.AddException(index, index++);
-			}
-		}
-	}
+        private void AddException(Exception ex, int index)
+        {
+            if (ex != null)
+            {
+                this.Add("Exception" + index, ex.ToString());
+                if (ex.InnerException != null)
+                {
+                    this.AddException(ex.InnerException, index++);
+                }
+            }
+        }
 
-	private void AddLog()
-	{
-		string log = Logger.GetLogAsString();
-		this.Add("Log", log);
-	}
+        private void AddLog()
+        {
+            string log = Logger.GetLogAsString();
+            this.Add("Log", log);
+        }
 
-	private void AddProcessInfo()
-	{
-		this.Add("Assemblies", ProcessHelper.GetLoadedAssemblies());
-	}
+        private void AddProcessInfo()
+        {
+            this.Add("Assemblies", ProcessHelper.GetLoadedAssemblies());
+        }
 
-	private void AddUsageInfo()
-	{
-		this.Add("Usage", UsageInformationSender.GetUsageInformation());
-	}
+        private void AddUsageInfo()
+        {
+            this.Add("Usage", UsageInformationSender.GetUsageInformation());
+        }
 
-	private void CollectApplicationData()
-	{
-		this.AddUsageInfo();
-		this.AddProcessInfo();
-		this.AddLog();
-	}
+        private void CollectApplicationData()
+        {
+            this.AddUsageInfo();
+            this.AddProcessInfo();
+            this.AddLog();
+        }
 
-	protected virtual void EndSend(SendCallback callback, int id)
-	{
-		if (callback != null)
-		{
-			SendableResult sendableResult = new SendableResult();
-			sendableResult.Id = id;
-			sendableResult.Proxy = this.Proxy;
-			SendableResult result = sendableResult;
-			callback(result);
-		}
-	}
+        protected virtual void EndSend(SendCallback callback, int id)
+        {
+            if (callback != null)
+            {
+                SendableResult <>g__initLocal0 = new SendableResult {
+                    Id = id,
+                    Proxy = base.Proxy
+                };
+                SendableResult result = <>g__initLocal0;
+                callback(result);
+            }
+        }
 
-	private static string EscapeCDATA(string text)
-	{
-		return text.Replace("]]>", "] ]>");
-	}
+        private static string EscapeCDATA(string text)
+        {
+            return text.Replace("]]>", "] ]>");
+        }
+
+        public string Xml
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.xmldoc.OuterXml;
+            }
+        }
+    }
 }
-}
+

@@ -1,19 +1,15 @@
-﻿using System;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-[Flags]
-public enum ModifierKey : uint
-{
-	Alt = 1
-	,
-	Control = 2
-	,
-	None = 0
-	,
-	Shift = 4
-	,
-	Win = 8
+    using System;
 
+    [Flags]
+    public enum ModifierKey : uint
+    {
+        Alt = 1,
+        Control = 2,
+        None = 0,
+        Shift = 4,
+        Win = 8
+    }
 }
-}
+

@@ -1,26 +1,19 @@
 ﻿namespace SVNMonitor
 {
-public enum EventLogEntryType
-{
-	AvailableUpdates
-	,
-	CheckingUpdates
-	,
-	Conflict
-	,
-	Error
-	,
-	Info
-	,
-	Monitor
-	,
-	Recommended
-	,
-	Source
-	,
-	System
-	,
-	Warning
+    using System;
 
+    public enum EventLogEntryType
+    {
+        Error,
+        Info,
+        Warning,
+        Monitor,
+        CheckingUpdates,
+        AvailableUpdates,
+        System,
+        Source,
+        Conflict,
+        Recommended
+    }
 }
-}
+

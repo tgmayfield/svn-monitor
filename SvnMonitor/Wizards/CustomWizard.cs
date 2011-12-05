@@ -1,27 +1,23 @@
-﻿using SVNMonitor.Resources;
-using SVNMonitor.Helpers;
-using System.Collections.Generic;
-using System;
-using SVNMonitor.Resources.Text;
-
-namespace SVNMonitor.Wizards
+﻿namespace SVNMonitor.Wizards
 {
-[ResourceProvider("WizardCustom")]
-[Custom]
-internal class CustomWizard : Wizard
-{
-	public CustomWizard()
-	{
-	}
+    using SVNMonitor.Helpers;
+    using SVNMonitor.Resources;
+    using SVNMonitor.Resources.Text;
+    using System;
+    using System.Collections.Generic;
 
-	protected override IEnumerable<Action> CreateActions(string baseName)
-	{
-		return null;
-	}
+    [ResourceProvider("WizardCustom"), Custom]
+    internal class CustomWizard : Wizard
+    {
+        protected override IEnumerable<Action> CreateActions(string baseName)
+        {
+            return null;
+        }
 
-	protected override string GetWizardName(string baseName)
-	{
-		return Strings.WizardCustomName;
-	}
+        protected override string GetWizardName(string baseName)
+        {
+            return Strings.WizardCustomName;
+        }
+    }
 }
-}
+

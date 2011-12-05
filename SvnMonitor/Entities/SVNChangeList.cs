@@ -1,35 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SVNMonitor.Entities
+﻿namespace SVNMonitor.Entities
 {
-[Serializable]
-public class SVNChangeList
-{
-	private List<SVNStatusEntry> entries;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
 
-	public string Name
-	{
-		get;
-		private set;
-	}
+    [Serializable]
+    public class SVNChangeList
+    {
+        private List<SVNStatusEntry> entries = new List<SVNStatusEntry>();
 
-	public SVNChangeList(string name)
-	{
-		this.entries = new List<SVNStatusEntry>();
-		base();
-		this.Name = name;
-	}
+        public SVNChangeList(string name)
+        {
+            this.Name = name;
+        }
 
-	internal void Add(SVNStatusEntry entry)
-	{
-		this.entries.Add(entry);
-	}
+        internal void Add(SVNStatusEntry entry)
+        {
+            this.entries.Add(entry);
+        }
 
-	internal bool Contains(SVNStatusEntry entry)
-	{
-		bool contains = this.entries.Contains(entry);
-		return contains;
-	}
+        internal bool Contains(SVNStatusEntry entry)
+        {
+            return this.entries.Contains(entry);
+        }
+
+        public string Name { get; private set; }
+    }
 }
-}
+

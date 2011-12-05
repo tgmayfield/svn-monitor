@@ -1,175 +1,176 @@
-﻿using System;
-using SVNMonitor.Resources.Text;
-using System.Threading;
-using SVNMonitor.Logging;
-using SVNMonitor.Support;
-using System.Reflection;
-using SVNMonitor.View;
-using SVNMonitor.View.Dialogs;
-using SVNMonitor.Helpers;
-using System.IO;
-using SVNMonitor.Settings;
-using System.Diagnostics;
-using System.Windows.Forms;
-using SVNMonitor.Remoting;
-
-namespace SVNMonitor
+﻿namespace SVNMonitor
 {
-internal static class Program
-{
-	private static bool closing;
+    using SVNMonitor.Helpers;
+    using SVNMonitor.Logging;
+    using SVNMonitor.Remoting;
+    using SVNMonitor.Resources.Text;
+    using SVNMonitor.Settings;
+    using SVNMonitor.Support;
+    using SVNMonitor.View;
+    using SVNMonitor.View.Dialogs;
+    using System;
+    using System.IO;
+    using System.Reflection;
+    using System.Threading;
+    using System.Windows.Forms;
 
-	private static void AppendStartMessages()
-	{
-		EventLog.LogSystem(Strings.WelcomeMessage);
-		Program.ShowWarningMessages();
-	}
+    internal static class Program
+    {
+        private static bool closing;
 
-	private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
-	{
-		Program.HandleException(e.Exception, "Application_ThreadException");
-	}
+        private static void AppendStartMessages()
+        {
+            EventLog.LogSystem(Strings.WelcomeMessage);
+            ShowWarningMessages();
+        }
 
-	private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
-	{
-		try
-		{
-			Logger.Log.DebugFormat("Assembly loaded: {0}", args.LoadedAssembly);
-		}
-		catch
-		{
-		}
-	}
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            HandleException(e.Exception, "Application_ThreadException");
+        }
 
-	private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
-	{
-		Program.HandleException((Exception)e.ExceptionObject, "CurrentDomain_UnhandledException");
-	}
+        private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
+        {
+            try
+            {
+                Logger.Log.DebugFormat("Assembly loaded: {0}", args.LoadedAssembly);
+            }
+            catch
+            {
+            }
+        }
 
-	internal static void End()
-	{
-		Program.closing = 1;
-		Logger.Log.Info("Closing");
-		MonitorSettings.Instance.Save(false);
-		Program.LogEnd();
-		Environment.Exit(0);
-	}
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            HandleException((Exception) e.ExceptionObject, "CurrentDomain_UnhandledException");
+        }
 
-	private static void HandleException(Exception ex, string handler)
-	{
-		ErrorReportFeedback report;
-		if (ex as TargetInvocationException)
-		{
-			Program.HandleException(ex.InnerException, handler);
-			return;
-		}
-		if (KnownIssuesHelper.IsKnownIssue(ex, true))
-		{
-			Logger.Log.Error("Known Issue: ", ex);
-			return;
-		}
-		Logger.Log.Error(string.Format("Unhandled exception by {0}:", handler), ex);
-		if (!Program.closing)
-		{
-			report = ErrorReportFeedback.Generate(ex);
-			if (MainForm.FormInstance != null)
-			{
-				MainForm.FormInstance.ReportError(report);
-				return;
-			}
-		}
-		ErrorReportDialog.Report(report);
-		return;
-		Logger.Log.Info("Exception while closing");
-		Program.LogEnd();
-	}
+        internal static void End()
+        {
+            closing = true;
+            Logger.Log.Info("Closing");
+            MonitorSettings.Instance.Save(false);
+            LogEnd();
+            Environment.Exit(0);
+        }
 
-	private static bool InitApplicationSettings()
-	{
-		bool firstRun = !FileSystemHelper.FileExists(Path.Combine(FileSystemHelper.AppData, "SVNMonitor.config"));
-		ApplicationSettingsManager.Init();
-		return firstRun;
-	}
+        private static void HandleException(Exception ex, string handler)
+        {
+            if (ex is TargetInvocationException)
+            {
+                HandleException(ex.InnerException, handler);
+            }
+            else if (KnownIssuesHelper.IsKnownIssue(ex, true))
+            {
+                Logger.Log.Error("Known Issue: ", ex);
+            }
+            else
+            {
+                Logger.Log.Error(string.Format("Unhandled exception by {0}:", handler), ex);
+                if (!closing)
+                {
+                    ErrorReportFeedback report = ErrorReportFeedback.Generate(ex);
+                    if (MainForm.FormInstance != null)
+                    {
+                        MainForm.FormInstance.ReportError(report);
+                    }
+                    else
+                    {
+                        ErrorReportDialog.Report(report);
+                    }
+                }
+                else
+                {
+                    Logger.Log.Info("Exception while closing");
+                    LogEnd();
+                }
+            }
+        }
 
-	private static void InitLog()
-	{
-		Logger.Init();
-	}
+        private static bool InitApplicationSettings()
+        {
+            bool firstRun = !FileSystemHelper.FileExists(Path.Combine(FileSystemHelper.AppData, "SVNMonitor.config"));
+            ApplicationSettingsManager.Init();
+            return firstRun;
+        }
 
-	private static bool IsProcessRunning()
-	{
-		Process currentProcess = ProcessHelper.GetCurrentProcess();
-		string processName = currentProcess.ProcessName;
-		Process[] processList = ProcessHelper.GetProcessesByName(processName);
-		return (int)processList.Length > 1;
-	}
+        private static void InitLog()
+        {
+            Logger.Init();
+        }
 
-	private static void LogEnd()
-	{
-		Logger.Log.InfoFormat("{0}{0}{0}End.", Environment.NewLine);
-	}
+        private static bool IsProcessRunning()
+        {
+            return (ProcessHelper.GetProcessesByName(ProcessHelper.GetCurrentProcess().ProcessName).Length > 1);
+        }
 
-	[STAThread]
-	private static void Main(string[] args)
-	{
-		bool firstRun;
-		try
-		{
-			ThreadHelper.SetThreadName("MAIN");
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			SessionInfo.SetSessionInfo(args);
-			Program.InitLog();
-			firstRun = Program.InitApplicationSettings();
-			ThreadHelper.SetMainThreadUICulture(ApplicationSettingsManager.Settings.UILanguage);
-			RemotingServer.Start();
-		}
-		catch (Exception ex)
-		{
-			Program.HandleException(ex, "Main");
-			MessageBox.Show(ex.ToString());
-		}
-		if (Program.IsProcessRunning())
-		{
-			RemotingClient.Show();
-		}
-		else
-		{
-			if (!UpgradeInfo.CheckIfUpgradeReady())
-			{
-				UpgradeInfo.DeleteSavedUpgradeInfo();
-				Program.AppendStartMessages();
-				AppDomain.CurrentDomain.add_UnhandledException(new UnhandledExceptionEventHandler(null.Program.CurrentDomain_UnhandledException));
-				AppDomain.CurrentDomain.add_AssemblyLoad(new AssemblyLoadEventHandler(null.Program.CurrentDomain_AssemblyLoad));
-				Application.add_ThreadException(new ThreadExceptionEventHandler(null.Program.Application_ThreadException));
-				try
-				{
-					MainForm form = new MainForm();
-					form.ShowFirstRunNotification = firstRun;
-					Application.Run(form);
-				}
-				catch (Exception ex)
-				{
-					Logger.Log.Error("Fatal Error", ex);
-				}
-				finally
-				{
-					Program.End();
-				}
-			}
-		}
-	}
+        private static void LogEnd()
+        {
+            Logger.Log.InfoFormat("{0}{0}{0}End.", Environment.NewLine);
+        }
 
-	private static void ShowWarningMessages()
-	{
-		if (!ApplicationSettingsManager.Settings.EnableUpdates)
-		{
-			EventLog.LogWarning("Updates are disabled.");
-		}
-		if (!ApplicationSettingsManager.Settings.EnableVersionCheck)
-		{
-			EventLog.LogWarning("Version-checks are disabled.");
-		}
-	}
+        [STAThread]
+        private static void Main(string[] args)
+        {
+            try
+            {
+                if (IsProcessRunning())
+                {
+                    RemotingClient.Show();
+                }
+                else
+                {
+                    SVNMonitor.Helpers.ThreadHelper.SetThreadName("MAIN");
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    SessionInfo.SetSessionInfo(args);
+                    InitLog();
+                    bool firstRun = InitApplicationSettings();
+                    SVNMonitor.Helpers.ThreadHelper.SetMainThreadUICulture(ApplicationSettingsManager.Settings.UILanguage);
+                    RemotingServer.Start();
+                    if (!UpgradeInfo.CheckIfUpgradeReady())
+                    {
+                        UpgradeInfo.DeleteSavedUpgradeInfo();
+                        AppendStartMessages();
+                        AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(Program.CurrentDomain_UnhandledException);
+                        AppDomain.CurrentDomain.AssemblyLoad += new AssemblyLoadEventHandler(Program.CurrentDomain_AssemblyLoad);
+                        Application.ThreadException += new ThreadExceptionEventHandler(Program.Application_ThreadException);
+                        try
+                        {
+                            MainForm form = new MainForm {
+                                ShowFirstRunNotification = firstRun
+                            };
+                            Application.Run(form);
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Log.Error("Fatal Error", ex);
+                        }
+                        finally
+                        {
+                            End();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex, "Main");
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private static void ShowWarningMessages()
+        {
+            if (!ApplicationSettingsManager.Settings.EnableUpdates)
+            {
+                EventLog.LogWarning("Updates are disabled.");
+            }
+            if (!ApplicationSettingsManager.Settings.EnableVersionCheck)
+            {
+                EventLog.LogWarning("Version-checks are disabled.");
+            }
+        }
+    }
 }
-}
+

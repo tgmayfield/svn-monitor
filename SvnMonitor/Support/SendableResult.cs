@@ -1,23 +1,13 @@
-﻿using System;
-
-namespace SVNMonitor.Support
+﻿namespace SVNMonitor.Support
 {
-public class SendableResult
-{
-	public int Id
-	{
-		get;
-		set;
-	}
+    using System;
+    using System.Runtime.CompilerServices;
 
-	public IDisposable Proxy
-	{
-		get;
-		set;
-	}
+    public class SendableResult
+    {
+        public int Id { get; set; }
 
-	public SendableResult()
-	{
-	}
+        public IDisposable Proxy { get; set; }
+    }
 }
-}
+

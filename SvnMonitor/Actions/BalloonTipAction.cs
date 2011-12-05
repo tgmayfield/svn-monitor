@@ -1,348 +1,336 @@
-﻿using SVNMonitor.Resources;
-using System;
-using SVNMonitor.Entities;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.ComponentModel;
-using SVNMonitor.Resources.Text;
-using SVNMonitor.View;
-using SVNMonitor.Helpers;
-
-namespace SVNMonitor.Actions
+﻿namespace SVNMonitor.Actions
 {
-[ResourceProvider("Show a tray-icon with/without a balloon tip")]
-[Serializable]
-internal class BalloonTipAction : Action
-{
-	private const int DefaultTimeOut = 60;
+    using SVNMonitor.Entities;
+    using SVNMonitor.Helpers;
+    using SVNMonitor.Resources;
+    using SVNMonitor.Resources.Text;
+    using SVNMonitor.SVN;
+    using SVNMonitor.View;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.Design;
+    using System.Diagnostics;
+    using System.Drawing;
+    using System.Drawing.Design;
+    using System.Runtime.CompilerServices;
+    using System.Windows.Forms;
 
-	private Source firstUpdatedSource;
+    [Serializable, ResourceProvider("Show a tray-icon with/without a balloon tip")]
+    internal class BalloonTipAction : Action
+    {
+        private const int DefaultTimeOut = 60;
+        private Source firstUpdatedSource;
+        private static System.Drawing.Icon icon = Icons.lightbulb_on;
+        [NonSerialized]
+        private bool rejectionShowBalloonTip;
+        [NonSerialized]
+        private int rejectionTimeOut;
+        [NonSerialized]
+        private ToolTipIcon rejectionTipIcon;
+        [NonSerialized]
+        private string rejectionTipText;
+        [NonSerialized]
+        private string rejectionTipTitle;
+        private bool showBalloonTip = true;
+        [NonSerialized]
+        private Dictionary<Source, StartEndRevisions> sourceRevisions;
+        private int timeOut = 60;
+        private ToolTipIcon tipIcon = ToolTipIcon.Info;
+        private string tipText = "Updates are available";
+        private string tipTitle = Strings.SVNMonitorCaption;
 
-	private static Icon icon;
+        private ToolStripMenuItem[] CreateMenuItems()
+        {
+            ToolStripMenuItem[] items = new ToolStripMenuItem[this.sourceRevisions.Count];
+            int index = 0;
+            using (Dictionary<Source, StartEndRevisions>.KeyCollection.Enumerator CS$5$0000 = this.sourceRevisions.Keys.GetEnumerator())
+            {
+                Source source;
+                while (CS$5$0000.MoveNext())
+                {
+                    source = CS$5$0000.Current;
+                    StartEndRevisions revisions = this.sourceRevisions[source];
+                    string updatesString = string.Format((revisions.UpdatesCount == 1) ? "{0} update" : "{0} updates", revisions.UpdatesCount);
+                    ToolStripMenuItem item = new ToolStripMenuItem(string.Format("Show log: {0} ({1} by {2})", source.Name, updatesString, revisions.AuthorsString));
+                    item.Click += delegate {
+                        TortoiseProcess.Log(source.Path, revisions.StartRevision, revisions.EndRevision);
+                    };
+                    items[index] = item;
+                    index++;
+                }
+            }
+            return items;
+        }
 
-	[NonSerialized]
-	private bool rejectionShowBalloonTip;
+        public override void RejectChanges()
+        {
+            this.TimeOut = this.rejectionTimeOut;
+            this.TipTitle = this.rejectionTipTitle;
+            this.TipText = this.rejectionTipText;
+            this.TipIcon = this.rejectionTipIcon;
+            this.ShowBalloonTip = this.rejectionShowBalloonTip;
+        }
 
-	[NonSerialized]
-	private int rejectionTimeOut;
+        protected override void Run(List<SVNLogEntry> logEntries, List<SVNPath> paths)
+        {
+            this.SetRevisions(logEntries, paths);
+            this.SetFirstUpdatedSource(logEntries, paths);
+            MainForm.FormInstance.BeginInvoke(new MethodInvoker(this.RunSync));
+        }
 
-	[NonSerialized]
-	private ToolTipIcon rejectionTipIcon;
+        private void RunSync()
+        {
+            ToolStripMenuItem[] menuItems = this.CreateMenuItems();
+            new TrayNotifier();
+            TrayNotifier.TrayNotifierInfo <>g__initLocal0 = new TrayNotifier.TrayNotifierInfo {
+                Icon = Icon,
+                Text = Strings.SVNMonitorCaption,
+                TipText = this.TipText,
+                TipTitle = this.TipTitle,
+                TipIcon = this.TipIcon,
+                MenuItems = menuItems,
+                TimeOut = this.TimeOut,
+                ShowBalloonTip = this.ShowBalloonTip,
+                Source = this.firstUpdatedSource
+            };
+            TrayNotifier.Show(<>g__initLocal0);
+        }
 
-	[NonSerialized]
-	private string rejectionTipText;
+        private void SetFirstUpdatedSource(List<SVNLogEntry> logEntries, List<SVNPath> paths)
+        {
+            if ((logEntries != null) && (logEntries.Count > 0))
+            {
+                this.firstUpdatedSource = logEntries[0].Source;
+            }
+            else if ((paths != null) && (paths.Count > 0))
+            {
+                this.firstUpdatedSource = paths[0].Source;
+            }
+        }
 
-	[NonSerialized]
-	private string rejectionTipTitle;
+        public override void SetRejectionPoint()
+        {
+            this.rejectionTimeOut = this.TimeOut;
+            this.rejectionTipTitle = this.TipTitle;
+            this.rejectionTipText = this.TipText;
+            this.rejectionTipIcon = this.TipIcon;
+            this.rejectionShowBalloonTip = this.ShowBalloonTip;
+        }
 
-	private bool showBalloonTip;
+        private void SetRevisions(List<SVNLogEntry> logEntries)
+        {
+            foreach (SVNLogEntry logEntry in logEntries)
+            {
+                Source source = logEntry.Source;
+                long revision = logEntry.Revision;
+                string author = logEntry.Author;
+                this.UpdateSourceRevisionsEntry(source, revision, author);
+            }
+        }
 
-	[NonSerialized]
-	private Dictionary<Source, StartEndRevisions> sourceRevisions;
+        private void SetRevisions(List<SVNPath> paths)
+        {
+            foreach (SVNPath path in paths)
+            {
+                Source source = path.Source;
+                long revision = path.Revision;
+                string author = path.LogEntry.Author;
+                this.UpdateSourceRevisionsEntry(source, revision, author);
+            }
+        }
 
-	private int timeOut;
+        private void SetRevisions(List<SVNLogEntry> logEntries, List<SVNPath> paths)
+        {
+            this.sourceRevisions = new Dictionary<Source, StartEndRevisions>();
+            if ((logEntries != null) && (logEntries.Count > 0))
+            {
+                this.SetRevisions(logEntries);
+            }
+            else
+            {
+                this.SetRevisions(paths);
+            }
+        }
 
-	private ToolTipIcon tipIcon;
+        private void UpdateSourceRevisionsEntry(Source source, long revision, string author)
+        {
+            if (!this.sourceRevisions.ContainsKey(source))
+            {
+                StartEndRevisions <>g__initLocal6 = new StartEndRevisions {
+                    StartRevision = revision,
+                    EndRevision = revision,
+                    UpdatesCount = 1
+                };
+                StartEndRevisions revisions = <>g__initLocal6;
+                revisions.AddAuthor(author);
+                this.sourceRevisions.Add(source, revisions);
+            }
+            else
+            {
+                StartEndRevisions startEndRevisions = this.sourceRevisions[source];
+                startEndRevisions.UpdatesCount++;
+                if (startEndRevisions.StartRevision > revision)
+                {
+                    startEndRevisions.StartRevision = revision;
+                }
+                if (startEndRevisions.EndRevision < revision)
+                {
+                    startEndRevisions.EndRevision = revision;
+                }
+            }
+        }
 
-	private string tipText;
+        public static System.Drawing.Icon Icon
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return icon;
+            }
+        }
 
-	private string tipTitle;
+        public override bool IsValid
+        {
+            get
+            {
+                if (this.TimeOut < 0)
+                {
+                    return false;
+                }
+                if (Icon == null)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
 
-	public static Icon Icon
-	{
-		get
-		{
-			return BalloonTipAction.icon;
-		}
-	}
+        [Description("Determines whether to show a popup balloon tip."), DisplayName("Show Balloon Tip"), Category("Balloon Tip"), DefaultValue(true)]
+        public virtual bool ShowBalloonTip
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.showBalloonTip;
+            }
+            [DebuggerNonUserCode]
+            set
+            {
+                this.showBalloonTip = value;
+            }
+        }
 
-	public bool IsValid
-	{
-		get
-		{
-			if (this.TimeOut < 0)
-			{
-				return false;
-			}
-			if (BalloonTipAction.Icon == null)
-			{
-				return false;
-			}
-			return true;
-		}
-	}
+        public override string SummaryInfo
+        {
+            get
+            {
+                return "Show a balloon tip in the tray.";
+            }
+        }
 
-	[Description("Determines whether to show a popup balloon tip.")]
-	[DisplayName("Show Balloon Tip")]
-	[Category("Balloon Tip")]
-	[DefaultValue(true)]
-	public bool ShowBalloonTip
-	{
-		get
-		{
-			return this.showBalloonTip;
-		}
-		set
-		{
-			this.showBalloonTip = value;
-		}
-	}
+        [DefaultValue(60), DisplayName("Timeout"), Description("Number of seconds to show the tray-icon and balloon popup, or zero to show the icon until the user clicks it."), Category("Balloon Tip")]
+        public virtual int TimeOut
+        {
+            get
+            {
+                if (this.timeOut < 0)
+                {
+                    return 60;
+                }
+                return this.timeOut;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("value", "Must be greater or equal to zero.");
+                }
+                this.timeOut = value;
+            }
+        }
 
-	public string SummaryInfo
-	{
-		get
-		{
-			return "Show a balloon tip in the tray.";
-		}
-	}
+        [Description("The icon to show in the balloon popup."), Category("Balloon Tip"), DefaultValue(1), DisplayName("Balloon Tip Icon")]
+        public virtual ToolTipIcon TipIcon
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.tipIcon;
+            }
+            [DebuggerNonUserCode]
+            set
+            {
+                this.tipIcon = value;
+            }
+        }
 
-	[DefaultValue(60)]
-	[DisplayName("Timeout")]
-	[Description("Number of seconds to show the tray-icon and balloon popup, or zero to show the icon until the user clicks it.")]
-	[Category("Balloon Tip")]
-	public int TimeOut
-	{
-		get
-		{
-			if (this.timeOut < 0)
-			{
-				return 60;
-			}
-			return this.timeOut;
-		}
-		set
-		{
-			if (value < 0)
-			{
-				throw new ArgumentOutOfRangeException("value", "Must be greater or equal to zero.");
-			}
-			this.timeOut = value;
-		}
-	}
+        [DisplayName("Text"), Description("The text of the balloon popup."), Category("Balloon Tip"), DefaultValue("Updates are available"), Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
+        public virtual string TipText
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.tipText;
+            }
+            [DebuggerNonUserCode]
+            set
+            {
+                this.tipText = value;
+            }
+        }
 
-	[Description("The icon to show in the balloon popup.")]
-	[Category("Balloon Tip")]
-	[DefaultValue(ToolTipIcon.Info)]
-	[DisplayName("Balloon Tip Icon")]
-	public ToolTipIcon TipIcon
-	{
-		get
-		{
-			return this.tipIcon;
-		}
-		set
-		{
-			this.tipIcon = value;
-		}
-	}
+        [Category("Balloon Tip"), DisplayName("Title"), DefaultValue("SVN-Monitor"), Editor(typeof(MultilineStringEditor), typeof(UITypeEditor)), Description("The title of the balloon popup.")]
+        public virtual string TipTitle
+        {
+            [DebuggerNonUserCode]
+            get
+            {
+                return this.tipTitle;
+            }
+            [DebuggerNonUserCode]
+            set
+            {
+                this.tipTitle = value;
+            }
+        }
 
-	[DisplayName("Text")]
-	[Description("The text of the balloon popup.")]
-	[Category("Balloon Tip")]
-	[DefaultValue("Updates are available")]
-	[Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
-	public string TipText
-	{
-		get
-		{
-			return this.tipText;
-		}
-		set
-		{
-			this.tipText = value;
-		}
-	}
+        private class StartEndRevisions
+        {
+            private List<string> authors = new List<string>();
 
-	[Category("Balloon Tip")]
-	[DisplayName("Title")]
-	[DefaultValue("SVN-Monitor")]
-	[Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
-	[Description("The title of the balloon popup.")]
-	public string TipTitle
-	{
-		get
-		{
-			return this.tipTitle;
-		}
-		set
-		{
-			this.tipTitle = value;
-		}
-	}
+            public void AddAuthor(string author)
+            {
+                if (!this.authors.Contains(author))
+                {
+                    this.authors.Add(author);
+                }
+            }
 
-	static BalloonTipAction()
-	{
-		BalloonTipAction.icon = Icons.lightbulb_on;
-	}
+            public override string ToString()
+            {
+                return string.Format("Start: {0}, End: {1}, Count: {2}, Author(s): {3}", new object[] { this.StartRevision, this.EndRevision, this.UpdatesCount, this.AuthorsString });
+            }
 
-	public BalloonTipAction()
-	{
-		this.timeOut = 60;
-		this.tipIcon = ToolTipIcon.Info;
-		this.tipText = "Updates are available";
-		this.tipTitle = Strings.SVNMonitorCaption;
-		this.showBalloonTip = true;
-	}
+            public string AuthorsString
+            {
+                get
+                {
+                    string authorsString = string.Join(", ", this.authors.ToArray());
+                    if (authorsString.Length > 20)
+                    {
+                        authorsString = authorsString.Substring(0, 20) + "...";
+                    }
+                    return authorsString;
+                }
+            }
 
-	private ToolStripMenuItem[] CreateMenuItems()
-	{
-		ToolStripMenuItem[] items = new ToolStripMenuItem[this.sourceRevisions.Count];
-		int index = 0;
-		Enumerat<Source, StartEndRevisions> enumerator = this.sourceRevisions.Keys.GetEnumerator();
-		try
-		{
-			BalloonTipAction balloonTipAction = new BalloonTipAction();
-			while (&enumerator.MoveNext())
-			{
-				balloonTipAction.source = &enumerator.Current;
-				BalloonTipAction item = new BalloonTipAction();
-				item.CS$<>8__locals3 = balloonTipAction;
-				item.revisions = this.sourceRevisions[balloonTipAction.source];
-				string updatesString = string.Format((item.revisions.UpdatesCount == 1 ? "{0} update" : "{0} updates"), item.revisions.UpdatesCount);
-				ToolStripMenuItem item = new ToolStripMenuItem(string.Format("Show log: {0} ({1} by {2})", balloonTipAction.source.Name, updatesString, item.revisions.AuthorsString));
-				item.add_Click(new EventHandler(item.<CreateMenuItems>b__1));
-				items[index] = item;
-				index++;
-			}
-		}
-		finally
-		{
-			&enumerator.Dispose();
-		}
-		return items;
-	}
+            public long EndRevision { get; set; }
 
-	public override void RejectChanges()
-	{
-		this.TimeOut = this.rejectionTimeOut;
-		this.TipTitle = this.rejectionTipTitle;
-		this.TipText = this.rejectionTipText;
-		this.TipIcon = this.rejectionTipIcon;
-		this.ShowBalloonTip = this.rejectionShowBalloonTip;
-	}
+            public long StartRevision { get; set; }
 
-	protected override void Run(List<SVNLogEntry> logEntries, List<SVNPath> paths)
-	{
-		this.SetRevisions(logEntries, paths);
-		this.SetFirstUpdatedSource(logEntries, paths);
-		MainForm.FormInstance.BeginInvoke(new MethodInvoker(this.RunSync));
-	}
-
-	private void RunSync()
-	{
-		ToolStripMenuItem[] menuItems = this.CreateMenuItems();
-		new TrayNotifier();
-		TrayNotifierInfo trayNotifierInfo = new TrayNotifierInfo();
-		trayNotifierInfo.Icon = BalloonTipAction.Icon;
-		trayNotifierInfo.Text = Strings.SVNMonitorCaption;
-		trayNotifierInfo.TipText = this.TipText;
-		trayNotifierInfo.TipTitle = this.TipTitle;
-		trayNotifierInfo.TipIcon = this.TipIcon;
-		trayNotifierInfo.MenuItems = menuItems;
-		trayNotifierInfo.TimeOut = this.TimeOut;
-		trayNotifierInfo.ShowBalloonTip = this.ShowBalloonTip;
-		trayNotifierInfo.Source = this.firstUpdatedSource;
-		TrayNotifier.Show(trayNotifierInfo);
-	}
-
-	private void SetFirstUpdatedSource(List<SVNLogEntry> logEntries, List<SVNPath> paths)
-	{
-		if (logEntries != null && logEntries.Count > 0)
-		{
-			this.firstUpdatedSource = logEntries[0].Source;
-			return;
-		}
-		if (paths != null && paths.Count > 0)
-		{
-			this.firstUpdatedSource = paths[0].Source;
-		}
-	}
-
-	public override void SetRejectionPoint()
-	{
-		this.rejectionTimeOut = this.TimeOut;
-		this.rejectionTipTitle = this.TipTitle;
-		this.rejectionTipText = this.TipText;
-		this.rejectionTipIcon = this.TipIcon;
-		this.rejectionShowBalloonTip = this.ShowBalloonTip;
-	}
-
-	private void SetRevisions(List<SVNLogEntry> logEntries, List<SVNPath> paths)
-	{
-		this.sourceRevisions = new Dictionary<Source, StartEndRevisions>();
-		if (logEntries != null && logEntries.Count > 0)
-		{
-			this.SetRevisions(logEntries);
-			return;
-		}
-		this.SetRevisions(paths);
-	}
-
-	private void SetRevisions(List<SVNLogEntry> logEntries)
-	{
-		foreach (SVNLogEntry logEntry in logEntries)
-		{
-			Source source = logEntry.Source;
-			long revision = logEntry.Revision;
-			string author = logEntry.Author;
-			this.UpdateSourceRevisionsEntry(source, revision, author);
-		}
-	}
-
-	private void SetRevisions(List<SVNPath> paths)
-	{
-		foreach (SVNPath path in paths)
-		{
-			Source source = path.Source;
-			long revision = path.Revision;
-			string author = path.LogEntry.Author;
-			this.UpdateSourceRevisionsEntry(source, revision, author);
-		}
-	}
-
-	private void UpdateSourceRevisionsEntry(Source source, long revision, string author)
-	{
-		if (!this.sourceRevisions.ContainsKey(source))
-		{
-			StartEndRevisions startEndRevision = new StartEndRevisions();
-			startEndRevision.StartRevision = revision;
-			startEndRevision.EndRevision = revision;
-			startEndRevision.UpdatesCount = 1;
-			StartEndRevisions revisions = startEndRevision;
-			revisions.AddAuthor(author);
-			this.sourceRevisions.Add(source, revisions);
-			return;
-		}
-		StartEndRevisions startEndRevisions = this.sourceRevisions[source];
-		startEndRevisions.UpdatesCount = startEndRevisions.UpdatesCount + 1;
-		if (startEndRevisions.StartRevision > revision)
-		{
-			startEndRevisions.StartRevision = revision;
-		}
-		if (startEndRevisions.EndRevision < revision)
-		{
-			startEndRevisions.EndRevision = revision;
-		}
-	}
-
-	private class StartEndRevisions
-	{
-		private List<string> authors;
-
-		public string AuthorsString;
-
-		public long EndRevision;
-
-		public long StartRevision;
-
-		public int UpdatesCount;
-
-		public StartEndRevisions();
-
-		public void AddAuthor(string author);
-
-		public override string ToString();
-	}
+            public int UpdatesCount { get; set; }
+        }
+    }
 }
-}
+

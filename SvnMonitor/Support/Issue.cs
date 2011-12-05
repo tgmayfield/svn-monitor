@@ -1,39 +1,25 @@
-﻿using System;
-using System.Xml.Serialization;
-
-namespace SVNMonitor.Support
+﻿namespace SVNMonitor.Support
 {
-[Serializable]
-public class Issue
-{
-	[XmlAttribute]
-	public string ExceptionName
-	{
-		get;
-		set;
-	}
+    using System;
+    using System.Runtime.CompilerServices;
+    using System.Xml.Serialization;
 
-	[XmlAttribute]
-	public int ID
-	{
-		get;
-		set;
-	}
+    [Serializable]
+    public class Issue
+    {
+        public override string ToString()
+        {
+            return string.Format("{0} at {1}", this.ExceptionName, this.StackFrame);
+        }
 
-	[XmlAttribute]
-	public string StackFrame
-	{
-		get;
-		set;
-	}
+        [XmlAttribute]
+        public string ExceptionName { get; set; }
 
-	public Issue()
-	{
-	}
+        [XmlAttribute]
+        public int ID { get; set; }
 
-	public override string ToString()
-	{
-		return string.Format("{0} at {1}", this.ExceptionName, this.StackFrame);
-	}
+        [XmlAttribute]
+        public string StackFrame { get; set; }
+    }
 }
-}
+

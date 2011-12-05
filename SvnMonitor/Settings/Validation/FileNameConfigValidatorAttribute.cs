@@ -1,11 +1,12 @@
-﻿using System;
+﻿namespace SVNMonitor.Settings.Validation
+{
+    using System;
 
-namespace SVNMonitor.Settings.Validation
-{
-internal class FileNameConfigValidatorAttribute : ConfigValidatorAttribute
-{
-	public FileNameConfigValidatorAttribute() : base(typeof(FileNameConfigValidator), new object[0])
-	{
-	}
+    internal class FileNameConfigValidatorAttribute : ConfigValidatorAttribute
+    {
+        public FileNameConfigValidatorAttribute() : base(typeof(FileNameConfigValidator), new object[0])
+        {
+        }
+    }
 }
-}
+

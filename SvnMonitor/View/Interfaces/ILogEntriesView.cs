@@ -1,23 +1,22 @@
-﻿using System.Collections.Generic;
-using System;
-using SVNMonitor.Entities;
-
-namespace SVNMonitor.View.Interfaces
+﻿namespace SVNMonitor.View.Interfaces
 {
-public interface ILogEntriesView : ISelectableView<SVNLogEntry>
-{
-	List<SVNLogEntry> LogEntries { get; set; }
+    using SVNMonitor.Entities;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
 
-	bool SelectedWithKeyboard { get; }
+    public interface ILogEntriesView : ISelectableView<SVNLogEntry>
+    {
+        event EventHandler SelectionChanged;
 
-	bool CanGetNextLogEntry(SVNLogEntry nextFrom);
+        bool CanGetNextLogEntry(SVNLogEntry nextFrom);
+        bool CanGetPreviousLogEntry(SVNLogEntry nextFrom);
+        SVNLogEntry GetNextLogEntry(SVNLogEntry nextFrom);
+        SVNLogEntry GetPreviousLogEntry(SVNLogEntry nextFrom);
 
-	bool CanGetPreviousLogEntry(SVNLogEntry nextFrom);
+        List<SVNLogEntry> LogEntries { get; set; }
 
-	SVNLogEntry GetNextLogEntry(SVNLogEntry nextFrom);
-
-	SVNLogEntry GetPreviousLogEntry(SVNLogEntry nextFrom);
-
-	event EventHandler SelectionChanged;
+        bool SelectedWithKeyboard { get; }
+    }
 }
-}
+

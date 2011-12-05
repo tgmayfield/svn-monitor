@@ -1,103 +1,78 @@
-﻿using System;
-using SVNMonitor.View.Interfaces;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SVNMonitor
+﻿namespace SVNMonitor
 {
-[Serializable]
-public class EventLogEntry : ISearchable
-{
-	private static long id;
+    using SVNMonitor.View.Interfaces;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
+    using System.Text;
 
-	public DateTime DateTime
-	{
-		get;
-		set;
-	}
+    [Serializable]
+    public class EventLogEntry : ISearchable
+    {
+        private static long id = (id + 1L);
 
-	public Exception Exception
-	{
-		get;
-		set;
-	}
+        internal EventLogEntry()
+        {
+            this.ID = id;
+        }
 
-	public bool HasException
-	{
-		get
-		{
-			return this.Exception != null;
-		}
-	}
+        public IEnumerable<string> GetSearchKeywords()
+        {
+            List<string> keywords = new List<string>();
+            keywords.AddRange(new string[] { this.DateTime.ToString(), this.ID.ToString(), this.Message, this.Type.ToString() });
+            if (this.SourceObject != null)
+            {
+                keywords.Add(this.SourceObject.ToString());
+            }
+            return keywords;
+        }
 
-	public long ID
-	{
-		get;
-		private set;
-	}
+        public string ToErrorString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(this.ToMessageString());
+            sb.AppendLine("=====================================================");
+            for (System.Exception ex = this.Exception; ex != null; ex = ex.InnerException)
+            {
+                sb.AppendLine(ex.ToString());
+                sb.AppendLine("=====================================================");
+            }
+            return sb.ToString();
+        }
 
-	public string Message
-	{
-		get;
-		set;
-	}
+        public string ToMessageString()
+        {
+            return string.Format("{0}: {1}", this.DateTime, this.Message);
+        }
 
-	public object SourceObject
-	{
-		get;
-		set;
-	}
+        public override string ToString()
+        {
+            if (this.HasException)
+            {
+                return this.ToErrorString();
+            }
+            return this.ToMessageString();
+        }
 
-	public EventLogEntryType Type
-	{
-		get;
-		set;
-	}
+        public System.DateTime DateTime { get; set; }
 
-	internal EventLogEntry()
-	{
-		EventLogEntry.id = EventLogEntry.id + (long)1;
-		this.ID = EventLogEntry.id;
-	}
+        public System.Exception Exception { get; set; }
 
-	public IEnumerable<string> GetSearchKeywords()
-	{
-		DateTime dateTime;
-		long num;
-		List<string> keywords = new List<string>();
-		string[] str[3] = this.Type.ToString().AddRange(str);
-		if (this.SourceObject != null)
-		{
-			keywords.Add(this.SourceObject.ToString());
-		}
-		return keywords;
-	}
+        public bool HasException
+        {
+            get
+            {
+                return (this.Exception != null);
+            }
+        }
 
-	public string ToErrorString()
-	{
-		StringBuilder sb = new StringBuilder();
-		sb.AppendLine(this.ToMessageString());
-		sb.AppendLine("=====================================================");
-		for (Exception ex = this.Exception; ex; ex = ex.InnerException)
-		{
-			sb.AppendLine(ex.ToString());
-			sb.AppendLine("=====================================================");
-		}
-		return sb.ToString();
-	}
+        public long ID { get; private set; }
 
-	public string ToMessageString()
-	{
-		return string.Format("{0}: {1}", this.DateTime, this.Message);
-	}
+        public string Message { get; set; }
 
-	public override string ToString()
-	{
-		if (this.HasException)
-		{
-			return this.ToErrorString();
-		}
-		return this.ToMessageString();
-	}
+        public object SourceObject { get; set; }
+
+        public EventLogEntryType Type { get; set; }
+    }
 }
-}
+

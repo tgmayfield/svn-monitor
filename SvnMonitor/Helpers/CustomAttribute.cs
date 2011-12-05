@@ -1,19 +1,14 @@
-﻿using System;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-[AttributeUsage(AttributeTargets.Class)]
-[Serializable]
-public class CustomAttribute : Attribute
-{
-	public CustomAttribute()
-	{
-	}
+    using System;
 
-	public static bool IsCustom(Type type)
-	{
-		bool isCustom = Attribute.IsDefined(type, typeof(CustomAttribute));
-		return isCustom;
-	}
+    [Serializable, AttributeUsage(AttributeTargets.Class)]
+    public class CustomAttribute : Attribute
+    {
+        public static bool IsCustom(Type type)
+        {
+            return Attribute.IsDefined(type, typeof(CustomAttribute));
+        }
+    }
 }
-}
+

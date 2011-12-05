@@ -1,19 +1,17 @@
-﻿using System;
-
-namespace SVNMonitor.Helpers
+﻿namespace SVNMonitor.Helpers
 {
-[AttributeUsage(AttributeTargets.Method | AttributeTargets.Property, AllowMultiple=false)]
-public class AssociatedUserActionAttribute : Attribute
-{
-	public UserAction UserAction
-	{
-		get;
-		private set;
-	}
+    using System;
+    using System.Runtime.CompilerServices;
 
-	public AssociatedUserActionAttribute(UserAction userAction)
-	{
-		this.UserAction = userAction;
-	}
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method, AllowMultiple=false)]
+    public class AssociatedUserActionAttribute : Attribute
+    {
+        public AssociatedUserActionAttribute(SVNMonitor.Helpers.UserAction userAction)
+        {
+            this.UserAction = userAction;
+        }
+
+        public SVNMonitor.Helpers.UserAction UserAction { get; private set; }
+    }
 }
-}
+
