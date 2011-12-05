@@ -11,7 +11,7 @@ using SVNMonitor.Resources.Text;
 
 namespace SVNMonitor.View.Dialogs
 {
-	internal class SourcePropertiesDialog : BaseDialog
+	internal partial class SourcePropertiesDialog : BaseDialog
 	{
 		private Button btnCancel;
 		private Button btnOK;

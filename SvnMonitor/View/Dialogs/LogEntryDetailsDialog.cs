@@ -15,7 +15,7 @@ using SVNMonitor.View.Panels;
 
 namespace SVNMonitor.View.Dialogs
 {
-	public class LogEntryDetailsDialog : BaseDialog
+	public partial class LogEntryDetailsDialog : BaseDialog
 	{
 		private Button btnDiff;
 		private Button btnLog;

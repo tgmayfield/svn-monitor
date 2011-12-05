@@ -491,8 +491,14 @@
     <Compile Include="View\Dialogs\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Dialogs\AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialogs\ActionPropertiesDialog.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\ActionPropertiesDialog.Designer.cs">
+      <DependentUpon>ActionPropertiesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Dialogs\BaseDialog.cs">
       <SubType>Form</SubType>
@@ -503,23 +509,44 @@
     <Compile Include="View\Dialogs\LogEntryDetailsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Dialogs\LogEntryDetailsDialog.Designer.cs">
+      <DependentUpon>LogEntryDetailsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialogs\MonitorPropertiesDialog.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\MonitorPropertiesDialog.Designer.cs">
+      <DependentUpon>MonitorPropertiesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Dialogs\RecommendWizard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Dialogs\RecommendWizard.Designer.cs">
+      <DependentUpon>RecommendWizard.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialogs\RollbackPromptDialog.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\RollbackPromptDialog.Designer.cs">
+      <DependentUpon>RollbackPromptDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Dialogs\SettingsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Dialogs\SettingsDialog.Designer.cs">
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialogs\SourcePropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Dialogs\SourcePropertiesDialog.Designer.cs">
+      <DependentUpon>SourcePropertiesDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialogs\UpdateHeadPromptDialog.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\UpdateHeadPromptDialog.Designer.cs">
+      <DependentUpon>UpdateHeadPromptDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Interfaces\ILogEntriesView.cs">
       <SubType>Code</SubType>

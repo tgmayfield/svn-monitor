@@ -7,7 +7,7 @@ using SVNMonitor.Settings;
 
 namespace SVNMonitor.View.Dialogs
 {
-	public class UpdateHeadPromptDialog : BasePromptDialog
+	public partial class UpdateHeadPromptDialog : BasePromptDialog
 	{
 		private Button btnNo;
 		private Button btnYes;

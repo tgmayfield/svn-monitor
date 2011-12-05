@@ -10,7 +10,7 @@ using SVNMonitor.View.Controls;
 
 namespace SVNMonitor.View.Dialogs
 {
-	internal class ActionPropertiesDialog : BaseDialog
+	internal partial class ActionPropertiesDialog : BaseDialog
 	{
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		private SVNMonitor.Actions.Action action;

@@ -16,7 +16,7 @@ using SharpSvn;
 
 namespace SVNMonitor.View.Dialogs
 {
-	public class RecommendWizard : BaseDialog
+	public partial class RecommendWizard : BaseDialog
 	{
 		private Button btnClose;
 		private Button btnCommit;

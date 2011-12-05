@@ -7,7 +7,7 @@ using SVNMonitor.Settings;
 
 namespace SVNMonitor.View.Dialogs
 {
-	public class RollbackPromptDialog : BasePromptDialog
+	public partial class RollbackPromptDialog : BasePromptDialog
 	{
 		private Button btnNo;
 		private Button btnYes;

@@ -21,7 +21,7 @@ using SVNMonitor.View.Controls;
 
 namespace SVNMonitor.View.Dialogs
 {
-	internal class SettingsDialog : BaseDialog
+	internal partial class SettingsDialog : BaseDialog
 	{
 		private Button btnCancel;
 		private Button btnOK;

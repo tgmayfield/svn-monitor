@@ -17,7 +17,7 @@ using SVNMonitor.View.Panels;
 
 namespace SVNMonitor.View.Dialogs
 {
-	internal class MonitorPropertiesDialog : BaseDialog
+	internal partial class MonitorPropertiesDialog : BaseDialog
 	{
 		private ActionsPanel actionsPanel1;
 		private Button btnCancel;

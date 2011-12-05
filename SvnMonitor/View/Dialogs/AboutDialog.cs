@@ -8,7 +8,7 @@ using SVNMonitor.Resources.Text;
 
 namespace SVNMonitor.View.Dialogs
 {
-	public class AboutDialog : BaseDialog
+	public partial class AboutDialog : BaseDialog
 	{
 		private IContainer components;
 		private const int CS_DROPSHADOW = 0x20000;
