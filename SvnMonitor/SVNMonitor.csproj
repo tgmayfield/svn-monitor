@@ -461,8 +461,11 @@
     <Compile Include="View\Controls\PathsGrid.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Controls\SearchTextBox!1.cs">
+    <Compile Include="View\Controls\SearchTextBox.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\SearchTextBox.Designer.cs">
+      <DependentUpon>SearchTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\SourceExplorerBarGroup.cs">
       <SubType>Code</SubType>
@@ -630,7 +633,9 @@
     <EmbeddedResource Include="View\Controls\KeyboardEditor.resx">
       <DependentUpon>KeyboardEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\SearchTextBox.resx" />
+    <EmbeddedResource Include="View\Controls\SearchTextBox.resx">
+      <DependentUpon>SearchTextBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Dialogs\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>

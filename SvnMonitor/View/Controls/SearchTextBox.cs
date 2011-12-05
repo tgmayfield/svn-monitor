@@ -15,17 +15,10 @@ using SVNMonitor.View.Interfaces;
 
 namespace SVNMonitor.View.Controls
 {
-	public class SearchTextBox<T> : UserControl
+	public partial class SearchTextBox<T> : UserControl
 		where T : ISearchable
 	{
-		private IContainer components;
-		private static bool dpiErrorLogged;
-		private EditBox editBox1;
-		private Panel panel1;
-		private int resultsCount;
-		private ISearchablePanel<T> searchablePanel;
-		private System.Timers.Timer searchTimer;
-
+		
 		public SearchTextBox()
 		{
 			InitializeComponent();
@@ -77,15 +70,6 @@ namespace SVNMonitor.View.Controls
 			SetNoSearchBackColor();
 		}
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
-
 		private void editBox1_Enter(object sender, EventArgs e)
 		{
 			SetSearchBackColor();
@@ -117,43 +101,6 @@ namespace SVNMonitor.View.Controls
 		{
 			Logger.LogUserAction();
 			StartSearchTimer();
-		}
-
-		private void InitializeComponent()
-		{
-			editBox1 = new EditBox();
-			panel1 = new Panel();
-			panel1.SuspendLayout();
-			base.SuspendLayout();
-			editBox1.BackColor = Color.White;
-			editBox1.BorderStyle = Janus.Windows.GridEX.BorderStyle.Flat;
-			editBox1.ButtonImageSize = new Size(12, 12);
-			editBox1.Dock = DockStyle.Fill;
-			editBox1.Location = new Point(0, 0);
-			editBox1.Name = "editBox1";
-			editBox1.Size = new Size(0x114, 20);
-			editBox1.TabIndex = 1;
-			editBox1.VisualStyle = VisualStyle.VS2005;
-			editBox1.TextChanged += editBox1_TextChanged;
-			editBox1.ButtonClick += btnClear_Click;
-			editBox1.Leave += editBox1_Leave;
-			editBox1.Enter += editBox1_Enter;
-			editBox1.KeyDown += editBox1_KeyDown;
-			panel1.Controls.Add(editBox1);
-			panel1.Dock = DockStyle.Fill;
-			panel1.Location = new Point(0, 0);
-			panel1.Name = "panel1";
-			panel1.Size = new Size(0x114, 20);
-			panel1.TabIndex = 2;
-			base.AutoScaleDimensions = new SizeF(6f, 13f);
-			base.AutoScaleMode = AutoScaleMode.Font;
-			BackColor = Color.Transparent;
-			base.Controls.Add(panel1);
-			base.Name = "SearchTextBox";
-			base.Size = new Size(0x114, 20);
-			panel1.ResumeLayout(false);
-			panel1.PerformLayout();
-			base.ResumeLayout(false);
 		}
 
 		private void InitSearchTimer()
