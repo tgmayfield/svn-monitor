@@ -425,6 +425,9 @@
     <Compile Include="View\Controls\AnimationProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="View\Controls\AnimationProgressBar.Designer.cs">
+      <DependentUpon>AnimationProgressBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\EventLogEntrySearchTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
