@@ -453,7 +453,7 @@ namespace SVNMonitor.View
 			SVNMonitor.EventLog.Open(eventID);
 		}
 
-		private void Hide()
+		private new void Hide()
 		{
 			List<Form> relevantForms = new List<Form>();
 			foreach (Form form in Application.OpenForms)
