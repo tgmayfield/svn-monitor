@@ -27,200 +27,240 @@ namespace SVNMonitor.View.Dialogs
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogEntryDetailsDialog));
-			txtLogMessage = new System.Windows.Forms.TextBox();
-			btnOK = new System.Windows.Forms.Button();
-			label1 = new System.Windows.Forms.Label();
-			txtAuthor = new System.Windows.Forms.TextBox();
-			label2 = new System.Windows.Forms.Label();
-			txtDateTime = new System.Windows.Forms.TextBox();
-			label3 = new System.Windows.Forms.Label();
-			splitContainer1 = new System.Windows.Forms.SplitContainer();
-			pathsPanel1 = new SVNMonitor.View.Panels.PathsPanel();
-			btnUpdate = new System.Windows.Forms.Button();
-			btnRollback = new System.Windows.Forms.Button();
-			btnLog = new System.Windows.Forms.Button();
-			btnDiff = new System.Windows.Forms.Button();
-			btnPrevious = new System.Windows.Forms.Button();
-			btnNext = new System.Windows.Forms.Button();
-			splitContainer1.Panel1.SuspendLayout();
-			splitContainer1.Panel2.SuspendLayout();
-			splitContainer1.SuspendLayout();
-			pathsPanel1.BeginInit();
-			base.SuspendLayout();
-			txtLogMessage.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Top;
-			txtLogMessage.BackColor = System.Drawing.Color.White;
-			txtLogMessage.Location = new System.Drawing.Point(0, 20);
-			txtLogMessage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			txtLogMessage.Multiline = true;
-			txtLogMessage.Name = "txtLogMessage";
-			txtLogMessage.ReadOnly = true;
-			txtLogMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			txtLogMessage.Size = new System.Drawing.Size(0x289, 0x9f);
-			txtLogMessage.TabIndex = 1;
-			btnOK.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Bottom;
-			btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-			btnOK.Location = new System.Drawing.Point(0x237, 610);
-			btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			btnOK.Name = "btnOK";
-			btnOK.Size = new System.Drawing.Size(100, 0x1c);
-			btnOK.TabIndex = 11;
-			btnOK.Text = "&Close";
-			btnOK.Click += btnOK_Click;
-			label1.AutoSize = true;
-			label1.Location = new System.Drawing.Point(0x10, 0x12);
-			label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			label1.Name = "label1";
-			label1.Size = new System.Drawing.Size(0x36, 0x11);
-			label1.TabIndex = 0;
-			label1.Text = "Author:";
-			txtAuthor.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Top;
-			txtAuthor.BackColor = System.Drawing.Color.White;
-			txtAuthor.Location = new System.Drawing.Point(0x10, 0x26);
-			txtAuthor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			txtAuthor.Name = "txtAuthor";
-			txtAuthor.ReadOnly = true;
-			txtAuthor.Size = new System.Drawing.Size(0x289, 0x16);
-			txtAuthor.TabIndex = 1;
-			label2.AutoSize = true;
-			label2.Location = new System.Drawing.Point(0x10, 0x42);
-			label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			label2.Name = "label2";
-			label2.Size = new System.Drawing.Size(100, 0x11);
-			label2.TabIndex = 2;
-			label2.Text = "Date and time:";
-			txtDateTime.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Top;
-			txtDateTime.BackColor = System.Drawing.Color.White;
-			txtDateTime.Location = new System.Drawing.Point(0x10, 0x56);
-			txtDateTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			txtDateTime.Name = "txtDateTime";
-			txtDateTime.ReadOnly = true;
-			txtDateTime.Size = new System.Drawing.Size(0x289, 0x16);
-			txtDateTime.TabIndex = 3;
-			label3.AutoSize = true;
-			label3.Location = new System.Drawing.Point(0, 0);
-			label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			label3.Name = "label3";
-			label3.Size = new System.Drawing.Size(0x45, 0x11);
-			label3.TabIndex = 0;
-			label3.Text = "Message:";
-			splitContainer1.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Top;
-			splitContainer1.Location = new System.Drawing.Point(0x10, 0x76);
-			splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			splitContainer1.Name = "splitContainer1";
-			splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-			splitContainer1.Panel1.Controls.Add(label3);
-			splitContainer1.Panel1.Controls.Add(txtLogMessage);
-			splitContainer1.Panel2.Controls.Add(pathsPanel1);
-			splitContainer1.Size = new System.Drawing.Size(0x28b, 0x1e5);
-			splitContainer1.SplitterDistance = 0xb8;
-			splitContainer1.SplitterWidth = 7;
-			splitContainer1.TabIndex = 4;
-			pathsPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			pathsPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			pathsPanel1.Location = new System.Drawing.Point(0, 0);
-			pathsPanel1.LogEntriesView = null;
-			pathsPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-			pathsPanel1.Name = "pathsPanel1";
-			pathsPanel1.SearchTextBox = null;
-			pathsPanel1.Size = new System.Drawing.Size(0x28b, 0x126);
-			pathsPanel1.TabIndex = 0;
-			btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Bottom;
-			btnUpdate.DialogResult = System.Windows.Forms.DialogResult.OK;
-			btnUpdate.Image = (System.Drawing.Image)resources.GetObject("btnUpdate.Image");
-			btnUpdate.Location = new System.Drawing.Point(0x10, 610);
-			btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			btnUpdate.Name = "btnUpdate";
-			btnUpdate.Size = new System.Drawing.Size(100, 0x1c);
-			btnUpdate.TabIndex = 5;
-			btnUpdate.Text = "&Update";
-			btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			btnUpdate.Click += btnUpdate_Click;
-			btnRollback.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Bottom;
-			btnRollback.DialogResult = System.Windows.Forms.DialogResult.OK;
-			btnRollback.Image = (System.Drawing.Image)resources.GetObject("btnRollback.Image");
-			btnRollback.Location = new System.Drawing.Point(0x7c, 610);
-			btnRollback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			btnRollback.Name = "btnRollback";
-			btnRollback.Size = new System.Drawing.Size(100, 0x1c);
-			btnRollback.TabIndex = 6;
-			btnRollback.Text = "&Rollback";
-			btnRollback.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			btnRollback.Click += btnRollback_Click;
-			btnLog.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Bottom;
-			btnLog.DialogResult = System.Windows.Forms.DialogResult.OK;
-			btnLog.Image = (System.Drawing.Image)resources.GetObject("btnLog.Image");
-			btnLog.Location = new System.Drawing.Point(0xe8, 610);
-			btnLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			btnLog.Name = "btnLog";
-			btnLog.Size = new System.Drawing.Size(100, 0x1c);
-			btnLog.TabIndex = 7;
-			btnLog.Text = "&Log";
-			btnLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			btnLog.Click += btnLog_Click;
-			btnDiff.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Bottom;
-			btnDiff.DialogResult = System.Windows.Forms.DialogResult.OK;
-			btnDiff.Image = (System.Drawing.Image)resources.GetObject("btnDiff.Image");
-			btnDiff.Location = new System.Drawing.Point(340, 610);
-			btnDiff.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			btnDiff.Name = "btnDiff";
-			btnDiff.Size = new System.Drawing.Size(100, 0x1c);
-			btnDiff.TabIndex = 8;
-			btnDiff.Text = "&Diff";
-			btnDiff.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			btnDiff.Click += btnDiff_Click;
-			btnPrevious.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Bottom;
-			btnPrevious.DialogResult = System.Windows.Forms.DialogResult.OK;
-			btnPrevious.Image = (System.Drawing.Image)resources.GetObject("btnPrevious.Image");
-			btnPrevious.Location = new System.Drawing.Point(0x1e9, 610);
-			btnPrevious.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			btnPrevious.Name = "btnPrevious";
-			btnPrevious.Size = new System.Drawing.Size(0x1f, 0x1c);
-			btnPrevious.TabIndex = 9;
-			btnPrevious.Click += btnPrevious_Click;
-			btnNext.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Bottom;
-			btnNext.DialogResult = System.Windows.Forms.DialogResult.OK;
-			btnNext.Image = (System.Drawing.Image)resources.GetObject("btnNext.Image");
-			btnNext.Location = new System.Drawing.Point(0x210, 610);
-			btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			btnNext.Name = "btnNext";
-			btnNext.Size = new System.Drawing.Size(0x1f, 0x1c);
-			btnNext.TabIndex = 10;
-			btnNext.Click += btnNext_Click;
-			base.AcceptButton = btnOK;
-			base.AutoScaleDimensions = new System.Drawing.SizeF(8f, 16f);
-			base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			base.CancelButton = btnOK;
-			base.ClientSize = new System.Drawing.Size(0x2ab, 0x28e);
-			base.Controls.Add(btnNext);
-			base.Controls.Add(btnPrevious);
-			base.Controls.Add(splitContainer1);
-			base.Controls.Add(txtDateTime);
-			base.Controls.Add(label2);
-			base.Controls.Add(txtAuthor);
-			base.Controls.Add(label1);
-			base.Controls.Add(btnDiff);
-			base.Controls.Add(btnLog);
-			base.Controls.Add(btnRollback);
-			base.Controls.Add(btnUpdate);
-			base.Controls.Add(btnOK);
-			base.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-			base.KeyPreview = true;
-			base.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			base.MaximizeBox = true;
-			base.MinimizeBox = true;
-			MinimumSize = new System.Drawing.Size(0x26d, 0x1fb);
-			base.Name = "LogEntryDetailsDialog";
-			base.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-			base.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			Text = "[Name [Revision]]";
-			base.KeyDown += LogEntryDetailsDialog_KeyDown;
-			splitContainer1.Panel1.ResumeLayout(false);
-			splitContainer1.Panel1.PerformLayout();
-			splitContainer1.Panel2.ResumeLayout(false);
-			splitContainer1.ResumeLayout(false);
-			pathsPanel1.EndInit();
-			base.ResumeLayout(false);
-			base.PerformLayout();
+			this.txtLogMessage = new System.Windows.Forms.TextBox();
+			this.btnOK = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.txtAuthor = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.txtDateTime = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.pathsPanel1 = new SVNMonitor.View.Panels.PathsPanel();
+			this.btnUpdate = new System.Windows.Forms.Button();
+			this.btnRollback = new System.Windows.Forms.Button();
+			this.btnLog = new System.Windows.Forms.Button();
+			this.btnDiff = new System.Windows.Forms.Button();
+			this.btnPrevious = new System.Windows.Forms.Button();
+			this.btnNext = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+			this.splitContainer1.Panel1.SuspendLayout();
+			this.splitContainer1.Panel2.SuspendLayout();
+			this.splitContainer1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pathsPanel1)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// txtLogMessage
+			// 
+			this.txtLogMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtLogMessage.BackColor = System.Drawing.Color.White;
+			this.txtLogMessage.Location = new System.Drawing.Point(0, 16);
+			this.txtLogMessage.Multiline = true;
+			this.txtLogMessage.Name = "txtLogMessage";
+			this.txtLogMessage.ReadOnly = true;
+			this.txtLogMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.txtLogMessage.Size = new System.Drawing.Size(488, 129);
+			this.txtLogMessage.TabIndex = 1;
+			// 
+			// btnOK
+			// 
+			this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnOK.Location = new System.Drawing.Point(425, 496);
+			this.btnOK.Name = "btnOK";
+			this.btnOK.Size = new System.Drawing.Size(75, 23);
+			this.btnOK.TabIndex = 11;
+			this.btnOK.Text = "&Close";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(12, 15);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(41, 13);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Author:";
+			// 
+			// txtAuthor
+			// 
+			this.txtAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtAuthor.BackColor = System.Drawing.Color.White;
+			this.txtAuthor.Location = new System.Drawing.Point(12, 31);
+			this.txtAuthor.Name = "txtAuthor";
+			this.txtAuthor.ReadOnly = true;
+			this.txtAuthor.Size = new System.Drawing.Size(488, 20);
+			this.txtAuthor.TabIndex = 1;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(12, 54);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(76, 13);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "Date and time:";
+			// 
+			// txtDateTime
+			// 
+			this.txtDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtDateTime.BackColor = System.Drawing.Color.White;
+			this.txtDateTime.Location = new System.Drawing.Point(12, 70);
+			this.txtDateTime.Name = "txtDateTime";
+			this.txtDateTime.ReadOnly = true;
+			this.txtDateTime.Size = new System.Drawing.Size(488, 20);
+			this.txtDateTime.TabIndex = 3;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(0, 0);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(53, 13);
+			this.label3.TabIndex = 0;
+			this.label3.Text = "Message:";
+			// 
+			// splitContainer1
+			// 
+			this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.splitContainer1.Location = new System.Drawing.Point(12, 96);
+			this.splitContainer1.Name = "splitContainer1";
+			this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// splitContainer1.Panel1
+			// 
+			this.splitContainer1.Panel1.Controls.Add(this.label3);
+			this.splitContainer1.Panel1.Controls.Add(this.txtLogMessage);
+			// 
+			// splitContainer1.Panel2
+			// 
+			this.splitContainer1.Panel2.Controls.Add(this.pathsPanel1);
+			this.splitContainer1.Size = new System.Drawing.Size(488, 394);
+			this.splitContainer1.SplitterDistance = 149;
+			this.splitContainer1.SplitterWidth = 6;
+			this.splitContainer1.TabIndex = 4;
+			// 
+			// pathsPanel1
+			// 
+			this.pathsPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pathsPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pathsPanel1.Location = new System.Drawing.Point(0, 0);
+			this.pathsPanel1.LogEntriesView = null;
+			this.pathsPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pathsPanel1.Name = "pathsPanel1";
+			this.pathsPanel1.SearchTextBox = null;
+			this.pathsPanel1.Size = new System.Drawing.Size(488, 239);
+			this.pathsPanel1.TabIndex = 0;
+			// 
+			// btnUpdate
+			// 
+			this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnUpdate.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+			this.btnUpdate.Location = new System.Drawing.Point(12, 496);
+			this.btnUpdate.Name = "btnUpdate";
+			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+			this.btnUpdate.TabIndex = 5;
+			this.btnUpdate.Text = "&Update";
+			this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			// 
+			// btnRollback
+			// 
+			this.btnRollback.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnRollback.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnRollback.Image = ((System.Drawing.Image)(resources.GetObject("btnRollback.Image")));
+			this.btnRollback.Location = new System.Drawing.Point(93, 496);
+			this.btnRollback.Name = "btnRollback";
+			this.btnRollback.Size = new System.Drawing.Size(75, 23);
+			this.btnRollback.TabIndex = 6;
+			this.btnRollback.Text = "&Rollback";
+			this.btnRollback.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			// 
+			// btnLog
+			// 
+			this.btnLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnLog.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnLog.Image = ((System.Drawing.Image)(resources.GetObject("btnLog.Image")));
+			this.btnLog.Location = new System.Drawing.Point(174, 496);
+			this.btnLog.Name = "btnLog";
+			this.btnLog.Size = new System.Drawing.Size(75, 23);
+			this.btnLog.TabIndex = 7;
+			this.btnLog.Text = "&Log";
+			this.btnLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			// 
+			// btnDiff
+			// 
+			this.btnDiff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnDiff.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnDiff.Image = ((System.Drawing.Image)(resources.GetObject("btnDiff.Image")));
+			this.btnDiff.Location = new System.Drawing.Point(255, 496);
+			this.btnDiff.Name = "btnDiff";
+			this.btnDiff.Size = new System.Drawing.Size(75, 23);
+			this.btnDiff.TabIndex = 8;
+			this.btnDiff.Text = "&Diff";
+			this.btnDiff.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			// 
+			// btnPrevious
+			// 
+			this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnPrevious.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnPrevious.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevious.Image")));
+			this.btnPrevious.Location = new System.Drawing.Point(367, 496);
+			this.btnPrevious.Name = "btnPrevious";
+			this.btnPrevious.Size = new System.Drawing.Size(23, 23);
+			this.btnPrevious.TabIndex = 9;
+			// 
+			// btnNext
+			// 
+			this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnNext.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
+			this.btnNext.Location = new System.Drawing.Point(396, 496);
+			this.btnNext.Name = "btnNext";
+			this.btnNext.Size = new System.Drawing.Size(23, 23);
+			this.btnNext.TabIndex = 10;
+			// 
+			// LogEntryDetailsDialog
+			// 
+			this.AcceptButton = this.btnOK;
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.btnOK;
+			this.ClientSize = new System.Drawing.Size(512, 531);
+			this.Controls.Add(this.btnNext);
+			this.Controls.Add(this.btnPrevious);
+			this.Controls.Add(this.splitContainer1);
+			this.Controls.Add(this.txtDateTime);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.txtAuthor);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.btnDiff);
+			this.Controls.Add(this.btnLog);
+			this.Controls.Add(this.btnRollback);
+			this.Controls.Add(this.btnUpdate);
+			this.Controls.Add(this.btnOK);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.KeyPreview = true;
+			this.MaximizeBox = true;
+			this.MinimizeBox = true;
+			this.MinimumSize = new System.Drawing.Size(470, 419);
+			this.Name = "LogEntryDetailsDialog";
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "[Name [Revision]]";
+			this.splitContainer1.Panel1.ResumeLayout(false);
+			this.splitContainer1.Panel1.PerformLayout();
+			this.splitContainer1.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+			this.splitContainer1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pathsPanel1)).EndInit();
+			this.ResumeLayout(false);
+			this.PerformLayout();
+
 		}
 
 		#endregion

@@ -145,7 +145,7 @@ namespace SVNMonitor.View.Dialogs
 			resources.ApplyResources(uiTabs, "uiTabs");
 			uiTabs.Name = "uiTabs";
 			uiTabs.ShowFocusRectangle = false;
-			uiTabs.TabPages.AddRange(new[]
+			uiTabs.TabPages.AddRange(new Janus.Windows.UI.Tab.UITabPage[]
 			{
 				uiTabPageGeneral, uiTabPageDisplay, uiTabPageOperation, uiTabPageKeyboard, uiTabPageUpdates, uiTabPageTortoiseSVN, uiTabPageRecommending, uiTabPageVersionCheck
 			});
@@ -608,7 +608,7 @@ namespace SVNMonitor.View.Dialogs
 			treeView1.HotTracking = true;
 			treeView1.ItemHeight = 0x12;
 			treeView1.Name = "treeView1";
-			treeView1.Nodes.AddRange(new[]
+			treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[]
 			{
 				(System.Windows.Forms.TreeNode)resources.GetObject("treeView1.Nodes"), (System.Windows.Forms.TreeNode)resources.GetObject("treeView1.Nodes1"), (System.Windows.Forms.TreeNode)resources.GetObject("treeView1.Nodes2"), (System.Windows.Forms.TreeNode)resources.GetObject("treeView1.Nodes3"), (System.Windows.Forms.TreeNode)resources.GetObject("treeView1.Nodes4"), (System.Windows.Forms.TreeNode)resources.GetObject("treeView1.Nodes5"), (System.Windows.Forms.TreeNode)resources.GetObject("treeView1.Nodes6"), (System.Windows.Forms.TreeNode)resources.GetObject("treeView1.Nodes7")
 			});
