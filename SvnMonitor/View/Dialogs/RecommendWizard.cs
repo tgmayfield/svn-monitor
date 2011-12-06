@@ -18,31 +18,12 @@ namespace SVNMonitor.View.Dialogs
 {
 	public partial class RecommendWizard : BaseDialog
 	{
-		private Button btnClose;
-		private Button btnCommit;
-		private Button btnRecommend;
-		private Button btnUpdate;
 		private bool committed;
-		private IContainer components;
-		private GroupBox groupCommit;
-		private GroupBox groupRecommend;
-		private GroupBox groupUpdate;
-		private Label lblCommit;
-		private Label lblHeader;
-		private Label lblRecommend;
-		private Label lblUpdate;
-		private Label lblUpdateAgain;
-		private LinkLabel linkUndo;
-		private Panel panelCommit;
-		private Panel panelHeader;
-		private Panel panelRecommend;
-		private Panel panelUpdate;
 		private bool recommended;
 		private long revision;
 		private SVNMonitor.Entities.Source source;
-		private TextBox txtCommitMessage;
 		private bool updated;
-
+		
 		public RecommendWizard()
 		{
 			InitializeComponent();
@@ -72,136 +53,6 @@ namespace SVNMonitor.View.Dialogs
 			SVNUpdate();
 		}
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
-
-		private void InitializeComponent()
-		{
-			ComponentResourceManager resources = new ComponentResourceManager(typeof(RecommendWizard));
-			panelUpdate = new Panel();
-			groupUpdate = new GroupBox();
-			btnUpdate = new Button();
-			lblUpdateAgain = new Label();
-			lblUpdate = new Label();
-			panelRecommend = new Panel();
-			groupRecommend = new GroupBox();
-			btnRecommend = new Button();
-			linkUndo = new LinkLabel();
-			lblRecommend = new Label();
-			panelCommit = new Panel();
-			groupCommit = new GroupBox();
-			txtCommitMessage = new TextBox();
-			btnCommit = new Button();
-			lblCommit = new Label();
-			panelHeader = new Panel();
-			lblHeader = new Label();
-			btnClose = new Button();
-			panelUpdate.SuspendLayout();
-			groupUpdate.SuspendLayout();
-			panelRecommend.SuspendLayout();
-			groupRecommend.SuspendLayout();
-			panelCommit.SuspendLayout();
-			groupCommit.SuspendLayout();
-			panelHeader.SuspendLayout();
-			base.SuspendLayout();
-			resources.ApplyResources(panelUpdate, "panelUpdate");
-			panelUpdate.Controls.Add(groupUpdate);
-			panelUpdate.Name = "panelUpdate";
-			groupUpdate.Controls.Add(btnUpdate);
-			groupUpdate.Controls.Add(lblUpdateAgain);
-			groupUpdate.Controls.Add(lblUpdate);
-			resources.ApplyResources(groupUpdate, "groupUpdate");
-			groupUpdate.Name = "groupUpdate";
-			groupUpdate.TabStop = false;
-			resources.ApplyResources(btnUpdate, "btnUpdate");
-			btnUpdate.Image = Images.svn_update_32;
-			btnUpdate.Name = "btnUpdate";
-			btnUpdate.Click += btnUpdate_Click;
-			lblUpdateAgain.BackColor = Color.Transparent;
-			lblUpdateAgain.ForeColor = Color.MidnightBlue;
-			resources.ApplyResources(lblUpdateAgain, "lblUpdateAgain");
-			lblUpdateAgain.Name = "lblUpdateAgain";
-			lblUpdate.BackColor = Color.Transparent;
-			resources.ApplyResources(lblUpdate, "lblUpdate");
-			lblUpdate.Name = "lblUpdate";
-			resources.ApplyResources(panelRecommend, "panelRecommend");
-			panelRecommend.Controls.Add(groupRecommend);
-			panelRecommend.Name = "panelRecommend";
-			groupRecommend.Controls.Add(btnRecommend);
-			groupRecommend.Controls.Add(linkUndo);
-			groupRecommend.Controls.Add(lblRecommend);
-			resources.ApplyResources(groupRecommend, "groupRecommend");
-			groupRecommend.Name = "groupRecommend";
-			groupRecommend.TabStop = false;
-			resources.ApplyResources(btnRecommend, "btnRecommend");
-			btnRecommend.Image = Images.star_yellow_32;
-			btnRecommend.Name = "btnRecommend";
-			btnRecommend.Click += btnRecommend_Click;
-			resources.ApplyResources(linkUndo, "linkUndo");
-			linkUndo.BackColor = Color.Transparent;
-			linkUndo.ForeColor = Color.MidnightBlue;
-			linkUndo.LinkColor = Color.MidnightBlue;
-			linkUndo.Name = "linkUndo";
-			linkUndo.TabStop = true;
-			linkUndo.LinkClicked += linkUndo_LinkClicked;
-			lblRecommend.BackColor = Color.Transparent;
-			resources.ApplyResources(lblRecommend, "lblRecommend");
-			lblRecommend.Name = "lblRecommend";
-			resources.ApplyResources(panelCommit, "panelCommit");
-			panelCommit.Controls.Add(groupCommit);
-			panelCommit.Name = "panelCommit";
-			groupCommit.Controls.Add(txtCommitMessage);
-			groupCommit.Controls.Add(btnCommit);
-			groupCommit.Controls.Add(lblCommit);
-			resources.ApplyResources(groupCommit, "groupCommit");
-			groupCommit.Name = "groupCommit";
-			groupCommit.TabStop = false;
-			resources.ApplyResources(txtCommitMessage, "txtCommitMessage");
-			txtCommitMessage.Name = "txtCommitMessage";
-			resources.ApplyResources(btnCommit, "btnCommit");
-			btnCommit.Image = Images.svn_commit_32;
-			btnCommit.Name = "btnCommit";
-			btnCommit.Click += btnCommit_Click;
-			lblCommit.BackColor = Color.Transparent;
-			resources.ApplyResources(lblCommit, "lblCommit");
-			lblCommit.Name = "lblCommit";
-			resources.ApplyResources(panelHeader, "panelHeader");
-			panelHeader.Controls.Add(lblHeader);
-			panelHeader.Name = "panelHeader";
-			lblHeader.BackColor = Color.Transparent;
-			resources.ApplyResources(lblHeader, "lblHeader");
-			lblHeader.Name = "lblHeader";
-			resources.ApplyResources(btnClose, "btnClose");
-			btnClose.DialogResult = DialogResult.Cancel;
-			btnClose.Name = "btnClose";
-			btnClose.Click += btnClose_Click;
-			resources.ApplyResources(this, "$this");
-			base.AutoScaleMode = AutoScaleMode.Font;
-			base.CancelButton = btnClose;
-			base.Controls.Add(btnClose);
-			base.Controls.Add(panelCommit);
-			base.Controls.Add(panelRecommend);
-			base.Controls.Add(panelUpdate);
-			base.Controls.Add(panelHeader);
-			base.FormBorderStyle = FormBorderStyle.FixedDialog;
-			base.Name = "RecommendWizard";
-			panelUpdate.ResumeLayout(false);
-			groupUpdate.ResumeLayout(false);
-			panelRecommend.ResumeLayout(false);
-			groupRecommend.ResumeLayout(false);
-			groupRecommend.PerformLayout();
-			panelCommit.ResumeLayout(false);
-			groupCommit.ResumeLayout(false);
-			groupCommit.PerformLayout();
-			panelHeader.ResumeLayout(false);
-			base.ResumeLayout(false);
-		}
 
 		private void linkUndo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
