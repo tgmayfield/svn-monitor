@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-using Janus.Windows.ExplorerBar;
 using Janus.Windows.UI;
 using Janus.Windows.UI.CommandBars;
 

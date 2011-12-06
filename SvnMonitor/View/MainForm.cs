@@ -8,11 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
-using Janus.Windows.EditControls;
-using Janus.Windows.UI;
 using Janus.Windows.UI.CommandBars;
-using Janus.Windows.UI.Dock;
-using Janus.Windows.UI.StatusBar;
 
 using SVNMonitor.Entities;
 using SVNMonitor.Extensions;
@@ -22,9 +18,7 @@ using SVNMonitor.Resources;
 using SVNMonitor.Resources.Text;
 using SVNMonitor.SVN;
 using SVNMonitor.Settings;
-using SVNMonitor.View.Controls;
 using SVNMonitor.View.Dialogs;
-using SVNMonitor.View.Panels;
 
 namespace SVNMonitor.View
 {

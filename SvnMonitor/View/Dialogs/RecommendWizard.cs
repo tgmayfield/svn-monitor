@@ -1,13 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
 
 using SVNMonitor.Extensions;
 using SVNMonitor.Helpers;
 using SVNMonitor.Logging;
-using SVNMonitor.Resources;
 using SVNMonitor.Resources.Text;
 using SVNMonitor.SVN;
 using SVNMonitor.Settings;

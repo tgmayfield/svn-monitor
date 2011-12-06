@@ -556,7 +556,7 @@ namespace SVNMonitor.Entities
 
 		internal void SetLog(SVNLog log)
 		{
-			this.log = log;
+			log = log;
 			hasLog = log != null;
 			ClearError();
 		}

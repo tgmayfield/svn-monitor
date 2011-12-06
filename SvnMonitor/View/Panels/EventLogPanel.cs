@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
 
-using Janus.Windows.Common.Layouts;
 using Janus.Windows.GridEX;
-using Janus.Windows.UI;
 using Janus.Windows.UI.CommandBars;
 
 using SVNMonitor.Helpers;

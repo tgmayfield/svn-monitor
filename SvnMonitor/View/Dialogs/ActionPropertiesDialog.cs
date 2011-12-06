@@ -3,10 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-using Janus.Windows.EditControls;
-
 using SVNMonitor.Logging;
-using SVNMonitor.View.Controls;
 
 namespace SVNMonitor.View.Dialogs
 {

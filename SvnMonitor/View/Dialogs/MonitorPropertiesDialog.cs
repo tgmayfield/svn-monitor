@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
 using Janus.Windows.GridEX;
-using Janus.Windows.UI.Dock;
 
 using SVNMonitor.Extensions;
 using SVNMonitor.Helpers;
 using SVNMonitor.Logging;
 using SVNMonitor.Resources.Text;
-using SVNMonitor.View.Panels;
 
 namespace SVNMonitor.View.Dialogs
 {

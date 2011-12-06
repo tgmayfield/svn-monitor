@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
 
-using Janus.Windows.GridEX;
 using Janus.Windows.GridEX.EditControls;
 
 using SVNMonitor.Logging;

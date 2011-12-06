@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -11,7 +9,6 @@ using SVNMonitor.Entities;
 using SVNMonitor.Logging;
 using SVNMonitor.Settings;
 using SVNMonitor.View.Interfaces;
-using SVNMonitor.View.Panels;
 
 namespace SVNMonitor.View.Dialogs
 {
