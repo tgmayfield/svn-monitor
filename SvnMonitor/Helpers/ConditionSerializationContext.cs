@@ -15,7 +15,7 @@ namespace SVNMonitor.Helpers
 
 		public ConditionSerializationContext(string conditionXml)
 		{
-			conditionXml = conditionXml;
+			this.conditionXml = conditionXml;
 		}
 
 		public void AddColumnKey(ColumnInfo key)

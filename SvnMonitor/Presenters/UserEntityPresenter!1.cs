@@ -17,7 +17,7 @@ namespace SVNMonitor.Presenters
 
 		public UserEntityPresenter(IUserEntityView<T> view)
 		{
-			view = view;
+			this.view = view;
 			EnableCommands();
 		}
 

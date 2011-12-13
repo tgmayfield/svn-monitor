@@ -85,8 +85,8 @@ namespace SVNMonitor.Helpers
 
 			internal RegistryIsolator(string keyName, string valueName, object tempValue)
 			{
-				keyName = keyName;
-				valueName = valueName;
+				this.keyName = keyName;
+				this.valueName = valueName;
 				originalValue = RegistryHelper.GetValue(keyName, valueName);
 				RegistryHelper.SetValue(keyName, valueName, tempValue);
 				needDispose = true;
